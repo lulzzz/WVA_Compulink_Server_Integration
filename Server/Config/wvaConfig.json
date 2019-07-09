@@ -9,5 +9,6 @@
     "99999":  "WVA-005"
   },
   "WvaInvoiceColumn": "zzordno",
+  "LabSentColumn": "labsent",
   "OrdersAfterDate": null
 }

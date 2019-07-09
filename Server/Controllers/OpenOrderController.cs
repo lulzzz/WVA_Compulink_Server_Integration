@@ -30,7 +30,7 @@ namespace WVA_Compulink_Server_Integration.Controllers
                     {
                         ApiKey = "",
                         Products = compulinkOdbcReader.GetOpenOrders(new string[] {
-                            "labsent is null",
+                            $"{Startup.config?.LabSentColumn} is null",
                             $"{Startup.config?.WvaInvoiceColumn} is null",
                             $"lab = '{Startup.config?.Location[location]}'",
                             $"lrx.date > {{d '{Startup.config?.OrdersAfterDate ?? DateTime.Today.AddMonths(-1).ToString("d")}'}}"

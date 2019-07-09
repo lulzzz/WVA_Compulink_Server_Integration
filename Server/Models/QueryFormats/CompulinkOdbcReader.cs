@@ -114,8 +114,8 @@ namespace WVA_Compulink_Server_Integration.Models.Prescriptions
                 "lrx.l_add",
                 "lrx.l_color",
                 "lrx.l_prism",
-                "lrx.laborder",
-                "lrx.labsent",
+                $"lrx.{Startup.config?.WvaInvoiceColumn}", // laborder
+                $"lrx.{Startup.config?.LabSentColumn}", // labsent
                 "p.first",
                 "p.last",
                 "EXTRACT(YEAR FROM lrx.date)",
