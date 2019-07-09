@@ -1,0 +1,13 @@
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Release\netcoreapp2.1\WVA_Compulink_Server_Integration.deps.json
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Release\netcoreapp2.1\WVA_Compulink_Server_Integration.runtimeconfig.json
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Release\netcoreapp2.1\WVA_Compulink_Server_Integration.runtimeconfig.dev.json
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Release\netcoreapp2.1\WVA_Compulink_Server_Integration.dll
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Release\netcoreapp2.1\WVA_Compulink_Server_Integration.pdb
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.csproj.CoreCompileInputs.cache
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.RazorAssemblyInfo.cache
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.RazorAssemblyInfo.cs
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.AssemblyInfoInputs.cache
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.AssemblyInfo.cs
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.RazorTargetAssemblyInfo.cache
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\WVA_Compulink_Server_Integration.dll
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\WVA_Compulink_Server_Integration.pdb

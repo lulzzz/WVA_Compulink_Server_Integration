@@ -1,0 +1,13 @@
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\bin\Debug\netcoreapp2.1\FentonEC_Server.deps.json
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\bin\Debug\netcoreapp2.1\FentonEC_Server.runtimeconfig.json
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\bin\Debug\netcoreapp2.1\FentonEC_Server.runtimeconfig.dev.json
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\bin\Debug\netcoreapp2.1\FentonEC_Server.dll
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\bin\Debug\netcoreapp2.1\FentonEC_Server.pdb
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\obj\Debug\netcoreapp2.1\FentonEC_Server.csproj.CoreCompileInputs.cache
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\obj\Debug\netcoreapp2.1\FentonEC_Server.RazorAssemblyInfo.cache
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\obj\Debug\netcoreapp2.1\FentonEC_Server.RazorAssemblyInfo.cs
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\obj\Debug\netcoreapp2.1\FentonEC_Server.AssemblyInfoInputs.cache
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\obj\Debug\netcoreapp2.1\FentonEC_Server.AssemblyInfo.cs
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\obj\Debug\netcoreapp2.1\FentonEC_Server.RazorTargetAssemblyInfo.cache
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\obj\Debug\netcoreapp2.1\FentonEC_Server.dll
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\WVA_Compulink_Server_Integration\obj\Debug\netcoreapp2.1\FentonEC_Server.pdb
