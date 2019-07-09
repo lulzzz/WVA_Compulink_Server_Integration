@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WVA_Compulink_Server_Integration.Data;
-using WVA_Compulink_Server_Integration.EasyApi;
+using WVA_Compulink_Server_Integration.WebTools;
 using WVA_Compulink_Server_Integration.Models.Orders;
 using WVA_Compulink_Server_Integration.Models.Prescriptions;
 using WVA_Compulink_Server_Integration.Models.Responses;

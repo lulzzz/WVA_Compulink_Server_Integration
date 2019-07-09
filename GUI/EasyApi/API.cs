@@ -8,7 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.EasyApi
+namespace WVA_Compulink_Server_Integration.WebTools
 {
     class API
     {

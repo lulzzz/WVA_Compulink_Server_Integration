@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WVA_Compulink_Server_Integration.Models.Configurations
 {
-    public class WvaConfig : IServerConfiguration
+    public class WvaConfig
     {
         public string Dsn { get; set; }
         public string ApiKey { get; set; }

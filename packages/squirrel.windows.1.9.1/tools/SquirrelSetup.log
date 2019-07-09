@@ -1,0 +1,82 @@
+﻿2019-07-09 12:59:48> Program: Starting Squirrel Updater: --releasify WVA_Compulink_Server_Integration.1.1.0 --setupicon C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Resources\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-09 12:59:48> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-09 12:59:48> Unhandled exception: System.IO.FileNotFoundException: Could not find file 'WVA_Compulink_Server_Integration.1.1.0'.
+File name: 'WVA_Compulink_Server_Integration.1.1.0'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+2019-07-09 13:00:30> Program: Starting Squirrel Updater: --releasify C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Releases\WVA_Compulink_Server_Integration.1.1.0 --setupicon C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Resources\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-09 13:00:30> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-09 13:00:30> Unhandled exception: System.IO.FileNotFoundException: Could not find file 'C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Releases\WVA_Compulink_Server_Integration.1.1.0'.
+File name: 'C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Releases\WVA_Compulink_Server_Integration.1.1.0'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+2019-07-09 13:01:07> Program: Starting Squirrel Updater: --releasify C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupicon C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Resources\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-09 13:01:07> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-09 13:01:07> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-09 13:01:07> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-09 13:01:08> ReleasePackage: Extracting dependent packages: []
+2019-07-09 13:01:08> ReleasePackage: Removing unnecessary data
+2019-07-09 13:01:08> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempα\WVA_Compulink_Server_Integration.nuspec
+2019-07-09 13:01:09> Program: Building embedded zip file for Setup.exe
+2019-07-09 13:02:18> Program: Starting Squirrel Updater: --releasify WVA_Compulink_Server_Integration.1.1.0.nupkg --setupicon C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Resources\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-09 13:02:18> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-09 13:02:18> Unhandled exception: System.IO.FileNotFoundException: Could not find file 'WVA_Compulink_Server_Integration.1.1.0.nupkg'.
+File name: 'WVA_Compulink_Server_Integration.1.1.0.nupkg'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+2019-07-09 13:03:24> Program: Starting Squirrel Updater: --releasify C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupicon C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Resources\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-09 13:03:24> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-09 13:03:24> Unhandled exception: System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+2019-07-09 13:03:25> Program: Starting Squirrel Updater: --releasify C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupicon C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Resources\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-09 13:03:25> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-09 13:03:25> Unhandled exception: System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+2019-07-09 13:03:28> Program: Starting Squirrel Updater: --releasify WVA_Compulink_Server_Integration.1.1.0.nupkg --setupicon C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Resources\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-09 13:03:28> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-09 13:03:28> Unhandled exception: System.IO.FileNotFoundException: Could not find file 'WVA_Compulink_Server_Integration.1.1.0.nupkg'.
+File name: 'WVA_Compulink_Server_Integration.1.1.0.nupkg'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+2019-07-09 13:03:51> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupicon C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Resources\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-09 13:03:51> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-09 13:03:51> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-09 13:03:51> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-09 13:03:52> ReleasePackage: Extracting dependent packages: []
+2019-07-09 13:03:52> ReleasePackage: Removing unnecessary data
+2019-07-09 13:03:52> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempα\WVA_Compulink_Server_Integration.nuspec
+2019-07-09 13:03:55> Program: Building embedded zip file for Setup.exe
+2019-07-09 13:05:20> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupicon C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\Resources\logo_plain_vector_72_white_TMD_icon.ico --nomsi
+2019-07-09 13:05:20> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-09 13:05:20> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-09 13:05:20> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-09 13:05:21> ReleasePackage: Extracting dependent packages: []
+2019-07-09 13:05:21> ReleasePackage: Removing unnecessary data
+2019-07-09 13:05:21> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempα\WVA_Compulink_Server_Integration.nuspec
+2019-07-09 13:05:23> Program: Building embedded zip file for Setup.exe

@@ -1,4 +1,4 @@
-﻿using WVA_Compulink_Server_Integration.EasyApi;
+﻿using WVA_Compulink_Server_Integration.WebTools;
 using WVA_Compulink_Server_Integration.Utilities.Files;
 using Newtonsoft.Json;
 using System;
