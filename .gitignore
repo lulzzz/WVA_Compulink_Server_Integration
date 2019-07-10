@@ -1,3 +1,5 @@
 
-*.lock
-.vs/WVA_Compulink_Server_Integration/v16/.suo
+.vs/WVA_Compulink_Server_Integration/v16/Server/sqlite3/db.lock
+*.pdb
+*.pdb
+GUI/obj/Debug/WVA_Compulink_Server_Integration.pdb

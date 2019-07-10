@@ -33,6 +33,7 @@ namespace WVA_Compulink_Server_Integration
             CloseDuplicateApp();
             InitializeComponent();
             SetTitle();
+            SetupConfig();
             SetUpFiles();
             StartWorkers();
             TaskManager.StartAllJobs();
@@ -56,6 +57,15 @@ namespace WVA_Compulink_Server_Integration
         {
             if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
                 Environment.Exit(0);
+        }
+
+        public void SetupConfig()
+        {
+            if (File.Exists(Paths.ConfigDesktop))
+                File.Move(Paths.ConfigDesktop, Paths.WvaConfigFile);
+
+            if (File.Exists(Paths.ConfigDocuments))
+                File.Move(Paths.ConfigDocuments, Paths.WvaConfigFile);
         }
 
         public void SetUpFiles()

@@ -13,5 +13,6 @@ namespace WVA_Compulink_Server_Integration.Models.Configurations
         public string WvaInvoiceColumn { get; set; }
         public string LabSentColumn { get; set; }
         public string OrdersAfterDate { get; set; }
+        public bool OverRideDefaultQueries { get; set; } = false;
     }
 }

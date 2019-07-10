@@ -22,8 +22,9 @@ namespace WVA_Compulink_Server_Integration.ODBC
                 {
                     conn.ConnectionString = $"dsn={config.Dsn}";
                     conn.Open();
+                    conn.Close();
                 }
-
+                
                 return true;
             }
             catch
