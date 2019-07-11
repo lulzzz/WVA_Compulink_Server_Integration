@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using WVA_Compulink_Server_Integration.Utilities.Files;
+using System.Windows;
 
 namespace WVA_Compulink_Server_Integration
 {
@@ -21,7 +23,7 @@ namespace WVA_Compulink_Server_Integration
 
         public Startup(IHostingEnvironment env)
         {
-            config = JsonConvert.DeserializeObject<WvaConfig>(File.ReadAllText($@"{Directory.GetCurrentDirectory()}\Config\wvaConfig.json"));
+            config = JsonConvert.DeserializeObject<WvaConfig>(File.ReadAllText($@"{Paths.WvaConfigFile}"));
         }
 
         public void ConfigureServices(IServiceCollection services)

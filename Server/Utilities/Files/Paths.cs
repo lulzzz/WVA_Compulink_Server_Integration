@@ -25,6 +25,7 @@ namespace WVA_Compulink_Server_Integration.Utilities.Files
         public static readonly string AppExecFile           = $@"{AppDataLocal}\{AppName}\{AppName}GUI.exe";
         public static readonly string DatabaseFile          = $@"{AppDataLocal}\{AppName}\Data\SQLite_Database.sqlite";
         public static readonly string ApiKeyFile            = $@"{AppDataLocal}\{AppName}\ApiKey\ApiKey.txt";
+        public static readonly string WvaConfigFile         = $@"{AppDataLocal}\{AppName}\Data\wvaConfig.json";
 
 
         /* -------------------------------------------- WEB PATHS --------------------------------------------------------- */

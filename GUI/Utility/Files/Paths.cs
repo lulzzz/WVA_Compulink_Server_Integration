@@ -29,7 +29,6 @@ namespace WVA_Compulink_Server_Integration.Utility.Files
         public static readonly string DatabaseFile      = $@"{AppDataLocal}\{AppName}\Data\SQLite_Database.sqlite";
         public static readonly string AppExecFile       = $@"{AppDataLocal}\{AppName}\{AppName}.exe";
         public static readonly string ApiKeyFile        = $@"{AppDataLocal}\{AppName}\ApiKey\ApiKey.txt";
-        //public static readonly string WvaConfigFile     = $@"{GetServerDirectoryName()}\Server\Config\wvaConfig.json";
         public static readonly string WvaConfigFile     = $@"{AppDataLocal}\{AppName}\Data\wvaConfig.json";
         public static readonly string ConfigDesktop     = $@"{Desktop}\wvaConfig.json";
         public static readonly string ConfigDocuments   = $@"{Documents}\WVA Remote Help\Files\wvaConfig.json";

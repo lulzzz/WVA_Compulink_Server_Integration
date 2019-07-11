@@ -195,44 +195,6 @@
                    FontFamily="Sitka Text"
                    FontSize="15"/>
 
-            <ComboBox Name="SelectUpdateTimeComboBox"
-                      Width="100"
-                      Height="30"
-                      MaxDropDownHeight="250"
-                      VerticalContentAlignment="Center"
-                      FontFamily="Sitka Text"
-                      FontSize="15"
-                      HorizontalAlignment="Right"
-                      VerticalAlignment="Bottom"
-                      Margin="0,0,0,0"
-                      SelectedIndex="3"
-                      DataContextChanged="SelectUpdateTimeComboBox_DataContextChanged">
-                <ComboBoxItem>12:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>1:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>2:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>3:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>4:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>5:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>6:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>7:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>8:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>9:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>10:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>11:00 a.m.</ComboBoxItem>
-                <ComboBoxItem>12:00 p.m.</ComboBoxItem>
-                <ComboBoxItem>1:00 p.m.</ComboBoxItem>
-                <ComboBoxItem>2:00 p.m.</ComboBoxItem>
-                <ComboBoxItem>3:00 p.m.</ComboBoxItem>
-                <ComboBoxItem>4:00 p.m.</ComboBoxItem>
-                <ComboBoxItem>5:00 p.m.</ComboBoxItem>
-                <ComboBoxItem>6:00 p.m.</ComboBoxItem>
-                <ComboBoxItem>7:00 p.m.</ComboBoxItem>
-                <ComboBoxItem>8:00 p.m.</ComboBoxItem>
-                <ComboBoxItem>9:00 p.m.</ComboBoxItem>
-                <ComboBoxItem>10:00 p.m.</ComboBoxItem>
-                <ComboBoxItem>11:00 p.m.</ComboBoxItem>
-            </ComboBox>
-
         </StackPanel>
 
     </Grid>

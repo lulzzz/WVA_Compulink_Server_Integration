@@ -56,7 +56,7 @@ namespace WVA_Compulink_Server_Integration.Controllers
 
                     return Patients;
                 }
-                catch (Exception x)
+                catch
                 {
                     return null;
                 }

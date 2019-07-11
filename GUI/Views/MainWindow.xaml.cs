@@ -59,13 +59,24 @@ namespace WVA_Compulink_Server_Integration
                 Environment.Exit(0);
         }
 
-        public void SetupConfig()
+        public bool SetupConfig()
         {
             if (File.Exists(Paths.ConfigDesktop))
                 File.Move(Paths.ConfigDesktop, Paths.WvaConfigFile);
 
             if (File.Exists(Paths.ConfigDocuments))
                 File.Move(Paths.ConfigDocuments, Paths.WvaConfigFile);
+
+            if (File.Exists(Paths.WvaConfigFile))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Could not find config file. Server cannot run without wva config file.", "Warning", MessageBoxButton.OK);
+                return false;
+
+            }
         }
 
         public void SetUpFiles()
@@ -133,7 +144,7 @@ namespace WVA_Compulink_Server_Integration
             {
                 string dirName = GetServerDirectoryName();
                 string cdString = $"cd {dirName}";
-                string cmdString = $"\"{dirName}dotnet\" WVA_Comulink_Server_Integration.dll";
+                string cmdString = $"\"{dirName}dotnet\" WVA_Compulink_Server_Integration.dll";
 
                 Process cmd = new Process();
                 cmd.StartInfo.FileName = "cmd.exe";
@@ -223,14 +234,12 @@ namespace WVA_Compulink_Server_Integration
             }
         }
 
-        private void SelectUpdateTimeComboBox_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
-        }
-
         private void StartServerButton_Click(object sender, RoutedEventArgs e)
         {
-            StartServerInstance();
+            bool configLocated = SetupConfig();
+
+            if (configLocated)
+                StartServerInstance();
         }
 
         private void StopServerButton_Click(object sender, RoutedEventArgs e)
