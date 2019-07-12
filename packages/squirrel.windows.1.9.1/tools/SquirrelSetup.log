@@ -80,3 +80,19 @@ File name: 'WVA_Compulink_Server_Integration.1.1.0.nupkg'
 2019-07-09 13:05:21> ReleasePackage: Removing unnecessary data
 2019-07-09 13:05:21> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempα\WVA_Compulink_Server_Integration.nuspec
 2019-07-09 13:05:23> Program: Building embedded zip file for Setup.exe
+2019-07-12 13:42:19> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --SetupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-12 13:42:19> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-12 13:42:19> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-12 13:42:20> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-12 13:42:20> ReleasePackage: Extracting dependent packages: []
+2019-07-12 13:42:20> ReleasePackage: Removing unnecessary data
+2019-07-12 13:42:20> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-12 13:42:22> Program: Building embedded zip file for Setup.exe
+2019-07-12 13:51:20> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --SetupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-12 13:51:20> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-12 13:51:20> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-12 13:51:21> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-12 13:51:21> ReleasePackage: Extracting dependent packages: []
+2019-07-12 13:51:21> ReleasePackage: Removing unnecessary data
+2019-07-12 13:51:21> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-12 13:51:23> Program: Building embedded zip file for Setup.exe

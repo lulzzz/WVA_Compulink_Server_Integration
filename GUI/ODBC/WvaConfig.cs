@@ -12,8 +12,8 @@ namespace WVA_Compulink_Server_Integration.ODBC
         public string ApiKey { get; set; }
         public Dictionary<string, string> Location { get; set; }
         public string WvaInvoiceColumn { get; set; }
-        public string LabSentColumn { get; set; }
         public string OrdersAfterDate { get; set; }
+        public string LabSentColumn { get; set; }
         public bool OverRideDefaultQueries { get; set; } = false;
     }
 }

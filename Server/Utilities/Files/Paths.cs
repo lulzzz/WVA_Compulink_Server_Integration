@@ -18,13 +18,11 @@ namespace WVA_Compulink_Server_Integration.Utilities.Files
 
         // DIRECTORIES 
         public static readonly string DataDir               = $@"{AppDataLocal}\{AppName}\Data\";
-        public static readonly string ApiKeyDir             = $@"{AppDataLocal}\{AppName}\Data\ApiKey\";
         public static readonly string ErrorLogDir           = $@"{AppDataLocal}\{AppName}\ErrorLog\";
 
         // FILES  
         public static readonly string AppExecFile           = $@"{AppDataLocal}\{AppName}\{AppName}GUI.exe";
         public static readonly string DatabaseFile          = $@"{AppDataLocal}\{AppName}\Data\SQLite_Database.sqlite";
-        public static readonly string ApiKeyFile            = $@"{AppDataLocal}\{AppName}\ApiKey\ApiKey.txt";
         public static readonly string WvaConfigFile         = $@"{AppDataLocal}\{AppName}\Data\wvaConfig.json";
 
 

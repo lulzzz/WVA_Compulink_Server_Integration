@@ -22,16 +22,15 @@ namespace WVA_Compulink_Server_Integration.Utility.Files
 
         // DIRECTORIES 
         public static readonly string DataDir           = $@"{AppDataLocal}\{AppName}\Data\";
-        public static readonly string ApiKeyDir         = $@"{AppDataLocal}\{AppName}\Data\ApiKey\";
         public static readonly string ErrorLogDir       = $@"{AppDataLocal}\{AppName}\ErrorLog\";
         
         // FILES     
         public static readonly string DatabaseFile      = $@"{AppDataLocal}\{AppName}\Data\SQLite_Database.sqlite";
         public static readonly string AppExecFile       = $@"{AppDataLocal}\{AppName}\{AppName}.exe";
-        public static readonly string ApiKeyFile        = $@"{AppDataLocal}\{AppName}\ApiKey\ApiKey.txt";
         public static readonly string WvaConfigFile     = $@"{AppDataLocal}\{AppName}\Data\wvaConfig.json";
         public static readonly string ConfigDesktop     = $@"{Desktop}\wvaConfig.json";
         public static readonly string ConfigDocuments   = $@"{Documents}\WVA Remote Help\Files\wvaConfig.json";
+        public static readonly string ConfigInstallDir  = $@"{Desktop}\WVA Compulink Integration\Applications\Server App\wvaConfig.json";
 
 
         /* -------------------------------------------- WEB PATHS --------------------------------------------------------- */

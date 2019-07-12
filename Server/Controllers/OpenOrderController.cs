@@ -28,7 +28,7 @@ namespace WVA_Compulink_Server_Integration.Controllers
                 {
                     Request = new PrescriptionRequest()
                     {
-                        ApiKey = "",
+                        ApiKey = Memory.Storage.Config.ApiKey,
                         Products = compulinkOdbcReader.GetOpenOrders(new string[] {
                             $"{Startup.config?.LabSentColumn} is null",
                             $"{Startup.config?.WvaInvoiceColumn} is null",

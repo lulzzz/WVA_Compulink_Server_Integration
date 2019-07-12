@@ -18,7 +18,7 @@ namespace WVA_Compulink_Server_Integration.Errors
             {
                 JsonError error = new JsonError()
                 {
-                    ActNum = $"Machine Name=({Environment.MachineName}) User Name =({Environment.UserName})",
+                    ActNum = $"Machine Name=({Environment.MachineName}) User Name =({Environment.UserName}) API Key =({Memory.Storage.Config?.ApiKey ?? "NOT SET"})",
                     Error = e.ToString(),
                     Application = Assembly.GetCallingAssembly().GetName().Name,
                     AppVersion = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString()

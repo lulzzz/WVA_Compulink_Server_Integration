@@ -14,6 +14,7 @@ using WVA_Compulink_Server_Integration.Updates;
 using System.Threading.Tasks;
 using System.Reflection;
 using WVA_Compulink_Server_Integration.ODBC;
+using WVA_Compulink_Server_Integration.Memory;
 
 namespace WVA_Compulink_Server_Integration
 {
@@ -33,8 +34,8 @@ namespace WVA_Compulink_Server_Integration
             CloseDuplicateApp();
             InitializeComponent();
             SetTitle();
-            SetupConfig();
             SetUpFiles();
+            SetupConfig();
             StartWorkers();
             TaskManager.StartAllJobs();
             Task.Run(() => Updater.RunUpdates());
@@ -61,15 +62,29 @@ namespace WVA_Compulink_Server_Integration
 
         public bool SetupConfig()
         {
+            // Moves config file to main app directory in app data
             if (File.Exists(Paths.ConfigDesktop))
                 File.Move(Paths.ConfigDesktop, Paths.WvaConfigFile);
 
             if (File.Exists(Paths.ConfigDocuments))
                 File.Move(Paths.ConfigDocuments, Paths.WvaConfigFile);
 
+            if (File.Exists(Paths.ConfigInstallDir))
+                File.Move(Paths.ConfigInstallDir, Paths.WvaConfigFile);
+
+            // Sets up config file in memory
             if (File.Exists(Paths.WvaConfigFile))
             {
-                return true;
+                try
+                {
+                    new Storage();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Error.ReportOrLog(ex);
+                    return false;
+                }
             }
             else
             {

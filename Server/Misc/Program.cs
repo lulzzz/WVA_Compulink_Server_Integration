@@ -26,7 +26,10 @@ namespace WVA_Compulink_Server_Integration
 
                 Database.UpdateChangedColumns();
 
+                // Setup Config in Memory
+                new Memory.Storage();
 
+                // Spin up server
                 var configuration = new ConfigurationBuilder()
                 .AddCommandLine(args)
                 .Build();

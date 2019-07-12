@@ -19,7 +19,7 @@ namespace WVA_Compulink_Server_Integration.Errors
             {
                 JsonError error = new JsonError()
                 {
-                    ActNum = $"(ApiKey={File.ReadAllText(Paths.ApiKeyFile)})",
+                    ActNum = $"(ApiKey={Memory.Storage.Config?.ApiKey ?? "NOT SET"})",
                     Error = e.ToString(),
                     Application = Assembly.GetCallingAssembly().GetName().Name,
                     AppVersion = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString()
