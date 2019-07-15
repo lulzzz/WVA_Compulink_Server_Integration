@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj": {}
+    "C:\\Users\\dev1\\source\\repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj": {
+    "C:\\Users\\dev1\\source\\repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
+        "projectUniqueName": "C:\\Users\\dev1\\source\\repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
         "projectName": "WVA_Compulink_Server_Integration",
-        "projectPath": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
-        "packagesPath": "C:\\Users\\evan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\obj\\",
+        "projectPath": "C:\\Users\\dev1\\source\\repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\dev1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dev1\\source\\repos\\WVA_Compulink_Server_Integration\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
           "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\evan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\dev1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
@@ -55,7 +53,6 @@
               "version": "[2.1.2, )"
             },
             "Microsoft.NETCore.App": {
-              "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
