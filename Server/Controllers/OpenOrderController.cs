@@ -32,8 +32,8 @@ namespace WVA_Compulink_Server_Integration.Controllers
                         Products = compulinkOdbcReader.GetOpenOrders(new string[] {
                             $"{Startup.config?.LabSentColumn} is null",
                             $"{Startup.config?.WvaInvoiceColumn} is null",
-                            $"lab = '{Startup.config?.Location[location]}'",
-                            $"lrx.date > {{d '{Startup.config?.OrdersAfterDate ?? DateTime.Today.AddMonths(-1).ToString("d")}'}}"
+                            $"{Startup.config?.LabColumn} = '{Startup.config?.Location[location]}'",
+                            $"{Startup.config?.DateColumn} > {{d '{Startup.config?.OrdersAfterDate ?? DateTime.Today.AddMonths(-1).ToString("d")}'}}"
                         })
                     }
                 };
