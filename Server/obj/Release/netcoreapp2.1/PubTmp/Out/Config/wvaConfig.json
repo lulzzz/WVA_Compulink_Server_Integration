@@ -10,5 +10,7 @@
   },
   "WvaInvoiceColumn": "zzordno",
   "LabSentColumn": "labsent",
+  "LabColumn": "lab",
+  "DateColumn": "date",
   "OrdersAfterDate": null
 }

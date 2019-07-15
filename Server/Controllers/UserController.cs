@@ -123,7 +123,7 @@ namespace WVA_Compulink_Server_Integration.Controllers
         {
             List<string> availableAccounts = new List<string>();
 
-            foreach (KeyValuePair<string, string> pair in Startup.config.Location)
+            foreach (KeyValuePair<string, string> pair in Startup.config?.Location)
                 availableAccounts.Add(pair.Key);
 
             return availableAccounts;
