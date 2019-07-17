@@ -123,6 +123,9 @@ namespace WVA_Compulink_Server_Integration.Controllers
         {
             List<string> availableAccounts = new List<string>();
 
+            if (Startup.config?.Location == null)
+                return null;
+
             foreach (KeyValuePair<string, string> pair in Startup.config?.Location)
                 availableAccounts.Add(pair.Key);
 

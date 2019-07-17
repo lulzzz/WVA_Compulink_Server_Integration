@@ -27,7 +27,6 @@ C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Rele
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Release\netcoreapp2.1\System.Windows.Input.Manipulations.xml
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Release\netcoreapp2.1\System.Windows.Forms.xml
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Release\netcoreapp2.1\System.Runtime.Serialization.Formatters.Soap.xml
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.csprojAssemblyReference.cache
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.csproj.CoreCompileInputs.cache
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.RazorAssemblyInfo.cache
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.RazorAssemblyInfo.cs
@@ -76,3 +75,4 @@ C:\Users\dev1\source\repos\WVA_Compulink_Server_Integration\Server\obj\x86\Relea
 C:\Users\dev1\source\repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.csproj.CopyComplete
 C:\Users\dev1\source\repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\WVA_Compulink_Server_Integration.dll
 C:\Users\dev1\source\repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\WVA_Compulink_Server_Integration.pdb
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Release\netcoreapp2.1\Server.csprojAssemblyReference.cache

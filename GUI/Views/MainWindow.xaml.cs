@@ -88,7 +88,6 @@ namespace WVA_Compulink_Server_Integration
             }
             else
             {
-                MessageBox.Show("Could not find config file. Server cannot run without wva config file.", "Warning", MessageBoxButton.OK);
                 return false;
 
             }
