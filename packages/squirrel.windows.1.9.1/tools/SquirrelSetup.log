@@ -120,3 +120,143 @@ File name: 'WVA_Compulink_Server_Integration.1.1.0.nupkg'
 2019-07-15 11:40:03> ReleasePackage: Removing unnecessary data
 2019-07-15 11:40:04> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
 2019-07-15 11:40:07> Program: Building embedded zip file for Setup.exe
+2019-07-17 11:57:02> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --SetupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-17 11:57:02> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-17 11:57:02> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-17 11:57:02> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-17 11:57:03> ReleasePackage: Extracting dependent packages: []
+2019-07-17 11:57:03> ReleasePackage: Removing unnecessary data
+2019-07-17 11:57:03> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-17 11:57:07> Program: Building embedded zip file for Setup.exe
+2019-07-17 11:57:44> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --SetupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-17 11:57:44> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-17 11:57:44> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-17 11:57:44> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-17 11:57:45> ReleasePackage: Extracting dependent packages: []
+2019-07-17 11:57:45> ReleasePackage: Removing unnecessary data
+2019-07-17 11:57:45> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-17 11:57:51> Program: Building embedded zip file for Setup.exe
+2019-07-17 13:22:42> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-17 13:22:42> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-17 13:22:42> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-17 13:22:43> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-17 13:22:44> ReleasePackage: Extracting dependent packages: []
+2019-07-17 13:22:44> ReleasePackage: Removing unnecessary data
+2019-07-17 13:22:44> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-17 13:22:45> Program: Building embedded zip file for Setup.exe
+2019-07-17 13:23:57> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico -icon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-17 13:23:57> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-17 13:23:57> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-17 13:23:57> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-17 13:23:58> ReleasePackage: Extracting dependent packages: []
+2019-07-17 13:23:58> ReleasePackage: Removing unnecessary data
+2019-07-17 13:23:58> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-17 13:24:00> Program: Building embedded zip file for Setup.exe
+2019-07-17 13:25:29> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico -icon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-17 13:25:29> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-17 13:25:29> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-17 13:25:29> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-17 13:25:30> ReleasePackage: Extracting dependent packages: []
+2019-07-17 13:25:30> ReleasePackage: Removing unnecessary data
+2019-07-17 13:25:30> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-17 13:25:32> Program: Building embedded zip file for Setup.exe
+2019-07-17 13:57:50> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-17 13:57:50> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-17 13:57:50> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-17 13:57:50> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-17 13:57:51> ReleasePackage: Extracting dependent packages: []
+2019-07-17 13:57:51> ReleasePackage: Removing unnecessary data
+2019-07-17 13:57:51> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-17 13:57:53> Program: Building embedded zip file for Setup.exe
+2019-07-17 13:58:33> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.icon
+2019-07-17 13:58:33> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-17 13:58:33> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-17 13:58:33> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-17 13:58:34> ReleasePackage: Extracting dependent packages: []
+2019-07-17 13:58:34> ReleasePackage: Removing unnecessary data
+2019-07-17 13:58:34> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-17 13:58:46> Program: Building embedded zip file for Setup.exe
+2019-07-17 13:58:46> IEnableLogger: Failed to write icon to temp dir: C:\Users\evan\AppData\Local\SquirrelTemp\tempε: System.IO.FileNotFoundException: Could not find file 'C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.icon'.
+File name: 'C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.icon'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName)
+   at Squirrel.Update.Program.<>c__DisplayClass16_0.<createSetupEmbeddedZip>b__2()
+   at Squirrel.Utility.LogIfThrows(IFullLogger This, LogLevel level, String message, Action block)
+2019-07-17 13:58:46> Unhandled exception: System.AggregateException: One or more errors occurred. ---> System.IO.FileNotFoundException: Could not find file 'C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.icon'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName)
+   at Squirrel.Update.Program.<>c__DisplayClass16_0.<createSetupEmbeddedZip>b__2()
+   at Squirrel.Utility.LogIfThrows(IFullLogger This, LogLevel level, String message, Action block)
+   at Squirrel.Update.Program.<createSetupEmbeddedZip>d__16.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+---> (Inner Exception #0) System.IO.FileNotFoundException: Could not find file 'C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.icon'.
+File name: 'C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.icon'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName)
+   at Squirrel.Update.Program.<>c__DisplayClass16_0.<createSetupEmbeddedZip>b__2()
+   at Squirrel.Utility.LogIfThrows(IFullLogger This, LogLevel level, String message, Action block)
+   at Squirrel.Update.Program.<createSetupEmbeddedZip>d__16.MoveNext()<---
+
+2019-07-17 13:59:05> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-17 13:59:05> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-17 13:59:05> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-17 13:59:05> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-17 13:59:06> ReleasePackage: Extracting dependent packages: []
+2019-07-17 13:59:06> ReleasePackage: Removing unnecessary data
+2019-07-17 13:59:06> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-17 13:59:08> Program: Building embedded zip file for Setup.exe
+2019-07-17 13:59:09> Program: Failed to update Setup.exe with new Zip file: System.Exception: Failed to write Zip to Setup.exe!
+
+Setup: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\Setup.exe, Zip: C:\Users\evan\AppData\Local\Temp\tmpDEBA.tmp
+Starting to read in Zip file!
+Updating Resource!
+Finished!
+Failed to update resource
+Usage: WriteZipToSetup [Setup.exe template] [Zip File]
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+2019-07-17 13:59:10> Unhandled exception: System.AggregateException: One or more errors occurred. ---> System.Exception: Failed to modify resources, command invoked was: 'C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\rcedit.exe "C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\Setup.exe" --set-version-string "CompanyName" "Wisconsin Vision Associates" --set-version-string "LegalCopyright" "Wisconsin Vision Associates" --set-version-string "FileDescription" "WVA Compulink Server Integration" --set-version-string "ProductName" "WVA Compulink Server Integration" --set-file-version 1.1.0 --set-product-version 1.1.0 --set-icon "C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico"'
+
+Output was:
+Fatal error: Unable to commit changes
+   at Squirrel.Update.Program.<setPEVersionInfoAndIcon>d__20.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at Squirrel.Update.Program.<>c__DisplayClass10_0.<Releasify>b__6()
+   at Squirrel.Utility.<>c__DisplayClass8_0.<Retry>b__0()
+   at Squirrel.Utility.Retry[T](Func`1 block, Int32 retries)
+   at Squirrel.Utility.Retry(Action block, Int32 retries)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+---> (Inner Exception #0) System.Exception: Failed to modify resources, command invoked was: 'C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\rcedit.exe "C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\Setup.exe" --set-version-string "CompanyName" "Wisconsin Vision Associates" --set-version-string "LegalCopyright" "Wisconsin Vision Associates" --set-version-string "FileDescription" "WVA Compulink Server Integration" --set-version-string "ProductName" "WVA Compulink Server Integration" --set-file-version 1.1.0 --set-product-version 1.1.0 --set-icon "C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico"'
+
+Output was:
+Fatal error: Unable to commit changes
+   at Squirrel.Update.Program.<setPEVersionInfoAndIcon>d__20.MoveNext()<---
+
+2019-07-17 13:59:34> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-17 13:59:34> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-17 13:59:34> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-17 13:59:35> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-17 13:59:36> ReleasePackage: Extracting dependent packages: []
+2019-07-17 13:59:36> ReleasePackage: Removing unnecessary data
+2019-07-17 13:59:36> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-17 13:59:37> Program: Building embedded zip file for Setup.exe
+2019-07-17 14:00:11> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-17 14:00:11> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-17 14:00:11> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-17 14:00:11> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-17 14:00:12> ReleasePackage: Extracting dependent packages: []
+2019-07-17 14:00:12> ReleasePackage: Removing unnecessary data
+2019-07-17 14:00:12> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-17 14:00:14> Program: Building embedded zip file for Setup.exe

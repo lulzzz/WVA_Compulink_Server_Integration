@@ -66,8 +66,8 @@ namespace WVA_Compulink_Server_Integration
 
         private static void SetupDatabase()
         {
-            Database.CreateDatabaseFile();
-            Database.CreateTables();
+            new Database().CreateDatabaseFile();
+            new Database().CreateTables();
         }
 
     }

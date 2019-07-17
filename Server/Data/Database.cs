@@ -17,8 +17,15 @@ namespace WVA_Compulink_Server_Integration.Data
         // CREATE
         // =========================================================================================================
 
+        private SqliteDataAccessor DataAccessor;
+
+        public Database()
+        {
+            DataAccessor = new SqliteDataAccessor();
+        }
+
         // Creates a SQLite database file
-        public static void CreateDatabaseFile()
+        public void CreateDatabaseFile()
         {
             if (!Directory.Exists(Paths.DataDir))
                 Directory.CreateDirectory(Paths.DataDir);
@@ -28,73 +35,51 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // Creates a table in the given SQLite file
-        public static void CreateTables()
+        public void CreateTables()
         {
             try
             {
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                DataAccessor.CreateUsersTable();
+                DataAccessor.CreateWvaOrdersTable();
+                DataAccessor.CreateOrderDetailsTable();
 
-                string sql = "CREATE TABLE users (" +
-                                    "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                    "user_name          TEXT, " +
-                                    "password           TEXT, " +
-                                    "email              TEXT); " +
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                             "CREATE TABLE wva_orders (" +
-                                    "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                    "customer_id        TEXT, " +
-                                    "order_name         TEXT, " +
-                                    "created_date       TEXT, " +
-                                    "wva_store_id       TEXT, " +
-                                    "date_of_birth      TEXT, " +
-                                    "name_1             TEXT, " +
-                                    "name_2             TEXT, " +
-                                    "street_addr_1      TEXT, " +
-                                    "street_addr_2      TEXT, " +
-                                    "city               TEXT, " +
-                                    "state              TEXT, " +
-                                    "zip                TEXT, " +
-                                    "ship_to_account    TEXT, " +
-                                    "office_name        TEXT, " +
-                                    "ordered_by         TEXT, " +
-                                    "po_number          TEXT, " +
-                                    "shipping_method    TEXT, " +
-                                    "ship_to_patient    TEXT, " +
-                                    "freight            TEXT, " +
-                                    "tax                TEXT, " +
-                                    "discount           TEXT, " +
-                                    "invoice_total      TEXT, " +
-                                    "email              TEXT, " +
-                                    "phone              TEXT, " +
-                                    "status             TEXT);" +
+                //string sql = "CREATE TABLE users (" +
+                //                    "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                //                    "user_name          TEXT, " +
+                //                    "password           TEXT, " +
+                //                    "email              TEXT); " +
 
-                            "CREATE TABLE order_details (" +
-                                   "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                   "wva_order_id       INT, " +
-                                   "lens_rx            INT, " +
-                                   "first_name         TEXT, " +
-                                   "last_name          TEXT, " +
-                                   "eye                TEXT, " +
-                                   "quantity           TEXT, " +
-                                   "price              TEXT, " +
-                                   "patient_id         TEXT, " +
-                                   "name               TEXT, " +
-                                   "product_reviewed   INT, " +
-                                   "sku                TEXT, " +
-                                   "product_key        TEXT, " +
-                                   "upc                TEXT, " +
-                                   "basecurve          TEXT, " +
-                                   "diameter           TEXT, " +
-                                   "sphere             TEXT, " +
-                                   "cylinder           TEXT, " +
-                                   "axis               TEXT, " +
-                                   "ad                 TEXT, " +
-                                   "color              TEXT, " +
-                                   "multifocal         TEXT); ";
+                            
 
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                command.ExecuteNonQuery();
+                //            "CREATE TABLE order_details (" +
+                //                   "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                //                   "wva_order_id       INT, " +
+                //                   "lens_rx            INT, " +
+                //                   "first_name         TEXT, " +
+                //                   "last_name          TEXT, " +
+                //                   "eye                TEXT, " +
+                //                   "quantity           TEXT, " +
+                //                   "price              TEXT, " +
+                //                   "patient_id         TEXT, " +
+                //                   "name               TEXT, " +
+                //                   "product_reviewed   INT, " +
+                //                   "sku                TEXT, " +
+                //                   "product_key        TEXT, " +
+                //                   "upc                TEXT, " +
+                //                   "basecurve          TEXT, " +
+                //                   "diameter           TEXT, " +
+                //                   "sphere             TEXT, " +
+                //                   "cylinder           TEXT, " +
+                //                   "axis               TEXT, " +
+                //                   "ad                 TEXT, " +
+                //                   "color              TEXT, " +
+                //                   "multifocal         TEXT); ";
+
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //command.ExecuteNonQuery();
             }
             catch (Exception x)
             {
@@ -129,21 +114,25 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // Create a single user to user table
-        public static User CreateUser(User user)
+        public User CreateUser(User user)
         {
             try
             {
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
-
-                string sql = $"INSERT into users (user_name, password, email) values ('{user.UserName}', '{user.Password}', '{user.Email}')";
-
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                command.ExecuteNonQuery();
-
+                DataAccessor.CreateUser(user);
                 user.Status = "OK";
 
                 return user;
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
+
+                //string sql = $"INSERT into users (user_name, password, email) values ('{user.UserName}', '{user.Password}', '{user.Email}')";
+
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //command.ExecuteNonQuery();
+
+                //user.Status = "OK";
+
+                //return user;
             }
             catch (Exception x)
             {
