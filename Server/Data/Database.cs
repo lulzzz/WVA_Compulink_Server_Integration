@@ -17,11 +17,11 @@ namespace WVA_Compulink_Server_Integration.Data
         // CREATE
         // =========================================================================================================
 
-        private SqliteDataAccessor DataAccessor;
+        //private SqliteDataAccessor DataAccessor;
 
         public Database()
         {
-            DataAccessor = new SqliteDataAccessor();
+            //DataAccessor = new SqliteDataAccessor();
         }
 
         // Creates a SQLite database file
@@ -29,7 +29,6 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             if (!Directory.Exists(Paths.DataDir))
                 Directory.CreateDirectory(Paths.DataDir);
-
 
             SQLiteConnection.CreateFile(Paths.DatabaseFile);
         }
@@ -39,47 +38,47 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             try
             {
-                DataAccessor.CreateUsersTable();
-                DataAccessor.CreateWvaOrdersTable();
-                DataAccessor.CreateOrderDetailsTable();
+                //DataAccessor.CreateUsersTable();
+                //DataAccessor.CreateWvaOrdersTable();
+                //DataAccessor.CreateOrderDetailsTable();
 
-                //SQLiteConnection dbConnection = GetSQLiteConnection();
-                //dbConnection.Open();
+                SQLiteConnection dbConnection = GetSQLiteConnection();
+                dbConnection.Open();
 
-                //string sql = "CREATE TABLE users (" +
-                //                    "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                //                    "user_name          TEXT, " +
-                //                    "password           TEXT, " +
-                //                    "email              TEXT); " +
+                string sql = "CREATE TABLE users (" +
+                                    "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                    "user_name          TEXT, " +
+                                    "password           TEXT, " +
+                                    "email              TEXT); " +
 
-                            
 
-                //            "CREATE TABLE order_details (" +
-                //                   "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                //                   "wva_order_id       INT, " +
-                //                   "lens_rx            INT, " +
-                //                   "first_name         TEXT, " +
-                //                   "last_name          TEXT, " +
-                //                   "eye                TEXT, " +
-                //                   "quantity           TEXT, " +
-                //                   "price              TEXT, " +
-                //                   "patient_id         TEXT, " +
-                //                   "name               TEXT, " +
-                //                   "product_reviewed   INT, " +
-                //                   "sku                TEXT, " +
-                //                   "product_key        TEXT, " +
-                //                   "upc                TEXT, " +
-                //                   "basecurve          TEXT, " +
-                //                   "diameter           TEXT, " +
-                //                   "sphere             TEXT, " +
-                //                   "cylinder           TEXT, " +
-                //                   "axis               TEXT, " +
-                //                   "ad                 TEXT, " +
-                //                   "color              TEXT, " +
-                //                   "multifocal         TEXT); ";
 
-                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                //command.ExecuteNonQuery();
+                            "CREATE TABLE order_details (" +
+                                   "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                   "wva_order_id       INT, " +
+                                   "lens_rx            INT, " +
+                                   "first_name         TEXT, " +
+                                   "last_name          TEXT, " +
+                                   "eye                TEXT, " +
+                                   "quantity           TEXT, " +
+                                   "price              TEXT, " +
+                                   "patient_id         TEXT, " +
+                                   "name               TEXT, " +
+                                   "product_reviewed   INT, " +
+                                   "sku                TEXT, " +
+                                   "product_key        TEXT, " +
+                                   "upc                TEXT, " +
+                                   "basecurve          TEXT, " +
+                                   "diameter           TEXT, " +
+                                   "sphere             TEXT, " +
+                                   "cylinder           TEXT, " +
+                                   "axis               TEXT, " +
+                                   "ad                 TEXT, " +
+                                   "color              TEXT, " +
+                                   "multifocal         TEXT); ";
+
+                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                command.ExecuteNonQuery();
             }
             catch (Exception x)
             {
@@ -114,25 +113,25 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // Create a single user to user table
-        public User CreateUser(User user)
+        public static User CreateUser(User user)
         {
             try
             {
-                DataAccessor.CreateUser(user);
+                //DataAccessor.CreateUser(user);
+                //user.Status = "OK";
+                //return user;
+
+                SQLiteConnection dbConnection = GetSQLiteConnection();
+                dbConnection.Open();
+
+                string sql = $"INSERT into users (user_name, password, email) values ('{user.UserName}', '{user.Password}', '{user.Email}')";
+
+                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                command.ExecuteNonQuery();
+
                 user.Status = "OK";
 
                 return user;
-                //SQLiteConnection dbConnection = GetSQLiteConnection();
-                //dbConnection.Open();
-
-                //string sql = $"INSERT into users (user_name, password, email) values ('{user.UserName}', '{user.Password}', '{user.Email}')";
-
-                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                //command.ExecuteNonQuery();
-
-                //user.Status = "OK";
-
-                //return user;
             }
             catch (Exception x)
             {
@@ -152,8 +151,10 @@ namespace WVA_Compulink_Server_Integration.Data
                 string submitStatus = submit ? "submitted" : "open";
                 string createdDate = DateTime.Now.ToString("yyyy-MM-dd-HH:mm:ss");
 
-                // <1>
-                // Create the order
+                //DataAccessor.CreateOrder(order, createdDate, submitStatus);
+
+                 //< 1 >
+                 //Create the order
                 SQLiteConnection dbConnection = GetSQLiteConnection();
                 dbConnection.Open();
 
@@ -287,6 +288,8 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             try
             {
+                //return DataAccessor.GetAllUsers();
+
                 SQLiteConnection dbConnection = GetSQLiteConnection();
                 dbConnection.Open();
 
@@ -321,6 +324,8 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             try
             {
+                //return DataAccessor.GetOrderNames(actNum);
+
                 SQLiteConnection dbConnection = GetSQLiteConnection();
                 dbConnection.Open();
 
@@ -353,6 +358,8 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             try
             {
+                //return DataAccessor.GetWvaOrders(actNum);
+
                 SQLiteConnection dbConnection = GetSQLiteConnection();
                 dbConnection.Open();
 
@@ -449,6 +456,8 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             try
             {
+                //return DataAccessor.GetEmail(userName);
+
                 SQLiteConnection dbConnection = GetSQLiteConnection();
                 dbConnection.Open();
 
@@ -476,6 +485,8 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             try
             {
+                //var order = DataAccessor.OrderExists(orderName);
+
                 Order order = new Order();
 
                 SQLiteConnection dbConnection = GetSQLiteConnection();
@@ -568,6 +579,8 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             try
             {
+                //return DataAccessor.EmailExists(email);
+
                 SQLiteConnection dbConnection = GetSQLiteConnection();
                 dbConnection.Open();
 
