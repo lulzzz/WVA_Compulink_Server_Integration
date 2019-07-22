@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 using WVA_Compulink_Server_Integration.ODBC;
 using WVA_Compulink_Server_Integration.Memory;
+using WVA_Compulink_Server_Integration.Services;
 
 namespace WVA_Compulink_Server_Integration
 {
@@ -36,6 +37,7 @@ namespace WVA_Compulink_Server_Integration
             SetTitle();
             SetUpFiles();
             SetupConfig();
+            SetUpServiceHost();
             StartWorkers();
             TaskManager.StartAllJobs();
             Task.Run(() => Updater.RunUpdates());
@@ -60,16 +62,28 @@ namespace WVA_Compulink_Server_Integration
                 Environment.Exit(0);
         }
 
+        private void SetUpServiceHost()
+        {
+            if (!ServiceHost.IsInstalled())
+            {
+                ServiceHost.Install();
+                Thread.Sleep(250);
+
+                if (!ServiceHost.IsInstalled())
+                    MessageBox.Show("WVA_Compulink_Server_Integration service host not installed!", "Error", MessageBoxButton.OK);
+            }
+        }
+
         public bool SetupConfig()
         {
             // Moves config file to main app directory in app data
-            if (File.Exists(Paths.ConfigDesktop))
+            if (File.Exists(Paths.ConfigDesktop) && !File.Exists(Paths.WvaConfigFile))
                 File.Move(Paths.ConfigDesktop, Paths.WvaConfigFile);
 
-            if (File.Exists(Paths.ConfigDocuments))
+            if (File.Exists(Paths.ConfigDocuments) && !File.Exists(Paths.WvaConfigFile))
                 File.Move(Paths.ConfigDocuments, Paths.WvaConfigFile);
 
-            if (File.Exists(Paths.ConfigInstallDir))
+            if (File.Exists(Paths.ConfigInstallDir) && !File.Exists(Paths.WvaConfigFile))
                 File.Move(Paths.ConfigInstallDir, Paths.WvaConfigFile);
 
             // Sets up config file in memory
@@ -89,7 +103,6 @@ namespace WVA_Compulink_Server_Integration
             else
             {
                 return false;
-
             }
         }
 
@@ -97,6 +110,9 @@ namespace WVA_Compulink_Server_Integration
         {
             if (!Directory.Exists($@"{Paths.DataDir}"))
                 Directory.CreateDirectory($@"{Paths.DataDir}");
+
+            if (!Directory.Exists($@"{Paths.ConfigDir}"))
+                Directory.CreateDirectory($@"{Paths.ConfigDir}");
         }
 
         private void StartWorkers()
@@ -152,59 +168,31 @@ namespace WVA_Compulink_Server_Integration
             catch (Exception x) { Error.ReportOrLog(x); }
         }
 
-        private void StartServerInstance()
+        private void StartServiceHost()
         {
             try
             {
-                string dirName = GetServerDirectoryName();
-                string cdString = $"cd {dirName}";
-                string cmdString = $"\"{dirName}dotnet\" WVA_Compulink_Server_Integration.dll";
+                if (!ServiceHost.IsRunning())
+                    ServiceHost.Start();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("An error has occurred while starting service host!", "Error", MessageBoxButton.OK);
+                Error.ReportOrLog(x);
+            }
+        }
 
-                Process cmd = new Process();
-                cmd.StartInfo.FileName = "cmd.exe";
-                cmd.StartInfo.RedirectStandardInput = true;
-                cmd.StartInfo.RedirectStandardOutput = true;
-                cmd.StartInfo.CreateNoWindow = true;
-                cmd.StartInfo.UseShellExecute = false;
-                cmd.Start();
-
-                cmd.StandardInput.WriteLine(cdString);
-                cmd.StandardInput.Flush();
-                cmd.StandardInput.WriteLine(cmdString);
-                cmd.StandardInput.Flush();
-                cmd.StandardInput.Close();
+        private void KillServiceHost()
+        {
+            try
+            {
+                if (ServiceHost.IsRunning())
+                    ServiceHost.Stop();
             }
             catch (Exception x)
             {
                 Error.ReportOrLog(x);
             }
-        }
-
-        private void KillServerInstances()
-        {
-            try
-            {
-                Process cmd = new Process();
-                cmd.StartInfo.FileName = "cmd.exe";
-                cmd.StartInfo.RedirectStandardInput = true;
-                cmd.StartInfo.RedirectStandardOutput = true;
-                cmd.StartInfo.CreateNoWindow = true;
-                cmd.StartInfo.UseShellExecute = false;
-                cmd.Start();
-
-                cmd.StandardInput.WriteLine(@"Taskkill /IM dotnet.exe /F");
-                cmd.StandardInput.Flush();
-                cmd.StandardInput.Close();
-            }
-            catch (Exception x) { Error.ReportOrLog(x); }
-        }
-
-        private static string GetServerDirectoryName()
-        {
-            string path = Paths.AppDataLocal + $@"\{Assembly.GetCallingAssembly().GetName().Name}\";
-            string[] dirs = Directory.GetDirectories(path, "app-*");
-
-            return dirs[dirs.Length - 1] + @"\Server\"; // Returns the last item in the array (highest app version)
         }
 
         private void CheckServerWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -253,17 +241,17 @@ namespace WVA_Compulink_Server_Integration
             bool configLocated = SetupConfig();
 
             if (configLocated)
-                StartServerInstance();
+                StartServiceHost();
         }
 
         private void StopServerButton_Click(object sender, RoutedEventArgs e)
         {
-            KillServerInstances();
+            KillServiceHost();
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            KillServerInstances();
+            KillServiceHost();
         }
 
     }

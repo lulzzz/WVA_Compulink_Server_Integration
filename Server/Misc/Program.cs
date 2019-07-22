@@ -32,7 +32,6 @@ namespace WVA_Compulink_Server_Integration
                 // Setup Config in Memory
                 new Memory.Storage();
 
-
                 if (Debugger.IsAttached || args.Contains("--debug"))
                 {
                     var host = new WebHostBuilder()

@@ -40,6 +40,7 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\logo_plain_vector_72_white_TMD_icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="DeltaCompressionDotNet, Version=1.1.0.0, Culture=neutral, PublicKeyToken=1d14d6e5194e7f4a, processorArchitecture=MSIL">
       <HintPath>..\packages\DeltaCompressionDotNet.1.1.0\lib\net20\DeltaCompressionDotNet.dll</HintPath>
@@ -250,6 +251,7 @@
     <Compile Include="ODBC\WvaConfig.cs" />
     <Compile Include="Responses\IResponse.cs" />
     <Compile Include="Responses\Response.cs" />
+    <Compile Include="Services\ServiceActions.cs" />
     <Compile Include="Updates\Updater.cs" />
     <Compile Include="Utility\Files\Paths.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
