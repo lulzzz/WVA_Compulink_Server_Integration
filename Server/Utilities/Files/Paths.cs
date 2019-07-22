@@ -10,20 +10,19 @@ namespace WVA_Compulink_Server_Integration.Utilities.Files
     {
         /* ---------------------------------------- ROOT PATHS --------------------------------------------------------- */
 
-        public static readonly string AppDataLocal          = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         private static readonly string AppName              = Assembly.GetCallingAssembly().GetName().Name.ToString();
+        private static readonly string PublicDocs           = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
 
 
         /* ---------------------------------------- APP DATA --------------------------------------------------------- */
 
         // DIRECTORIES 
-        public static readonly string DataDir               = $@"{AppDataLocal}\{AppName}\Data\";
-        public static readonly string ErrorLogDir           = $@"{AppDataLocal}\{AppName}\ErrorLog\";
+        public static readonly string DataDir               = $@"{PublicDocs}\{AppName}\Data\";
+        public static readonly string ErrorLogDir           = $@"{PublicDocs}\{AppName}\ErrorLog\";
 
         // FILES  
-        public static readonly string AppExecFile           = $@"{AppDataLocal}\{AppName}\{AppName}GUI.exe";
-        public static readonly string DatabaseFile          = $@"{AppDataLocal}\{AppName}\Data\SQLite_Database.sqlite";
-        public static readonly string WvaConfigFile         = $@"{AppDataLocal}\{AppName}\Data\wvaConfig.json";
+        public static readonly string DatabaseFile          = $@"{PublicDocs}\{AppName}\Data\SQLite_Database.sqlite";
+        public static readonly string WvaConfigFile         = $@"{PublicDocs}\{AppName}\Config\wvaConfig.json";
 
 
         /* -------------------------------------------- WEB PATHS --------------------------------------------------------- */

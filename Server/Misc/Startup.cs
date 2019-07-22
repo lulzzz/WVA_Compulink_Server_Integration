@@ -19,11 +19,20 @@ namespace WVA_Compulink_Server_Integration
 {
     public class Startup
     {
+        public IConfigurationRoot Configuration { get; }
         public static WvaConfig config = new WvaConfig();
 
         public Startup(IHostingEnvironment env)
         {
             config = JsonConvert.DeserializeObject<WvaConfig>(File.ReadAllText($@"{Paths.WvaConfigFile}"));
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
+            builder.AddEnvironmentVariables();
+            Configuration = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
