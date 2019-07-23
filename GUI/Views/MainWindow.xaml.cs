@@ -32,7 +32,6 @@ namespace WVA_Compulink_Server_Integration
         public MainWindow()
         {
             DeleteNetCoreIcon();
-            CloseDuplicateApp();
             InitializeComponent();
             SetTitle();
             SetUpFiles();
@@ -138,7 +137,10 @@ namespace WVA_Compulink_Server_Integration
             {
                 ServerStatusImage.Source = ServerIsRunning ? new BitmapImage(new Uri(@"/Resources/GreenBubble.png", UriKind.Relative)) : new BitmapImage(new Uri(@"/Resources/RedBubble.jpg", UriKind.Relative));
             }
-            catch (Exception x) { Error.ReportOrLog(x); }
+            catch (Exception x)
+            {
+                Error.ReportOrLog(x);
+            }
         }
 
         private void UpdateAppIcon()
@@ -147,16 +149,22 @@ namespace WVA_Compulink_Server_Integration
             {
                 Icon = DsnConnectionIsGood ? BitmapFrame.Create(Application.GetResourceStream(new Uri(@"/Resources/GreenBubble.png", UriKind.Relative)).Stream) : BitmapFrame.Create(Application.GetResourceStream(new Uri(@"/Resources/RedBubble.jpg", UriKind.Relative)).Stream);
             }
-            catch (Exception x) { Error.ReportOrLog(x); }
+            catch (Exception x)
+            {
+                Error.ReportOrLog(x);
+            }
         }
 
         private void CheckServerStatus()
         {
             try
             {
-                ServerIsRunning = Process.GetProcessesByName("dotnet").Length == 0 ? false : true;
+                ServerIsRunning = ServiceHost.IsRunning();
             }
-            catch (Exception x) { Error.ReportOrLog(x); }
+            catch (Exception x)
+            {
+                Error.ReportOrLog(x);
+            }
         }
 
         private void CheckDsnStatus()
@@ -165,7 +173,10 @@ namespace WVA_Compulink_Server_Integration
             {
                 DsnConnectionIsGood = DsnConnectionTester.IsGoodConnection();
             }
-            catch (Exception x) { Error.ReportOrLog(x); }
+            catch (Exception x)
+            {
+                Error.ReportOrLog(x);
+            }
         }
 
         private void StartServiceHost()
@@ -251,7 +262,7 @@ namespace WVA_Compulink_Server_Integration
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            KillServiceHost();
+
         }
 
     }

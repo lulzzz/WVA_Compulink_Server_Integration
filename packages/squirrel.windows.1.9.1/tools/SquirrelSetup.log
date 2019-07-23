@@ -260,3 +260,11 @@ Fatal error: Unable to commit changes
 2019-07-17 14:00:12> ReleasePackage: Removing unnecessary data
 2019-07-17 14:00:12> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
 2019-07-17 14:00:14> Program: Building embedded zip file for Setup.exe
+2019-07-23 09:22:34> Program: Starting Squirrel Updater: --releasify Versions\WVA_Compulink_Server_Integration.1.1.0.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-07-23 09:22:34> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-07-23 09:22:34> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg
+2019-07-23 09:22:34> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration.1.1.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Compulink_Server_Integration-1.1.0-full.nupkg
+2019-07-23 09:22:38> ReleasePackage: Extracting dependent packages: []
+2019-07-23 09:22:38> ReleasePackage: Removing unnecessary data
+2019-07-23 09:22:38> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Compulink_Server_Integration.nuspec
+2019-07-23 09:22:44> Program: Building embedded zip file for Setup.exe
