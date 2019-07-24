@@ -101,12 +101,12 @@ namespace WVA_Compulink_Server_Integration.Data
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
                 cnn.Execute($"INSERT INTO Users (" +
-                                                    $"Username, " +
+                                                    $"UserName, " +
                                                     $"Password, " +
                                                     $"Email) " +
                                         $"VALUES (" +
                                                 $"'{user.UserName}', " +
-                                                $"'{user.Password}, " +
+                                                $"'{user.Password}', " +
                                                 $"'{user.Email}')");
             }
         }
@@ -257,7 +257,7 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
-               return cnn.Query<string>($"SELECT email FROM users WHERE user_name = '{userName}'").FirstOrDefault();
+               return cnn.Query<string>($"SELECT Email FROM Users WHERE UserName = '{userName}'").FirstOrDefault();
             }
         }
 
@@ -285,7 +285,7 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
-                return cnn.Query<User>($"SELECT * FROM users WHERE user_name = '{userName}'").FirstOrDefault() != null ? true : false;
+                return cnn.Query<User>($"SELECT * FROM Users WHERE UserName = '{userName}'").FirstOrDefault() != null ? true : false;
             }
         }
 
@@ -293,7 +293,7 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
-                return cnn.Query<User>($"SELECT user_name, password, email FROM users WHERE user_name='{user.UserName}' AND password='{user.Password}'").FirstOrDefault();
+                return cnn.Query<User>($"SELECT UserName, Password, Email FROM Users WHERE UserName='{user.UserName}' AND Password='{user.Password}'").FirstOrDefault();
             }
         }
 
@@ -317,9 +317,9 @@ namespace WVA_Compulink_Server_Integration.Data
             {
                 cnn.Execute($"UPDATE WvaOrders " +
                                             $"SET " +
-                                                $"Status           =   'submitted', " +
+                                                $"Status          =   'submitted', " +
                                                 $"CreatedDate     =   '{createdDate}', " +
-                                                $"WvaStoreId     =   '{order.WvaStoreID}' " +
+                                                $"WvaStoreId      =   '{order.WvaStoreID}' " +
                                             $"WHERE OrderName     =   '{order.OrderName}'");
             }
         }
