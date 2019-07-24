@@ -40,9 +40,7 @@ namespace WVA_Compulink_Server_Integration
             SetUpServiceHost();
             StartWorkers();
             TaskManager.StartAllJobs();
-            //Task.Run(() => Updater.RunUpdates());
         }
-
 
         //
         // Window Setup Functions
@@ -316,7 +314,7 @@ namespace WVA_Compulink_Server_Integration
                     if (result == MessageBoxResult.Yes) // Run an update if user clicks 'Yes' button
                     {
                         Cursor = Cursors.Wait;
-                        await Updater.ForceRunUpdates();
+                        await Updater.ForceUpdate();
                     }
                 }
                 else

@@ -14,7 +14,7 @@ namespace WVA_Compulink_Server_Integration.Updates
 {
     class Updater
     {
-        public static async Task RunUpdates()
+        public static async Task NotifyUpdatesAvailable()
         {
             try
             {
@@ -24,8 +24,10 @@ namespace WVA_Compulink_Server_Integration.Updates
 
                     if (updateInfo.ReleasesToApply.Any())
                     {
-                        await mgr.UpdateApp();
-                        MessageBox.Show("An update for your application is available. Please stop the server, then close and reopen the application.", "Update Available");
+                        MessageBoxResult result = MessageBox.Show("An update for your application is available. Would you like to install it?", "Update Available", MessageBoxButton.YesNo);
+
+                        if (result == MessageBoxResult.Yes)
+                            ForceUpdate();
                     }
                 }
             }
@@ -68,7 +70,7 @@ namespace WVA_Compulink_Server_Integration.Updates
             }
         }
 
-        public static async Task ForceRunUpdates()
+        public static async Task ForceUpdate()
         {
             ServiceHost.Stop();
             ServiceHost.Uninstall();
