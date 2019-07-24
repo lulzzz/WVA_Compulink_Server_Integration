@@ -9,8 +9,7 @@
         Height="400" 
         Width="450"
         ResizeMode="CanMinimize" 
-        Icon="/WVA_Compulink_Server_Integration;component/Resources/logo_plain_vector_72_P0X_icon.ico"
-        Closing="Window_Closing">
+        Icon="/WVA_Compulink_Server_Integration;component/Resources/logo_plain_vector_72_P0X_icon.ico">
     <Grid>
 
         <Grid.Resources>
@@ -36,7 +35,7 @@
                                 <Border x:Name="border" 
                                     CornerRadius="3,3,3,3" 
                                     BorderBrush="Black" 
-                                    BorderThickness="1.6,1.9,2.9,2.9">
+                                    BorderThickness="1.6,1.9,2.2,2.3">
                                     <Border.Background>
                                         <RadialGradientBrush GradientOrigin="0.496,1.052">
                                             <RadialGradientBrush.RelativeTransform>
@@ -136,8 +135,8 @@
 
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"  
-                    Margin="0,50,0,0">
+                    VerticalAlignment="Top"  
+                    Margin="0,150,0,0">
 
             <Border BorderBrush="Black" 
                     BorderThickness="2">
@@ -182,20 +181,29 @@
 
         </StackPanel>
 
-        <StackPanel HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
-                    Orientation="Horizontal"
-                    Height="30"
-                    Margin="0,0,10,10"
-                    Visibility="Hidden">
+        <Button Name ="DropDownButton"
+                Width="35"
+                Height="35"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0,317,10,0"
+                Click="DropDownButton_Click">
 
-            <Label Name="SelectUpdateTimeLabel"
-                   Content="UpdateTime:"
-                   Margin="0,0,10,0"
-                   FontFamily="Sitka Text"
-                   FontSize="15"/>
+            <Image Name="DropDownImage"
+                   Source="/Resources/icons8-down-button-32.png" 
+                   Width="25"
+                   Height="25"/>
+        </Button>
+        
 
-        </StackPanel>
+        <Button Name="CheckForUpdatesButton" 
+                Width="160"
+                Height="30"
+                Content="Check for Updates"
+                FontFamily="Setika Text"
+                FontSize="17"
+                Margin="0,375,0,0"
+                Click="CheckForUpdatesButton_Click"/>
 
     </Grid>
 </Window>

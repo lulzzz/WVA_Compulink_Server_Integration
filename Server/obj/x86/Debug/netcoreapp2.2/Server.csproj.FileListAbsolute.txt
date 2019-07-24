@@ -36,3 +36,4 @@ C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debu
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\Server.csproj.CopyComplete
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\WVA_Compulink_Server_Integration.dll
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\WVA_Compulink_Server_Integration.pdb
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\Server.csprojAssemblyReference.cache

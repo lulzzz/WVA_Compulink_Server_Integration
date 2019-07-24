@@ -16,6 +16,7 @@ using System.Reflection;
 using WVA_Compulink_Server_Integration.ODBC;
 using WVA_Compulink_Server_Integration.Memory;
 using WVA_Compulink_Server_Integration.Services;
+using System.Windows.Input;
 
 namespace WVA_Compulink_Server_Integration
 {
@@ -41,6 +42,11 @@ namespace WVA_Compulink_Server_Integration
             TaskManager.StartAllJobs();
             Task.Run(() => Updater.RunUpdates());
         }
+
+
+        //
+        // Window Setup Functions
+        //
 
         private void SetTitle()
         {
@@ -113,6 +119,10 @@ namespace WVA_Compulink_Server_Integration
             if (!Directory.Exists($@"{Paths.ConfigDir}"))
                 Directory.CreateDirectory($@"{Paths.ConfigDir}");
         }
+
+        //
+        // Main operations
+        //
 
         private void StartWorkers()
         {
@@ -247,6 +257,11 @@ namespace WVA_Compulink_Server_Integration
             }
         }
 
+        //
+        // Main elements for service control
+        //
+
+
         private void StartServerButton_Click(object sender, RoutedEventArgs e)
         {
             bool configLocated = SetupConfig();
@@ -260,10 +275,64 @@ namespace WVA_Compulink_Server_Integration
             KillServiceHost();
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
+        //
+        // Extends window size, exposing more elements
+        //
 
+        private void DropDownButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Height == 400)
+            {
+                Height = 460;
+                DropDownImage.Source = new BitmapImage(new Uri(@"/Resources/icons8-slide-up-32.png", UriKind.Relative));
+            }
+            else
+            {
+                Height = 400;
+                DropDownImage.Source = new BitmapImage(new Uri(@"/Resources/icons8-down-button-32.png", UriKind.Relative));
+            }
         }
 
+        //
+        // Hidden elements made visible by DropDownButton_Click 
+        //
+
+        private async void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Disable button clicks
+                CheckForUpdatesButton.IsEnabled = false;
+
+                // Wait while we check for updates
+                Cursor = Cursors.Wait;
+                bool updateAvailable = await Task.Run(() => Updater.UpdatesAvailable());
+                Cursor = Cursors.Arrow;
+
+                if (updateAvailable)
+                {
+                    MessageBoxResult result = MessageBox.Show("An update is available. Would you like to install it?", "", MessageBoxButton.YesNo);
+
+                    if (result == MessageBoxResult.Yes) // Run an update if user clicks 'Yes' button
+                    {
+                        Cursor = Cursors.Wait;
+                        await Updater.ForceRunUpdates();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No updates found! Your application is up-to-date.", "", MessageBoxButton.OK);
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            }
+            finally
+            {
+                Cursor = Cursors.Arrow;
+                CheckForUpdatesButton.IsEnabled = true;
+            }
+        }
     }
 }

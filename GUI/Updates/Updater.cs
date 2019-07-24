@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using WVA_Compulink_Server_Integration.Services;
 
 namespace WVA_Compulink_Server_Integration.Updates
 {
@@ -20,6 +21,7 @@ namespace WVA_Compulink_Server_Integration.Updates
                 using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Compulink_Server_Integration").Result)
                 {
                     var updateInfo = mgr.CheckForUpdate().Result;
+
                     if (updateInfo.ReleasesToApply.Any())
                     {
                         await mgr.UpdateApp();
@@ -32,6 +34,36 @@ namespace WVA_Compulink_Server_Integration.Updates
                 Error.ReportOrLog(e);
             }
         }
+
+        public static bool UpdatesAvailable()
+        {
+            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Compulink_Server_Integration").Result)
+            {
+                var updateInfo = mgr.CheckForUpdate().Result;
+
+                if (updateInfo.ReleasesToApply.Any())
+                    return false;
+                else
+                    return true;
+            }
+        }
+
+        public static async Task ForceRunUpdates()
+        {
+            ServiceHost.Stop();
+            await Task.Run(() => RunUpdates());
+            ServiceHost.Uninstall();
+            ServiceHost.Install();
+            ServiceHost.Start();
+            RestartApplication();
+        }
+
+        private static void RestartApplication()
+        {
+            Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
+        }
+
 
         // This may be usefull in the future
         //private static string GetServerDirectoryName()

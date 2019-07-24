@@ -32,12 +32,24 @@ namespace WVA_Compulink_Server_Integration
 
                 if (Debugger.IsAttached || args.Contains("--debug"))
                 {
+                    // Spin up server
+                    var configuration = new ConfigurationBuilder()
+                        .AddCommandLine(args)
+                        .Build();
+
+                    var hostUrl = configuration["hosturl"];
+
+                    if (string.IsNullOrEmpty(hostUrl))
+                        hostUrl = "http://0.0.0.0:44354";
+
                     var host = new WebHostBuilder()
-                                    .UseKestrel()
-                                    .UseContentRoot(Directory.GetCurrentDirectory())
-                                    .UseIISIntegration()
-                                    .UseStartup<Startup>()
-                                    .Build();
+                        .UseKestrel()
+                        .UseUrls(hostUrl)
+                        .UseContentRoot(Directory.GetCurrentDirectory())
+                        .UseIISIntegration()
+                        .UseStartup<Startup>()
+                        .UseConfiguration(configuration)
+                        .Build();
 
                     host.Run();
                 }

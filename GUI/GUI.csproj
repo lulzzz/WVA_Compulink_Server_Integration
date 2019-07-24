@@ -251,7 +251,7 @@
     <Compile Include="ODBC\WvaConfig.cs" />
     <Compile Include="Responses\IResponse.cs" />
     <Compile Include="Responses\Response.cs" />
-    <Compile Include="Services\ServiceActions.cs" />
+    <Compile Include="Services\ServiceHost.cs" />
     <Compile Include="Updates\Updater.cs" />
     <Compile Include="Utility\Files\Paths.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
@@ -304,6 +304,12 @@
     <Resource Include="Resources\logo_plain_vector_72_P0X_icon.ico" />
     <Resource Include="Resources\RedBubble.jpg" />
     <Resource Include="Resources\WVA_Scan_Banner_jpg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8-down-button-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8-slide-up-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets')" />
