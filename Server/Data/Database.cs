@@ -17,11 +17,11 @@ namespace WVA_Compulink_Server_Integration.Data
         // CREATE
         // =========================================================================================================
 
-        //private SqliteDataAccessor DataAccessor;
+        private SqliteDataAccessor DataAccessor;
 
         public Database()
         {
-            //DataAccessor = new SqliteDataAccessor();
+            DataAccessor = new SqliteDataAccessor();
         }
 
         // Creates a SQLite database file
@@ -30,7 +30,8 @@ namespace WVA_Compulink_Server_Integration.Data
             if (!Directory.Exists(Paths.DataDir))
                 Directory.CreateDirectory(Paths.DataDir);
 
-            SQLiteConnection.CreateFile(Paths.DatabaseFile);
+            if (!File.Exists(Paths.DatabaseFile))
+                SQLiteConnection.CreateFile(Paths.DatabaseFile);
         }
 
         // Creates a table in the given SQLite file
@@ -38,47 +39,47 @@ namespace WVA_Compulink_Server_Integration.Data
         {
             try
             {
-                //DataAccessor.CreateUsersTable();
-                //DataAccessor.CreateWvaOrdersTable();
-                //DataAccessor.CreateOrderDetailsTable();
+                DataAccessor.CreateUsersTable();
+                DataAccessor.CreateWvaOrdersTable();
+                DataAccessor.CreateOrderDetailsTable();
 
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                string sql = "CREATE TABLE users (" +
-                                    "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                    "user_name          TEXT, " +
-                                    "password           TEXT, " +
-                                    "email              TEXT); " +
+                //string sql = "CREATE TABLE users (" +
+                //                    "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                //                    "user_name          TEXT, " +
+                //                    "password           TEXT, " +
+                //                    "email              TEXT); " +
 
 
 
-                            "CREATE TABLE order_details (" +
-                                   "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                   "wva_order_id       INT, " +
-                                   "lens_rx            INT, " +
-                                   "first_name         TEXT, " +
-                                   "last_name          TEXT, " +
-                                   "eye                TEXT, " +
-                                   "quantity           TEXT, " +
-                                   "price              TEXT, " +
-                                   "patient_id         TEXT, " +
-                                   "name               TEXT, " +
-                                   "product_reviewed   INT, " +
-                                   "sku                TEXT, " +
-                                   "product_key        TEXT, " +
-                                   "upc                TEXT, " +
-                                   "basecurve          TEXT, " +
-                                   "diameter           TEXT, " +
-                                   "sphere             TEXT, " +
-                                   "cylinder           TEXT, " +
-                                   "axis               TEXT, " +
-                                   "ad                 TEXT, " +
-                                   "color              TEXT, " +
-                                   "multifocal         TEXT); ";
+                //            "CREATE TABLE order_details (" +
+                //                   "ID                 INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                //                   "wva_order_id       INT, " +
+                //                   "lens_rx            INT, " +
+                //                   "first_name         TEXT, " +
+                //                   "last_name          TEXT, " +
+                //                   "eye                TEXT, " +
+                //                   "quantity           TEXT, " +
+                //                   "price              TEXT, " +
+                //                   "patient_id         TEXT, " +
+                //                   "name               TEXT, " +
+                //                   "product_reviewed   INT, " +
+                //                   "sku                TEXT, " +
+                //                   "product_key        TEXT, " +
+                //                   "upc                TEXT, " +
+                //                   "basecurve          TEXT, " +
+                //                   "diameter           TEXT, " +
+                //                   "sphere             TEXT, " +
+                //                   "cylinder           TEXT, " +
+                //                   "axis               TEXT, " +
+                //                   "ad                 TEXT, " +
+                //                   "color              TEXT, " +
+                //                   "multifocal         TEXT); ";
 
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                command.ExecuteNonQuery();
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //command.ExecuteNonQuery();
             }
             catch (Exception x)
             {
@@ -86,52 +87,25 @@ namespace WVA_Compulink_Server_Integration.Data
             }
         }
 
-        public static void UpdateChangedColumns()
-        {
-            SQLiteConnection dbConnection = GetSQLiteConnection();
-
-            try
-            {
-                dbConnection.Open();
-
-                string sql =
-                    "ALTER TABLE order_details " +
-                    "ADD lens_rx INT;";
-
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                command.ExecuteNonQuery();
-            }
-            catch
-            {
-                // Duplicate table name, just ignore it
-            }
-            finally
-            {
-                dbConnection.Close();
-            }
-
-        }
-
         // Create a single user to user table
-        public static User CreateUser(User user)
+        public User CreateUser(User user)
         {
             try
             {
-                //DataAccessor.CreateUser(user);
+                DataAccessor.CreateUser(user);
+                user.Status = "OK";
+                return user;
+
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
+
+                //string sql = $"INSERT into users (user_name, password, email) values ('{user.UserName}', '{user.Password}', '{user.Email}')";
+
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //command.ExecuteNonQuery();
+
                 //user.Status = "OK";
                 //return user;
-
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
-
-                string sql = $"INSERT into users (user_name, password, email) values ('{user.UserName}', '{user.Password}', '{user.Email}')";
-
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                command.ExecuteNonQuery();
-
-                user.Status = "OK";
-
-                return user;
             }
             catch (Exception x)
             {
@@ -143,7 +117,7 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // If you want to mark an order as 'submitted', just pass in a 'true' boolean. If you don't the order will be marked as 'open'
-        public static bool CreateOrder(Order order, bool submit = false)
+        public bool CreateOrder(Order order, bool submit = false)
         {
             try
             {
@@ -151,124 +125,124 @@ namespace WVA_Compulink_Server_Integration.Data
                 string submitStatus = submit ? "submitted" : "open";
                 string createdDate = DateTime.Now.ToString("yyyy-MM-dd-HH:mm:ss");
 
-                //DataAccessor.CreateOrder(order, createdDate, submitStatus);
+                DataAccessor.CreateOrder(order, createdDate, submitStatus);
 
                  //< 1 >
                  //Create the order
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                string insertWvaOrder = "INSERT OR IGNORE into wva_orders (" +
-                                            "customer_id, " +
-                                            "order_name, " +
-                                            "created_date, " +
-                                            "wva_store_id," +
-                                            "date_of_birth, " +
-                                            "name_1, " +
-                                            "name_2, " +
-                                            "street_addr_1, " +
-                                            "street_addr_2, " +
-                                            "city, " +
-                                            "state, " +
-                                            "zip, " +
-                                            "ordered_by, " +
-                                            "po_number, " +
-                                            "shipping_method, " +
-                                            "ship_to_patient, " +
-                                            "phone, " +
-                                            "email, " +
-                                            "status) " +
-                                            "values (" +
-                                                $"'{order.CustomerID}', " +
-                                                $"'{order.OrderName}', " +
-                                                $"'{createdDate}', " +
-                                                $"'{order.WvaStoreID}', " +
-                                                $"'{order.DoB}', " +
-                                                $"'{order.Name_1}', " +
-                                                $"'{order.Name_2}', " +
-                                                $"'{order.StreetAddr_1}', " +
-                                                $"'{order.StreetAddr_2}', " +
-                                                $"'{order.City}', " +
-                                                $"'{order.State}', " +
-                                                $"'{order.Zip}', " +
-                                                $"'{order.OrderedBy}', " +
-                                                $"'{order.PoNumber}', " +
-                                                $"'{order.ShippingMethod}', " +
-                                                $"'{order.ShipToPatient}', " +
-                                                $"'{order.Phone}', " +
-                                                $"'{order.Email}', " +
-                                                $"'{submitStatus}'" +
-                                                ")";
+                //string insertWvaOrder = "INSERT OR IGNORE into wva_orders (" +
+                //                            "customer_id, " +
+                //                            "order_name, " +
+                //                            "created_date, " +
+                //                            "wva_store_id," +
+                //                            "date_of_birth, " +
+                //                            "name_1, " +
+                //                            "name_2, " +
+                //                            "street_addr_1, " +
+                //                            "street_addr_2, " +
+                //                            "city, " +
+                //                            "state, " +
+                //                            "zip, " +
+                //                            "ordered_by, " +
+                //                            "po_number, " +
+                //                            "shipping_method, " +
+                //                            "ship_to_patient, " +
+                //                            "phone, " +
+                //                            "email, " +
+                //                            "status) " +
+                //                            "values (" +
+                //                                $"'{order.CustomerID}', " +
+                //                                $"'{order.OrderName}', " +
+                //                                $"'{createdDate}', " +
+                //                                $"'{order.WvaStoreID}', " +
+                //                                $"'{order.DoB}', " +
+                //                                $"'{order.Name_1}', " +
+                //                                $"'{order.Name_2}', " +
+                //                                $"'{order.StreetAddr_1}', " +
+                //                                $"'{order.StreetAddr_2}', " +
+                //                                $"'{order.City}', " +
+                //                                $"'{order.State}', " +
+                //                                $"'{order.Zip}', " +
+                //                                $"'{order.OrderedBy}', " +
+                //                                $"'{order.PoNumber}', " +
+                //                                $"'{order.ShippingMethod}', " +
+                //                                $"'{order.ShipToPatient}', " +
+                //                                $"'{order.Phone}', " +
+                //                                $"'{order.Email}', " +
+                //                                $"'{submitStatus}'" +
+                //                                ")";
 
-                SQLiteCommand command_1 = new SQLiteCommand(insertWvaOrder, dbConnection);
-                command_1.ExecuteNonQuery();
+                //SQLiteCommand command_1 = new SQLiteCommand(insertWvaOrder, dbConnection);
+                //command_1.ExecuteNonQuery();
 
                 // <2>
                 // Get this order's order ID that will link 'order_details' table to 'wva_order'
-                string findID = $"SELECT ID FROM wva_orders WHERE order_name = '{order.OrderName}'";
+                //string findID = $"SELECT ID FROM wva_orders WHERE order_name = '{order.OrderName}'";
 
-                SQLiteCommand command_2 = new SQLiteCommand(findID, dbConnection);
-                SQLiteDataReader reader = command_2.ExecuteReader();
+                //SQLiteCommand command_2 = new SQLiteCommand(findID, dbConnection);
+                //SQLiteDataReader reader = command_2.ExecuteReader();
 
-                Int64 orderID = 0;
-                while (reader.Read())
-                {
-                    orderID = (Int64)reader["ID"];
-                }
+                //Int64 orderID = 0;
+                //while (reader.Read())
+                //{
+                //    orderID = (Int64)reader["ID"];
+                //}
 
                 // <3>
                 // Create the order_details objects associated with the order
-                foreach (Item item in order.Items)
-                {
-                    string insertOrderDetail = "INSERT into order_details (" +
-                                           "wva_order_id, " +
-                                           "lens_rx, " +
-                                           "first_name, " +
-                                           "last_name, " +
-                                           "eye, " +
-                                           "quantity, " +
-                                           "price, " +
-                                           "patient_id, " +
-                                           "name, " +
-                                           "product_reviewed, " +
-                                           "sku, " +
-                                           "product_key, " +
-                                           "upc, " +
-                                           "basecurve, " +
-                                           "diameter, " +
-                                           "sphere, " +
-                                           "cylinder, " +
-                                           "axis, " +
-                                           "ad, " +
-                                           "color, " +
-                                           "multifocal) " +
-                                           "values (" +
-                                               $"'{orderID}', " +
-                                               $"'{item.OrderDetail.LensRx}', " +
-                                               $"'{item.FirstName}', " +
-                                               $"'{item.LastName}', " +
-                                               $"'{item.Eye}', " +
-                                               $"'{item.Quantity}', " +
-                                               $"'{item.ItemRetailPrice}', " +
-                                               $"'{item.PatientID}', " +
-                                               $"'{item.OrderDetail.Name}', " +
-                                               $"'{(item.OrderDetail.ProductReviewed == true ? 1 : 0)}', " +
-                                               $"'{item.OrderDetail.SKU}', " +
-                                               $"'{item.OrderDetail.ProductKey}', " +
-                                               $"'{item.OrderDetail.UPC}', " +
-                                               $"'{item.OrderDetail.Basecurve}', " +
-                                               $"'{item.OrderDetail.Diameter}', " +
-                                               $"'{item.OrderDetail.Sphere}', " +
-                                               $"'{item.OrderDetail.Cylinder}', " +
-                                               $"'{item.OrderDetail.Axis}', " +
-                                               $"'{item.OrderDetail.Add}', " +
-                                               $"'{item.OrderDetail.Color}', " +
-                                               $"'{item.OrderDetail.Multifocal}'" +
-                                               ")";
+                //foreach (Item item in order.Items)
+                //{
+                //    string insertOrderDetail = "INSERT into order_details (" +
+                //                           "wva_order_id, " +
+                //                           "lens_rx, " +
+                //                           "first_name, " +
+                //                           "last_name, " +
+                //                           "eye, " +
+                //                           "quantity, " +
+                //                           "price, " +
+                //                           "patient_id, " +
+                //                           "name, " +
+                //                           "product_reviewed, " +
+                //                           "sku, " +
+                //                           "product_key, " +
+                //                           "upc, " +
+                //                           "basecurve, " +
+                //                           "diameter, " +
+                //                           "sphere, " +
+                //                           "cylinder, " +
+                //                           "axis, " +
+                //                           "ad, " +
+                //                           "color, " +
+                //                           "multifocal) " +
+                //                           "values (" +
+                //                               $"'{orderID}', " +
+                //                               $"'{item.OrderDetail.LensRx}', " +
+                //                               $"'{item.FirstName}', " +
+                //                               $"'{item.LastName}', " +
+                //                               $"'{item.Eye}', " +
+                //                               $"'{item.Quantity}', " +
+                //                               $"'{item.ItemRetailPrice}', " +
+                //                               $"'{item.PatientID}', " +
+                //                               $"'{item.OrderDetail.Name}', " +
+                //                               $"'{(item.OrderDetail.ProductReviewed == true ? 1 : 0)}', " +
+                //                               $"'{item.OrderDetail.SKU}', " +
+                //                               $"'{item.OrderDetail.ProductKey}', " +
+                //                               $"'{item.OrderDetail.UPC}', " +
+                //                               $"'{item.OrderDetail.Basecurve}', " +
+                //                               $"'{item.OrderDetail.Diameter}', " +
+                //                               $"'{item.OrderDetail.Sphere}', " +
+                //                               $"'{item.OrderDetail.Cylinder}', " +
+                //                               $"'{item.OrderDetail.Axis}', " +
+                //                               $"'{item.OrderDetail.Add}', " +
+                //                               $"'{item.OrderDetail.Color}', " +
+                //                               $"'{item.OrderDetail.Multifocal}'" +
+                //                               ")";
 
-                    SQLiteCommand command_3 = new SQLiteCommand(insertOrderDetail, dbConnection);
-                    command_3.ExecuteNonQuery();
-                }
+                //    SQLiteCommand command_3 = new SQLiteCommand(insertOrderDetail, dbConnection);
+                //    command_3.ExecuteNonQuery();
+                //}
 
                 return true;
             }
@@ -284,33 +258,33 @@ namespace WVA_Compulink_Server_Integration.Data
         // =========================================================================================================
 
         // Read from database file
-        public static List<User> GetAllUsers()
+        public List<User> GetAllUsers()
         {
             try
             {
-                //return DataAccessor.GetAllUsers();
+                return DataAccessor.GetAllUsers();
 
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                string sql = "select * from users";
+                //string sql = "select * from users";
 
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                SQLiteDataReader reader = command.ExecuteReader();
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //SQLiteDataReader reader = command.ExecuteReader();
 
-                List<User> listUsers = new List<User>();
+                //List<User> listUsers = new List<User>();
 
-                while (reader.Read())
-                {
-                    listUsers.Add(new User()
-                    {
-                        UserName = (string)reader["user_name"],
-                        Password = (string)reader["password"],
-                        Email = (string)reader["email"],
-                    });
-                }
+                //while (reader.Read())
+                //{
+                //    listUsers.Add(new User()
+                //    {
+                //        UserName = (string)reader["user_name"],
+                //        Password = (string)reader["password"],
+                //        Email = (string)reader["email"],
+                //    });
+                //}
 
-                return listUsers;
+                //return listUsers;
             }
             catch (Exception x)
             {
@@ -320,31 +294,31 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // Get the order names of an account
-        public static Dictionary<string, string> GetOrderNames(string actNum)
+        public Dictionary<string, string> GetOrderNames(string actNum)
         {
             try
             {
-                //return DataAccessor.GetOrderNames(actNum);
+                return DataAccessor.GetOrderNames(actNum);
 
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                string sql = $"select order_name, ID from wva_orders where customer_id = '{actNum}' AND status = 'open'";
+                //string sql = $"select order_name, ID from wva_orders where customer_id = '{actNum}' AND status = 'open'";
 
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                SQLiteDataReader reader = command.ExecuteReader();
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //SQLiteDataReader reader = command.ExecuteReader();
 
-                Dictionary<string, string> dictNames = new Dictionary<string, string>();
+                //Dictionary<string, string> dictNames = new Dictionary<string, string>();
 
-                while (reader.Read())
-                {
-                    string orderName = (string)reader["order_name"];
-                    Int64 orderID = (Int64)reader["ID"];
+                //while (reader.Read())
+                //{
+                //    string orderName = (string)reader["order_name"];
+                //    Int64 orderID = (Int64)reader["ID"];
 
-                    dictNames.Add(orderID.ToString(), orderName);
-                }
+                //    dictNames.Add(orderID.ToString(), orderName);
+                //}
 
-                return dictNames;
+                //return dictNames;
             }
             catch (Exception x)
             {
@@ -354,94 +328,94 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // Get an accounts orders
-        public static List<Order> GetWVAOrders(string actNum)
+        public List<Order> GetWVAOrders(string actNum)
         {
             try
             {
-                //return DataAccessor.GetWvaOrders(actNum);
+                return DataAccessor.GetWvaOrders(actNum);
 
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                string strGetOrders = $"Select * FROM wva_orders WHERE customer_id = '{actNum}'";
+                //string strGetOrders = $"Select * FROM wva_orders WHERE customer_id = '{actNum}'";
 
-                SQLiteCommand command_1 = new SQLiteCommand(strGetOrders, dbConnection);
-                SQLiteDataReader reader = command_1.ExecuteReader();
+                //SQLiteCommand command_1 = new SQLiteCommand(strGetOrders, dbConnection);
+                //SQLiteDataReader reader = command_1.ExecuteReader();
 
-                List<Order> listOrders = new List<Order>();
+                //List<Order> listOrders = new List<Order>();
 
-                while (reader.Read())
-                {
-                    listOrders.Add(new Order()
-                    {
-                        ID = ((Int64)reader["ID"]).ToString(),
-                        CustomerID = (string)reader["customer_id"],
-                        OrderName = (string)reader["order_name"],
-                        CreatedDate = (string)reader["created_date"],
-                        WvaStoreID = (string)reader["wva_store_id"],
-                        DoB = (string)reader["date_of_birth"],
-                        Name_1 = (string)reader["name_1"],
-                        Name_2 = (string)reader["name_2"],
-                        StreetAddr_1 = (string)reader["street_addr_1"],
-                        StreetAddr_2 = (string)reader["street_addr_2"],
-                        City = (string)reader["city"],
-                        State = (string)reader["state"],
-                        Zip = (string)reader["zip"],
-                        OrderedBy = (string)reader["ordered_by"],
-                        PoNumber = (string)reader["po_number"],
-                        ShippingMethod = (string)reader["shipping_method"],
-                        ShipToPatient = (string)reader["ship_to_patient"],
-                        Phone = (string)reader["phone"],
-                        Email = (string)reader["email"],
-                        Status = (string)reader["status"]
-                    });
-                }
+                //while (reader.Read())
+                //{
+                //    listOrders.Add(new Order()
+                //    {
+                //        ID = ((Int64)reader["ID"]).ToString(),
+                //        CustomerID = (string)reader["customer_id"],
+                //        OrderName = (string)reader["order_name"],
+                //        CreatedDate = (string)reader["created_date"],
+                //        WvaStoreID = (string)reader["wva_store_id"],
+                //        DoB = (string)reader["date_of_birth"],
+                //        Name_1 = (string)reader["name_1"],
+                //        Name_2 = (string)reader["name_2"],
+                //        StreetAddr_1 = (string)reader["street_addr_1"],
+                //        StreetAddr_2 = (string)reader["street_addr_2"],
+                //        City = (string)reader["city"],
+                //        State = (string)reader["state"],
+                //        Zip = (string)reader["zip"],
+                //        OrderedBy = (string)reader["ordered_by"],
+                //        PoNumber = (string)reader["po_number"],
+                //        ShippingMethod = (string)reader["shipping_method"],
+                //        ShipToPatient = (string)reader["ship_to_patient"],
+                //        Phone = (string)reader["phone"],
+                //        Email = (string)reader["email"],
+                //        Status = (string)reader["status"]
+                //    });
+                //}
 
-                foreach (Order order in listOrders)
-                {
-                    string strGetOrderDetail = $"Select * FROM order_details WHERE wva_order_id = '{order.ID}'";
+                //foreach (Order order in listOrders)
+                //{
+                //    string strGetOrderDetail = $"Select * FROM order_details WHERE wva_order_id = '{order.ID}'";
 
-                    SQLiteCommand command_2 = new SQLiteCommand(strGetOrderDetail, dbConnection);
-                    SQLiteDataReader reader_2 = command_2.ExecuteReader();
+                //    SQLiteCommand command_2 = new SQLiteCommand(strGetOrderDetail, dbConnection);
+                //    SQLiteDataReader reader_2 = command_2.ExecuteReader();
 
-                    List<Item> listItems = new List<Item>();
+                //    List<Item> listItems = new List<Item>();
 
-                    while (reader_2.Read())
-                    {
-                        Item item = new Item()
-                        {
-                            ID = ((Int64)reader_2["ID"]).ToString(),
-                            FirstName = (string)reader_2["first_name"],
-                            LastName = (string)reader_2["last_name"],
-                            PatientID = (string)reader_2["patient_id"],
-                            Eye = (string)reader_2["eye"],
-                            Quantity = (string)reader_2["quantity"],
-                            ItemRetailPrice = (string)reader_2["price"],
-                            OrderDetail = new OrderDetail()
-                            {
-                                Name = (string)reader_2["name"],
-                                ProductReviewed = (int)reader_2["product_reviewed"] == 1 ? true : false,
-                                SKU = (string)reader_2["sku"],
-                                ProductKey = (string)reader_2["product_key"],
-                                UPC = (string)reader_2["upc"],
-                                Basecurve = (string)reader_2["basecurve"],
-                                Diameter = (string)reader_2["diameter"],
-                                Sphere = (string)reader_2["sphere"],
-                                Cylinder = (string)reader_2["cylinder"],
-                                Axis = (string)reader_2["axis"],
-                                Add = (string)reader_2["ad"],
-                                Color = (string)reader_2["color"],
-                                Multifocal = (string)reader_2["multifocal"],
-                            },
-                        };
+                //    while (reader_2.Read())
+                //    {
+                //        Item item = new Item()
+                //        {
+                //            ID = ((Int64)reader_2["ID"]).ToString(),
+                //            FirstName = (string)reader_2["first_name"],
+                //            LastName = (string)reader_2["last_name"],
+                //            PatientID = (string)reader_2["patient_id"],
+                //            Eye = (string)reader_2["eye"],
+                //            Quantity = (string)reader_2["quantity"],
+                //            ItemRetailPrice = (string)reader_2["price"],
+                //            OrderDetail = new OrderDetail()
+                //            {
+                //                Name = (string)reader_2["name"],
+                //                ProductReviewed = (int)reader_2["product_reviewed"] == 1 ? true : false,
+                //                SKU = (string)reader_2["sku"],
+                //                ProductKey = (string)reader_2["product_key"],
+                //                UPC = (string)reader_2["upc"],
+                //                Basecurve = (string)reader_2["basecurve"],
+                //                Diameter = (string)reader_2["diameter"],
+                //                Sphere = (string)reader_2["sphere"],
+                //                Cylinder = (string)reader_2["cylinder"],
+                //                Axis = (string)reader_2["axis"],
+                //                Add = (string)reader_2["ad"],
+                //                Color = (string)reader_2["color"],
+                //                Multifocal = (string)reader_2["multifocal"],
+                //            },
+                //        };
 
-                        listItems.Add(item);
-                    }
+                //        listItems.Add(item);
+                //    }
 
-                    order.Items = listItems;
-                }
+                //    order.Items = listItems;
+                //}
 
-                return listOrders;
+                //return listOrders;
             }
             catch (Exception x)
             {
@@ -452,26 +426,26 @@ namespace WVA_Compulink_Server_Integration.Data
 
 
         // Get email from username
-        public static string GetEmail(string userName)
+        public string GetEmail(string userName)
         {
             try
             {
-                //return DataAccessor.GetEmail(userName);
+                return DataAccessor.GetEmail(userName);
 
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                string sql = $"SELECT email FROM users WHERE user_name = '{userName}'";
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                SQLiteDataReader reader = command.ExecuteReader();
+                //string sql = $"SELECT email FROM users WHERE user_name = '{userName}'";
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //SQLiteDataReader reader = command.ExecuteReader();
 
-                string email = null;
-                while (reader.Read())
-                {
-                    email = (string)reader["email"];
-                }
+                //string email = null;
+                //while (reader.Read())
+                //{
+                //    email = (string)reader["email"];
+                //}
 
-                return email;
+                //return email;
             }
             catch (Exception x)
             {
@@ -481,86 +455,86 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // Check if order exits. If it does, return it
-        public static Order CheckIfOrderExists(string orderName)
+        public Order CheckIfOrderExists(string orderName)
         {
             try
             {
-                //var order = DataAccessor.OrderExists(orderName);
+                var order = DataAccessor.OrderExists(orderName);
 
-                Order order = new Order();
+                //Order order = new Order();
 
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                // Get the main order object from 'wva_orders' table
-                string getOrder = $"SELECT * FROM wva_orders WHERE order_name = '{orderName}' AND status = 'open' LIMIT 1";
-                SQLiteCommand command_1 = new SQLiteCommand(getOrder, dbConnection);
-                SQLiteDataReader reader_1 = command_1.ExecuteReader();
+                //// Get the main order object from 'wva_orders' table
+                //string getOrder = $"SELECT * FROM wva_orders WHERE order_name = '{orderName}' AND status = 'open' LIMIT 1";
+                //SQLiteCommand command_1 = new SQLiteCommand(getOrder, dbConnection);
+                //SQLiteDataReader reader_1 = command_1.ExecuteReader();
 
-                while (reader_1.Read())
-                {
-                    order.ID = ((Int64)reader_1["ID"]).ToString();
-                    order.CustomerID = (string)reader_1["customer_id"];
-                    order.OrderName = (string)reader_1["order_name"];
-                    order.CreatedDate = (string)reader_1["created_date"];
-                    order.WvaStoreID = (string)reader_1["wva_store_id"];
-                    order.DoB = (string)reader_1["date_of_birth"];
-                    order.Name_1 = (string)reader_1["name_1"];
-                    order.Name_2 = (string)reader_1["name_2"];
-                    order.StreetAddr_1 = (string)reader_1["street_addr_1"];
-                    order.StreetAddr_2 = (string)reader_1["street_addr_2"];
-                    order.City = (string)reader_1["city"];
-                    order.State = (string)reader_1["state"];
-                    order.Zip = (string)reader_1["zip"];
-                    order.OrderedBy = (string)reader_1["ordered_by"];
-                    order.PoNumber = (string)reader_1["po_number"];
-                    order.ShippingMethod = (string)reader_1["shipping_method"];
-                    order.ShipToPatient = (string)reader_1["ship_to_patient"];
-                    order.Phone = (string)reader_1["phone"];
-                    order.Email = (string)reader_1["email"];
-                    order.Status = (string)reader_1["status"];
-                }
+                //while (reader_1.Read())
+                //{
+                //    order.ID = ((Int64)reader_1["ID"]).ToString();
+                //    order.CustomerID = (string)reader_1["customer_id"];
+                //    order.OrderName = (string)reader_1["order_name"];
+                //    order.CreatedDate = (string)reader_1["created_date"];
+                //    order.WvaStoreID = (string)reader_1["wva_store_id"];
+                //    order.DoB = (string)reader_1["date_of_birth"];
+                //    order.Name_1 = (string)reader_1["name_1"];
+                //    order.Name_2 = (string)reader_1["name_2"];
+                //    order.StreetAddr_1 = (string)reader_1["street_addr_1"];
+                //    order.StreetAddr_2 = (string)reader_1["street_addr_2"];
+                //    order.City = (string)reader_1["city"];
+                //    order.State = (string)reader_1["state"];
+                //    order.Zip = (string)reader_1["zip"];
+                //    order.OrderedBy = (string)reader_1["ordered_by"];
+                //    order.PoNumber = (string)reader_1["po_number"];
+                //    order.ShippingMethod = (string)reader_1["shipping_method"];
+                //    order.ShipToPatient = (string)reader_1["ship_to_patient"];
+                //    order.Phone = (string)reader_1["phone"];
+                //    order.Email = (string)reader_1["email"];
+                //    order.Status = (string)reader_1["status"];
+                //}
 
-                // Get the order items from 'order_details' table
-                string getOrderItems = $"SELECT * FROM order_details WHERE wva_order_id = '{order.ID}'";
-                SQLiteCommand command_2 = new SQLiteCommand(getOrderItems, dbConnection);
-                SQLiteDataReader reader_2 = command_2.ExecuteReader();
+                //// Get the order items from 'order_details' table
+                //string getOrderItems = $"SELECT * FROM order_details WHERE wva_order_id = '{order.ID}'";
+                //SQLiteCommand command_2 = new SQLiteCommand(getOrderItems, dbConnection);
+                //SQLiteDataReader reader_2 = command_2.ExecuteReader();
 
-                List<Item> items = new List<Item>();
+                //List<Item> items = new List<Item>();
 
-                while (reader_2.Read())
-                {
-                    Item item = new Item()
-                    {
-                        ID = ((Int64)reader_2["ID"]).ToString(),
-                        FirstName = (string)reader_2["first_name"],
-                        LastName = (string)reader_2["last_name"],
-                        PatientID = (string)reader_2["patient_id"],
-                        Eye = (string)reader_2["eye"],
-                        Quantity = (string)reader_2["quantity"],
-                        ItemRetailPrice = (string)reader_2["price"],
-                        OrderDetail = new OrderDetail()
-                        {
-                            Name = (string)reader_2["name"],
-                            ProductReviewed = (Int32)reader_2["product_reviewed"] == 1 ? true : false,
-                            SKU = (string)reader_2["sku"],
-                            ProductKey = (string)reader_2["product_key"],
-                            UPC = (string)reader_2["upc"],
-                            Basecurve = (string)reader_2["basecurve"],
-                            Diameter = (string)reader_2["diameter"],
-                            Sphere = (string)reader_2["sphere"],
-                            Cylinder = (string)reader_2["cylinder"],
-                            Axis = (string)reader_2["axis"],
-                            Add = (string)reader_2["ad"],
-                            Color = (string)reader_2["color"],
-                            Multifocal = (string)reader_2["multifocal"],
-                        }
-                    };
-                    items.Add(item);
-                }
+                //while (reader_2.Read())
+                //{
+                //    Item item = new Item()
+                //    {
+                //        ID = ((Int64)reader_2["ID"]).ToString(),
+                //        FirstName = (string)reader_2["first_name"],
+                //        LastName = (string)reader_2["last_name"],
+                //        PatientID = (string)reader_2["patient_id"],
+                //        Eye = (string)reader_2["eye"],
+                //        Quantity = (string)reader_2["quantity"],
+                //        ItemRetailPrice = (string)reader_2["price"],
+                //        OrderDetail = new OrderDetail()
+                //        {
+                //            Name = (string)reader_2["name"],
+                //            ProductReviewed = (Int32)reader_2["product_reviewed"] == 1 ? true : false,
+                //            SKU = (string)reader_2["sku"],
+                //            ProductKey = (string)reader_2["product_key"],
+                //            UPC = (string)reader_2["upc"],
+                //            Basecurve = (string)reader_2["basecurve"],
+                //            Diameter = (string)reader_2["diameter"],
+                //            Sphere = (string)reader_2["sphere"],
+                //            Cylinder = (string)reader_2["cylinder"],
+                //            Axis = (string)reader_2["axis"],
+                //            Add = (string)reader_2["ad"],
+                //            Color = (string)reader_2["color"],
+                //            Multifocal = (string)reader_2["multifocal"],
+                //        }
+                //    };
+                //    items.Add(item);
+                //}
 
                 // Add items to the list
-                order.Items = items;
+                //order.Items = items;
 
                 if (order.ID == null)
                     return null;
@@ -575,31 +549,31 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // Check if email exits
-        public static bool CheckIfEmailExists(string email)
+        public bool CheckIfEmailExists(string email)
         {
             try
             {
-                //return DataAccessor.EmailExists(email);
+                return DataAccessor.EmailExists(email);
 
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                string sql = $"SELECT * FROM users WHERE email='{email}'";
+                //string sql = $"SELECT * FROM users WHERE email='{email}'";
 
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                SQLiteDataReader reader = command.ExecuteReader();
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //SQLiteDataReader reader = command.ExecuteReader();
 
-                // Read response of executed command
-                while (reader.Read())
-                {
-                    // If account number in database matches account number parameter, return true;
-                    if ((string)reader["email"] == email)
-                    {
-                        return true;
-                    }
-                }
-                // If no account numbers match, return false
-                return false;
+                //// Read response of executed command
+                //while (reader.Read())
+                //{
+                //    // If account number in database matches account number parameter, return true;
+                //    if ((string)reader["email"] == email)
+                //    {
+                //        return true;
+                //    }
+                //}
+                //// If no account numbers match, return false
+                //return false;
             }
             catch (Exception x)
             {
@@ -609,29 +583,31 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // Check if email exits
-        public static bool CheckIfUserNameExists(string userName)
+        public bool CheckIfUserNameExists(string userName)
         {
             try
             {
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                return DataAccessor.UsernameExists(userName);
 
-                string sql = $"SELECT * FROM users WHERE user_name = '{userName}'";
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                SQLiteDataReader reader = command.ExecuteReader();
+                //string sql = $"SELECT * FROM users WHERE user_name = '{userName}'";
 
-                // Read response of executed command
-                while (reader.Read())
-                {
-                    // If account number in database matches account number parameter, return true;
-                    if ((string)reader["user_name"] == userName)
-                    {
-                        return true;
-                    }
-                }
-                // If no account numbers match, return false
-                return false;
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //SQLiteDataReader reader = command.ExecuteReader();
+
+                //// Read response of executed command
+                //while (reader.Read())
+                //{
+                //    // If account number in database matches account number parameter, return true;
+                //    if ((string)reader["user_name"] == userName)
+                //    {
+                //        return true;
+                //    }
+                //}
+                //// If no account numbers match, return false
+                //return false;
             }
             catch (Exception x)
             {
@@ -641,31 +617,33 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // Check a user's login credentials
-        public static User CheckCredentials(User user)
+        public User CheckCredentials(User user)
         {
             try
             {
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                string sql = $"SELECT user_name, password, email FROM users WHERE user_name='{user.UserName}' AND password='{user.Password}'";
+                //string sql = $"SELECT user_name, password, email FROM users WHERE user_name='{user.UserName}' AND password='{user.Password}'";
 
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                SQLiteDataReader reader = command.ExecuteReader();
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //SQLiteDataReader reader = command.ExecuteReader();
 
-                User responseUser = new User()
-                {
-                    UserName = "FAIL",
-                    Password = "FAIL",
-                    Email = null,
-                };
+                //User responseUser = new User()
+                //{
+                //    UserName = "FAIL",
+                //    Password = "FAIL",
+                //    Email = null,
+                //};
 
-                while (reader.Read())
-                {
-                    responseUser.UserName = (string)reader["user_name"];
-                    responseUser.Password = (string)reader["password"];
-                    responseUser.Email = (string)reader["email"];
-                };
+                var responseUser = DataAccessor.CheckCredentials(user);
+
+                //while (reader.Read())
+                //{
+                //    responseUser.UserName = (string)reader["user_name"];
+                //    responseUser.Password = (string)reader["password"];
+                //    responseUser.Email = (string)reader["email"];
+                //};
 
                 if (responseUser.UserName == "FAIL" || responseUser.Password == "FAIL")
                 {
@@ -686,7 +664,7 @@ namespace WVA_Compulink_Server_Integration.Data
             }
         }
 
-        public static List<string> GetLensRxByWvaOrderId(string wvaOrderId)
+        public List<string> GetLensRxByWvaOrderId(string wvaOrderId)
         {
             List<string> lensrxes = new List<string>();
             try
@@ -694,7 +672,7 @@ namespace WVA_Compulink_Server_Integration.Data
                 SQLiteConnection dbConnection = GetSQLiteConnection();
                 dbConnection.Open();
 
-                string getLensRxes = $"SELECT DISTINCT(lens_rx) FROM order_details JOIN wva_orders ON order_details.wva_order_id = wva_orders.ID WHERE wva_store_id = '{wvaOrderId}'";
+                string getLensRxes = $"SELECT DISTINCT(LensRx) FROM OrderDetails JOIN WvaOrders ON OrderDetails.WvaOrderId = WvaOrders.Id WHERE WvaStoreId = '{wvaOrderId}'";
 
                 SQLiteCommand command = new SQLiteCommand(getLensRxes, dbConnection);
                 SQLiteDataReader reader = command.ExecuteReader();
@@ -717,21 +695,23 @@ namespace WVA_Compulink_Server_Integration.Data
         // UPDATE
         // =========================================================================================================
 
-        public static bool ChangePassword(string userName, string password)
+        public bool ChangePassword(string userName, string password)
         {
             try
             {
+                DataAccessor.ChangePassword(userName, password); 
+
                 // Update order status to 'submitted'
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                string updateOrder = $"UPDATE users " +
-                                        $"SET " +
-                                            $"password           =   '{password}' " +
-                                        $"WHERE user_name     =   '{userName}'";
+                //string updateOrder = $"UPDATE users " +
+                //                        $"SET " +
+                //                            $"password           =   '{password}' " +
+                //                        $"WHERE user_name     =   '{userName}'";
 
-                SQLiteCommand command_1 = new SQLiteCommand(updateOrder, dbConnection);
-                command_1.ExecuteNonQuery();
+                //SQLiteCommand command_1 = new SQLiteCommand(updateOrder, dbConnection);
+                //command_1.ExecuteNonQuery();
 
                 return true;
             }
@@ -742,7 +722,7 @@ namespace WVA_Compulink_Server_Integration.Data
             }
         }
 
-        public static bool SubmitOrder(Order order)
+        public bool SubmitOrder(Order order)
         {
             try
             {
@@ -758,21 +738,21 @@ namespace WVA_Compulink_Server_Integration.Data
                 }
                 else
                 {
-                    // Update order status to 'submitted'
-                    SQLiteConnection dbConnection = GetSQLiteConnection();
-                    dbConnection.Open();
+                    //// Update order status to 'submitted'
+                    //SQLiteConnection dbConnection = GetSQLiteConnection();
+                    //dbConnection.Open();
 
-                    string createdDate = DateTime.Now.ToString("yyyy-MM-dd-HH:mm:ss");
+                    //string createdDate = DateTime.Now.ToString("yyyy-MM-dd-HH:mm:ss");
 
-                    string updateOrder = $"UPDATE wva_orders " +
-                                            $"SET " +
-                                                $"status           =   'submitted', " +
-                                                $"created_date     =   '{createdDate}', " +
-                                                $"wva_store_id     =   '{order.WvaStoreID}' " +
-                                            $"WHERE order_name     =   '{order.OrderName}'";
+                    //string updateOrder = $"UPDATE wva_orders " +
+                    //                        $"SET " +
+                    //                            $"status           =   'submitted', " +
+                    //                            $"created_date     =   '{createdDate}', " +
+                    //                            $"wva_store_id     =   '{order.WvaStoreID}' " +
+                    //                        $"WHERE order_name     =   '{order.OrderName}'";
 
-                    SQLiteCommand command_1 = new SQLiteCommand(updateOrder, dbConnection);
-                    command_1.ExecuteNonQuery();
+                    //SQLiteCommand command_1 = new SQLiteCommand(updateOrder, dbConnection);
+                    //command_1.ExecuteNonQuery();
 
                     return true;
                 }
@@ -784,21 +764,23 @@ namespace WVA_Compulink_Server_Integration.Data
             }
         }
 
-        public static bool UnsubmitOrder(string orderName)
+        public bool UnsubmitOrder(string orderName)
         {
             try
             {
-                // Update order status to 'open'
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                DataAccessor.UnsumbmitOrder(orderName);
 
-                string updateOrder = $"UPDATE wva_orders " +
-                                        $"SET " +
-                                            $"status           =   'open' " +
-                                        $"WHERE order_name     =   '{orderName}'";
+                //// Update order status to 'open'
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                SQLiteCommand command_1 = new SQLiteCommand(updateOrder, dbConnection);
-                command_1.ExecuteNonQuery();
+                //string updateOrder = $"UPDATE wva_orders " +
+                //                        $"SET " +
+                //                            $"status           =   'open' " +
+                //                        $"WHERE order_name     =   '{orderName}'";
+
+                //SQLiteCommand command_1 = new SQLiteCommand(updateOrder, dbConnection);
+                //command_1.ExecuteNonQuery();
 
                 return true;
             }
@@ -810,7 +792,7 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
 
-        public static bool SaveOrder(Order order)
+        public bool SaveOrder(Order order)
         {
             try
             {
@@ -827,91 +809,93 @@ namespace WVA_Compulink_Server_Integration.Data
                         return false;
                 }
 
-                // Save order
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                DataAccessor.SaveOrder(order, checkOrder);
 
-                string updateOrder = $"UPDATE wva_orders " +
-                                        $"SET " +
-                                            $"wva_store_id     =   '{checkOrder.WvaStoreID}', " +
-                                            $"created_date     =   '{checkOrder.CreatedDate}', " +
-                                            $"date_of_birth    =   '{order.DoB}', " +
-                                            $"name_1           =   '{order.Name_1}', " +
-                                            $"name_2           =   '{order.Name_2}', " +
-                                            $"street_addr_1    =   '{order.StreetAddr_1}', " +
-                                            $"street_addr_2    =   '{order.StreetAddr_2}', " +
-                                            $"city             =   '{order.City}', " +
-                                            $"state            =   '{order.State}', " +
-                                            $"zip              =   '{order.Zip}', " +
-                                            $"ordered_by       =   '{order.OrderedBy}', " +
-                                            $"po_number        =   '{order.PoNumber}', " +
-                                            $"shipping_method  =   '{order.ShippingMethod}', " +
-                                            $"ship_to_patient  =   '{order.ShipToPatient}', " +
-                                            $"phone            =   '{order.Phone}', " +
-                                            $"email            =   '{order.Email}', " +
-                                            $"status           =   'open' " +
-                                        $"WHERE order_name     =   '{order.OrderName}'";
+                //// Save order
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                SQLiteCommand command_1 = new SQLiteCommand(updateOrder, dbConnection);
-                command_1.ExecuteNonQuery();
+                //string updateOrder = $"UPDATE wva_orders " +
+                //                        $"SET " +
+                //                            $"wva_store_id     =   '{checkOrder.WvaStoreID}', " +
+                //                            $"created_date     =   '{checkOrder.CreatedDate}', " +
+                //                            $"date_of_birth    =   '{order.DoB}', " +
+                //                            $"name_1           =   '{order.Name_1}', " +
+                //                            $"name_2           =   '{order.Name_2}', " +
+                //                            $"street_addr_1    =   '{order.StreetAddr_1}', " +
+                //                            $"street_addr_2    =   '{order.StreetAddr_2}', " +
+                //                            $"city             =   '{order.City}', " +
+                //                            $"state            =   '{order.State}', " +
+                //                            $"zip              =   '{order.Zip}', " +
+                //                            $"ordered_by       =   '{order.OrderedBy}', " +
+                //                            $"po_number        =   '{order.PoNumber}', " +
+                //                            $"shipping_method  =   '{order.ShippingMethod}', " +
+                //                            $"ship_to_patient  =   '{order.ShipToPatient}', " +
+                //                            $"phone            =   '{order.Phone}', " +
+                //                            $"email            =   '{order.Email}', " +
+                //                            $"status           =   'open' " +
+                //                        $"WHERE order_name     =   '{order.OrderName}'";
+
+                //SQLiteCommand command_1 = new SQLiteCommand(updateOrder, dbConnection);
+                //command_1.ExecuteNonQuery();
 
 
-                // Delete old order details
-                string deleteOrderDetail = $"DELETE FROM order_details WHERE wva_order_id = '{checkOrder.ID}'";
+                //// Delete old order details
+                //string deleteOrderDetail = $"DELETE FROM order_details WHERE wva_order_id = '{checkOrder.ID}'";
 
-                SQLiteCommand command_2 = new SQLiteCommand(deleteOrderDetail, dbConnection);
-                command_2.ExecuteNonQuery();
+                //SQLiteCommand command_2 = new SQLiteCommand(deleteOrderDetail, dbConnection);
+                //command_2.ExecuteNonQuery();
 
                 // Add new order details
-                foreach (Item item in order.Items)
-                {
-                    string insertOrderDetail = "INSERT into order_details (" +
-                                                   "wva_order_id, " +
-                                                   "first_name, " +
-                                                   "last_name, " +
-                                                   "eye, " +
-                                                   "quantity, " +
-                                                   "price, " +
-                                                   "patient_id, " +
-                                                   "name, " +
-                                                   "product_reviewed, " +
-                                                   "sku, " +
-                                                   "product_key, " +
-                                                   "upc, " +
-                                                   "basecurve, " +
-                                                   "diameter, " +
-                                                   "sphere, " +
-                                                   "cylinder, " +
-                                                   "axis, " +
-                                                   "ad, " +
-                                                   "color, " +
-                                                   "multifocal) " +
-                                                   "values (" +
-                                                       $"'{checkOrder.ID}', " +
-                                                       $"'{item.FirstName}', " +
-                                                       $"'{item.LastName}', " +
-                                                       $"'{item.Eye}', " +
-                                                       $"'{item.Quantity}', " +
-                                                       $"'{item.ItemRetailPrice}', " +
-                                                       $"'{item.PatientID}', " +
-                                                       $"'{item.OrderDetail.Name}', " +
-                                                       $"'{(item.OrderDetail.ProductReviewed == true ? 1 : 0)}', " +
-                                                       $"'{item.OrderDetail.SKU}', " +
-                                                       $"'{item.OrderDetail.ProductKey}', " +
-                                                       $"'{item.OrderDetail.UPC}', " +
-                                                       $"'{item.OrderDetail.Basecurve}', " +
-                                                       $"'{item.OrderDetail.Diameter}', " +
-                                                       $"'{item.OrderDetail.Sphere}', " +
-                                                       $"'{item.OrderDetail.Cylinder}', " +
-                                                       $"'{item.OrderDetail.Axis}', " +
-                                                       $"'{item.OrderDetail.Add}', " +
-                                                       $"'{item.OrderDetail.Color}', " +
-                                                       $"'{item.OrderDetail.Multifocal}'" +
-                                                       ")";
+                //foreach (Item item in order.Items)
+                //{
+                //    string insertOrderDetail = "INSERT into order_details (" +
+                //                                   "wva_order_id, " +
+                //                                   "first_name, " +
+                //                                   "last_name, " +
+                //                                   "eye, " +
+                //                                   "quantity, " +
+                //                                   "price, " +
+                //                                   "patient_id, " +
+                //                                   "name, " +
+                //                                   "product_reviewed, " +
+                //                                   "sku, " +
+                //                                   "product_key, " +
+                //                                   "upc, " +
+                //                                   "basecurve, " +
+                //                                   "diameter, " +
+                //                                   "sphere, " +
+                //                                   "cylinder, " +
+                //                                   "axis, " +
+                //                                   "ad, " +
+                //                                   "color, " +
+                //                                   "multifocal) " +
+                //                                   "values (" +
+                //                                       $"'{checkOrder.ID}', " +
+                //                                       $"'{item.FirstName}', " +
+                //                                       $"'{item.LastName}', " +
+                //                                       $"'{item.Eye}', " +
+                //                                       $"'{item.Quantity}', " +
+                //                                       $"'{item.ItemRetailPrice}', " +
+                //                                       $"'{item.PatientID}', " +
+                //                                       $"'{item.OrderDetail.Name}', " +
+                //                                       $"'{(item.OrderDetail.ProductReviewed == true ? 1 : 0)}', " +
+                //                                       $"'{item.OrderDetail.SKU}', " +
+                //                                       $"'{item.OrderDetail.ProductKey}', " +
+                //                                       $"'{item.OrderDetail.UPC}', " +
+                //                                       $"'{item.OrderDetail.Basecurve}', " +
+                //                                       $"'{item.OrderDetail.Diameter}', " +
+                //                                       $"'{item.OrderDetail.Sphere}', " +
+                //                                       $"'{item.OrderDetail.Cylinder}', " +
+                //                                       $"'{item.OrderDetail.Axis}', " +
+                //                                       $"'{item.OrderDetail.Add}', " +
+                //                                       $"'{item.OrderDetail.Color}', " +
+                //                                       $"'{item.OrderDetail.Multifocal}'" +
+                //                                       ")";
 
-                    SQLiteCommand command_3 = new SQLiteCommand(insertOrderDetail, dbConnection);
-                    command_3.ExecuteNonQuery();
-                }
+                //    SQLiteCommand command_3 = new SQLiteCommand(insertOrderDetail, dbConnection);
+                //    command_3.ExecuteNonQuery();
+                //}
 
                 return true;
             }
@@ -928,17 +912,19 @@ namespace WVA_Compulink_Server_Integration.Data
         // =========================================================================================================
 
         // Deletes a table in the given SQLite file 
-        public static void DeleteTable(string tableName)
+        public  void DeleteTable(string tableName)
         {
             try
             {
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                DataAccessor.DeleteTable(tableName);
 
-                string sql = $"DROP TABLE {tableName}";
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                command.ExecuteNonQuery();
+                //string sql = $"DROP TABLE {tableName}";
+
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //command.ExecuteNonQuery();
             }
             catch (Exception x)
             {
@@ -947,17 +933,19 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // Delete a single user from user table
-        public static void DeleteUser(int id, string userName)
+        public void DeleteUser(int id, string userName)
         {
             try
             {
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                DataAccessor.DeleteUser(id, userName);
 
-                string sql = $"DELETE FROM users WHERE id='{id}' AND user_name='{userName}'";
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
-                command.ExecuteNonQuery();
+                //string sql = $"DELETE FROM users WHERE id='{id}' AND user_name='{userName}'";
+
+                //SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+                //command.ExecuteNonQuery();
             }
             catch (Exception x)
             {
@@ -966,30 +954,32 @@ namespace WVA_Compulink_Server_Integration.Data
         }
 
         // Delete a single user from user table
-        public static bool DeleteOrder(string orderName)
+        public bool DeleteOrder(string orderName)
         {
             try
             {
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
+                DataAccessor.DeleteOrder(orderName);
 
-                string getId = $"SELECT ID FROM wva_orders WHERE order_name = '{orderName}'";
-                SQLiteCommand command_1 = new SQLiteCommand(getId, dbConnection);
-                SQLiteDataReader reader_1 = command_1.ExecuteReader();
+                //SQLiteConnection dbConnection = GetSQLiteConnection();
+                //dbConnection.Open();
 
-                Int64 orderID = 0;
-                while (reader_1.Read())
-                {
-                    orderID = (Int64)reader_1["ID"];
-                }
+                //string getId = $"SELECT ID FROM wva_orders WHERE order_name = '{orderName}'";
+                //SQLiteCommand command_1 = new SQLiteCommand(getId, dbConnection);
+                //SQLiteDataReader reader_1 = command_1.ExecuteReader();
 
-                string deleteOrder = $"DELETE FROM wva_orders WHERE order_name = '{orderName}'";
-                SQLiteCommand command_2 = new SQLiteCommand(deleteOrder, dbConnection);
-                command_2.ExecuteNonQuery();
+                //Int64 orderID = 0;
+                //while (reader_1.Read())
+                //{
+                //    orderID = (Int64)reader_1["ID"];
+                //}
 
-                string deleteItemDetails = $"DELETE FROM order_details WHERE wva_order_id = '{orderID}'";
-                SQLiteCommand command_3 = new SQLiteCommand(deleteItemDetails, dbConnection);
-                command_3.ExecuteNonQuery();
+                //string deleteOrder = $"DELETE FROM wva_orders WHERE order_name = '{orderName}'";
+                //SQLiteCommand command_2 = new SQLiteCommand(deleteOrder, dbConnection);
+                //command_2.ExecuteNonQuery();
+
+                //string deleteItemDetails = $"DELETE FROM order_details WHERE wva_order_id = '{orderID}'";
+                //SQLiteCommand command_3 = new SQLiteCommand(deleteItemDetails, dbConnection);
+                //command_3.ExecuteNonQuery();
 
                 return true;
             }

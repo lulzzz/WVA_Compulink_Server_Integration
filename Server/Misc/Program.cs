@@ -27,8 +27,6 @@ namespace WVA_Compulink_Server_Integration
                 if (!DatabaseExists())
                     SetupDatabase();
 
-                Database.UpdateChangedColumns();
-
                 // Setup Config in Memory
                 new Memory.Storage();
 

@@ -18,23 +18,30 @@ namespace WVA_Compulink_Server_Integration.Controllers
     [Route("api/[controller]")]
     public class OrderController : Controller
     {
+        private Database sqliteDatabase;
+
+        public OrderController()
+        {
+            sqliteDatabase = new Database();
+        }
+
 
         [HttpGet("get-names/{act_num}")]
         public Dictionary<string, string> GetOrdersNames(string act_num)
         {
-            return Database.GetOrderNames(act_num);
+            return sqliteDatabase.GetOrderNames(act_num);
         }
 
         [HttpGet("get-orders/{act_num}")]
         public IEnumerable<Order> GetOrders(string act_num)
         {
-            return Database.GetWVAOrders(act_num);
+            return sqliteDatabase.GetWVAOrders(act_num);
         }
 
         [HttpPost("exists")]
         public Order CheckIfOrderExists([FromBody]string orderName)
         {
-            return Database.CheckIfOrderExists(orderName);
+            return sqliteDatabase.CheckIfOrderExists(orderName);
         }
 
         [HttpPost("submit")]
@@ -53,11 +60,11 @@ namespace WVA_Compulink_Server_Integration.Controllers
                 if (response?.Status == "SUCCESS")
                 {
                     // If order exists, mark as submit. If not, create new order and mark as submitted
-                    bool orderSubmitted = Database.SubmitOrder(orderWrapper?.OutOrder?.PatientOrder);
+                    bool orderSubmitted = sqliteDatabase.SubmitOrder(orderWrapper?.OutOrder?.PatientOrder);
 
                     if (orderSubmitted)
                     {
-                        var listLensRxes = Database.GetLensRxByWvaOrderId(response?.Data?.Wva_order_id);
+                        var listLensRxes = sqliteDatabase.GetLensRxByWvaOrderId(response?.Data?.Wva_order_id);
                         var compulinkOdbcWriter = new CompulinkOdbcWriter();
 
                         compulinkOdbcWriter.UpdateLensRx(listLensRxes, response.Data?.Wva_order_id);
@@ -73,7 +80,7 @@ namespace WVA_Compulink_Server_Integration.Controllers
             catch (Exception x)
             {
                 // If order creation failed, set order back to 'open' status
-                Database.UnsubmitOrder(orderWrapper?.OutOrder?.PatientOrder?.OrderName);
+                sqliteDatabase.UnsubmitOrder(orderWrapper?.OutOrder?.PatientOrder?.OrderName);
 
                 // Return fail response
                 return new Response()
@@ -91,7 +98,7 @@ namespace WVA_Compulink_Server_Integration.Controllers
 
             try
             {
-                bool didSave = Database.SaveOrder(outOrderWrapper.OutOrder.PatientOrder);
+                bool didSave = sqliteDatabase.SaveOrder(outOrderWrapper.OutOrder.PatientOrder);
 
                 if (didSave)
                 {
@@ -113,7 +120,7 @@ namespace WVA_Compulink_Server_Integration.Controllers
         [HttpPost("delete")]
         public Response DeleteOrder([FromBody]string orderName)
         {
-            bool orderDeleted = Database.DeleteOrder(orderName);
+            bool orderDeleted = sqliteDatabase.DeleteOrder(orderName);
             Response response = new Response();
 
             if (orderDeleted)

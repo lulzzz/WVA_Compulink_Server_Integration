@@ -16,6 +16,12 @@ namespace WVA_Compulink_Server_Integration.Controllers
     [Route("api/[controller]")]
     public class UserController : Controller
     {
+        private Database sqliteDatabase;
+
+        public UserController()
+        {
+            sqliteDatabase = new Database();
+        }
 
         [HttpPost("register")]
         public User Register([FromBody]User user)
@@ -24,18 +30,18 @@ namespace WVA_Compulink_Server_Integration.Controllers
             {
                 var userResponse = new User();
 
-                if (Database.CheckIfEmailExists(user?.Email))
+                if (sqliteDatabase.CheckIfEmailExists(user?.Email))
                 {
                     userResponse.Status = "FAIL";
                     userResponse.Message = "Email already exists";
                 }
-                else if (Database.CheckIfUserNameExists(user?.UserName))
+                else if (sqliteDatabase.CheckIfUserNameExists(user?.UserName))
                 {
                     userResponse.Status = "FAIL";
                     userResponse.Message = "UserName already exists";
                 }
                 else
-                    userResponse = Database.CreateUser(user);
+                    userResponse = sqliteDatabase.CreateUser(user);
 
                 return userResponse;
             }
@@ -52,7 +58,7 @@ namespace WVA_Compulink_Server_Integration.Controllers
             {
                 var userResponse = new User();
 
-                userResponse = Database.CheckCredentials(user);
+                userResponse = sqliteDatabase.CheckCredentials(user);
 
                 if (userResponse == null)
                 {
@@ -76,7 +82,7 @@ namespace WVA_Compulink_Server_Integration.Controllers
         {
             try
             {
-                return new User() { Email = Database.GetEmail(user.UserName) };
+                return new User() { Email = sqliteDatabase.GetEmail(user.UserName) };
             }
             catch (Exception x)
             {
@@ -89,7 +95,7 @@ namespace WVA_Compulink_Server_Integration.Controllers
         {
             try
             {
-                bool passwordChanged = Database.ChangePassword(user.UserName, user.Password);
+                bool passwordChanged = sqliteDatabase.ChangePassword(user.UserName, user.Password);
 
                 if (passwordChanged)
                     return new User() { Status = "SUCCESS", Message = $"Password changed!" };
