@@ -44,7 +44,14 @@ namespace WVA_Compulink_Server_Integration.Services
 
         public static bool IsRunning()
         {
-            return new ServiceController(AppName).Status == ServiceControllerStatus.Running ? true : false;
+            try
+            {
+                return new ServiceController(AppName).Status == ServiceControllerStatus.Running ? true : false;
+            }
+            catch 
+            {
+                return false;
+            }
         }
 
         public static bool IsInstalled()

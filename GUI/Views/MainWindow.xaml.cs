@@ -40,7 +40,7 @@ namespace WVA_Compulink_Server_Integration
             SetUpServiceHost();
             StartWorkers();
             TaskManager.StartAllJobs();
-            Task.Run(() => Updater.RunUpdates());
+            //Task.Run(() => Updater.RunUpdates());
         }
 
 

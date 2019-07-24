@@ -35,6 +35,26 @@ namespace WVA_Compulink_Server_Integration.Updates
             }
         }
 
+        private static async Task Update()
+        {
+            try
+            {
+                using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Compulink_Server_Integration").Result)
+                {
+                    var updateInfo = mgr.CheckForUpdate().Result;
+
+                    if (updateInfo.ReleasesToApply.Any())
+                    {
+                        await mgr.UpdateApp();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Error.ReportOrLog(e);
+            }
+        }
+
         public static bool UpdatesAvailable()
         {
             using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Compulink_Server_Integration").Result)
@@ -42,17 +62,17 @@ namespace WVA_Compulink_Server_Integration.Updates
                 var updateInfo = mgr.CheckForUpdate().Result;
 
                 if (updateInfo.ReleasesToApply.Any())
-                    return false;
-                else
                     return true;
+                else
+                    return false;
             }
         }
 
         public static async Task ForceRunUpdates()
         {
             ServiceHost.Stop();
-            await Task.Run(() => RunUpdates());
             ServiceHost.Uninstall();
+            await Task.Run(() => Update());
             ServiceHost.Install();
             ServiceHost.Start();
             RestartApplication();
