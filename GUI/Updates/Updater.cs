@@ -85,7 +85,7 @@ namespace WVA_Compulink_Server_Integration.Updates
         private static void RestartApplication()
         {
             Process.Start(Paths.AppExecFile);
-            Application.Current.Shutdown();
+            Environment.Exit(0);
         }
 
 
