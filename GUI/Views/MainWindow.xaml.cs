@@ -191,6 +191,9 @@ namespace WVA_Compulink_Server_Integration
         {
             try
             {
+                if (!ServiceHost.IsInstalled())
+                    ServiceHost.Install();
+
                 if (!ServiceHost.IsRunning())
                     ServiceHost.Start();
             }
@@ -281,13 +284,15 @@ namespace WVA_Compulink_Server_Integration
         {
             if (Height == 400)
             {
-                Height = 460;
+                Height = 490;
                 DropDownImage.Source = new BitmapImage(new Uri(@"/Resources/icons8-slide-up-32.png", UriKind.Relative));
+                DropDownStackPanel.Visibility = Visibility.Visible;
             }
             else
             {
                 Height = 400;
                 DropDownImage.Source = new BitmapImage(new Uri(@"/Resources/icons8-down-button-32.png", UriKind.Relative));
+                DropDownStackPanel.Visibility = Visibility.Hidden;
             }
         }
 
@@ -330,6 +335,28 @@ namespace WVA_Compulink_Server_Integration
             {
                 Cursor = Cursors.Arrow;
                 CheckForUpdatesButton.IsEnabled = true;
+            }
+        }
+
+        private void UninstallServiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                if (ServiceHost.IsRunning())
+                    ServiceHost.Stop();
+
+                ServiceHost.Uninstall();
+                Thread.Sleep(500);
+
+                if (ServiceHost.IsInstalled())
+                    MessageBox.Show("Service was not removed successfully.", "", MessageBoxButton.OK);
+                else
+                    MessageBox.Show("Service successfully removed.", "", MessageBoxButton.OK);
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
             }
         }
     }

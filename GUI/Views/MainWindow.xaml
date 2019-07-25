@@ -194,16 +194,31 @@
                    Width="25"
                    Height="25"/>
         </Button>
-        
 
-        <Button Name="CheckForUpdatesButton" 
-                Width="160"
-                Height="30"
-                Content="Check for Updates"
-                FontFamily="Setika Text"
-                FontSize="17"
-                Margin="0,375,0,0"
-                Click="CheckForUpdatesButton_Click"/>
+        <StackPanel Name="DropDownStackPanel"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,0,0"
+                    Visibility="Hidden">
+            
+            <Button Name="CheckForUpdatesButton" 
+                    Width="160"
+                    Height="30"
+                    Content="Check for Updates"
+                    FontFamily="Setika Text"
+                    FontSize="17"
+                    Margin="0,0,0,10"
+                    Click="CheckForUpdatesButton_Click"/>
+
+            <Button Name="UninstallServiceButton" 
+                    Width="160"
+                    Height="30"
+                    Content="Uninstall Service"
+                    FontFamily="Setika Text"
+                    FontSize="17"
+                    Margin="0,0,0,10"
+                    Click="UninstallServiceButton_Click"/>
+
+        </StackPanel>
 
     </Grid>
 </Window>
