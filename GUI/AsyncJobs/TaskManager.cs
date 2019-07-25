@@ -80,7 +80,7 @@ namespace WVA_Compulink_Server_Integration.AsyncJobs
 
         private static async void CheckForServerUpdates()
         {
-            await Updater.NotifyUpdatesAvailable();
+            await Updater.ForceUpdate();
         }
     }
 }

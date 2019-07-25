@@ -32,6 +32,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="2.2.0" />
+    <PackageReference Include="squirrel.windows" Version="1.9.1" />
     <PackageReference Include="System.Data.Odbc" Version="4.5.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.110" />
   </ItemGroup>

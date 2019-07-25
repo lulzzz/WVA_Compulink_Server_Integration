@@ -342,7 +342,6 @@ namespace WVA_Compulink_Server_Integration
         {
             try
             {
-
                 if (ServiceHost.IsRunning())
                     ServiceHost.Stop();
 
