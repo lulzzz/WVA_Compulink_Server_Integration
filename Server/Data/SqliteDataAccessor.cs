@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Threading.Tasks;
+using WVA_Compulink_Server_Integration.Errors;
 using WVA_Compulink_Server_Integration.Models.Orders;
 using WVA_Compulink_Server_Integration.Models.Users;
 using WVA_Compulink_Server_Integration.Utilities.Files;
@@ -19,76 +20,97 @@ namespace WVA_Compulink_Server_Integration.Data
 
         public void CreateUsersTable()
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                cnn.Execute("CREATE TABLE Users (" +
-                                    "Id                     INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                    "UserName               TEXT, " +
-                                    "Password               TEXT, " +
-                                    "Email                  TEXT); ");
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute("CREATE TABLE Users (" +
+                                        "Id                     INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                        "UserName               TEXT, " +
+                                        "Password               TEXT, " +
+                                        "Email                  TEXT); ");
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
             }
         }
 
         public void CreateWvaOrdersTable()
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                cnn.Execute("CREATE TABLE WvaOrders (" +
-                                    "Id                     INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                    "CustomerId             TEXT, " +
-                                    "OrderName              TEXT, " +
-                                    "CreatedDate            TEXT, " +
-                                    "WvaStoreId             TEXT, " +
-                                    "DateOfBirth            TEXT, " +
-                                    "Name1                  TEXT, " +
-                                    "Name2                  TEXT, " +
-                                    "StreetAddr1            TEXT, " +
-                                    "StreetAddr2            TEXT, " +
-                                    "City                   TEXT, " +
-                                    "State                  TEXT, " +
-                                    "Zip                    TEXT, " +
-                                    "ShipToAccount          TEXT, " +
-                                    "OrderedBy              TEXT, " +
-                                    "PoNumber               TEXT, " +
-                                    "ShippingMethod         TEXT, " +
-                                    "ShipToPatient          TEXT, " +
-                                    "Freight                TEXT, " +
-                                    "Tax                    TEXT, " +
-                                    "Discount               TEXT, " +
-                                    "InvoiceTotal           TEXT, " +
-                                    "Email                  TEXT, " +
-                                    "Phone                  TEXT, " +
-                                    "Status                 TEXT); ");
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute("CREATE TABLE WvaOrders (" +
+                                        "Id                     INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                        "CustomerId             TEXT, " +
+                                        "OrderName              TEXT, " +
+                                        "CreatedDate            TEXT, " +
+                                        "WvaStoreId             TEXT, " +
+                                        "DateOfBirth            TEXT, " +
+                                        "Name1                  TEXT, " +
+                                        "Name2                  TEXT, " +
+                                        "StreetAddr1            TEXT, " +
+                                        "StreetAddr2            TEXT, " +
+                                        "City                   TEXT, " +
+                                        "State                  TEXT, " +
+                                        "Zip                    TEXT, " +
+                                        "ShipToAccount          TEXT, " +
+                                        "OrderedBy              TEXT, " +
+                                        "PoNumber               TEXT, " +
+                                        "ShippingMethod         TEXT, " +
+                                        "ShipToPatient          TEXT, " +
+                                        "Freight                TEXT, " +
+                                        "Tax                    TEXT, " +
+                                        "Discount               TEXT, " +
+                                        "InvoiceTotal           TEXT, " +
+                                        "Email                  TEXT, " +
+                                        "Phone                  TEXT, " +
+                                        "Status                 TEXT); ");
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
             }
         }
 
         public void CreateOrderDetailsTable()
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                cnn.Execute("CREATE TABLE OrderDetails (" +
-                                   "ID                      INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                   "WvaOrderId              INT, " +
-                                   "LensRx                  INT, " +
-                                   "FirstName               TEXT, " +
-                                   "LastName                TEXT, " +
-                                   "Eye                     TEXT, " +
-                                   "Quantity                TEXT, " +
-                                   "Price                   TEXT, " +
-                                   "PatientId               TEXT, " +
-                                   "Name                    TEXT, " +
-                                   "ProductReviewed         INT, " +
-                                   "Sku                     TEXT, " +
-                                   "ProductKey              TEXT, " +
-                                   "Upc                     TEXT, " +
-                                   "Basecurve               TEXT, " +
-                                   "Diameter                TEXT, " +
-                                   "Sphere                  TEXT, " +
-                                   "Cylinder                TEXT, " +
-                                   "Axis                    TEXT, " +
-                                   "Ad                      TEXT, " +
-                                   "Color                   TEXT, " +
-                                   "Multifocal              TEXT); ");
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute("CREATE TABLE OrderDetails (" +
+                                       "ID                      INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                       "WvaOrderId              INT, " +
+                                       "LensRx                  INT, " +
+                                       "FirstName               TEXT, " +
+                                       "LastName                TEXT, " +
+                                       "Eye                     TEXT, " +
+                                       "Quantity                TEXT, " +
+                                       "Price                   TEXT, " +
+                                       "PatientId               TEXT, " +
+                                       "Name                    TEXT, " +
+                                       "ProductReviewed         INT, " +
+                                       "Sku                     TEXT, " +
+                                       "ProductKey              TEXT, " +
+                                       "Upc                     TEXT, " +
+                                       "Basecurve               TEXT, " +
+                                       "Diameter                TEXT, " +
+                                       "Sphere                  TEXT, " +
+                                       "Cylinder                TEXT, " +
+                                       "Axis                    TEXT, " +
+                                       "Ad                      TEXT, " +
+                                       "Color                   TEXT, " +
+                                       "Multifocal              TEXT); ");
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
             }
         }
 
@@ -98,121 +120,135 @@ namespace WVA_Compulink_Server_Integration.Data
 
         public void CreateUser(User user)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                cnn.Execute($"INSERT INTO Users (" +
-                                                    $"UserName, " +
-                                                    $"Password, " +
-                                                    $"Email) " +
-                                        $"VALUES (" +
-                                                $"'{user.UserName}', " +
-                                                $"'{user.Password}', " +
-                                                $"'{user.Email}')");
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute($"INSERT INTO Users (" +
+                                                        $"UserName, " +
+                                                        $"Password, " +
+                                                        $"Email) " +
+                                            $"VALUES (" +
+                                                    $"'{user.UserName}', " +
+                                                    $"'{user.Password}', " +
+                                                    $"'{user.Email}')");
+                }
+            }
+            catch(Exception ex)
+            {
+                Error.WriteError(ex);
             }
         }
 
         public void CreateOrder(Order order, string createdDate, string submitStatus)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
-            {
-                cnn.Execute($"INSERT INTO WvaOrders (" +
-                                                        $"CustomerId," +
-                                                        $"OrderName," +
-                                                        $"CreatedDate," +
-                                                        $"WvaStoreId," +
-                                                        $"DateOfBirth," +
-                                                        $"Name1," +
-                                                        $"Name2," +
-                                                        $"StreetAddr1," +
-                                                        $"StreetAddr2," +
-                                                        $"City," +
-                                                        $"State," +
-                                                        $"Zip," +
-                                                        $"OrderedBy," +
-                                                        $"PoNumber," +
-                                                        $"ShippingMethod," +
-                                                        $"ShipToPatient," +
-                                                        $"Phone," +
-                                                        $"Email," +
-                                                        $"Status) " +
-                                            $"VALUES (" +
-                                                        $"'{order.CustomerID}'," +
-                                                        $"'{order.OrderName}'," +
-                                                        $"'{order.CreatedDate}'," +
-                                                        $"'{order.WvaStoreID}'," +
-                                                        $"'{order.DoB}'," +
-                                                        $"'{order.Name_1}'," +
-                                                        $"'{order.Name_2}'," +
-                                                        $"'{order.StreetAddr_1}'," +
-                                                        $"'{order.StreetAddr_2}'," +
-                                                        $"'{order.City}'," +
-                                                        $"'{order.State}'," +
-                                                        $"'{order.Zip}'," +
-                                                        $"'{order.OrderedBy}'," +
-                                                        $"'{order.PoNumber}'," +
-                                                        $"'{order.ShippingMethod}'," +
-                                                        $"'{order.ShipToPatient}'," +
-                                                        $"'{order.Phone}'," +
-                                                        $"'{order.Email}'," +
-                                                        $"'{submitStatus}'," +
-                                                        $")");
-            }
-
-            int orderId;
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
-            {
-                orderId = cnn.Query<int>($"SELECT ID FROM WvaOrders WHERE OrderName = '{order.OrderName}'").FirstOrDefault();
-            }
-
-            foreach (Item item in order.Items)
+            try
             {
                 using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
                 {
-                    cnn.Execute($"INSERT INTO OrderDetail (" +
-                                                        $"WvaOrderId," +
-                                                        $"LensRx," +
-                                                        $"FirstName," +
-                                                        $"LastName," +
-                                                        $"Eye," +
-                                                        $"Quantity," +
-                                                        $"Price," +
-                                                        $"PatientId," +
-                                                        $"Name," +
-                                                        $"ProductReviewed," +
-                                                        $"Sku," +
-                                                        $"ProductKey," +
-                                                        $"Upc," +
-                                                        $"Basecurve," +
-                                                        $"Diameter," +
-                                                        $"Sphere," +
-                                                        $"Cylinder," +
-                                                        $"Axis," +
-                                                        $"Ad," +
-                                                        $"Color," +
-                                                        $"Multifocal) " +
+                    cnn.Execute($"INSERT INTO WvaOrders (" +
+                                                            $"CustomerId," +
+                                                            $"OrderName," +
+                                                            $"CreatedDate," +
+                                                            $"WvaStoreId," +
+                                                            $"DateOfBirth," +
+                                                            $"Name1," +
+                                                            $"Name2," +
+                                                            $"StreetAddr1," +
+                                                            $"StreetAddr2," +
+                                                            $"City," +
+                                                            $"State," +
+                                                            $"Zip," +
+                                                            $"OrderedBy," +
+                                                            $"PoNumber," +
+                                                            $"ShippingMethod," +
+                                                            $"ShipToPatient," +
+                                                            $"Phone," +
+                                                            $"Email," +
+                                                            $"Status) " +
                                                 $"VALUES (" +
-                                                        $"'{orderId}'," +
-                                                        $"'{item.OrderDetail.LensRx}'," +
-                                                        $"'{item.FirstName}'," +
-                                                        $"'{item.LastName}'," +
-                                                        $"'{item.Eye}'," +
-                                                        $"'{item.Quantity}'," +
-                                                        $"'{item.ItemRetailPrice}'," +
-                                                        $"'{item.PatientID}'," +
-                                                        $"'{item.OrderDetail.Name}'," +
-                                                        $"'{(item.OrderDetail.ProductReviewed == true ? 1 : 0)}'," +
-                                                        $"'{item.OrderDetail.SKU}'," +
-                                                        $"'{item.OrderDetail.ProductKey}'," +
-                                                        $"'{item.OrderDetail.UPC}'," +
-                                                        $"'{item.OrderDetail.Basecurve}'," +
-                                                        $"'{item.OrderDetail.Diameter}'," +
-                                                        $"'{item.OrderDetail.Sphere}'," +
-                                                        $"'{item.OrderDetail.Cylinder}'," +
-                                                        $"'{item.OrderDetail.Axis}'," +
-                                                        $"'{item.OrderDetail.Add}'," +
-                                                        $"'{item.OrderDetail.Cylinder}'," +
-                                                        $"'{item.OrderDetail.Multifocal}')");
+                                                            $"'{order.CustomerID}'," +
+                                                            $"'{order.OrderName}'," +
+                                                            $"'{order.CreatedDate}'," +
+                                                            $"'{order.WvaStoreID}'," +
+                                                            $"'{order.DoB}'," +
+                                                            $"'{order.Name_1}'," +
+                                                            $"'{order.Name_2}'," +
+                                                            $"'{order.StreetAddr_1}'," +
+                                                            $"'{order.StreetAddr_2}'," +
+                                                            $"'{order.City}'," +
+                                                            $"'{order.State}'," +
+                                                            $"'{order.Zip}'," +
+                                                            $"'{order.OrderedBy}'," +
+                                                            $"'{order.PoNumber}'," +
+                                                            $"'{order.ShippingMethod}'," +
+                                                            $"'{order.ShipToPatient}'," +
+                                                            $"'{order.Phone}'," +
+                                                            $"'{order.Email}'," +
+                                                            $"'{submitStatus}'" +
+                                                            $")");
                 }
+
+                int orderId;
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    orderId = cnn.Query<int>($"SELECT ID FROM WvaOrders WHERE OrderName = '{order.OrderName}'").FirstOrDefault();
+                }
+
+                foreach (Item item in order.Items)
+                {
+                    using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                    {
+                        cnn.Execute($"INSERT INTO OrderDetails (" +
+                                                            $"WvaOrderId," +
+                                                            $"LensRx," +
+                                                            $"FirstName," +
+                                                            $"LastName," +
+                                                            $"Eye," +
+                                                            $"Quantity," +
+                                                            $"Price," +
+                                                            $"PatientId," +
+                                                            $"Name," +
+                                                            $"ProductReviewed," +
+                                                            $"Sku," +
+                                                            $"ProductKey," +
+                                                            $"Upc," +
+                                                            $"Basecurve," +
+                                                            $"Diameter," +
+                                                            $"Sphere," +
+                                                            $"Cylinder," +
+                                                            $"Axis," +
+                                                            $"Ad," +
+                                                            $"Color," +
+                                                            $"Multifocal) " +
+                                                    $"VALUES (" +
+                                                            $"'{orderId}'," +
+                                                            $"'{item.OrderDetail.LensRx}'," +
+                                                            $"'{item.FirstName}'," +
+                                                            $"'{item.LastName}'," +
+                                                            $"'{item.Eye}'," +
+                                                            $"'{item.Quantity}'," +
+                                                            $"'{item.ItemRetailPrice}'," +
+                                                            $"'{item.PatientID}'," +
+                                                            $"'{item.OrderDetail.Name}'," +
+                                                            $"'{(item.OrderDetail.ProductReviewed == true ? 1 : 0)}'," +
+                                                            $"'{item.OrderDetail.SKU}'," +
+                                                            $"'{item.OrderDetail.ProductKey}'," +
+                                                            $"'{item.OrderDetail.UPC}'," +
+                                                            $"'{item.OrderDetail.Basecurve}'," +
+                                                            $"'{item.OrderDetail.Diameter}'," +
+                                                            $"'{item.OrderDetail.Sphere}'," +
+                                                            $"'{item.OrderDetail.Cylinder}'," +
+                                                            $"'{item.OrderDetail.Axis}'," +
+                                                            $"'{item.OrderDetail.Add}'," +
+                                                            $"'{item.OrderDetail.Cylinder}'," +
+                                                            $"'{item.OrderDetail.Multifocal}')");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
             }
         }
 
@@ -222,78 +258,151 @@ namespace WVA_Compulink_Server_Integration.Data
 
         public List<User> GetAllUsers()
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                return cnn.Query<User>($"SELECT * FROM Users").ToList();
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    return cnn.Query<User>($"SELECT * FROM Users").ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
+                return null;
             }
         }
 
         public Dictionary<string, string> GetOrderNames(string actNum)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                string sql = $"SELECT OrderName, Id FROM WvaOrders WHERE CustomerId = '{actNum}' AND Status = 'open'";
-                return cnn.Query<string, string, KeyValuePair<string, string>>(sql, (s, i) => new KeyValuePair<string, string>(s, i))
-                    .ToDictionary(kv => kv.Key, kv => kv.Value);
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    string sql = $"SELECT OrderName, Id FROM WvaOrders WHERE CustomerId = '{actNum}' AND Status = 'open'";
+                    return cnn.Query<string, Int64, KeyValuePair<string, Int64>>(sql, (s, i) => new KeyValuePair<string, Int64>(s, i))
+                        .ToDictionary(kv => kv.Key, kv => kv.Value.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
+                return null;
             }
         }
 
         public List<Order> GetWvaOrders(string actNum)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
-            {
-                List<Order> orders = cnn.Query<Order>($"SELECT * FROM WvaOrders WHERE CustomerId = '{actNum}'").ToList();
-
-                foreach (Order order in orders)
+            try
+            { 
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
                 {
-                    order.Items = cnn.Query<Item>($"SELECT * FROM OrderDetails WHERE WvaOrderId = '{order.ID}'").ToList();
-                }
+                    List<Order> orders = cnn.Query<Order>($"SELECT * FROM WvaOrders WHERE CustomerId = '{actNum}'").ToList();
 
-                return orders;
+                    foreach (Order order in orders)
+                    {
+                            
+                       List<ItemOrderDetail> details = cnn.Query<ItemOrderDetail>($"SELECT * FROM OrderDetails WHERE WvaOrderId = '{order.ID}'").ToList();
+
+                        order.Items = GetNestedItems(details);
+                    }
+
+                    return orders;
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
+                return null;
             }
         }
 
         public string GetEmail(string userName)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
+            { 
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                   return cnn.Query<string>($"SELECT Email FROM Users WHERE UserName = '{userName}'").FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
             {
-               return cnn.Query<string>($"SELECT Email FROM Users WHERE UserName = '{userName}'").FirstOrDefault();
+                Error.WriteError(ex);
+                return null;
             }
         }
 
         public Order OrderExists(string orderName)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                var order = cnn.Query<Order>($"SELECT * FROM WvaOrders WHERE OrderName = '{orderName}' AND Status = 'open' LIMIT 1").FirstOrDefault();
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    var order = cnn.Query<Order>($"SELECT * FROM WvaOrders WHERE OrderName = '{orderName}' AND Status = 'open' LIMIT 1").FirstOrDefault();
 
-                order.Items = cnn.Query<Item>($"SELECT * FROM OrderDetails WHERE WvaOrderId = '{order.ID}'").ToList();
+                    if (order == null)
+                        return null;
 
-                return order;
+                    // Purpose of this weird conversion is so we can map our nested order object to a single object that represents the OrderDetails table
+                    List<ItemOrderDetail> details = cnn.Query<ItemOrderDetail>($"SELECT * FROM OrderDetails WHERE WvaOrderId = '{order.ID}'").ToList();
+
+                    order.Items = GetNestedItems(details);
+
+                    return order;
+                }
+            } 
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
+                return null;
             }
         }
 
         public bool EmailExists(string email)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                return cnn.Query<string>($"SELECT * FROM Users WHERE Email='{email}'").FirstOrDefault() != null ? true : false;
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    return cnn.Query<string>($"SELECT * FROM Users WHERE Email='{email}'").FirstOrDefault() != null ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
+                return false;
             }
         }
 
         public bool UsernameExists(string userName)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                return cnn.Query<User>($"SELECT * FROM Users WHERE UserName = '{userName}'").FirstOrDefault() != null ? true : false;
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    return cnn.Query<User>($"SELECT * FROM Users WHERE UserName = '{userName}'").FirstOrDefault() != null ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
+                return false;
             }
         }
 
         public User CheckCredentials(User user)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                return cnn.Query<User>($"SELECT UserName, Password, Email FROM Users WHERE UserName='{user.UserName}' AND Password='{user.Password}'").FirstOrDefault();
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    return cnn.Query<User>($"SELECT UserName, Password, Email FROM Users WHERE UserName='{user.UserName}' AND Password='{user.Password}'").FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
+                return null;
             }
         }
 
@@ -303,117 +412,145 @@ namespace WVA_Compulink_Server_Integration.Data
 
         public void ChangePassword(string userName, string password)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                cnn.Execute($"UPDATE users SET Password ='{password}' WHERE UserName = '{userName}'");
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute($"UPDATE users SET Password ='{password}' WHERE UserName = '{userName}'");
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
             }
         }
 
         public void SumbitOrder(Order order)
         {
-            string createdDate = DateTime.Now.ToString("yyyy-MM-dd-HH:mm:ss");
-
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                cnn.Execute($"UPDATE WvaOrders " +
-                                            $"SET " +
-                                                $"Status          =   'submitted', " +
-                                                $"CreatedDate     =   '{createdDate}', " +
-                                                $"WvaStoreId      =   '{order.WvaStoreID}' " +
-                                            $"WHERE OrderName     =   '{order.OrderName}'");
+                string createdDate = DateTime.Now.ToString("yyyy-MM-dd-HH:mm:ss");
+
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute($"UPDATE WvaOrders " +
+                                                $"SET " +
+                                                    $"Status          =   'submitted', " +
+                                                    $"CreatedDate     =   '{createdDate}', " +
+                                                    $"WvaStoreId      =   '{order.WvaStoreID}' " +
+                                                $"WHERE OrderName     =   '{order.OrderName}'");
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
             }
         }
 
         public void UnsumbmitOrder(string orderName)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                cnn.Execute($"UPDATE WvaOrders " +
-                                        $"SET " +
-                                            $"Status           =   'open' " +
-                                        $"WHERE OrderName     =   '{orderName}'");
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute($"UPDATE WvaOrders " +
+                                            $"SET " +
+                                                $"Status           =   'open' " +
+                                            $"WHERE OrderName     =   '{orderName}'");
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
             }
         }
 
 
         public void SaveOrder(Order order, Order checkOrder)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
-            {
-                cnn.Execute($"UPDATE WvaOrders " +
-                                        $"SET " +
-                                            $"WvaStoreId       =   '{checkOrder.WvaStoreID}', " +
-                                            $"CreatedDate      =   '{checkOrder.CreatedDate}', " +
-                                            $"DateOfBirth      =   '{order.DoB}', " +
-                                            $"Name1            =   '{order.Name_1}', " +
-                                            $"Name2            =   '{order.Name_2}', " +
-                                            $"StreetAddr1      =   '{order.StreetAddr_1}', " +
-                                            $"StreetAddr2      =   '{order.StreetAddr_2}', " +
-                                            $"City             =   '{order.City}', " +
-                                            $"State            =   '{order.State}', " +
-                                            $"Zip              =   '{order.Zip}', " +
-                                            $"OrderedBy        =   '{order.OrderedBy}', " +
-                                            $"PoNumber         =   '{order.PoNumber}', " +
-                                            $"ShippingMethod   =   '{order.ShippingMethod}', " +
-                                            $"ShipToPatient    =   '{order.ShipToPatient}', " +
-                                            $"Phone            =   '{order.Phone}', " +
-                                            $"Email            =   '{order.Email}', " +
-                                            $"Status           =   'open' " +
-                                        $"WHERE OrderName      =   '{order.OrderName}';");
-            }
-
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
-            {
-                cnn.Execute($"DELETE FROM OrderDetails WHERE WvaOrderId = '{checkOrder.ID}'");
-            }
-
-            foreach (Item item in order.Items)
+            try
             {
                 using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
                 {
-                    cnn.Execute($"INSERT into OrderDetails (" +
-                                                   "WvaOrderId, " +
-                                                   "FirstName, " +
-                                                   "LastName, " +
-                                                   "Eye, " +
-                                                   "Quantity, " +
-                                                   "Price, " +
-                                                   "PatientId, " +
-                                                   "Name, " +
-                                                   "ProductReviewed, " +
-                                                   "Sku, " +
-                                                   "ProductKey, " +
-                                                   "Upc, " +
-                                                   "Basecurve, " +
-                                                   "Diameter, " +
-                                                   "Sphere, " +
-                                                   "Cylinder, " +
-                                                   "Axis, " +
-                                                   "Ad, " +
-                                                   "Color, " +
-                                                   "Multifocal) " +
-                                                   "values (" +
-                                                       $"'{checkOrder.ID}', " +
-                                                       $"'{item.FirstName}', " +
-                                                       $"'{item.LastName}', " +
-                                                       $"'{item.Eye}', " +
-                                                       $"'{item.Quantity}', " +
-                                                       $"'{item.ItemRetailPrice}', " +
-                                                       $"'{item.PatientID}', " +
-                                                       $"'{item.OrderDetail.Name}', " +
-                                                       $"'{(item.OrderDetail.ProductReviewed == true ? 1 : 0)}', " +
-                                                       $"'{item.OrderDetail.SKU}', " +
-                                                       $"'{item.OrderDetail.ProductKey}', " +
-                                                       $"'{item.OrderDetail.UPC}', " +
-                                                       $"'{item.OrderDetail.Basecurve}', " +
-                                                       $"'{item.OrderDetail.Diameter}', " +
-                                                       $"'{item.OrderDetail.Sphere}', " +
-                                                       $"'{item.OrderDetail.Cylinder}', " +
-                                                       $"'{item.OrderDetail.Axis}', " +
-                                                       $"'{item.OrderDetail.Add}', " +
-                                                       $"'{item.OrderDetail.Color}', " +
-                                                       $"'{item.OrderDetail.Multifocal}'");
+                    cnn.Execute($"UPDATE WvaOrders " +
+                                            $"SET " +
+                                                $"WvaStoreId       =   '{checkOrder.WvaStoreID}', " +
+                                                $"CreatedDate      =   '{checkOrder.CreatedDate}', " +
+                                                $"DateOfBirth      =   '{order.DoB}', " +
+                                                $"Name1            =   '{order.Name_1}', " +
+                                                $"Name2            =   '{order.Name_2}', " +
+                                                $"StreetAddr1      =   '{order.StreetAddr_1}', " +
+                                                $"StreetAddr2      =   '{order.StreetAddr_2}', " +
+                                                $"City             =   '{order.City}', " +
+                                                $"State            =   '{order.State}', " +
+                                                $"Zip              =   '{order.Zip}', " +
+                                                $"OrderedBy        =   '{order.OrderedBy}', " +
+                                                $"PoNumber         =   '{order.PoNumber}', " +
+                                                $"ShippingMethod   =   '{order.ShippingMethod}', " +
+                                                $"ShipToPatient    =   '{order.ShipToPatient}', " +
+                                                $"Phone            =   '{order.Phone}', " +
+                                                $"Email            =   '{order.Email}', " +
+                                                $"Status           =   'open' " +
+                                            $"WHERE OrderName      =   '{order.OrderName}';");
                 }
+
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute($"DELETE FROM OrderDetails WHERE WvaOrderId = '{checkOrder.ID}'");
+                }
+
+                foreach (Item item in order.Items)
+                {
+                    using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                    {
+                        cnn.Execute($"INSERT into OrderDetails (" +
+                                                       "WvaOrderId, " +
+                                                       "FirstName, " +
+                                                       "LastName, " +
+                                                       "Eye, " +
+                                                       "Quantity, " +
+                                                       "Price, " +
+                                                       "PatientId, " +
+                                                       "Name, " +
+                                                       "ProductReviewed, " +
+                                                       "Sku, " +
+                                                       "ProductKey, " +
+                                                       "Upc, " +
+                                                       "Basecurve, " +
+                                                       "Diameter, " +
+                                                       "Sphere, " +
+                                                       "Cylinder, " +
+                                                       "Axis, " +
+                                                       "Ad, " +
+                                                       "Color, " +
+                                                       "Multifocal) " +
+                                                       "values (" +
+                                                           $"'{checkOrder.ID}', " +
+                                                           $"'{item.FirstName}', " +
+                                                           $"'{item.LastName}', " +
+                                                           $"'{item.Eye}', " +
+                                                           $"'{item.Quantity}', " +
+                                                           $"'{item.ItemRetailPrice}', " +
+                                                           $"'{item.PatientID}', " +
+                                                           $"'{item.OrderDetail.Name}', " +
+                                                           $"'{(item.OrderDetail.ProductReviewed == true ? 1 : 0)}', " +
+                                                           $"'{item.OrderDetail.SKU}', " +
+                                                           $"'{item.OrderDetail.ProductKey}', " +
+                                                           $"'{item.OrderDetail.UPC}', " +
+                                                           $"'{item.OrderDetail.Basecurve}', " +
+                                                           $"'{item.OrderDetail.Diameter}', " +
+                                                           $"'{item.OrderDetail.Sphere}', " +
+                                                           $"'{item.OrderDetail.Cylinder}', " +
+                                                           $"'{item.OrderDetail.Axis}', " +
+                                                           $"'{item.OrderDetail.Add}', " +
+                                                           $"'{item.OrderDetail.Color}', " +
+                                                           $"'{item.OrderDetail.Multifocal}')");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
             }
         }
 
@@ -422,37 +559,58 @@ namespace WVA_Compulink_Server_Integration.Data
         //
         public void DeleteTable(string tableName)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                cnn.Execute($"DROP TABLE {tableName}");
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute($"DROP TABLE {tableName}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
             }
         }
 
         public void DeleteUser(int id, string userName)
         {
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                cnn.Execute($"DELETE FROM Users WHERE Id='{id}' AND UserName='{userName}'");
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute($"DELETE FROM Users WHERE Id='{id}' AND UserName='{userName}'");
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
             }
         }
 
         public void DeleteOrder(string orderName)
         {
-            int orderId;
-
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            try
             {
-                orderId  = cnn.Query<int>($"SELECT ID FROM WvaOrders WHERE OrderName = '{orderName}'").FirstOrDefault();
+                int orderId;
+
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    orderId = cnn.Query<int>($"SELECT ID FROM WvaOrders WHERE OrderName = '{orderName}'").FirstOrDefault();
+                }
+
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute($"DELETE FROM WvaOrders WHERE OrderName = '{orderName}'");
+                }
+
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute($"DELETE FROM OrderDetails WHERE WvaOrderId = '{orderId}'");
+                }
             }
-
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            catch (Exception ex)
             {
-                cnn.Execute($"DELETE FROM WvaOrders WHERE OrderName = '{orderName}'");
-            }
-
-            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
-            {
-                cnn.Execute($"DELETE FROM OrderDetails WHERE WvaOrderId = '{orderId}'");
+                Error.WriteError(ex);
             }
         }
 
@@ -465,6 +623,50 @@ namespace WVA_Compulink_Server_Integration.Data
             return $"Data Source={Paths.DatabaseFile};Version=3;";
         }
 
+        //
+        // Convert a ItemOrderDetail object (ORM style) to an Item object (nested class style) to follow Dapper ORM protocol
+        //
+
+        private List<Item> GetNestedItems(List<ItemOrderDetail> details)
+        {
+            var items = new List<Item>();
+
+            foreach (ItemOrderDetail detail in details)
+            {
+                var item = new Item()
+                {
+                    ID = detail.ID,
+                    FirstName = detail.FirstName,
+                    LastName = detail.LastName,
+                    PatientID = detail.PatientID,
+                    Eye = detail.Eye,
+                    Quantity = detail.Quantity,
+                    ItemRetailPrice = detail.ItemRetailPrice,
+                    OrderDetail = new OrderDetail()
+                    {
+                        Name = detail.Name,
+                        SKU = detail.SKU,
+                        UPC = detail.UPC,
+                        Basecurve = detail.Basecurve,
+                        Diameter = detail.Diameter,
+                        Sphere = detail.Sphere,
+                        Cylinder = detail.Cylinder,
+                        Axis = detail.Axis,
+                        Add = detail.Add,
+                        Color = detail.Color,
+                        Multifocal = detail.Multifocal,
+                        ProductCode = detail.ProductCode,
+                        ProductReviewed = detail.ProductReviewed,
+                        ProductKey = detail.ProductKey,
+                        LensRx = detail.LensRx
+                    }
+                };
+
+                items.Add(item);
+            };
+
+            return null;
+        }
 
     }
 }

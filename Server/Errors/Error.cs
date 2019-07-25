@@ -49,7 +49,7 @@ namespace WVA_Compulink_Server_Integration.Errors
             }
         }
 
-        private static void WriteError(string exceptionMessage)
+        public static void WriteError(string exceptionMessage)
         {
             try
             {
@@ -70,6 +70,35 @@ namespace WVA_Compulink_Server_Integration.Errors
                     writer.WriteLine("");
                     writer.WriteLine($"(ERROR.TIME_ENCOUNTERED: {time})");
                     writer.WriteLine($"(ERROR.MESSAGE: {exceptionMessage})");
+                    writer.WriteLine("");
+                    writer.WriteLine("-----------------------------------------------------------------------------------");
+                    writer.Close();
+                }
+            }
+            catch { }
+        }
+
+        public static void WriteError(Exception exception)
+        {
+            try
+            {
+                string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+
+                if (!Directory.Exists(Paths.ErrorLogDir))
+                    Directory.CreateDirectory(Paths.ErrorLogDir);
+
+                if (!File.Exists(Paths.ErrorLogDir + $@"\Error_{time}.txt"))
+                {
+                    var file = File.Create(Paths.ErrorLogDir + $@"\Error_{time}.txt");
+                    file.Close();
+                }
+
+                using (StreamWriter writer = new StreamWriter((Paths.ErrorLogDir + $@"\Error_{time}.txt"), true))
+                {
+                    writer.WriteLine("-----------------------------------------------------------------------------------");
+                    writer.WriteLine("");
+                    writer.WriteLine($"(ERROR.TIME_ENCOUNTERED: {time})");
+                    writer.WriteLine($"(ERROR: {exception.ToString()})");
                     writer.WriteLine("");
                     writer.WriteLine("-----------------------------------------------------------------------------------");
                     writer.Close();
