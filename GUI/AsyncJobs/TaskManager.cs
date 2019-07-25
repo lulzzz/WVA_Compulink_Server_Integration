@@ -10,7 +10,6 @@ namespace WVA_Compulink_Server_Integration.AsyncJobs
 {
     class TaskManager
     {
-        private static DateTime LastTimeUpdated { get; set; }
         private static DateTime LastTimeCleaned { get; set; }
 
         private static readonly TimeSpan startWorkingHour = new TimeSpan(6, 0, 0);
@@ -39,13 +38,9 @@ namespace WVA_Compulink_Server_Integration.AsyncJobs
                     }
 
                     // Update the server app
-                    if (LastTimeUpdated < DateTime.Now.AddDays(-1))
-                    {
-                        Task checkUpdatesTask = new Task(() => { CheckForServerUpdates(); });
-                        checkUpdatesTask.Start();
-                        checkUpdatesTask.Wait();
-                        LastTimeUpdated = now;
-                    }
+                    Task checkUpdatesTask = new Task(() => { CheckForServerUpdates(); });
+                    checkUpdatesTask.Start();
+                    checkUpdatesTask.Wait();
                 }
 
                 Thread.Sleep(60000);

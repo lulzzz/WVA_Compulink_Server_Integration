@@ -210,3 +210,4 @@ C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\GUI.c
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\GUI.csproj.CopyComplete
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\WVA_Compulink_Server_Integration.exe
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\WVA_Compulink_Server_Integration.pdb
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\GUI.csprojAssemblyReference.cache
