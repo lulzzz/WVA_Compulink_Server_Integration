@@ -76,7 +76,7 @@ namespace WVA_Compulink_Server_Integration.Updates
             ServiceHost.Stop();
             ServiceHost.Uninstall();
             await Task.Run(() => Update());
-            Thread.Sleep(1000); // Wait a second for the for the update files to be placed before calling the new application
+            //Thread.Sleep(1000); // Wait a second for the for the update files to be placed before calling the new application
             ServiceHost.Install();
             ServiceHost.Start();
             RestartApplication();
@@ -84,7 +84,7 @@ namespace WVA_Compulink_Server_Integration.Updates
 
         private static void RestartApplication()
         {
-            Process.Start(Application.ResourceAssembly.Location);
+            Process.Start(Paths.AppExecFile);
             Application.Current.Shutdown();
         }
 
