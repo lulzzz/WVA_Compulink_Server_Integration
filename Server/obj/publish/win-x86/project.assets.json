@@ -16,6 +16,19 @@
           "lib/netstandard2.0/Dapper.dll": {}
         }
       },
+      "DeltaCompressionDotNet/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/DeltaCompressionDotNet.MsDelta.dll": {},
+          "lib/net20/DeltaCompressionDotNet.PatchApi.dll": {},
+          "lib/net20/DeltaCompressionDotNet.dll": {}
+        },
+        "runtime": {
+          "lib/net20/DeltaCompressionDotNet.MsDelta.dll": {},
+          "lib/net20/DeltaCompressionDotNet.PatchApi.dll": {},
+          "lib/net20/DeltaCompressionDotNet.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -2749,6 +2762,21 @@
           }
         }
       },
+      "Mono.Cecil/0.9.6.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Mono.Cecil.Mdb.dll": {},
+          "lib/net45/Mono.Cecil.Pdb.dll": {},
+          "lib/net45/Mono.Cecil.Rocks.dll": {},
+          "lib/net45/Mono.Cecil.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Mono.Cecil.Mdb.dll": {},
+          "lib/net45/Mono.Cecil.Pdb.dll": {},
+          "lib/net45/Mono.Cecil.Rocks.dll": {},
+          "lib/net45/Mono.Cecil.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -3012,6 +3040,40 @@
             "assetType": "native",
             "rid": "win-x86"
           }
+        }
+      },
+      "SharpCompress/0.17.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/SharpCompress.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SharpCompress.dll": {}
+        }
+      },
+      "Splat/1.6.2": {
+        "type": "package",
+        "compile": {
+          "lib/Net45/Splat.dll": {}
+        },
+        "runtime": {
+          "lib/Net45/Splat.dll": {}
+        }
+      },
+      "squirrel.windows/1.9.1": {
+        "type": "package",
+        "dependencies": {
+          "DeltaCompressionDotNet": "[1.1.0, 2.0.0)",
+          "Mono.Cecil": "0.9.6.1",
+          "SharpCompress": "[0.17.1]",
+          "Splat": "1.6.2"
+        },
+        "build": {
+          "build/squirrel.windows.props": {},
+          "build/squirrel.windows.targets": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -4604,6 +4666,19 @@
         },
         "runtime": {
           "lib/netstandard2.0/Dapper.dll": {}
+        }
+      },
+      "DeltaCompressionDotNet/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/DeltaCompressionDotNet.MsDelta.dll": {},
+          "lib/net20/DeltaCompressionDotNet.PatchApi.dll": {},
+          "lib/net20/DeltaCompressionDotNet.dll": {}
+        },
+        "runtime": {
+          "lib/net20/DeltaCompressionDotNet.MsDelta.dll": {},
+          "lib/net20/DeltaCompressionDotNet.PatchApi.dll": {},
+          "lib/net20/DeltaCompressionDotNet.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -7328,6 +7403,21 @@
           "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll": {}
         }
       },
+      "Mono.Cecil/0.9.6.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Mono.Cecil.Mdb.dll": {},
+          "lib/net45/Mono.Cecil.Pdb.dll": {},
+          "lib/net45/Mono.Cecil.Rocks.dll": {},
+          "lib/net45/Mono.Cecil.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Mono.Cecil.Mdb.dll": {},
+          "lib/net45/Mono.Cecil.Pdb.dll": {},
+          "lib/net45/Mono.Cecil.Rocks.dll": {},
+          "lib/net45/Mono.Cecil.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -7755,6 +7845,40 @@
         "type": "package",
         "native": {
           "runtimes/win-x86/native/sni.dll": {}
+        }
+      },
+      "SharpCompress/0.17.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/SharpCompress.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SharpCompress.dll": {}
+        }
+      },
+      "Splat/1.6.2": {
+        "type": "package",
+        "compile": {
+          "lib/Net45/Splat.dll": {}
+        },
+        "runtime": {
+          "lib/Net45/Splat.dll": {}
+        }
+      },
+      "squirrel.windows/1.9.1": {
+        "type": "package",
+        "dependencies": {
+          "DeltaCompressionDotNet": "[1.1.0, 2.0.0)",
+          "Mono.Cecil": "0.9.6.1",
+          "SharpCompress": "[0.17.1]",
+          "Splat": "1.6.2"
+        },
+        "build": {
+          "build/squirrel.windows.props": {},
+          "build/squirrel.windows.targets": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -9184,6 +9308,20 @@
         "lib/netstandard1.3/Dapper.xml",
         "lib/netstandard2.0/Dapper.dll",
         "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "DeltaCompressionDotNet/1.1.0": {
+      "sha512": "j/zGAQ9hLbl7JDpeO40DaXvyyNxwQNDwnJEN7eCexn5F9Kid+VKya/Er0rfIv5Zod/32XarkqFP/V6WFHS/UpQ==",
+      "type": "package",
+      "path": "deltacompressiondotnet/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "deltacompressiondotnet.1.1.0.nupkg.sha512",
+        "deltacompressiondotnet.nuspec",
+        "lib/net20/DeltaCompressionDotNet.MsDelta.dll",
+        "lib/net20/DeltaCompressionDotNet.PatchApi.dll",
+        "lib/net20/DeltaCompressionDotNet.dll"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -11982,6 +12120,34 @@
         "version.txt"
       ]
     },
+    "Mono.Cecil/0.9.6.1": {
+      "sha512": "yMsurNaOxxKIjyW9pEB+tRrR1S3DFnN1+iBgKvYvXG8kW0Y6yknJeMAe/tl3+P78/2C6304TgF7aVqpqXgEQ9Q==",
+      "type": "package",
+      "path": "mono.cecil/0.9.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Mono.Cecil.Mdb.dll",
+        "lib/net20/Mono.Cecil.Pdb.dll",
+        "lib/net20/Mono.Cecil.dll",
+        "lib/net35/Mono.Cecil.Mdb.dll",
+        "lib/net35/Mono.Cecil.Pdb.dll",
+        "lib/net35/Mono.Cecil.Rocks.dll",
+        "lib/net35/Mono.Cecil.dll",
+        "lib/net40/Mono.Cecil.Mdb.dll",
+        "lib/net40/Mono.Cecil.Pdb.dll",
+        "lib/net40/Mono.Cecil.Rocks.dll",
+        "lib/net40/Mono.Cecil.dll",
+        "lib/net45/Mono.Cecil.Mdb.dll",
+        "lib/net45/Mono.Cecil.Pdb.dll",
+        "lib/net45/Mono.Cecil.Rocks.dll",
+        "lib/net45/Mono.Cecil.dll",
+        "lib/sl5/Mono.Cecil.Rocks.dll",
+        "lib/sl5/Mono.Cecil.dll",
+        "mono.cecil.0.9.6.1.nupkg.sha512",
+        "mono.cecil.nuspec"
+      ]
+    },
     "NETStandard.Library/2.0.3": {
       "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
@@ -12718,6 +12884,95 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "SharpCompress/0.17.1": {
+      "sha512": "NSofrWwVr0z0ZNRCoV6XFjdopMbOSY6QVRLBfLXUDcjMLNKKhDV6zibiFEVa9eVaz24deslc8kqdVYurKJq/aA==",
+      "type": "package",
+      "path": "sharpcompress/0.17.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/SharpCompress.dll",
+        "lib/net45/SharpCompress.dll",
+        "lib/netstandard1.0/SharpCompress.dll",
+        "lib/netstandard1.3/SharpCompress.dll",
+        "sharpcompress.0.17.1.nupkg.sha512",
+        "sharpcompress.nuspec"
+      ]
+    },
+    "Splat/1.6.2": {
+      "sha512": "DeH0MxPU+D4JchkIDPYG4vUT+hsWs9S41cFle0/4K5EJMXWurx5DzAkj2366DfK14/XKNhsu6tCl4dZXJ3CD4w==",
+      "type": "package",
+      "path": "splat/1.6.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoMac/Splat.dll",
+        "lib/MonoMac/Splat.dll.mdb",
+        "lib/Net45/Splat.dll",
+        "lib/Net45/Splat.pdb",
+        "lib/NetCore45/Splat.dll",
+        "lib/NetCore45/Splat.pdb",
+        "lib/NetCore45/Splat.pri",
+        "lib/Portable-Win81+Wpa81/Splat.dll",
+        "lib/Portable-Win81+Wpa81/Splat.pdb",
+        "lib/Portable-Win81+Wpa81/Splat.pri",
+        "lib/Portable-net45+win+wpa81+wp80/Splat.dll",
+        "lib/Xamarin.Mac10/Splat-XamarinMac.csproj.FilesWrittenAbsolute.txt",
+        "lib/Xamarin.Mac10/Splat.dll",
+        "lib/Xamarin.Mac10/Splat.dll.mdb",
+        "lib/Xamarin.iOS10/Splat.dll",
+        "lib/Xamarin.iOS10/Splat.dll.mdb",
+        "lib/monoandroid/Splat.dll",
+        "lib/monoandroid/Splat.dll.mdb",
+        "lib/monotouch/Splat.dll",
+        "lib/monotouch/Splat.dll.mdb",
+        "lib/wp8/Splat.dll",
+        "lib/wp8/Splat.pdb",
+        "splat.1.6.2.nupkg.sha512",
+        "splat.nuspec"
+      ]
+    },
+    "squirrel.windows/1.9.1": {
+      "sha512": "hIM9q9Lmlqdz6Hul+UEEqNfU0xZflZtFbw7YY5m20Vn/mLpz1cIBjHHk1kqZnZrE7K3kJll5pEy29XMJQQo0lA==",
+      "type": "package",
+      "path": "squirrel.windows/1.9.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/squirrel.windows.props",
+        "build/squirrel.windows.targets",
+        "lib/Net45/NuGet.Squirrel.dll",
+        "lib/Net45/NuGet.Squirrel.pdb",
+        "lib/Net45/Squirrel.dll",
+        "lib/Net45/Squirrel.pdb",
+        "squirrel.windows.1.9.1.nupkg.sha512",
+        "squirrel.windows.nuspec",
+        "tools/7z.dll",
+        "tools/7z.exe",
+        "tools/Microsoft.Deployment.Resources.dll",
+        "tools/Microsoft.Deployment.WindowsInstaller.dll",
+        "tools/Setup.exe",
+        "tools/Squirrel-Mono.exe",
+        "tools/Squirrel.com",
+        "tools/Squirrel.exe",
+        "tools/StubExecutable.exe",
+        "tools/SyncReleases.exe",
+        "tools/WixNetFxExtension.dll",
+        "tools/WriteZipToSetup.exe",
+        "tools/candle.exe",
+        "tools/candle.exe.config",
+        "tools/darice.cub",
+        "tools/light.exe",
+        "tools/light.exe.config",
+        "tools/rcedit.exe",
+        "tools/signtool.exe",
+        "tools/template.wxs",
+        "tools/wconsole.dll",
+        "tools/winterop.dll",
+        "tools/wix.dll"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -17318,7 +17573,8 @@
       "Microsoft.Extensions.Logging.EventLog >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.6",
       "System.Data.Odbc >= 4.5.0",
-      "System.Data.SQLite >= 1.0.110"
+      "System.Data.SQLite >= 1.0.110",
+      "squirrel.windows >= 1.9.1"
     ]
   },
   "packageFolders": {
@@ -17396,6 +17652,10 @@
           "System.Data.SQLite": {
             "target": "Package",
             "version": "[1.0.110, )"
+          },
+          "squirrel.windows": {
+            "target": "Package",
+            "version": "[1.9.1, )"
           }
         },
         "imports": [
@@ -17410,5 +17670,37 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'DeltaCompressionDotNet 1.1.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.2'. This package may not be fully compatible with your project.",
+      "libraryId": "DeltaCompressionDotNet",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Mono.Cecil 0.9.6.1' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.2'. This package may not be fully compatible with your project.",
+      "libraryId": "Mono.Cecil",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Splat 1.6.2' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.2'. This package may not be fully compatible with your project.",
+      "libraryId": "Splat",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    }
+  ]
 }

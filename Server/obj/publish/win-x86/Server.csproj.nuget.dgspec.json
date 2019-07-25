@@ -74,6 +74,10 @@
             "System.Data.SQLite": {
               "target": "Package",
               "version": "[1.0.110, )"
+            },
+            "squirrel.windows": {
+              "target": "Package",
+              "version": "[1.9.1, )"
             }
           },
           "imports": [

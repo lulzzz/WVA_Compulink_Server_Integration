@@ -1,0 +1,39 @@
+﻿<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+  <Product Id="*" Name="WVA_Compulink_Server_Integration Machine-Wide Installer" Language="1033" Codepage="1252" Version="!(bind.FileVersion.WVA_Compulink_Server_Integration.exe)" UpgradeCode="f04f81d5-f60d-507b-88aa-0fdcab9fa6b8" Manufacturer="Wisconsin Vision Associates">
+
+    <Package Description="#Description" Comments="Comments" InstallerVersion="200" Compressed="yes"/>
+		<Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
+
+    <PropertyRef Id="NETFRAMEWORK45" />
+
+    <Condition Message="This application requires .NET Framework 4.5 or higher. Please install the latest .NET Framework then run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK45]]>
+    </Condition>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="APPLICATIONROOTDIRECTORY" Name="WVA_Compulink_Server_Integration Installer" />
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="APPLICATIONROOTDIRECTORY">
+      <Component Id="WVA_Compulink_Server_Integration.exe" Guid="bef18a35-9386-5424-beb7-be36aaae51ad">
+        <File Id="WVA_Compulink_Server_Integration.exe" Name="WVA_Compulink_Server_Integration.exe" Source="./Setup.exe" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="RegistryEntries" Guid="f4fcdfb1-0412-50b1-8c32-2b28ff4371ff">
+        <RegistryKey Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Run">
+          <RegistryValue Type="expandable" Name="WVA_Compulink_Server_IntegrationMachineInstaller" Value="%ProgramFiles%\WVA_Compulink_Server_Integration Installer\WVA_Compulink_Server_Integration.exe --checkInstall" />
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="MainApplication" Title="Main Application" Level="1">
+      <ComponentRef Id="WVA_Compulink_Server_Integration.exe" />
+      <ComponentRef Id="RegistryEntries" />
+    </Feature>
+  </Product>
+</Wix>
+

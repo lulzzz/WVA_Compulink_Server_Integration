@@ -1,10 +1,11 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2/win-x86",
-    "signature": "59365cb34a81ff72905af9d579beb35e801a2963"
+    "signature": "cfb50d29e5aff1773cc8ce918237af15574c98c3"
   },
   "compilationOptions": {
     "defines": [
+      "DEBUG",
       "TRACE",
       "RELEASE",
       "NETCOREAPP",
@@ -14,11 +15,11 @@
     "platform": "x86",
     "allowUnsafe": false,
     "warningsAsErrors": false,
-    "optimize": true,
+    "optimize": false,
     "keyFile": "",
     "emitEntryPoint": true,
     "xmlDoc": false,
-    "debugType": "portable"
+    "debugType": "full"
   },
   "targets": {
     ".NETCoreApp,Version=v2.2": {
@@ -31,6 +32,7 @@
           "Microsoft.NETCore.App": "2.2.6",
           "System.Data.Odbc": "4.5.0",
           "System.Data.SQLite": "1.0.110",
+          "squirrel.windows": "1.9.1",
           "PresentationFramework": "4.0.0.0"
         },
         "compile": {
@@ -45,6 +47,13 @@
         },
         "compile": {
           "lib/netstandard2.0/Dapper.dll": {}
+        }
+      },
+      "DeltaCompressionDotNet/1.1.0": {
+        "compile": {
+          "lib/net20/DeltaCompressionDotNet.MsDelta.dll": {},
+          "lib/net20/DeltaCompressionDotNet.PatchApi.dll": {},
+          "lib/net20/DeltaCompressionDotNet.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -2035,6 +2044,14 @@
           "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
         }
       },
+      "Mono.Cecil/0.9.6.1": {
+        "compile": {
+          "lib/net45/Mono.Cecil.Mdb.dll": {},
+          "lib/net45/Mono.Cecil.Pdb.dll": {},
+          "lib/net45/Mono.Cecil.Rocks.dll": {},
+          "lib/net45/Mono.Cecil.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.2"
@@ -2142,6 +2159,27 @@
         }
       },
       "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
+      "SharpCompress/0.17.1": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard1.3/SharpCompress.dll": {}
+        }
+      },
+      "Splat/1.6.2": {
+        "compile": {
+          "lib/Net45/Splat.dll": {}
+        }
+      },
+      "squirrel.windows/1.9.1": {
+        "dependencies": {
+          "DeltaCompressionDotNet": "1.1.0",
+          "Mono.Cecil": "0.9.6.1",
+          "SharpCompress": "0.17.1",
+          "Splat": "1.6.2"
+        }
+      },
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -3017,6 +3055,7 @@
           "Microsoft.NETCore.App": "2.2.6",
           "System.Data.Odbc": "4.5.0",
           "System.Data.SQLite": "1.0.110",
+          "squirrel.windows": "1.9.1",
           "PresentationFramework": "4.0.0.0"
         },
         "runtime": {
@@ -3033,6 +3072,22 @@
           "lib/netstandard2.0/Dapper.dll": {
             "assemblyVersion": "1.60.0.0",
             "fileVersion": "1.60.6.27094"
+          }
+        }
+      },
+      "DeltaCompressionDotNet/1.1.0": {
+        "runtime": {
+          "lib/net20/DeltaCompressionDotNet.MsDelta.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          },
+          "lib/net20/DeltaCompressionDotNet.PatchApi.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          },
+          "lib/net20/DeltaCompressionDotNet.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
           }
         }
       },
@@ -5361,6 +5416,26 @@
           "System.Security.Principal.Windows": "4.5.0"
         }
       },
+      "Mono.Cecil/0.9.6.1": {
+        "runtime": {
+          "lib/net45/Mono.Cecil.Mdb.dll": {
+            "assemblyVersion": "0.9.6.0",
+            "fileVersion": "0.9.6.0"
+          },
+          "lib/net45/Mono.Cecil.Pdb.dll": {
+            "assemblyVersion": "0.9.6.0",
+            "fileVersion": "0.9.6.0"
+          },
+          "lib/net45/Mono.Cecil.Rocks.dll": {
+            "assemblyVersion": "0.9.6.0",
+            "fileVersion": "0.9.6.0"
+          },
+          "lib/net45/Mono.Cecil.dll": {
+            "assemblyVersion": "0.9.6.0",
+            "fileVersion": "0.9.6.0"
+          }
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.2"
@@ -6291,6 +6366,33 @@
           "runtimes/win-x86/native/sni.dll": {
             "fileVersion": "4.6.25512.1"
           }
+        }
+      },
+      "SharpCompress/0.17.1": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "lib/netstandard1.3/SharpCompress.dll": {
+            "assemblyVersion": "0.17.1.0",
+            "fileVersion": "0.17.1.0"
+          }
+        }
+      },
+      "Splat/1.6.2": {
+        "runtime": {
+          "lib/Net45/Splat.dll": {
+            "assemblyVersion": "1.6.2.0",
+            "fileVersion": "1.6.2.0"
+          }
+        }
+      },
+      "squirrel.windows/1.9.1": {
+        "dependencies": {
+          "DeltaCompressionDotNet": "1.1.0",
+          "Mono.Cecil": "0.9.6.1",
+          "SharpCompress": "0.17.1",
+          "Splat": "1.6.2"
         }
       },
       "System.AppContext/4.3.0": {
@@ -7317,6 +7419,13 @@
       "sha512": "sha512-mmnJNhKMeF2KhvVXDoVQlFxre8aJAo71YBJrKqFlvuqzYC2QiXUq94/GCDBJzU7paq4GqpkV2glw3308TcGibw==",
       "path": "dapper/1.60.6",
       "hashPath": "dapper.1.60.6.nupkg.sha512"
+    },
+    "DeltaCompressionDotNet/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-j/zGAQ9hLbl7JDpeO40DaXvyyNxwQNDwnJEN7eCexn5F9Kid+VKya/Er0rfIv5Zod/32XarkqFP/V6WFHS/UpQ==",
+      "path": "deltacompressiondotnet/1.1.0",
+      "hashPath": "deltacompressiondotnet.1.1.0.nupkg.sha512"
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",
@@ -8529,6 +8638,13 @@
       "path": "microsoft.win32.registry/4.5.0",
       "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
     },
+    "Mono.Cecil/0.9.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yMsurNaOxxKIjyW9pEB+tRrR1S3DFnN1+iBgKvYvXG8kW0Y6yknJeMAe/tl3+P78/2C6304TgF7aVqpqXgEQ9Q==",
+      "path": "mono.cecil/0.9.6.1",
+      "hashPath": "mono.cecil.0.9.6.1.nupkg.sha512"
+    },
     "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
@@ -8724,6 +8840,27 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "SharpCompress/0.17.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NSofrWwVr0z0ZNRCoV6XFjdopMbOSY6QVRLBfLXUDcjMLNKKhDV6zibiFEVa9eVaz24deslc8kqdVYurKJq/aA==",
+      "path": "sharpcompress/0.17.1",
+      "hashPath": "sharpcompress.0.17.1.nupkg.sha512"
+    },
+    "Splat/1.6.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DeH0MxPU+D4JchkIDPYG4vUT+hsWs9S41cFle0/4K5EJMXWurx5DzAkj2366DfK14/XKNhsu6tCl4dZXJ3CD4w==",
+      "path": "splat/1.6.2",
+      "hashPath": "splat.1.6.2.nupkg.sha512"
+    },
+    "squirrel.windows/1.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hIM9q9Lmlqdz6Hul+UEEqNfU0xZflZtFbw7YY5m20Vn/mLpz1cIBjHHk1kqZnZrE7K3kJll5pEy29XMJQQo0lA==",
+      "path": "squirrel.windows/1.9.1",
+      "hashPath": "squirrel.windows.1.9.1.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",
