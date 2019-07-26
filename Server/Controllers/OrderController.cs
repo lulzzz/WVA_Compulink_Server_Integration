@@ -64,7 +64,7 @@ namespace WVA_Compulink_Server_Integration.Controllers
 
                     if (orderSubmitted)
                     {
-                        var listLensRxes = sqliteDatabase.GetLensRxByWvaOrderId(response?.Data?.Wva_order_id);
+                        var listLensRxes = sqliteDatabase.GetLensRxByWvaOrderId(response.Data?.Wva_order_id);
                         var compulinkOdbcWriter = new CompulinkOdbcWriter();
 
                         compulinkOdbcWriter.UpdateLensRx(listLensRxes, response.Data?.Wva_order_id);
@@ -82,11 +82,13 @@ namespace WVA_Compulink_Server_Integration.Controllers
                 // If order creation failed, set order back to 'open' status
                 sqliteDatabase.UnsubmitOrder(orderWrapper?.OutOrder?.PatientOrder?.OrderName);
 
+                Errors.Error.ReportOrLog(x);
+
                 // Return fail response
                 return new Response()
                 {
                     Status = "FAIL",
-                    Message = $"{x.Message}"
+                    Message = $"Order creation failed. Please contact IT."
                 };
             }
         }

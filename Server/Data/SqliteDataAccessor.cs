@@ -665,7 +665,7 @@ namespace WVA_Compulink_Server_Integration.Data
                 items.Add(item);
             };
 
-            return null;
+            return items;
         }
 
     }

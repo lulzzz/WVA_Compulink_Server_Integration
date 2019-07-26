@@ -8,6 +8,8 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using System.Data;
+using Dapper;
 
 namespace WVA_Compulink_Server_Integration.Data
 {
@@ -221,22 +223,20 @@ namespace WVA_Compulink_Server_Integration.Data
             }
         }
 
-        public List<string> GetLensRxByWvaOrderId(string wvaOrderId)
+        public List<string> GetLensRxByWvaOrderId(string wvaStoreId)
         {
             List<string> lensrxes = new List<string>();
+
+            SQLiteConnection dbConnection = GetSQLiteConnection();
+            dbConnection.Open();
+
             try
             {
-                SQLiteConnection dbConnection = GetSQLiteConnection();
-                dbConnection.Open();
-
-                string getLensRxes = $"SELECT DISTINCT(LensRx) FROM OrderDetails JOIN WvaOrders ON OrderDetails.WvaOrderId = WvaOrders.Id WHERE WvaStoreId = '{wvaOrderId}'";
-
-                SQLiteCommand command = new SQLiteCommand(getLensRxes, dbConnection);
-                SQLiteDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
+                int id;
+                using (IDbConnection cnn = new SQLiteConnection($"Data Source={Paths.DatabaseFile};Version=3;"))
                 {
-                    lensrxes.Add(reader[0].ToString());
+                    id = cnn.Query<int>($"SELECT Id FROM WvaOrders WHERE WvaStoreId = '{wvaStoreId}'").FirstOrDefault();
+                    lensrxes.AddRange(cnn.Query<string>($"SELECT LensRx FROM OrderDetails WHERE WvaOrderId = '{id}'"));
                 }
 
                 return lensrxes;
@@ -245,6 +245,10 @@ namespace WVA_Compulink_Server_Integration.Data
             {
                 Error.ReportOrLog(x);
                 return null;
+            }
+            finally
+            {
+                dbConnection.Close();
             }
         }
 
