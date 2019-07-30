@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Models.QueryFormats
+namespace WVA_Connect_CSI.Models.QueryFormats
 {
     public class Query
     {

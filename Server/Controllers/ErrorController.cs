@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WVA_Compulink_Server_Integration.WebTools;
-using WVA_Compulink_Server_Integration.Errors;
-using WVA_Compulink_Server_Integration.Models.Responses;
-using WVA_Compulink_Server_Integration.Utilities.Files;
+using WVA_Connect_CSI.WebTools;
+using WVA_Connect_CSI.Errors;
+using WVA_Connect_CSI.Models.Responses;
+using WVA_Connect_CSI.Utilities.Files;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace WVA_Compulink_Server_Integration.Controllers
+namespace WVA_Connect_CSI.Controllers
 {
     [Route("api/[controller]")]
     public class ErrorController : Controller

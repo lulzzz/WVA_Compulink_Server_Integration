@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Models.Orders
+namespace WVA_Connect_CSI.Models.Orders
 {
     public class OutOrder
     {

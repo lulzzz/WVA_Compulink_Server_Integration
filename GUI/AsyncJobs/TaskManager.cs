@@ -1,12 +1,12 @@
-﻿using WVA_Compulink_Server_Integration.Errors;
-using WVA_Compulink_Server_Integration.Updates;
-using WVA_Compulink_Server_Integration.Utility.Files;
+﻿using WVA_Connect_CSI.Errors;
+using WVA_Connect_CSI.Updates;
+using WVA_Connect_CSI.Utility.Files;
 using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.AsyncJobs
+namespace WVA_Connect_CSI.AsyncJobs
 {
     class TaskManager
     {

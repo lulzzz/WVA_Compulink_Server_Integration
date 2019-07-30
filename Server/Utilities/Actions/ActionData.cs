@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Utilities.Actions
+namespace WVA_Connect_CSI.Utilities.Actions
 {
     public class ActionData
     {

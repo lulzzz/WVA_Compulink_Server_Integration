@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Models.Responses
+namespace WVA_Connect_CSI.Models.Responses
 {
     interface IResponse
     {

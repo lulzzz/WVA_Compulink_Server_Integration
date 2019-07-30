@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using WVA_Compulink_Server_Integration.Data;
-using WVA_Compulink_Server_Integration.Errors;
-using WVA_Compulink_Server_Integration.Utilities.Files;
+using WVA_Connect_CSI.Data;
+using WVA_Connect_CSI.Errors;
+using WVA_Connect_CSI.Utilities.Files;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Windows;
 using System.Diagnostics;
-using WVA_Compulink_Server_Integration.Services;
+using WVA_Connect_CSI.Services;
 using System.ServiceProcess;
 
-namespace WVA_Compulink_Server_Integration
+namespace WVA_Connect_CSI
 {
     public class Program
     {

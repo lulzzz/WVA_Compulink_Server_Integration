@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Responses
+namespace WVA_Connect_CSI.Responses
 {
     interface IResponse
     {

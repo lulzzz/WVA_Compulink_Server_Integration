@@ -1,15 +1,15 @@
-﻿<Window x:Class="WVA_Compulink_Server_Integration.MainWindow"
+﻿<Window x:Class="WVA_Connect_CSI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WVA_Compulink_Server_Integration"
+        xmlns:local="clr-namespace:WVA_Connect_CSI"
         mc:Ignorable="d"
-        Title="WVA Compulink Server Integration" 
+        Title="WVA Connect CSI" 
         Height="400" 
         Width="450"
         ResizeMode="CanMinimize" 
-        Icon="/WVA_Compulink_Server_Integration;component/Resources/logo_plain_vector_72_P0X_icon.ico">
+        Icon="/Resources/logo_plain_vector_72_P0X_icon.ico">
     <Grid>
 
         <Grid.Resources>

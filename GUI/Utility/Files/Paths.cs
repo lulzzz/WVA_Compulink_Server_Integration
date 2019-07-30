@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Utility.Files
+namespace WVA_Connect_CSI.Utility.Files
 {
     class Paths
     {

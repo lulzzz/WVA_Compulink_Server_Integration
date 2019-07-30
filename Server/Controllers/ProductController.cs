@@ -1,13 +1,13 @@
-﻿using WVA_Compulink_Server_Integration.WebTools;
-using WVA_Compulink_Server_Integration.Models.Products;
-using WVA_Compulink_Server_Integration.Utilities.Files;
+﻿using WVA_Connect_CSI.WebTools;
+using WVA_Connect_CSI.Models.Products;
+using WVA_Connect_CSI.Utilities.Files;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Controllers
+namespace WVA_Connect_CSI.Controllers
 {
     [Route("api/[controller]")]
     public class ProductController : Controller

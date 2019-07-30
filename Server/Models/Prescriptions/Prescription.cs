@@ -1,10 +1,10 @@
-﻿using WVA_Compulink_Server_Integration.Models.Parameters.Derived;
+﻿using WVA_Connect_CSI.Models.Parameters.Derived;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Models.Prescriptions
+namespace WVA_Connect_CSI.Models.Prescriptions
 {
     public class Prescription
     {

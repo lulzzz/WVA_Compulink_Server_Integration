@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Models.Parameters.Base
+namespace WVA_Connect_CSI.Models.Parameters.Base
 {
     public class Parameter
     {

@@ -1,13 +1,13 @@
-﻿using WVA_Compulink_Server_Integration.Errors;
-using WVA_Compulink_Server_Integration.Models.Parameters.Derived;
-using WVA_Compulink_Server_Integration.Models.QueryFormats;
+﻿using WVA_Connect_CSI.Errors;
+using WVA_Connect_CSI.Models.Parameters.Derived;
+using WVA_Connect_CSI.Models.QueryFormats;
 using System;
 using System.Collections.Generic;
 using System.Data.Odbc;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Models.Prescriptions
+namespace WVA_Connect_CSI.Models.Prescriptions
 {
     public class CompulinkOdbcReader
     {

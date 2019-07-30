@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Data.Odbc;
 using System.Linq;
 using System.Threading.Tasks;
-using WVA_Compulink_Server_Integration.Models.Parameters.Derived;
-using WVA_Compulink_Server_Integration.Models.Prescriptions;
-using WVA_Compulink_Server_Integration.Models.QueryFormats;
+using WVA_Connect_CSI.Models.Parameters.Derived;
+using WVA_Connect_CSI.Models.Prescriptions;
+using WVA_Connect_CSI.Models.QueryFormats;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace WVA_Compulink_Server_Integration.Controllers
+namespace WVA_Connect_CSI.Controllers
 {
     [Route("api/[controller]")]
     public class PrescriptionController : Controller

@@ -4,7 +4,7 @@ using System.Data.Odbc;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Models.Prescriptions
+namespace WVA_Connect_CSI.Models.Prescriptions
 {
     public class CompulinkOdbcWriter
     {

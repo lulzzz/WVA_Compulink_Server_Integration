@@ -1,11 +1,11 @@
-﻿using WVA_Compulink_Server_Integration.Models.Patients;
-using WVA_Compulink_Server_Integration.Models.QueryFormats;
+﻿using WVA_Connect_CSI.Models.Patients;
+using WVA_Connect_CSI.Models.QueryFormats;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data.Odbc;
 
-namespace WVA_Compulink_Server_Integration.Controllers
+namespace WVA_Connect_CSI.Controllers
 {
     [Route("api/[controller]")]
     public class PatientController : ControllerBase

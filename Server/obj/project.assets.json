@@ -12676,7 +12676,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
-      "projectName": "WVA_Compulink_Server_Integration",
+      "projectName": "WVA_Connect_CSI",
       "projectPath": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
       "packagesPath": "C:\\Users\\evan\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\obj\\",

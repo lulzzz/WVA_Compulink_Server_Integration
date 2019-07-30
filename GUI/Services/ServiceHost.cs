@@ -5,13 +5,13 @@ using System.Linq;
 using System.Reflection;
 using System.ServiceProcess;
 using System.Threading.Tasks;
-using WVA_Compulink_Server_Integration.Utility.Files;
+using WVA_Connect_CSI.Utility.Files;
 
-namespace WVA_Compulink_Server_Integration.Services
+namespace WVA_Connect_CSI.Services
 {
     public class ServiceHost
     {
-        private static readonly string AppName = Assembly.GetCallingAssembly().GetName().Name.ToString();
+        private static readonly string AppName = $"WVA_Connect_CSI_Service";
 
         public static void Install()
         {

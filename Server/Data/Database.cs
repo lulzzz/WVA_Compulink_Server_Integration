@@ -1,7 +1,7 @@
-﻿using WVA_Compulink_Server_Integration.Errors;
-using WVA_Compulink_Server_Integration.Models.Orders;
-using WVA_Compulink_Server_Integration.Models.Users;
-using WVA_Compulink_Server_Integration.Utilities.Files;
+﻿using WVA_Connect_CSI.Errors;
+using WVA_Connect_CSI.Models.Orders;
+using WVA_Connect_CSI.Models.Users;
+using WVA_Connect_CSI.Utilities.Files;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -11,7 +11,7 @@ using System.IO;
 using System.Data;
 using Dapper;
 
-namespace WVA_Compulink_Server_Integration.Data
+namespace WVA_Connect_CSI.Data
 {
     public class Database
     {

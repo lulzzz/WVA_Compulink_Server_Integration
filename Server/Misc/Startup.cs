@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using WVA_Compulink_Server_Integration.Models.Configurations;
+using WVA_Connect_CSI.Models.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,10 +12,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using WVA_Compulink_Server_Integration.Utilities.Files;
+using WVA_Connect_CSI.Utilities.Files;
 using System.Windows;
 
-namespace WVA_Compulink_Server_Integration
+namespace WVA_Connect_CSI
 {
     public class Startup
     {

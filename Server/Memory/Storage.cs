@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using WVA_Compulink_Server_Integration.Models.Configurations;
-using WVA_Compulink_Server_Integration.Utilities.Files;
+using WVA_Connect_CSI.Models.Configurations;
+using WVA_Connect_CSI.Utilities.Files;
 
-namespace WVA_Compulink_Server_Integration.Memory
+namespace WVA_Connect_CSI.Memory
 {
     public class Storage
     {

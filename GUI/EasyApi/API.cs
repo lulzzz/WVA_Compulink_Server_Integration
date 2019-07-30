@@ -1,4 +1,4 @@
-﻿using WVA_Compulink_Server_Integration.Errors;
+﻿using WVA_Connect_CSI.Errors;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.WebTools
+namespace WVA_Connect_CSI.WebTools
 {
     class API
     {

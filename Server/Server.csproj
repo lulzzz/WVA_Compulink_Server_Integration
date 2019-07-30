@@ -4,11 +4,11 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <Platforms>AnyCPU;x86</Platforms>
     <Authors>Wisconsin Vision Associates</Authors>
-    <Company>Wisconsin Vision AssociatesWisconsin Vision Associates</Company>
+    <Company>Wisconsin Vision Associates</Company>
     <Copyright>© Wisconsin Vision Associates</Copyright>
-    <AssemblyName>WVA_Compulink_Server_Integration</AssemblyName>
-    <RootNamespace>WVA_Compulink_Server_Integration</RootNamespace>
-    <StartupObject>WVA_Compulink_Server_Integration.Program</StartupObject>
+    <AssemblyName>WVA_Connect_CSI</AssemblyName>
+    <RootNamespace>WVA_Connect_CSI</RootNamespace>
+    <StartupObject>WVA_Connect_CSI.Program</StartupObject>
     <ApplicationIcon>Resources\logo_plain_vector_72_white_TMD_icon.ico</ApplicationIcon>
   </PropertyGroup>
 

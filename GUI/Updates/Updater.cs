@@ -1,5 +1,5 @@
-﻿using WVA_Compulink_Server_Integration.Errors;
-using WVA_Compulink_Server_Integration.Utility.Files;
+﻿using WVA_Connect_CSI.Errors;
+using WVA_Connect_CSI.Utility.Files;
 using Squirrel;
 using System;
 using System.Diagnostics;
@@ -8,10 +8,10 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
-using WVA_Compulink_Server_Integration.Services;
+using WVA_Connect_CSI.Services;
 using System.Threading;
 
-namespace WVA_Compulink_Server_Integration.Updates
+namespace WVA_Connect_CSI.Updates
 {
     class Updater
     {
@@ -42,7 +42,7 @@ namespace WVA_Compulink_Server_Integration.Updates
         {
             try
             {
-                using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Compulink_Server_Integration").Result)
+                using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Connect_CSI").Result)
                 {
                     var updateInfo = mgr.CheckForUpdate().Result;
 
@@ -60,7 +60,7 @@ namespace WVA_Compulink_Server_Integration.Updates
 
         public static bool UpdatesAvailable()
         {
-            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Compulink_Server_Integration").Result)
+            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Connect_CSI").Result)
             {
                 var updateInfo = mgr.CheckForUpdate().Result;
 

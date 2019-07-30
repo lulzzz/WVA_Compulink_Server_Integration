@@ -1,8 +1,8 @@
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\WVA_Compulink_Server_Integration.deps.json
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\WVA_Compulink_Server_Integration.runtimeconfig.json
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\WVA_Compulink_Server_Integration.runtimeconfig.dev.json
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\WVA_Compulink_Server_Integration.dll
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\WVA_Compulink_Server_Integration.pdb
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\WVA_Connect_CSI.deps.json
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\WVA_Connect_CSI.runtimeconfig.json
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\WVA_Connect_CSI.runtimeconfig.dev.json
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\WVA_Connect_CSI.dll
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\WVA_Connect_CSI.pdb
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\PresentationFramework.dll
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\System.Xaml.dll
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\bin\x86\Debug\netcoreapp2.2\PresentationCore.dll
@@ -34,5 +34,6 @@ C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debu
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\Server.AssemblyInfo.cs
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\Server.RazorTargetAssemblyInfo.cache
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\Server.csproj.CopyComplete
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\WVA_Compulink_Server_Integration.dll
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\WVA_Compulink_Server_Integration.pdb
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\WVA_Connect_CSI.dll
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\WVA_Connect_CSI.pdb
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\x86\Debug\netcoreapp2.2\Server.csprojAssemblyReference.cache

@@ -5,10 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WVA_Compulink_Server_Integration.ODBC;
-using WVA_Compulink_Server_Integration.Utility.Files;
+using WVA_Connect_CSI.ODBC;
+using WVA_Connect_CSI.Utility.Files;
 
-namespace WVA_Compulink_Server_Integration.Memory
+namespace WVA_Connect_CSI.Memory
 {
     class Storage
     {

@@ -6,19 +6,19 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using WVA_Compulink_Server_Integration.AsyncJobs;
+using WVA_Connect_CSI.AsyncJobs;
 using System.IO;
-using WVA_Compulink_Server_Integration.Utility.Files;
-using WVA_Compulink_Server_Integration.Errors;
-using WVA_Compulink_Server_Integration.Updates;
+using WVA_Connect_CSI.Utility.Files;
+using WVA_Connect_CSI.Errors;
+using WVA_Connect_CSI.Updates;
 using System.Threading.Tasks;
 using System.Reflection;
-using WVA_Compulink_Server_Integration.ODBC;
-using WVA_Compulink_Server_Integration.Memory;
-using WVA_Compulink_Server_Integration.Services;
+using WVA_Connect_CSI.ODBC;
+using WVA_Connect_CSI.Memory;
+using WVA_Connect_CSI.Services;
 using System.Windows.Input;
 
-namespace WVA_Compulink_Server_Integration
+namespace WVA_Connect_CSI
 {
     public partial class MainWindow : Window
     {
@@ -73,7 +73,7 @@ namespace WVA_Compulink_Server_Integration
                 Thread.Sleep(250);
 
                 if (!ServiceHost.IsInstalled())
-                    MessageBox.Show("WVA_Compulink_Server_Integration service host not installed!", "Error", MessageBoxButton.OK);
+                    MessageBox.Show("WVA_Connect_CSI service host not installed!", "Error", MessageBoxButton.OK);
             }
         }
 

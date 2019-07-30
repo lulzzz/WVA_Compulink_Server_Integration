@@ -1,5 +1,5 @@
-﻿using WVA_Compulink_Server_Integration.WebTools;
-using WVA_Compulink_Server_Integration.Utilities.Files;
+﻿using WVA_Connect_CSI.WebTools;
+using WVA_Connect_CSI.Utilities.Files;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace WVA_Compulink_Server_Integration.Errors
+namespace WVA_Connect_CSI.Errors
 {
     public class Error
     {
