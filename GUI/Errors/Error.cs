@@ -50,7 +50,7 @@ namespace WVA_Connect_CSI.Errors
             }
         }
 
-        private static void WriteError(string exceptionMessage)
+        public static void WriteError(string exceptionMessage)
         {
             try
             {

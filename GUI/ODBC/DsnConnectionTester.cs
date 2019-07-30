@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WVA_Connect_CSI.Errors;
 
 namespace WVA_Connect_CSI.ODBC
 {
@@ -27,8 +28,9 @@ namespace WVA_Connect_CSI.ODBC
                 
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Error.WriteError(ex.ToString());
                 return false;
             }
         }
