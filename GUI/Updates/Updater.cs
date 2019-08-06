@@ -42,7 +42,7 @@ namespace WVA_Connect_CSI.Updates
         {
             try
             {
-                using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Comulink_Server_Integration").Result)
+                using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Compulink_Server_Integration").Result)
                 {
                     var updateInfo = mgr.CheckForUpdate().Result;
 
@@ -60,7 +60,7 @@ namespace WVA_Connect_CSI.Updates
 
         public static bool UpdatesAvailable()
         {
-            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Comulink_Server_Integration").Result)
+            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Compulink_Server_Integration").Result)
             {
                 var updateInfo = mgr.CheckForUpdate().Result;
 
