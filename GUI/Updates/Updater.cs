@@ -42,7 +42,7 @@ namespace WVA_Connect_CSI.Updates
         {
             try
             {
-                using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Connect_CSI").Result)
+                using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Comulink_Server_Integration").Result)
                 {
                     var updateInfo = mgr.CheckForUpdate().Result;
 
@@ -60,7 +60,7 @@ namespace WVA_Connect_CSI.Updates
 
         public static bool UpdatesAvailable()
         {
-            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Connect_CSI").Result)
+            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Comulink_Server_Integration").Result)
             {
                 var updateInfo = mgr.CheckForUpdate().Result;
 
@@ -76,7 +76,6 @@ namespace WVA_Connect_CSI.Updates
             ServiceHost.Stop();
             ServiceHost.Uninstall();
             await Task.Run(() => Update());
-            //Thread.Sleep(1000); // Wait a second for the for the update files to be placed before calling the new application
             ServiceHost.Install();
             ServiceHost.Start();
             RestartApplication();
