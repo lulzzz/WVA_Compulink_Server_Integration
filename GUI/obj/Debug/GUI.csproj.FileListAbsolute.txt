@@ -197,7 +197,6 @@ C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Debug\Syste
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Debug\System.Reflection.Metadata.xml
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Debug\System.Text.Encodings.Web.xml
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\GUI.csprojAssemblyReference.cache
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\WVA_Connect_CSI.exe.config
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\MainWindow.g.cs
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\Misc\App.g.cs

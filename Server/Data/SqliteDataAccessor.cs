@@ -240,7 +240,7 @@ namespace WVA_Connect_CSI.Data
                                                             $"'{item.OrderDetail.Sphere}'," +
                                                             $"'{item.OrderDetail.Cylinder}'," +
                                                             $"'{item.OrderDetail.Axis}'," +
-                                                            $"'{item.OrderDetail.Add}'," +
+                                                            $"'{item.OrderDetail.Ad}'," +
                                                             $"'{item.OrderDetail.Cylinder}'," +
                                                             $"'{item.OrderDetail.Multifocal}')");
                     }
@@ -523,7 +523,8 @@ namespace WVA_Connect_CSI.Data
                                                        "Axis, " +
                                                        "Ad, " +
                                                        "Color, " +
-                                                       "Multifocal) " +
+                                                       "Multifocal, " +
+                                                       "LensRx)" +
                                                        "values (" +
                                                            $"'{checkOrder.ID}', " +
                                                            $"'{item.FirstName}', " +
@@ -542,9 +543,10 @@ namespace WVA_Connect_CSI.Data
                                                            $"'{item.OrderDetail.Sphere}', " +
                                                            $"'{item.OrderDetail.Cylinder}', " +
                                                            $"'{item.OrderDetail.Axis}', " +
-                                                           $"'{item.OrderDetail.Add}', " +
+                                                           $"'{item.OrderDetail.Ad}', " +
                                                            $"'{item.OrderDetail.Color}', " +
-                                                           $"'{item.OrderDetail.Multifocal}')");
+                                                           $"'{item.OrderDetail.Multifocal}', " +
+                                                           $"'{item.OrderDetail.LensRx}')");
                     }
                 }
             }
@@ -652,7 +654,7 @@ namespace WVA_Connect_CSI.Data
                         Sphere = detail.Sphere,
                         Cylinder = detail.Cylinder,
                         Axis = detail.Axis,
-                        Add = detail.Add,
+                        Ad = detail.Add,
                         Color = detail.Color,
                         Multifocal = detail.Multifocal,
                         ProductCode = detail.ProductCode,

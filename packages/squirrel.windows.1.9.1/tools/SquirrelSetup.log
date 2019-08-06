@@ -8855,3 +8855,49 @@ File name: 'Versions\WVA_Connect_CDI.1.1.7.nupkg'
 2019-07-30 09:03:56> ReleasePackage: Removing unnecessary data
 2019-07-30 09:03:56> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Connect_CSI.nuspec
 2019-07-30 09:04:03> Program: Building embedded zip file for Setup.exe
+2019-08-01 10:42:12> Program: Starting Squirrel Updater: --releasify Versions\WVA_Connect_CDI.1.2.2.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-08-01 10:42:12> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-08-01 10:42:12> Unhandled exception: System.IO.FileNotFoundException: Could not find file 'Versions\WVA_Connect_CDI.1.2.2.nupkg'.
+File name: 'Versions\WVA_Connect_CDI.1.2.2.nupkg'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+2019-08-01 10:42:23> Program: Starting Squirrel Updater: --releasify Versions\WVA_Connect_CSI.1.1.2.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-08-01 10:42:23> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-08-01 10:42:23> Unhandled exception: System.IO.FileNotFoundException: Could not find file 'Versions\WVA_Connect_CSI.1.1.2.nupkg'.
+File name: 'Versions\WVA_Connect_CSI.1.1.2.nupkg'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+2019-08-01 10:42:36> Program: Starting Squirrel Updater: --releasify Versions\WVA_Connect_CSI.1.2.1.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-08-01 10:42:36> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-08-01 10:42:36> Unhandled exception: System.IO.FileNotFoundException: Could not find file 'Versions\WVA_Connect_CSI.1.2.1.nupkg'.
+File name: 'Versions\WVA_Connect_CSI.1.2.1.nupkg'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)
+2019-08-01 10:43:04> Program: Starting Squirrel Updater: --releasify Versions\WVA_Connect_CSI.1.2.0.nupkg --setupIcon C:\Users\evan\Desktop\Icons\logo_plain_vector_72_white_TMD_icon.ico
+2019-08-01 10:43:04> Program: Bootstrapper EXE found at:C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe
+2019-08-01 10:43:04> Program: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Connect_CSI.1.2.0.nupkg
+2019-08-01 10:43:04> ReleasePackage: Creating release package: C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Connect_CSI.1.2.0.nupkg => C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Releases\WVA_Connect_CSI-1.2.0-full.nupkg
+2019-08-01 10:43:08> ReleasePackage: Extracting dependent packages: []
+2019-08-01 10:43:08> ReleasePackage: Removing unnecessary data
+2019-08-01 10:43:08> ReleasePackage: No release notes found in C:\Users\evan\AppData\Local\SquirrelTemp\tempε\WVA_Connect_CSI.nuspec
+2019-08-01 10:43:08> Utility: The file .\StubExecutable.exe does not exist
+2019-08-01 10:43:14> Unhandled exception: System.IO.FileNotFoundException: Could not find file 'C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe'.
+File name: 'C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\packages\squirrel.windows.1.9.1\tools\Setup.exe'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at System.IO.File.Copy(String sourceFileName, String destFileName, Boolean overwrite)
+   at Squirrel.Update.Program.Releasify(String package, String targetDir, String packagesDir, String bootstrapperExe, String backgroundGif, String signingOpts, String baseUrl, String setupIcon, Boolean generateMsi, String frameworkVersion, Boolean generateDeltas)
+   at Squirrel.Update.Program.executeCommandLine(String[] args)
+   at Squirrel.Update.Program.main(String[] args)

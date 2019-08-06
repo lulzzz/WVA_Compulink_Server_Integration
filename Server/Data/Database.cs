@@ -232,11 +232,21 @@ namespace WVA_Connect_CSI.Data
 
             try
             {
-                int id;
-                using (IDbConnection cnn = new SQLiteConnection($"Data Source={Paths.DatabaseFile};Version=3;"))
+                //int id;
+                //using (IDbConnection cnn = new SQLiteConnection($"Data Source={Paths.DatabaseFile};Version=3;"))
+                //{
+                //    id = cnn.Query<int>($"SELECT Id FROM WvaOrders WHERE WvaStoreId = '{wvaStoreId}'").FirstOrDefault();
+                //    lensrxes.AddRange(cnn.Query<string>($"SELECT LensRx FROM OrderDetails WHERE WvaOrderId = '{id}'"));
+                //}
+
+                string getLensRxes = $"SELECT DISTINCT(LensRx) FROM OrderDetails JOIN WvaOrders ON OrderDetails.WvaOrderId = WvaOrders.ID WHERE WvaStoreId = '{wvaStoreId}'";
+
+                SQLiteCommand command = new SQLiteCommand(getLensRxes, dbConnection);
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    id = cnn.Query<int>($"SELECT Id FROM WvaOrders WHERE WvaStoreId = '{wvaStoreId}'").FirstOrDefault();
-                    lensrxes.AddRange(cnn.Query<string>($"SELECT LensRx FROM OrderDetails WHERE WvaOrderId = '{id}'"));
+                    lensrxes.Add(reader[0].ToString());
                 }
 
                 return lensrxes;
