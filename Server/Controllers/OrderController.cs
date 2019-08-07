@@ -96,7 +96,7 @@ namespace WVA_Connect_CSI.Controllers
                     if (orderSubmitted)
                     {
                         var listLensRxes = sqliteDatabase.GetLensRxByWvaOrderId(wvaStoreId);
-                        //new CompulinkOdbcWriter().UpdateLensRx(listLensRxes, wvaStoreId);
+                        new CompulinkOdbcWriter().UpdateLensRx(listLensRxes, wvaStoreId);
                     }
                     else
                     {
