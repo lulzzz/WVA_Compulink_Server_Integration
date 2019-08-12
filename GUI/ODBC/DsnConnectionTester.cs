@@ -30,7 +30,6 @@ namespace WVA_Connect_CSI.ODBC
             }
             catch (Exception ex)
             {
-                Error.WriteError(ex.ToString());
                 return false;
             }
         }
