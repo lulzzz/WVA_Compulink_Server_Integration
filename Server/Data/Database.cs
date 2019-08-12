@@ -204,6 +204,16 @@ namespace WVA_Connect_CSI.Data
             {
                 var responseUser = DataAccessor.CheckCredentials(user);
 
+                if (responseUser == null)
+                {
+                    return new User()
+                    {
+                        UserName = "FAIL",
+                        Password = "FAIL",
+                        Status = "FAIL",
+                        Message = "Invalid Username/Password"
+                    };
+                }
                 if (responseUser.UserName == "FAIL" || responseUser.Password == "FAIL")
                 {
                     responseUser.Status = "FAIL";
