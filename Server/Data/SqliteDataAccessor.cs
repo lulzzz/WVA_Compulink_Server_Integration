@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WVA_Connect_CSI.Errors;
@@ -169,7 +170,7 @@ namespace WVA_Connect_CSI.Data
                                                 $"VALUES (" +
                                                             $"'{order.CustomerID}'," +
                                                             $"'{order.OrderName}'," +
-                                                            $"'{order.CreatedDate}'," +
+                                                            $"'{createdDate}'," +
                                                             $"'{order.WvaStoreID}'," +
                                                             $"'{order.DoB}'," +
                                                             $"'{order.Name_1}'," +
@@ -319,11 +320,21 @@ namespace WVA_Connect_CSI.Data
         public string GetEmail(string userName)
         {
             try
-            { 
+            {
+                Stopwatch watch = new Stopwatch();
+                watch.Start();
+
+
                 using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
                 {
-                   return cnn.Query<string>($"SELECT Email FROM Users WHERE UserName = '{userName}'").FirstOrDefault();
+                   var q = cnn.Query<string>($"SELECT Email FROM Users WHERE UserName = '{userName}'").FirstOrDefault();
+
+                    watch.Stop();
+                    Trace.WriteLine($"=============== {watch.ElapsedMilliseconds}");
+                    return q;
                 }
+
+               
             }
             catch (Exception ex)
             {
