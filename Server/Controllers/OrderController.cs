@@ -56,74 +56,6 @@ namespace WVA_Connect_CSI.Controllers
                 OrderResponse orderResponse;
                 bool orderSubmitted = false;
 
-                // Create the order in the WVA_Connect_CSI database
-                try
-                {
-                    // If order exists, mark as submit. If not, create new order and mark as submitted
-                    orderSubmitted = sqliteDatabase.SubmitOrder(orderWrapper?.OutOrder?.PatientOrder);
-                }
-                catch (Exception x)
-                {
-                    Error.ReportOrLog(x);
-                    throw new Exception("Order submission to server database failed.");
-                }
-                
-                // Create the order in the WVA_Connect_CSI database
-                try
-                {
-                    if (orderSubmitted)
-                    {
-                        string strResponse = API.Post($@"{Paths.WisVisOrders}", orderWrapper);
-                        orderResponse = JsonConvert.DeserializeObject<OrderResponse>(strResponse);
-
-                        orderWrapper.OutOrder.PatientOrder.WvaStoreID = orderResponse?.Data?.Wva_order_id;
-                        wvaStoreId = orderResponse?.Data?.Wva_order_id ?? throw new Exception("WvaStoreId not returned from API!");
-
-                        if (orderResponse?.Status != "SUCCESS")
-                            throw new Exception($"Status message from Orders API was not SUCCESS. Status:{orderResponse?.Status} Message:{orderResponse?.Message}");
-                        else
-                        {
-                            // Update order with wvaStoreId
-                            var order = orderWrapper?.OutOrder?.PatientOrder;
-                            order.WvaStoreID = wvaStoreId;
-
-                            // Save the order so the wvaStoreId shows up
-                            sqliteDatabase.SaveOrder(order);
-                        }
-
-                    }
-                    else
-                    {
-                        throw new Exception($"Order was not correctly submitted to the database!");
-                    }
-                }
-                catch (Exception x)
-                {
-                    Error.ReportOrLog(x);
-                    throw new Exception("Order submission to server database failed.");
-                }
-
-                // Find the LensRx for this order and submit it to Compulink
-                try
-                {
-                    if (orderSubmitted)
-                    {
-                        var listLensRxes = sqliteDatabase.GetLensRxByWvaOrderId(wvaStoreId);
-                        new CompulinkOdbcWriter().UpdateLensRx(listLensRxes, wvaStoreId);
-                    }
-                    else
-                    {
-                        throw new Exception("Order submission to database failed. Cannot get LensRx.");
-                    }
-                }
-                catch (Exception x)
-                {
-                    Error.ReportOrLog(x);
-                    throw new Exception("An issue was encountered while trying to update LensRx.");
-                }
-
-
-                /*
                 // Create the order in the wva system
                 try
                 {
@@ -176,7 +108,6 @@ namespace WVA_Connect_CSI.Controllers
                     Error.ReportOrLog(x);
                     throw new Exception("An issue was encountered while trying to update LensRx.");
                 }
-                */
 
                 return orderResponse;
             }
