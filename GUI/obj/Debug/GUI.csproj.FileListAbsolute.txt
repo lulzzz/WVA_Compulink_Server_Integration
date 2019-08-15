@@ -210,4 +210,7 @@ C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\GUI.c
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\GUI.csproj.CopyComplete
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\WVA_Connect_CSI.exe
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\WVA_Connect_CSI.pdb
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\GUI.csprojAssemblyReference.cache
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\LoginView.g.cs
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\MainView.g.cs
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\LoginView.baml
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\MainView.baml
