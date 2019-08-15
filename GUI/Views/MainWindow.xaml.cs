@@ -276,30 +276,6 @@ namespace WVA_Connect_CSI
             KillServiceHost();
         }
 
-        //
-        // Extends window size, exposing more elements
-        //
-
-        private void DropDownButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (Height == 400)
-            {
-                Height = 490;
-                DropDownImage.Source = new BitmapImage(new Uri(@"/Resources/icons8-slide-up-32.png", UriKind.Relative));
-                DropDownStackPanel.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                Height = 400;
-                DropDownImage.Source = new BitmapImage(new Uri(@"/Resources/icons8-down-button-32.png", UriKind.Relative));
-                DropDownStackPanel.Visibility = Visibility.Hidden;
-            }
-        }
-
-        //
-        // Hidden elements made visible by DropDownButton_Click 
-        //
-
         private async void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
         {
             try

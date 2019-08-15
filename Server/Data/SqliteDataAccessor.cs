@@ -665,7 +665,7 @@ namespace WVA_Connect_CSI.Data
                         Sphere = detail.Sphere,
                         Cylinder = detail.Cylinder,
                         Axis = detail.Axis,
-                        Ad = detail.Add,
+                        Ad = detail.Ad,
                         Color = detail.Color,
                         Multifocal = detail.Multifocal,
                         ProductCode = detail.ProductCode,

@@ -54,7 +54,7 @@ namespace WVA_Connect_CSI.Models.Orders
         public string Axis { get; set; }
 
         [JsonProperty("add")]
-        public string Add { get; set; }
+        public string Ad { get; set; }
 
         [JsonProperty("color")]
         public string Color { get; set; }
