@@ -216,3 +216,11 @@ C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\
 C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\GUI.csproj.CopyComplete
 C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\WVA_Connect_CSI.exe
 C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\WVA_Connect_CSI.pdb
+C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\AdminMainView.g.cs
+C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\OrderDetailsView.g.cs
+C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\OrdersView.g.cs
+C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\UsersView.g.cs
+C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\AdminMainView.baml
+C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\OrderDetailsView.baml
+C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\OrdersView.baml
+C:\Users\Taylo\Desktop\WorkStuff\WVA_Compulink_Server_Integration\GUI\obj\Debug\Views\UsersView.baml

@@ -47,7 +47,9 @@ namespace WVA_Connect_CSI.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-
+            foreach (Window window in Application.Current.Windows)
+                if (window.GetType() == typeof(MainWindow))
+                    (window as MainWindow).MainContentControl.DataContext = new AdminMainView("manager");
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

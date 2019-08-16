@@ -37,6 +37,19 @@ namespace WVA_Connect_CSI.Views
         public MainView()
         {
             InitializeComponent();
+            ResizeView();
+            StartWorkers();
+        }
+
+        private void ResizeView()
+        {
+            foreach (Window window in Application.Current.Windows)
+                if (window.GetType() == typeof(MainWindow))
+                {
+                    (window as MainWindow).ResizeMode = ResizeMode.CanMinimize;
+                    (window as MainWindow).Height = 400;
+                    (window as MainWindow).Width = 455;
+                }
         }
 
         private void StartWorkers()
