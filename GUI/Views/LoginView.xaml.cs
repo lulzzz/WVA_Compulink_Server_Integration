@@ -24,5 +24,37 @@ namespace WVA_Connect_CSI.Views
         {
             InitializeComponent();
         }
+
+        private void UsernameTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void UsernameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void PasswordTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void PasswordTextBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+                if (window.GetType() == typeof(MainWindow))
+                    (window as MainWindow).MainContentControl.DataContext = new MainView();
+        }
     }
 }

@@ -254,6 +254,8 @@
     <Compile Include="Services\ServiceHost.cs" />
     <Compile Include="Updates\Updater.cs" />
     <Compile Include="Utility\Files\Paths.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
