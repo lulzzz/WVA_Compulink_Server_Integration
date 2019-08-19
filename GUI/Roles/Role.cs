@@ -16,7 +16,8 @@ namespace WVA_Connect_CSI.Roles
 
         public Role(string name, int value)
         {
-
+            Name = name;
+            Value = value;
         }
 
         public Role DetermineRole()
