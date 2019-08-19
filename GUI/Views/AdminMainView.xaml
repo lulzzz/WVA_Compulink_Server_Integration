@@ -205,7 +205,6 @@
             <ContentControl Name="AdminMainViewContentControl"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"/>
-
         </Grid>
     </Grid>
 </UserControl>
