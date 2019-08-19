@@ -7,8 +7,10 @@
         xmlns:viewmodels="clr-namespace:WVA_Connect_CSI.ViewModels"
         mc:Ignorable="d"
         Title="WVA Connect CSI" 
-        Height="400" 
+        Height="400"
         Width="455"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
         ResizeMode="CanMinimize" 
         Icon="/Resources/logo_plain_vector_72_P0X_icon.ico">
 

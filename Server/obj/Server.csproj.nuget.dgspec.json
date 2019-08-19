@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Taylo\\Desktop\\WorkStuff\\WVA_Compulink_Server_Integration\\Server\\Server.csproj": {}
+    "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Taylo\\Desktop\\WorkStuff\\WVA_Compulink_Server_Integration\\Server\\Server.csproj": {
+    "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Taylo\\Desktop\\WorkStuff\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
+        "projectUniqueName": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
         "projectName": "WVA_Connect_CSI",
-        "projectPath": "C:\\Users\\Taylo\\Desktop\\WorkStuff\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
-        "packagesPath": "C:\\Users\\Taylo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Taylo\\Desktop\\WorkStuff\\WVA_Compulink_Server_Integration\\Server\\obj\\",
+        "projectPath": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
+        "packagesPath": "C:\\Users\\evan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Taylo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\evan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"

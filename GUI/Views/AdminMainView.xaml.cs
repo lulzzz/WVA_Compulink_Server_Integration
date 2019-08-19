@@ -46,8 +46,8 @@ namespace WVA_Connect_CSI.Views
                 if (window.GetType() == typeof(MainWindow))
                 {
                     (window as MainWindow).ResizeMode = ResizeMode.CanResize;
-                    (window as MainWindow).Height = 450;
-                    (window as MainWindow).Width = 800;
+                    (window as MainWindow).MinHeight = 490;
+                    (window as MainWindow).MinWidth = 850;
                 }
         }
         private void SetRole(string role)

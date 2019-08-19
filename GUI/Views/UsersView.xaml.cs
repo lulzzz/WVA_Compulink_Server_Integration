@@ -24,5 +24,23 @@ namespace WVA_Connect_CSI.Views
         {
             InitializeComponent();
         }
+
+        private void UserNameTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            UserNameTextBox.Focus();
+            UserNameTextBox.SelectAll();
+        }
+
+        private void PasswordTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            PasswordTextBox.Focus();
+            PasswordTextBox.SelectAll();
+        }
+
+        private void EmailTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            EmailTextBox.Focus();
+            EmailTextBox.SelectAll();
+        }
     }
 }

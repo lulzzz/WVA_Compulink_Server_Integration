@@ -6,8 +6,10 @@
              xmlns:views="clr-namespace:WVA_Connect_CSI.Views"
              xmlns:viewmodels="clr-namespace:WVA_Connect_CSI.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450"
-             d:DesignWidth="800">
+             MinHeight="450"
+             MinWidth="800"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch">
 
     <UserControl.Resources>
         <LinearGradientBrush x:Key="LoginButtonGroup"  EndPoint="0.5,1" StartPoint="0.5,0">
@@ -153,11 +155,14 @@
             </LinearGradientBrush>
         </Grid.Background>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
         <!-- Header Grid -->
         <Grid Name="HeaderGrid"
-              Margin="0,0,0,0"
-              Height="80"
-              VerticalAlignment="Top">
+              Grid.Row="0">
 
             <Rectangle VerticalAlignment="Bottom"
                        HorizontalAlignment="Stretch"
@@ -200,11 +205,12 @@
         </Grid>
 
         <!-- Content Control Grid-->
-        <Grid Margin="0,80,0,0">
+        <Grid Grid.Row="1">
 
             <ContentControl Name="AdminMainViewContentControl"
                             HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"/>
+                            VerticalAlignment="Stretch"
+                            Margin="0,0,0,0"/>
         </Grid>
     </Grid>
 </UserControl>

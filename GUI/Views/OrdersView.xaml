@@ -5,13 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WVA_Connect_CSI.Views"
              mc:Ignorable="d" 
-             MinHeight="340"
-             MinWidth="800"
+             MinHeight="300"
+             MinWidth="650"
              HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch">
     
     <Grid>
-
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF327EC3" Offset="1"/>
@@ -20,55 +19,74 @@
             </LinearGradientBrush>
         </Grid.Background>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
         <Grid HorizontalAlignment="Stretch"
               Height="30"
               VerticalAlignment="Top"
-              Margin="20,20,20,0">
+              Margin="20,20,20,0"
+              Grid.Row="0">
             
-                <TextBox Name="SearchOrdersTextBox"
-                         Margin="0,0,150,0"
-                         Height="30"
-                         HorizontalAlignment="Stretch"
-                         FontSize="16"/>
+            <TextBox Name="SearchOrdersTextBox"
+                     Margin="0,0,150,0"
+                     Height="30"
+                     HorizontalAlignment="Stretch"
+                     FontSize="16"/>
 
-                <ComboBox Name="SearchOrdersComboBox"
-                          Width="120"
-                          Height="30"
-                          Margin="20,0,0,0"
-                          FontSize="16"
-                          HorizontalAlignment="Right">
+            <ComboBox Name="SearchOrdersComboBox"
+                      Width="120"
+                      Height="30"
+                      Margin="20,0,0,0"
+                      FontSize="16"
+                      SelectedIndex="0"
+                      HorizontalAlignment="Right">
 
-                    <ComboBoxItem>Order ID</ComboBoxItem>
-                </ComboBox>
+                <ComboBoxItem>Order ID</ComboBoxItem>
+                <ComboBoxItem>Order Name</ComboBoxItem>
+                <ComboBoxItem>Created Date</ComboBoxItem>
+                <ComboBoxItem>ShipToPatient</ComboBoxItem>
+                <ComboBoxItem>PoNumber</ComboBoxItem>
+                <ComboBoxItem>Ordered By</ComboBoxItem>
+                <ComboBoxItem>Quantity</ComboBoxItem>
+                <ComboBoxItem>Status</ComboBoxItem>
+            </ComboBox>
         </Grid>
 
-        <DataGrid Name="WvaOrdersDataGrid"
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Stretch"
-                  FontWeight="DemiBold"
-                  Background="Transparent"
-                  BorderThickness="1"
-                  Margin="20,70,20,20"
-                  ItemsSource="{Binding Order}"
-                  IsReadOnly="True"
-                  CanUserResizeRows="False"
-                  CanUserAddRows="False"
-                  CanUserReorderColumns="False"
-                  CanUserSortColumns="False" 
-                  HeadersVisibility="Column" 
-                  MouseDoubleClick="WvaOrdersDataGrid_MouseDoubleClick">
+        <Grid Grid.Row="1"
+              Margin="0,0,0,0">
+            
+            <DataGrid Name="WvaOrdersDataGrid"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      FontWeight="DemiBold"
+                      Background="Transparent"
+                      BorderThickness="1"
+                      ItemsSource="{Binding Order}"
+                      IsReadOnly="True"
+                      Margin="20,20,20,0"
+                      CanUserResizeRows="False"
+                      CanUserAddRows="False"
+                      CanUserReorderColumns="False"
+                      CanUserSortColumns="False" 
+                      HeadersVisibility="Column" 
+                      MouseDoubleClick="WvaOrdersDataGrid_MouseDoubleClick">
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=WvaStoreID}"     Width="95" MinWidth="80" Header="WVA Store ID" />
-                <DataGridTextColumn Binding="{Binding Path=OrderName}"      Width="*" MinWidth="80" Header="Order Name" />
-                <DataGridTextColumn Binding="{Binding Path=CreatedDate}"    Width="95" MinWidth="80" Header="Created Date" />
-                <DataGridTextColumn Binding="{Binding Path=ShipToPatient}"  Width="95" MinWidth="80" Header="STP" />
-                <DataGridTextColumn Binding="{Binding Path=PoNumber}"       Width="95" MinWidth="80" Header="PO Number" />
-                <DataGridTextColumn Binding="{Binding Path=OrderedBy}"      Width="95" MinWidth="80" Header="Ordered By" />
-                <DataGridTextColumn Binding="{Binding Path=Quantity}"       Width="95" MinWidth="80" Header="Qty" />
-                <DataGridTextColumn Binding="{Binding Path=Status}"         Width="95" MinWidth="80" Header="Status" />
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=WvaStoreID}"     Width="95" MinWidth="80" Header="WVA Store ID" />
+                    <DataGridTextColumn Binding="{Binding Path=OrderName}"      Width="*" MinWidth="80" Header="Order Name" />
+                    <DataGridTextColumn Binding="{Binding Path=CreatedDate}"    Width="95" MinWidth="80" Header="Created Date" />
+                    <DataGridTextColumn Binding="{Binding Path=ShipToPatient}"  Width="95" MinWidth="80" Header="STP" />
+                    <DataGridTextColumn Binding="{Binding Path=PoNumber}"       Width="95" MinWidth="80" Header="PO Number" />
+                    <DataGridTextColumn Binding="{Binding Path=OrderedBy}"      Width="95" MinWidth="80" Header="Ordered By" />
+                    <DataGridTextColumn Binding="{Binding Path=Quantity}"       Width="95" MinWidth="80" Header="Qty" />
+                    <DataGridTextColumn Binding="{Binding Path=Status}"         Width="95" MinWidth="80" Header="Status" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
 
     </Grid>
 </UserControl>
