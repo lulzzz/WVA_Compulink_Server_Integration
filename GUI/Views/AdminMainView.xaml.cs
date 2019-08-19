@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WVA_Connect_CSI.Roles;
 
 namespace WVA_Connect_CSI.Views
 {
@@ -20,14 +21,14 @@ namespace WVA_Connect_CSI.Views
     /// </summary>
     public partial class AdminMainView : UserControl
     {
-        private string UserRole;
+        private Role UserRole;
 
-        public AdminMainView(string role)
+        public AdminMainView(string name, int value)
         {
             InitializeComponent();
             ResizeView();
-            SetRole(role);
-            SetView(role);
+            SetRole(name, value);
+            SetUpView();
         }
 
         private void ResizeView()
@@ -40,28 +41,60 @@ namespace WVA_Connect_CSI.Views
                     (window as MainWindow).MinWidth = 850;
                 }
         }
-        private void SetRole(string role)
+
+        private void SetRole(string name, int value)
         {
-            UserRole = role;
+            UserRole = new Role(name, value).DetermineRole();
         }
 
-        private void SetView(string view)
+        private void SetUpView()
         {
-            switch (view)
+            if (UserRole is SuperAdminRole)
             {
-                case "ordersView":
-                    AdminMainViewContentControl.Content = new OrdersView();
-                    break;
-                case "orderDetailsView":
-                    AdminMainViewContentControl.Content = new OrderDetailsView();
-                    break;
-                case "usersView":
-                    AdminMainViewContentControl.Content = new UsersView();
-                    break;
-                default:
-                    
-                    break;
+                // Gives user full access to all controls in this view
+                AdminMainViewContentControl.Content = new OrdersView();
             }
+            else if (UserRole is ITAdminRole)
+            {
+                // Gives an IT Admin the ability to access the 'Users' view
+                OrdersButton.Visibility = Visibility.Hidden;
+                OrdersButton.IsEnabled = false;
+
+                AdminMainViewContentControl.Content = new UsersView();
+            }
+            else if (UserRole is ManagerRole)
+            {
+                // Gives a manager the ability to see the 'Orders' view that contains patient information
+                UsersButton.Visibility = Visibility.Hidden;
+                UsersButton.IsEnabled = false;
+
+                AdminMainViewContentControl.Content = new OrdersView();
+            }
+            else
+            {
+                // Hide header controls, limiting access to other views
+                OrdersButton.Visibility = Visibility.Hidden;
+                OrdersButton.IsEnabled = false;
+
+                UsersButton.Visibility = Visibility.Hidden;
+                UsersButton.IsEnabled = false;
+            }
+
+            //switch (view)
+            //{
+            //    case "ordersView":
+            //        AdminMainViewContentControl.Content = new OrdersView();
+            //        break;
+            //    case "orderDetailsView":
+            //        AdminMainViewContentControl.Content = new OrderDetailsView();
+            //        break;
+            //    case "usersView":
+            //        AdminMainViewContentControl.Content = new UsersView();
+            //        break;
+            //    default:
+                    
+            //        break;
+            //}
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -73,12 +106,12 @@ namespace WVA_Connect_CSI.Views
 
         private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
-            SetView("ordersView");
+            SetUpView();
         }
 
         private void UsersButton_Click(object sender, RoutedEventArgs e)
         {
-            SetView("usersView");
+            SetUpView();
         }
     }
 }
