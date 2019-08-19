@@ -3,12 +3,319 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WVA_Connect_CSI.Views"
              mc:Ignorable="d" 
              Height="400" 
-             Width="455"
-             d:DesignHeight="450" d:DesignWidth="800">
+             Width="455">
     <Grid>
+
+        <Grid.Resources>
+
+            <LinearGradientBrush x:Key="MainButtonGroup" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="LightSlateGray" Offset="0.02"/>
+                <GradientStop Color="WhiteSmoke" Offset="0.22"/>
+                <GradientStop Color="LightSlateGray" Offset=".53"/>
+            </LinearGradientBrush>
+
+            <Style TargetType="Button" x:Key="HeaderTab">
+                <Setter Property="Background" Value="{StaticResource MainButtonGroup}"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontFamily" Value="Sitka Text"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+
+                            <Grid x:Name="grid">
+                                <Border x:Name="border" 
+                                    CornerRadius="0,0,0,0" 
+                                    BorderBrush="Black" 
+                                    BorderThickness="1,2,2,2">
+                                    <Border.Background>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" 
+                                                                CenterY="0.5" 
+                                                                ScaleX="1.5" 
+                                                                ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Offset="1" Color="#FF327EC3"/>
+                                            <GradientStop Offset="0.3" Color="#FF327EC3"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                  VerticalAlignment="Center" 
+                                                  TextElement.FontWeight="Regular">
+                                    </ContentPresenter>
+                                </Border>
+                            </Grid>
+
+                            <!-- TRIGGERS -->
+                            <ControlTemplate.Triggers>
+
+                                <!-- Mouse Over Trigger -->
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="Background" TargetName="border">
+                                        <Setter.Value>
+                                            <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                                <RadialGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterX="0.5" 
+                                                                    CenterY="0.5"
+                                                                    ScaleX="2" 
+                                                                    ScaleY="2"/>
+                                                        <TranslateTransform X="0.02" Y="0.9"/>
+                                                    </TransformGroup>
+                                                </RadialGradientBrush.RelativeTransform>
+                                                <GradientStop Color="#FF327EC3" Offset="1"/>
+                                                <GradientStop Color="White" Offset="0.3"/>
+                                            </RadialGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+
+                                <!-- Mouse Click Trigger -->
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="Background" TargetName="border">
+                                        <Setter.Value>
+                                            <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                                <RadialGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterX="0.5" 
+                                                                    CenterY="0.5" 
+                                                                    ScaleX="2" 
+                                                                    ScaleY="2"/>
+                                                        <TranslateTransform X="0.02" Y="0.9"/>
+                                                    </TransformGroup>
+                                                </RadialGradientBrush.RelativeTransform>
+                                                <GradientStop Color="White" Offset="1"/>
+                                                <GradientStop Color="#FF327EC3" Offset="0.3"/>
+                                            </RadialGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+
+                                <!-- Grid Trigger -->
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" 
+                                        TargetName="grid" 
+                                        Value="0.25"/>
+                                </Trigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Button" x:Key="ContentButtons">
+                <Setter Property="Background" Value="{StaticResource MainButtonGroup}"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontFamily" Value="Sitka Text"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+
+                            <Grid x:Name="grid">
+                                <Border x:Name="border" 
+                                    CornerRadius="3,3,3,3" 
+                                    BorderBrush="Black" 
+                                    BorderThickness="1.6,1.9,2.2,2.3">
+                                    <Border.Background>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" 
+                                                                CenterY="0.5" 
+                                                                ScaleX="1.5" 
+                                                                ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Offset="1" Color="#FF327EC3"/>
+                                            <GradientStop Offset="0.3" Color="#FF327EC3"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                  VerticalAlignment="Center" 
+                                                  TextElement.FontWeight="Regular">
+                                    </ContentPresenter>
+                                </Border>
+                            </Grid>
+
+                            <!-- TRIGGERS -->
+                            <ControlTemplate.Triggers>
+
+                                <!-- Mouse Over Trigger -->
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="Background" TargetName="border">
+                                        <Setter.Value>
+                                            <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                                <RadialGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterX="0.5" 
+                                                                    CenterY="0.5"
+                                                                    ScaleX="2" 
+                                                                    ScaleY="2"/>
+                                                        <TranslateTransform X="0.02" Y="0.9"/>
+                                                    </TransformGroup>
+                                                </RadialGradientBrush.RelativeTransform>
+                                                <GradientStop Color="#FF327EC3" Offset="1"/>
+                                                <GradientStop Color="White" Offset="0.3"/>
+                                            </RadialGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+
+                                <!-- Mouse Click Trigger -->
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="Background" TargetName="border">
+                                        <Setter.Value>
+                                            <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                                <RadialGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterX="0.5" 
+                                                                    CenterY="0.5" 
+                                                                    ScaleX="2" 
+                                                                    ScaleY="2"/>
+                                                        <TranslateTransform X="0.02" Y="0.9"/>
+                                                    </TransformGroup>
+                                                </RadialGradientBrush.RelativeTransform>
+                                                <GradientStop Color="White" Offset="1"/>
+                                                <GradientStop Color="#FF327EC3" Offset="0.3"/>
+                                            </RadialGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+
+                                <!-- Grid Trigger -->
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" 
+                                        TargetName="grid" 
+                                        Value="0.25"/>
+                                </Trigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             
+        </Grid.Resources>
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.8,1" StartPoint="0.2,0">
+                <GradientStop Color="White" Offset="1.4"/>
+                <GradientStop Color="#FEABCAE5"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <StackPanel Name="DropDownStackPanel"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,0"
+                    Visibility="Visible">
+
+            <Button Name="CheckForUpdatesButton"
+                    Style="{StaticResource HeaderTab}"
+                    Width="150"
+                    Height="30"
+                    Content="Check for Updates"
+                    FontFamily="Setika Text"
+                    FontSize="16"
+                    Margin="0,0,0,10"
+                    Click="CheckForUpdatesButton_Click"/>
+
+            <Button Name="UninstallServiceButton" 
+                    Style="{StaticResource HeaderTab}"
+                    Width="150"
+                    Height="30"
+                    Content="Uninstall Service"
+                    FontFamily="Setika Text"
+                    FontSize="17"
+                    Margin="0,0,0,10"
+                    Click="UninstallServiceButton_Click"/>
+
+            <Button Name="LoginButton" 
+                    Style="{StaticResource HeaderTab}"
+                    Width="150"
+                    Height="30"
+                    Content="Admin Login"
+                    FontFamily="Setika Text"
+                    FontSize="17"
+                    Margin="0,0,0,10"
+                    Click="LoginButton_Click"/>
+        </StackPanel>
+
+        <Image Name="WvaLogoImage"
+               Source="/Resources/logo-plain-vector-72-white.png" 
+               Width="250"
+               VerticalAlignment="Top"
+               Margin="0,70,0,0"/>
+
+
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"  
+                    Margin="0,210,0,0">
+
+            <Border BorderBrush="Black" 
+                    BorderThickness="2">
+
+                <StackPanel Orientation="Horizontal" >
+                    <Label Content="WVA Server Status"
+                       FontFamily="Sitka Text"
+                       FontSize="20"
+                       Height="30"
+                       Margin="0,0,5,0"/>
+
+                    <Image Name="ServerStatusImage"
+                       Source="/Resources/RedBubble.jpg"
+                       Height="20" />
+
+                </StackPanel>
+            </Border>
+
+            <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"                    
+                    Margin="0,20,0,0">
+
+                <Button Name="StartServerButton"
+                        Style="{StaticResource ContentButtons}"
+                        Width="100"
+                        Height="30"
+                        Content="Start"
+                        FontFamily="Setika Text"
+                        FontSize="20"
+                        Margin="0,0,20,0"
+                        Click="StartServerButton_Click"/>
+
+                <Button Name="StopServerButton" 
+                        Style="{StaticResource ContentButtons}"
+                        Width="100"
+                        Height="30"
+                        Content="Stop"
+                        FontFamily="Setika Text"
+                        FontSize="20"
+                        Margin="0,0,0,0"
+                        Click="StopServerButton_Click"/>
+            </StackPanel>
+
+        </StackPanel>
+
+
+
     </Grid>
 </UserControl>
