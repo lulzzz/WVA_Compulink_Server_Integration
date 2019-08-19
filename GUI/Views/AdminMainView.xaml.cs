@@ -22,16 +22,6 @@ namespace WVA_Connect_CSI.Views
     {
         private string UserRole;
 
-        private string GetUserRole()
-        {
-            return UserRole;
-        }
-
-        private void SetUserRole(string value)
-        {
-            UserRole = value;
-        }
-
         public AdminMainView(string role)
         {
             InitializeComponent();

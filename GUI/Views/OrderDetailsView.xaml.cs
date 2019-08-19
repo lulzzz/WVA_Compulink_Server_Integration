@@ -24,5 +24,17 @@ namespace WVA_Connect_CSI.Views
         {
             InitializeComponent();
         }
+
+        private void ReviewOrderDataGrid_CurrentCellChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+                if (window.GetType() == typeof(MainWindow))
+                    (window as MainWindow).MainContentControl.DataContext = new AdminMainView("manager");
+        }
     }
 }

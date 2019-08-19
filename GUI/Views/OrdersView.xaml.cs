@@ -27,7 +27,9 @@ namespace WVA_Connect_CSI.Views
 
         private void WvaOrdersDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            foreach (Window window in Application.Current.Windows)
+                if (window.GetType() == typeof(MainWindow))
+                    (window as MainWindow).MainContentControl.DataContext = new OrderDetailsView();
         }
     }
 }

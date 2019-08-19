@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WVA_Connect_CSI.Views"
              mc:Ignorable="d" 
-             MinHeight="300"
+             MinHeight="350"
              MinWidth="650"
              HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch">
@@ -195,7 +195,7 @@
                  FontSize="16"
                  Grid.Row="1"                    
                  Height="30"
-                 Margin="0,0,10,10"
+                 Margin="0,0,10,15"
                  Grid.Column="1"
                  VerticalAlignment="Center"
                  HorizontalAlignment="Stretch"/>
@@ -210,7 +210,7 @@
                 Grid.Column="1"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
-                Margin="0,10,0,5"/>
+                Margin="0,10,0,10"/>
 
 
         <!-- Add New User -->
