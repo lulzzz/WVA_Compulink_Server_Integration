@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using WVA_Connect_CSI.Models;
 
 namespace WVA_Connect_CSI.Data
@@ -16,14 +16,16 @@ namespace WVA_Connect_CSI.Data
             dataAccessor = new SqliteDataAccessor();
         }
 
-        public bool IsGoodLogin(string username, string password)
+        public void SetUpRoles()
         {
-            return dataAccessor.LoginCredentialsFound(username, password);
+            dataAccessor.CreateRolesTable();
+            dataAccessor.AddRoles();
+            dataAccessor.AddRoleIdColumn();
         }
 
-        public DatabaseRole GetUserRole(string username)
+        public int GetUserRole(string username, string password)
         {
-            return dataAccessor.GetDatabaseRole(username);
+            return dataAccessor.GetRoleFromCredentials(username, password);
         }
 
     }

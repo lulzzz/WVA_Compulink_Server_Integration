@@ -27,7 +27,7 @@ namespace WVA_Connect_CSI.Utility.Files
         private static readonly string AppHighestVer            = GetServerDirectoryName();
 
 
-        // FILES     
+        // FILES   
         public static readonly string DatabaseFile              = $@"{PublicDocs}\{AppName}\Data\SQLite_Database.sqlite";
         public static readonly string AppExecFile               = $@"{AppDataLocal}\{AppName}\{AppName}.exe";
         public static readonly string WvaConfigFile             = $@"{PublicDocs}\{AppName}\Config\wvaConfig.json";

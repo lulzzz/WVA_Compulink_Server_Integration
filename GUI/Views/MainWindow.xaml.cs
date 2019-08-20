@@ -15,6 +15,7 @@ using System.ComponentModel;
 using WVA_Connect_CSI.ODBC;
 using System.Windows.Media.Imaging;
 using static WVA_Connect_CSI.Views.MainView;
+using WVA_Connect_CSI.Data;
 
 namespace WVA_Connect_CSI
 {
@@ -31,6 +32,7 @@ namespace WVA_Connect_CSI
             InitializeComponent();
             SetTitle();
             SetUpFiles();
+            SetUpDatabase();
             SetUpServiceHost();
             SetContentControl();
             StartWorkers();
@@ -94,6 +96,11 @@ namespace WVA_Connect_CSI
 
             if (!Directory.Exists($@"{Paths.ConfigDir}"))
                 Directory.CreateDirectory($@"{Paths.ConfigDir}");
+        }
+
+        public void SetUpDatabase()
+        {
+            new Database().SetUpRoles();
         }
 
         // 

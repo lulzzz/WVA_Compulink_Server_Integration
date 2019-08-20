@@ -51,18 +51,19 @@ namespace WVA_Connect_CSI.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            var goodLogin = loginViewModel.Login(UsernameTextBox.Text, PasswordTextBox.Password);
+            int roleId = loginViewModel.GetLoginRole(UsernameTextBox.Text, PasswordTextBox.Password);
 
-            if (goodLogin)
+            if (roleId > 0)
             {
-                var userRole = loginViewModel.GetRole(UsernameTextBox.Text);
-
                 foreach (Window window in Application.Current.Windows)
                     if (window.GetType() == typeof(MainWindow))
-                        (window as MainWindow).MainContentControl.DataContext = new AdminMainView(userRole.Role, userRole.Id);
+                        (window as MainWindow).MainContentControl.DataContext = new AdminMainView(roleId);
             }
-
-           
+            else
+            {
+                NotifyLabel.Text = "Invalid login credentials";
+                NotifyLabel.Visibility = Visibility.Visible;
+            }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

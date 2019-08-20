@@ -23,11 +23,11 @@ namespace WVA_Connect_CSI.Views
     {
         private Role UserRole;
 
-        public AdminMainView(string name, int value)
+        public AdminMainView(int roleId)
         {
             InitializeComponent();
             ResizeView();
-            SetRole(name, value);
+            SetRole(roleId);
             SetUpView();
         }
 
@@ -42,9 +42,9 @@ namespace WVA_Connect_CSI.Views
                 }
         }
 
-        private void SetRole(string name, int value)
+        private void SetRole(int roleId)
         {
-            UserRole = new Role(name, value).DetermineRole();
+            UserRole = new Role(roleId).DetermineRole();
         }
 
         private void SetUpView()
@@ -79,22 +79,7 @@ namespace WVA_Connect_CSI.Views
                 UsersButton.Visibility = Visibility.Hidden;
                 UsersButton.IsEnabled = false;
             }
-
-            //switch (view)
-            //{
-            //    case "ordersView":
-            //        AdminMainViewContentControl.Content = new OrdersView();
-            //        break;
-            //    case "orderDetailsView":
-            //        AdminMainViewContentControl.Content = new OrderDetailsView();
-            //        break;
-            //    case "usersView":
-            //        AdminMainViewContentControl.Content = new UsersView();
-            //        break;
-            //    default:
-                    
-            //        break;
-            //}
+           
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

@@ -8,8 +8,7 @@ namespace WVA_Connect_CSI.Roles
 {
     interface IRole
     {
-        string Name { get; set; }
-        int Value { get; set; }
+        int RoleId { get; set; }
 
         Role DetermineRole();
     }

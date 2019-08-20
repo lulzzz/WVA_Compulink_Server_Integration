@@ -192,42 +192,44 @@
                         HorizontalAlignment="Stretch">
                 
                 <Button x:Name="LoginButton" 
-                   Content="Login" 
-                   HorizontalAlignment="Left" 
-                   Margin="0,10,45,0"
-                   VerticalAlignment="Top"
-                   Width="94"
-                   FontSize="22"
-                   Height="35" 
-                   TabIndex="3" 
-                   Click="LoginButton_Click"
-                   Panel.ZIndex="1"/>
+                        Content="Login" 
+                        HorizontalAlignment="Left" 
+                        Margin="0,10,45,0"
+                        VerticalAlignment="Top"
+                        Width="94"
+                        FontSize="22"
+                        Height="35" 
+                        TabIndex="3" 
+                        Click="LoginButton_Click"
+                        Panel.ZIndex="1"/>
 
                 <Button x:Name="BackButton" 
-                   Content="Back" 
-                   HorizontalAlignment="Right" 
-                   Margin="0,10,0,0"
-                   VerticalAlignment="Top"
-                   Width="94"
-                   FontSize="22"
-                   Height="35" 
-                   TabIndex="3" 
-                   Click="BackButton_Click"
-                   Panel.ZIndex="1"/>
+                        Content="Back" 
+                        HorizontalAlignment="Right" 
+                        Margin="0,10,0,0"
+                        VerticalAlignment="Top"
+                        Width="94"
+                        FontSize="22"
+                        Height="35" 
+                        TabIndex="3" 
+                        Click="BackButton_Click"
+                        Panel.ZIndex="1"/>
             </StackPanel>
 
+            <TextBlock x:Name="NotifyLabel" 
+                       Text="" 
+                       HorizontalAlignment="Center"
+                       Margin="0,10,0,0" 
+                       VerticalAlignment="Bottom" 
+                       FontSize="15" 
+                       MaxWidth="230"
+                       Height="60"
+                       TextWrapping="Wrap"
+                       Visibility="Visible"
+                       Focusable="False"/>
+            
         </StackPanel>
 
-        <TextBlock x:Name="NotifyLabel" 
-                   Text="" 
-                   HorizontalAlignment="Center"
-                   Margin="0,30,0,0" 
-                   VerticalAlignment="Bottom" 
-                   FontSize="15" 
-                   MaxWidth="260"
-                   Height="65"
-                   TextWrapping="Wrap"
-                   Visibility="Hidden"
-                   Focusable="False"/>
+        
     </Grid>
 </UserControl>

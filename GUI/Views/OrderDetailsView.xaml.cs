@@ -34,7 +34,7 @@ namespace WVA_Connect_CSI.Views
         {
             foreach (Window window in Application.Current.Windows)
                 if (window.GetType() == typeof(MainWindow))
-                    (window as MainWindow).MainContentControl.DataContext = new AdminMainView("manager");
+                    (window as MainWindow).MainContentControl.DataContext = new AdminMainView(1);
         }
     }
 }

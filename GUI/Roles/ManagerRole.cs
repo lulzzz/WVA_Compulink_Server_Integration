@@ -8,10 +8,9 @@ namespace WVA_Connect_CSI.Roles
 {
     class ManagerRole : Role
     {
-        public ManagerRole(string name, int value) : base(name, value)
+        public ManagerRole(int roleId) : base(roleId)
         {
-            Name = name;
-            Value = value;
+            RoleId = roleId;
             SetPermissions();
         }
 

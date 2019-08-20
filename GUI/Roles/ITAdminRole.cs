@@ -8,10 +8,9 @@ namespace WVA_Connect_CSI.Roles
 {
     class ITAdminRole : Role
     {
-        public ITAdminRole(string name, int value) : base(name, value)
+        public ITAdminRole(int roleId) : base(roleId)
         {
-            Name = name;
-            Value = value;
+            RoleId = roleId;
             SetPermissions();
         }
 

@@ -17,14 +17,9 @@ namespace WVA_Connect_CSI.ViewModels
             _Database = new Database();
         }
 
-        public bool Login(string username, string password)
+        public int GetLoginRole(string username, string password)
         {
-            return _Database.IsGoodLogin(username, password);
-        }
-
-        public DatabaseRole GetRole(string username)
-        {
-            return _Database.GetUserRole(username);
+            return _Database.GetUserRole(username, password);
         }
 
     }

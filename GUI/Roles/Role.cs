@@ -8,28 +8,26 @@ namespace WVA_Connect_CSI.Roles
 {
     class Role : IRole
     {
-        public string Name { get; set; }
-        public int Value { get; set; }
+        public int RoleId { get; set; }
 
         protected bool CanViewOrders { get; set; }
         protected bool CanViewUsers { get; set; }
 
-        public Role(string name, int value)
-        {
-            Name = name;
-            Value = value;
+        public Role(int roleId)
+        { 
+            RoleId = roleId;
         }
 
         public Role DetermineRole()
         {
-            if (Value == 3)
-                return new SuperAdminRole(Name, Value);
-            else if (Value == 2)
-                return new ITAdminRole(Name, Value);
-            else if (Value == 1)
-                return new ManagerRole(Name, Value);
+            if (RoleId == 3)
+                return new SuperAdminRole(RoleId);
+            else if (RoleId == 2)
+                return new ITAdminRole(RoleId);
+            else if (RoleId == 1)
+                return new ManagerRole(RoleId);
             else 
-                return new UserRole(Name, Value);
+                return new UserRole(RoleId);
         }
     }
 }
