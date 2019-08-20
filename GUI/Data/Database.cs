@@ -21,6 +21,7 @@ namespace WVA_Connect_CSI.Data
             dataAccessor.CreateRolesTable();
             dataAccessor.AddRoles();
             dataAccessor.AddRoleIdColumn();
+            dataAccessor.CreateSuperUser();
         }
 
         public int GetUserRole(string username, string password)

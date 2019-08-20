@@ -64,6 +64,29 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
+        public void CreateSuperUser()
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    string superuser = cnn.Query<string>($"SELECT UserName FROM Users WHERE UserName='stark' AND Password='462090fee12886df35b0dd449f4a996e24f288c6e4b2bade80c0fc7971c66631'").FirstOrDefault();
+
+                    if (superuser == null)
+                    {
+                        using (IDbConnection cnn1 = new SQLiteConnection(GetDbConnectionString()))
+                        {
+                            cnn1.Execute("INSERT INTO Users (UserName, Password, Email, RoleId) VALUES ('stark','462090fee12886df35b0dd449f4a996e24f288c6e4b2bade80c0fc7971c66631', 'evan@wisvis.com', '3');");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            }
+        }
+
         public int GetRoleFromCredentials(string username, string password)
         {
             try

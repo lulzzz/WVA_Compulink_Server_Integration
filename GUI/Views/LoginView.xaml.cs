@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WVA_Connect_CSI.Security;
 using WVA_Connect_CSI.ViewModels;
 
 namespace WVA_Connect_CSI.Views
@@ -27,6 +28,12 @@ namespace WVA_Connect_CSI.Views
         {
             InitializeComponent();
             loginViewModel = new LoginViewModel();
+        }
+
+        private void NotifyInvalidLoginCredentials()
+        {
+            NotifyLabel.Text = "Invalid login credentials";
+            NotifyLabel.Visibility = Visibility.Visible;
         }
 
         private void UsernameTextBox_KeyUp(object sender, KeyEventArgs e)
@@ -51,18 +58,24 @@ namespace WVA_Connect_CSI.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            int roleId = loginViewModel.GetLoginRole(UsernameTextBox.Text, PasswordTextBox.Password);
+            try
+            {
+                int roleId = loginViewModel.GetLoginRole(UsernameTextBox.Text, Crypto.ConvertToHash(PasswordTextBox.Password));
 
-            if (roleId > 0)
-            {
-                foreach (Window window in Application.Current.Windows)
-                    if (window.GetType() == typeof(MainWindow))
-                        (window as MainWindow).MainContentControl.DataContext = new AdminMainView(roleId);
+                if (roleId > 0)
+                {
+                    foreach (Window window in Application.Current.Windows)
+                        if (window.GetType() == typeof(MainWindow))
+                            (window as MainWindow).MainContentControl.DataContext = new AdminMainView(roleId);
+                }
+                else
+                {
+                    NotifyInvalidLoginCredentials();
+                }
             }
-            else
+            catch
             {
-                NotifyLabel.Text = "Invalid login credentials";
-                NotifyLabel.Visibility = Visibility.Visible;
+                NotifyInvalidLoginCredentials();
             }
         }
 
