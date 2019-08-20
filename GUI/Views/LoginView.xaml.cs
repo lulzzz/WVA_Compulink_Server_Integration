@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using WVA_Connect_CSI.Security;
 using WVA_Connect_CSI.ViewModels;
 
@@ -28,35 +30,19 @@ namespace WVA_Connect_CSI.Views
         {
             InitializeComponent();
             loginViewModel = new LoginViewModel();
+            PlaceCursorInLoginTextBox();
         }
-
-        private void NotifyInvalidLoginCredentials()
+       
+        private void PlaceCursorInLoginTextBox()
         {
-            NotifyLabel.Text = "Invalid login credentials";
-            NotifyLabel.Visibility = Visibility.Visible;
+            Dispatcher.BeginInvoke(DispatcherPriority.Input,
+                new Action(delegate () {
+                    UsernameTextBox.Focus();        
+                    Keyboard.Focus(UsernameTextBox);
+            }));
         }
 
-        private void UsernameTextBox_KeyUp(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void UsernameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void PasswordTextBox_KeyUp(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void PasswordTextBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private void Login()
         {
             try
             {
@@ -77,6 +63,39 @@ namespace WVA_Connect_CSI.Views
             {
                 NotifyInvalidLoginCredentials();
             }
+        }
+
+        private void NotifyInvalidLoginCredentials()
+        {
+            NotifyLabel.Text = "Invalid login credentials";
+            NotifyLabel.Visibility = Visibility.Visible;
+        }
+
+        private void UsernameTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                Login();
+        }
+
+        private void UsernameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            NotifyLabel.Visibility = Visibility.Hidden;
+        }
+
+        private void PasswordTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                Login();
+        }
+
+        private void PasswordTextBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            NotifyLabel.Visibility = Visibility.Hidden;
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            Login();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

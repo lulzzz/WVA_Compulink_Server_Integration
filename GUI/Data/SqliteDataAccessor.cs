@@ -14,38 +14,29 @@ namespace WVA_Connect_CSI.Data
 {
     class SqliteDataAccessor
     {
+
+        //
+        // Database setup
+        //
+
         public void CreateRolesTable()
         {
-            try
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
-                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
-                {
-                    cnn.Execute("CREATE TABLE IF NOT EXISTS Roles (" +
-                                                            "Id                     INTEGER PRIMARY KEY, " +
-                                                            "Role                   TEXT); ");
-                }
-            }
-            catch (Exception ex)
-            {
-                Error.ReportOrLog(ex);
+                cnn.Execute("CREATE TABLE IF NOT EXISTS Roles (" +
+                                                        "Id                     INTEGER PRIMARY KEY, " +
+                                                        "Role                   TEXT); ");
             }
         }
 
         public void AddRoles()
         {
-            try
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
-                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
-                {
-                    cnn.Execute("INSERT OR IGNORE INTO Roles (Id, Role) VALUES ('0', 'USER');");
-                    cnn.Execute("INSERT OR IGNORE INTO Roles (Id, Role) VALUES ('1', 'MANAGER');");
-                    cnn.Execute("INSERT OR IGNORE INTO Roles (Id, Role) VALUES ('2', 'ITADMIN');");
-                    cnn.Execute("INSERT OR IGNORE INTO Roles (Id, Role) VALUES ('3', 'SUPERADMIN');");
-                }
-            }
-            catch (Exception ex)
-            {
-                Error.ReportOrLog(ex);
+                cnn.Execute("INSERT OR IGNORE INTO Roles (Id, Role) VALUES ('0', 'USER');");
+                cnn.Execute("INSERT OR IGNORE INTO Roles (Id, Role) VALUES ('1', 'MANAGER');");
+                cnn.Execute("INSERT OR IGNORE INTO Roles (Id, Role) VALUES ('2', 'ITADMIN');");
+                cnn.Execute("INSERT OR IGNORE INTO Roles (Id, Role) VALUES ('3', 'SUPERADMIN');");
             }
         }
 
@@ -66,42 +57,70 @@ namespace WVA_Connect_CSI.Data
 
         public void CreateSuperUser()
         {
-            try
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
-                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
-                {
-                    string superuser = cnn.Query<string>($"SELECT UserName FROM Users WHERE UserName='stark' AND Password='462090fee12886df35b0dd449f4a996e24f288c6e4b2bade80c0fc7971c66631'").FirstOrDefault();
+                string superuser = cnn.Query<string>($"SELECT UserName FROM Users WHERE UserName='stark' AND Password='462090fee12886df35b0dd449f4a996e24f288c6e4b2bade80c0fc7971c66631'").FirstOrDefault();
 
-                    if (superuser == null)
+                if (superuser == null)
+                {
+                    using (IDbConnection cnn1 = new SQLiteConnection(GetDbConnectionString()))
                     {
-                        using (IDbConnection cnn1 = new SQLiteConnection(GetDbConnectionString()))
-                        {
-                            cnn1.Execute("INSERT INTO Users (UserName, Password, Email, RoleId) VALUES ('stark','462090fee12886df35b0dd449f4a996e24f288c6e4b2bade80c0fc7971c66631', 'evan@wisvis.com', '3');");
-                        }
+                        cnn1.Execute("INSERT INTO Users (UserName, Password, Email, RoleId) VALUES ('stark','462090fee12886df35b0dd449f4a996e24f288c6e4b2bade80c0fc7971c66631', 'evan@wisvis.com', '3');");
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                Error.ReportOrLog(ex);
-            }
         }
+
+        //
+        // LoginView
+        //
 
         public int GetRoleFromCredentials(string username, string password)
         {
-            try
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
-                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
-                {
-                    return cnn.Query<int>($"SELECT RoleId FROM Users WHERE UserName='{username}' AND Password='{password}'").FirstOrDefault();
-                }
-            }
-            catch (Exception ex)
-            {
-                Error.ReportOrLog(ex);
-                return 0;
+                return cnn.Query<int>($"SELECT RoleId FROM Users WHERE UserName='{username}' AND Password='{password}'").FirstOrDefault();
             }
         }
+
+        //
+        // UsersView
+        //
+
+        public void CreateUser(string username, string password, string email, int roleId)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                cnn.Execute($"INSERT INTO Users (UserName, " +
+                                                $"Password, " +
+                                                $"Email, " +
+                                                $"RoleId) " +
+                                        $"VALUES ('{username}', " +
+                                                $" '{password}', " +
+                                                $" '{email}', " +
+                                                $" '{roleId}')");
+            }
+        }
+
+        public string GetUserName(string username)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                return cnn.Query<string>($"SELECT UserName FROM Users WHERE UserName='{username}'").FirstOrDefault();
+            }
+        }
+
+        public void DeleteUser(string username)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                cnn.Execute($"DELETE FROM Users WHERE UserName='{username}'");
+            }
+        }
+
+        //
+        // Get database connection string
+        //
 
         private string GetDbConnectionString()
         {

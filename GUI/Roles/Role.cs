@@ -10,8 +10,8 @@ namespace WVA_Connect_CSI.Roles
     {
         public int RoleId { get; set; }
 
-        protected bool CanViewOrders { get; set; }
-        protected bool CanViewUsers { get; set; }
+        public bool CanViewOrders { get; set; }
+        public bool CanViewUsers { get; set; }
 
         public Role(int roleId)
         { 

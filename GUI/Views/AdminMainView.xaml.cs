@@ -82,6 +82,25 @@ namespace WVA_Connect_CSI.Views
            
         }
 
+        private void SetUpView(string view)
+        {
+            switch (view)
+            {
+                case "users":
+                    if (UserRole.CanViewUsers)
+                        AdminMainViewContentControl.Content = new UsersView();
+                    break;
+                case "orders":
+                    if (UserRole.CanViewUsers)
+                        AdminMainViewContentControl.Content = new OrdersView();
+                    break;
+                case "orderdetails":
+                    if (UserRole.CanViewUsers)
+                        AdminMainViewContentControl.Content = new OrdersView();
+                    break;
+            }
+        }
+
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             foreach (Window window in Application.Current.Windows)
@@ -91,12 +110,12 @@ namespace WVA_Connect_CSI.Views
 
         private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
-            SetUpView();
+            SetUpView("orders");
         }
 
         private void UsersButton_Click(object sender, RoutedEventArgs e)
         {
-            SetUpView();
+            SetUpView("users");
         }
     }
 }

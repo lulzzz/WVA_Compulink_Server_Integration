@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WVA_Connect_CSI.Security;
+using WVA_Connect_CSI.ViewModels;
 
 namespace WVA_Connect_CSI.Views
 {
@@ -20,9 +23,13 @@ namespace WVA_Connect_CSI.Views
     /// </summary>
     public partial class UsersView : UserControl
     {
+        UsersViewModel usersViewModel;
+
+
         public UsersView()
         {
             InitializeComponent();
+            usersViewModel = new UsersViewModel();
         }
 
         private void UserNameTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -42,5 +49,111 @@ namespace WVA_Connect_CSI.Views
             EmailTextBox.Focus();
             EmailTextBox.SelectAll();
         }
+
+        //
+        // Import users from a CSV file
+        //
+
+        private void ImportUsersButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                usersViewModel.ImportUsers();
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show($"Cannot find path to file '{ex.Message}'", "File Not Found", MessageBoxButton.OK);
+            }
+            catch (FileFormatException)
+            {
+               
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        //
+        // Remove a single user from the database
+        //
+
+        private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (usersViewModel.UserNameExists(DeleteUserTextBox.Text))
+            {
+                bool deleted = usersViewModel.DeleteUser(DeleteUserTextBox.Text);
+
+                if (deleted)
+                {
+                    MessageBox.Show("User Deleted!", "", MessageBoxButton.OK);
+                    DeleteUserTextBox.Text = "";
+                }
+                else
+                    MessageBox.Show("Error Deleting User!", "", MessageBoxButton.OK);
+            }
+            else
+            {
+                MessageBox.Show("User Not Found!", "", MessageBoxButton.OK);
+            }
+        }
+
+        //
+        // Create a new user in the database
+        //
+
+        private void TryCreateUser()
+        {
+            if (usersViewModel.UserNameExists(UserNameTextBox.Text))
+            {
+                MessageBox.Show("This username exists already!", "", MessageBoxButton.OK);
+            }
+            else
+            {
+                bool created = usersViewModel.CreateUser(UserNameTextBox.Text, Crypto.ConvertToHash(PasswordTextBox.Text), EmailTextBox.Text, RoleTextBox.SelectedIndex);
+
+                if (created)
+                {
+                    MessageBox.Show("User Created!", "", MessageBoxButton.OK);
+                    UserNameTextBox.Text = "";
+                    PasswordTextBox.Text = "";
+                    EmailTextBox.Text = "";
+                    RoleTextBox.SelectedIndex = 0;
+                }
+                else
+                    MessageBox.Show("Error Creating User!", "", MessageBoxButton.OK);
+            }
+        }
+
+        private bool FormsCompleted()
+        {
+            if (UserNameTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("Username cannot be blank!", "", MessageBoxButton.OK);
+                return false;
+            }
+            else if (EmailTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("Email cannot be blank!", "", MessageBoxButton.OK);
+                return false;
+            }
+            else if (PasswordTextBox.Text.Trim() == "")
+            {
+                MessageBox.Show("Password cannot be blank!", "", MessageBoxButton.OK);
+                return false;
+            }
+            else
+                return true;
+        }
+
+        private void AddUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (FormsCompleted())
+                TryCreateUser();
+            else
+                return;
+        }
+
+
     }
 }
