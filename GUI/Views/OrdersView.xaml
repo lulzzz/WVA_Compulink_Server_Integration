@@ -91,14 +91,13 @@
                       MouseDoubleClick="WvaOrdersDataGrid_MouseDoubleClick">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Path=WvaStoreID}"     Width="95" MinWidth="80" Header="WVA Store ID" />
-                    <DataGridTextColumn Binding="{Binding Path=OrderName}"      Width="*" MinWidth="80" Header="Order Name" />
-                    <DataGridTextColumn Binding="{Binding Path=CreatedDate}"    Width="95" MinWidth="80" Header="Created Date" />
-                    <DataGridTextColumn Binding="{Binding Path=ShipToPatient}"  Width="95" MinWidth="80" Header="STP" />
-                    <DataGridTextColumn Binding="{Binding Path=PoNumber}"       Width="95" MinWidth="80" Header="PO Number" />
-                    <DataGridTextColumn Binding="{Binding Path=OrderedBy}"      Width="95" MinWidth="80" Header="Ordered By" />
-                    <DataGridTextColumn Binding="{Binding Path=Quantity}"       Width="95" MinWidth="80" Header="Qty" />
-                    <DataGridTextColumn Binding="{Binding Path=Status}"         Width="95" MinWidth="80" Header="Status" />
+                    <DataGridTextColumn Binding="{Binding Path=WvaStoreID}"     Width="95" MinWidth="90" Header="WVA Store ID" />
+                    <DataGridTextColumn Binding="{Binding Path=OrderName}"      Width="*"  MinWidth="100" Header="Order Name" />
+                    <DataGridTextColumn Binding="{Binding Path=CreatedDate}"    Width="95" MinWidth="90" Header="Created Date" />
+                    <DataGridTextColumn Binding="{Binding Path=ShipToPatient}"  Width="95" MinWidth="90" Header="STP" />
+                    <DataGridTextColumn Binding="{Binding Path=PoNumber}"       Width="95" MinWidth="90" Header="PO Number" />
+                    <DataGridTextColumn Binding="{Binding Path=OrderedBy}"      Width="95" MinWidth="90" Header="Ordered By" />
+                    <DataGridTextColumn Binding="{Binding Path=Status}"         Width="95" MinWidth="90" Header="Status" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

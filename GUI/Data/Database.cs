@@ -136,5 +136,22 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
+        //
+        // OrderDetails
+        //
+
+        public List<ItemDetail> GetItemDetail(int orderId)
+        {
+            try
+            {
+                return dataAccessor.GetItemDetail(orderId);
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+                return null;
+            }
+        }
+
     }
 }

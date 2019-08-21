@@ -40,6 +40,7 @@ namespace WVA_Connect_CSI.Utility.Files
 
         public static readonly string WisVisBase                = "https://orders.wisvis.com";
         public static readonly string WisVisOrders              = $@"{WisVisBase}/orders";
+        public static readonly string WisVisOrderStatus         = $@"https://orders.wisvis.com/order_status";
         public static readonly string WisVisErrors              = $@"https://ws2.wisvis.com/aws/scanner/error_handler.rb";
 
 

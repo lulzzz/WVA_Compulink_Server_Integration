@@ -147,6 +147,18 @@ namespace WVA_Connect_CSI.Data
         }
 
         //
+        // OrderDetails
+        //
+
+        public List<ItemDetail> GetItemDetail(int orderId)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                return cnn.Query<ItemDetail>($"SELECT * FROM OrderDetails WHERE WvaOrderId='{orderId}'").AsEnumerable().ToList();
+            }
+        }
+
+        //
         // Get database connection string
         //
 

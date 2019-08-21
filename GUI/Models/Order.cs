@@ -6,20 +6,9 @@ using System.Threading.Tasks;
 
 namespace WVA_Connect_CSI.Models
 {
-    class Order
+    public class Order
     {
-        // old
-        //public string WvaStoreID { get; set; }
-        //public string OrderName { get; set; }
-        //public string CreatedDate { get; set; }
-        //public string ShipToPatient { get; set; }
-        //public string PoNumber { get; set; }
-        //public string OrderedBy { get; set; }
-        //public int Quantity { get; set; }
-        //public string Status { get; set; }
-
-
-        // new
+        public int Id { get; set; }
         public int CustomerId { get; set; }
         public string OrderName { get; set; }
         public string CreatedDate { get; set; }
@@ -44,5 +33,8 @@ namespace WVA_Connect_CSI.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Status { get; set; }
+        public string DeletedFlag { get; set; }
+        public string ProcessedFlag { get; set; }
+        public string Message { get; set; }
     }
 }

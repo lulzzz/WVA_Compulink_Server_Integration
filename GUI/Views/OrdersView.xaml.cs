@@ -35,9 +35,16 @@ namespace WVA_Connect_CSI.Views
 
         private void WvaOrdersDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            int index = GetSelectedOrderIndex();
+
             foreach (Window window in Application.Current.Windows)
                 if (window.GetType() == typeof(MainWindow))
-                    (window as MainWindow).MainContentControl.DataContext = new OrderDetailsView();
+                    (window as MainWindow).MainContentControl.DataContext = new OrderDetailsView((Order)WvaOrdersDataGrid.Items[index]);
+        }
+
+        private int GetSelectedOrderIndex()
+        {
+            return WvaOrdersDataGrid.SelectedIndex;
         }
 
         private string GetOrderActionFromIndex(int index)
@@ -82,7 +89,6 @@ namespace WVA_Connect_CSI.Views
 
             var tempOrders = new List<Order>();
             tempOrders.AddRange(Orders);
-            var y = tempOrders.Where(x => x.WvaStoreID == SearchOrdersTextBox.Text).ToList();
 
             switch (SearchOrdersComboBox.SelectedIndex)
             {
@@ -110,9 +116,7 @@ namespace WVA_Connect_CSI.Views
         private void OrderTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (WvaOrdersDataGrid?.Items != null)
-            {
                 SetUpDataGrid();
-            }
         }
     }
 }
