@@ -30,20 +30,14 @@
               VerticalAlignment="Top"
               Margin="20,20,20,0"
               Grid.Row="0">
-            
-            <TextBox Name="SearchOrdersTextBox"
-                     Margin="0,0,150,0"
-                     Height="30"
-                     HorizontalAlignment="Stretch"
-                     FontSize="16"/>
 
             <ComboBox Name="SearchOrdersComboBox"
-                      Width="120"
+                      Width="130"
                       Height="30"
-                      Margin="20,0,0,0"
+                      Margin="0,0,0,0"
                       FontSize="16"
                       SelectedIndex="0"
-                      HorizontalAlignment="Right">
+                      HorizontalAlignment="Left">
 
                 <ComboBoxItem>Order ID</ComboBoxItem>
                 <ComboBoxItem>Order Name</ComboBoxItem>
@@ -51,9 +45,30 @@
                 <ComboBoxItem>ShipToPatient</ComboBoxItem>
                 <ComboBoxItem>PoNumber</ComboBoxItem>
                 <ComboBoxItem>Ordered By</ComboBoxItem>
-                <ComboBoxItem>Quantity</ComboBoxItem>
-                <ComboBoxItem>Status</ComboBoxItem>
             </ComboBox>
+
+            <TextBox Name="SearchOrdersTextBox"
+                     Margin="150,0,160,0"
+                     Height="30"
+                     HorizontalAlignment="Stretch"
+                     FontSize="19"
+                     TextChanged="SearchOrdersTextBox_TextChanged"/>
+
+            <ComboBox Name="OrderTypeComboBox"
+                      Width="140"
+                      Height="30"
+                      Margin="0,0,0,0"
+                      FontSize="16"
+                      SelectedIndex="1"
+                      HorizontalAlignment="Right"
+                      SelectionChanged="OrderTypeComboBox_SelectionChanged">
+
+                <ComboBoxItem>All Orders</ComboBoxItem>
+                <ComboBoxItem>Submitted</ComboBoxItem>
+                <ComboBoxItem>Open</ComboBoxItem>
+            </ComboBox>
+
+
         </Grid>
 
         <Grid Grid.Row="1"

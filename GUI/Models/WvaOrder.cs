@@ -6,20 +6,8 @@ using System.Threading.Tasks;
 
 namespace WVA_Connect_CSI.Models
 {
-    class Order
+    class WvaOrder
     {
-        // old
-        //public string WvaStoreID { get; set; }
-        //public string OrderName { get; set; }
-        //public string CreatedDate { get; set; }
-        //public string ShipToPatient { get; set; }
-        //public string PoNumber { get; set; }
-        //public string OrderedBy { get; set; }
-        //public int Quantity { get; set; }
-        //public string Status { get; set; }
-
-
-        // new
         public int CustomerId { get; set; }
         public string OrderName { get; set; }
         public string CreatedDate { get; set; }

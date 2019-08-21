@@ -42,6 +42,8 @@ namespace WVA_Connect_CSI.ViewModels
 
         public void ImportUsers()
         {
+            return;
+
             string file = GetCsvPath();
 
             if (file == "")

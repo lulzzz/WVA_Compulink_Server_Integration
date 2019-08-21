@@ -17,6 +17,10 @@ namespace WVA_Connect_CSI.Data
             dataAccessor = new SqliteDataAccessor();
         }
 
+        //
+        // User Roles
+        //
+
         public void SetUpRoles()
         {
             try
@@ -36,6 +40,10 @@ namespace WVA_Connect_CSI.Data
         {
             return dataAccessor.GetRoleFromCredentials(username, password);
         }
+
+        //
+        // Users
+        //
 
         public void CreateUser(User user)
         {
@@ -82,6 +90,49 @@ namespace WVA_Connect_CSI.Data
             {
                 Error.ReportOrLog(ex);
                 return false;
+            }
+        }
+
+        //
+        // Orders
+        //
+
+        public List<Order> GetAllOrders()
+        {
+            try
+            {
+                return dataAccessor.GetAllOrders();
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+                return null;
+            }
+        }
+
+        public List<Order> GetSubmittedOrders()
+        {
+            try
+            { 
+                return dataAccessor.GetSubmittedOrders();
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+                return null;
+            }
+        }
+
+        public List<Order> GetUnsubmittedOrders()
+        {
+            try
+            {
+                return dataAccessor.GetUnsubmittedOrders();
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+                return null;
             }
         }
 

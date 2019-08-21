@@ -84,7 +84,7 @@ namespace WVA_Connect_CSI.Data
         }
 
         //
-        // UsersView
+        // Users
         //
 
         public void CreateUser(string username, string password, string email, int roleId)
@@ -115,6 +115,34 @@ namespace WVA_Connect_CSI.Data
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
                 cnn.Execute($"DELETE FROM Users WHERE UserName='{username}'");
+            }
+        }
+
+        //
+        // Orders
+        //
+
+        public List<Order> GetAllOrders()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                return cnn.Query<Order>($"SELECT * FROM WvaOrders").AsEnumerable().ToList();
+            }
+        }
+
+        public List<Order> GetSubmittedOrders()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                return cnn.Query<Order>($"SELECT * FROM WvaOrders WHERE Status='submitted'").AsEnumerable().ToList();
+            }
+        }
+
+        public List<Order> GetUnsubmittedOrders()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                return cnn.Query<Order>($"SELECT * FROM WvaOrders WHERE Status='open'").AsEnumerable().ToList();
             }
         }
 
