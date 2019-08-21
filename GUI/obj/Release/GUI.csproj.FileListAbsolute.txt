@@ -210,7 +210,6 @@ C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\GUI
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\GUI.csproj.CopyComplete
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\WVA_Connect_CSI.exe
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\WVA_Connect_CSI.pdb
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\GUI.csprojAssemblyReference.cache
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\Views\LoginView.g.cs
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\Views\MainView.g.cs
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\Views\LoginView.baml
@@ -224,3 +223,5 @@ C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\Vie
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\Views\OrderDetailsView.baml
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\Views\OrdersView.baml
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Release\Views\UsersView.baml
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Release\Dapper.dll
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Release\Dapper.xml

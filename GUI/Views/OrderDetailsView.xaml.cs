@@ -32,6 +32,11 @@ namespace WVA_Connect_CSI.Views
         List<ItemDetail> itemDetails;
         OrderDetailsViewModel orderDetailsViewModel;
 
+        public OrderDetailsView()
+        {
+
+        }
+
         public OrderDetailsView(Order o)
         {
             orderDetailsViewModel = new OrderDetailsViewModel();
@@ -47,6 +52,23 @@ namespace WVA_Connect_CSI.Views
                 return;
 
             itemDetails = orderDetailsViewModel.GetItemDetail(order.Id);
+        }
+
+        private string GetShippingTypeID(string shipType)
+        {
+            switch (shipType)
+            {
+                case "1":
+                    return "Standard";
+                case "D":
+                    return "UPS Ground";
+                case "J":
+                    return "UPS 2nd Day Air";
+                case "P":
+                    return "UPS Next Day Air";
+                default:
+                    return shipType;
+            }
         }
 
         private void SetUp()
@@ -65,7 +87,7 @@ namespace WVA_Connect_CSI.Views
                 StackPanelAddLeftChild($"Address: {order.StreetAddr1}");
 
             if (order.ShippingMethod != null && order.ShippingMethod.Trim() != "")
-                StackPanelAddLeftChild($"Ship Type: {order.ShippingMethod}");
+                StackPanelAddLeftChild($"Ship Type: {GetShippingTypeID(order.ShippingMethod)}");
 
             if (order.Phone != null && order.Phone.Trim() != "")
                 StackPanelAddLeftChild($"Phone: {order.Phone}");
