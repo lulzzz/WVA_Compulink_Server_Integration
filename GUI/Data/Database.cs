@@ -28,6 +28,7 @@ namespace WVA_Connect_CSI.Data
                 dataAccessor.CreateRolesTable();
                 dataAccessor.AddRoles();
                 dataAccessor.AddRoleIdColumn();
+                dataAccessor.AddChangePasswordColumn();
                 dataAccessor.CreateSuperUser();
             }
             catch (Exception ex)

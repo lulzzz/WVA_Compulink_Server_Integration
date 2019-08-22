@@ -55,6 +55,21 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
+        public void AddChangePasswordColumn()
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    cnn.Execute("ALTER TABLE Users ADD COLUMN RequiresPasswordChange INT");
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
         public void CreateSuperUser()
         {
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))

@@ -407,7 +407,7 @@ namespace WVA_Connect_CSI.Data
             {
                 using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
                 {
-                    return cnn.Query<User>($"SELECT UserName, Password, Email FROM Users WHERE UserName='{user.UserName}' AND Password='{user.Password}'").FirstOrDefault();
+                    return cnn.Query<User>($"SELECT UserName, Password, Email, RoleId, RequiresPasswordChange FROM Users WHERE UserName='{user.UserName}' AND Password='{user.Password}'").FirstOrDefault();
                 }
             }
             catch (Exception ex)

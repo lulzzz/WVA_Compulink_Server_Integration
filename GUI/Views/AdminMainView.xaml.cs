@@ -54,38 +54,28 @@ namespace WVA_Connect_CSI.Views
                 // Gives user full access to all controls in this view
                 AdminMainViewContentControl.Content = new OrdersView();
             }
-            else if (UserRole is ITAdminRole)
+            else if (UserRole is ITAdminRole) // Gives an IT Admin the ability to access the 'Users' view
             {
-                // Gives an IT Admin the ability to access the 'Users' view
-                OrdersButton.Visibility = Visibility.Hidden;
-                //OrdersButton.IsEnabled = false;
-
                 // Removes the 'Orders' button from the view 
                 HeaderButtonStackPanel.Children.Remove(OrdersButton);
 
+                // Set current view to users view 
                 AdminMainViewContentControl.Content = new UsersView();
             }
-            else if (UserRole is ManagerRole)
+            else if (UserRole is ManagerRole) // Gives a manager the ability to see the 'Orders' view that contains patient information
             {
-                // Gives a manager the ability to see the 'Orders' view that contains patient information
-                //UsersButton.Visibility = Visibility.Hidden;
-                UsersButton.IsEnabled = false;
-
                 // Removes the 'Users' button element from the view
                 HeaderButtonStackPanel.Children.Remove(UsersButton);
 
+                // Set current view to orders view 
                 AdminMainViewContentControl.Content = new OrdersView();
             }
             else
             {
-                // Hide header controls, limiting access to other views
-                OrdersButton.Visibility = Visibility.Hidden;
-                OrdersButton.IsEnabled = false;
-
-                UsersButton.Visibility = Visibility.Hidden;
-                UsersButton.IsEnabled = false;
+                // Remove header elements so they cannot be accessed 
+                HeaderButtonStackPanel.Children.Remove(OrdersButton);
+                HeaderButtonStackPanel.Children.Remove(UsersButton);
             }
-           
         }
 
         private void SetUpView(string view)
