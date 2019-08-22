@@ -58,15 +58,21 @@ namespace WVA_Connect_CSI.Views
             {
                 // Gives an IT Admin the ability to access the 'Users' view
                 OrdersButton.Visibility = Visibility.Hidden;
-                OrdersButton.IsEnabled = false;
+                //OrdersButton.IsEnabled = false;
+
+                // Removes the 'Orders' button from the view 
+                HeaderButtonStackPanel.Children.Remove(OrdersButton);
 
                 AdminMainViewContentControl.Content = new UsersView();
             }
             else if (UserRole is ManagerRole)
             {
                 // Gives a manager the ability to see the 'Orders' view that contains patient information
-                UsersButton.Visibility = Visibility.Hidden;
+                //UsersButton.Visibility = Visibility.Hidden;
                 UsersButton.IsEnabled = false;
+
+                // Removes the 'Users' button element from the view
+                HeaderButtonStackPanel.Children.Remove(UsersButton);
 
                 AdminMainViewContentControl.Content = new OrdersView();
             }
