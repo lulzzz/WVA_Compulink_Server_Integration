@@ -50,7 +50,7 @@ namespace WVA_Connect_CSI.Data
         {
             try
             {
-                dataAccessor.CreateUser(user.UserName, user.Password, user.Email, user.RoleId);
+                dataAccessor.CreateUser(user.UserName, user.Password, user.Email, user.RoleId, user.RequiresPasswordChange);
             }
             catch (Exception ex)
             {
@@ -66,11 +66,19 @@ namespace WVA_Connect_CSI.Data
                 return true;
         }
 
-        public bool CreateUser(string username, string password, string email, int roleId)
+        public bool EmailExists(string email)
+        {
+            if (dataAccessor.GetEmail(email) == null)
+                return false;
+            else
+                return true;
+        }
+
+        public bool CreateUser(string username, string password, string email, int roleId, int requiresPasswordChange)
         {
             try
             {
-                dataAccessor.CreateUser(username, password, email, roleId);
+                dataAccessor.CreateUser(username, password, email, roleId, requiresPasswordChange);
                 return true;
             }
             catch (Exception ex)

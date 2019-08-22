@@ -102,18 +102,20 @@ namespace WVA_Connect_CSI.Data
         // Users
         //
 
-        public void CreateUser(string username, string password, string email, int roleId)
+        public void CreateUser(string username, string password, string email, int roleId, int requiresPasswordChange)
         {
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
                 cnn.Execute($"INSERT INTO Users (UserName, " +
                                                 $"Password, " +
                                                 $"Email, " +
-                                                $"RoleId) " +
-                                        $"VALUES ('{username}', " +
+                                                $"RoleId," +
+                                                $"RequiresPasswordChange) " +
+                                         $"VALUES ('{username}', " +
                                                 $" '{password}', " +
                                                 $" '{email}', " +
-                                                $" '{roleId}')");
+                                                $" '{roleId}', " +
+                                                $" '{requiresPasswordChange}');");
             }
         }
 
@@ -122,6 +124,14 @@ namespace WVA_Connect_CSI.Data
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
                 return cnn.Query<string>($"SELECT UserName FROM Users WHERE UserName='{username}'").FirstOrDefault();
+            }
+        }
+
+        public string GetEmail(string email)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                return cnn.Query<string>($"SELECT Email FROM Users WHERE Email='{email}'").FirstOrDefault();
             }
         }
 

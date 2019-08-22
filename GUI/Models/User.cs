@@ -19,5 +19,6 @@ namespace WVA_Connect_CSI.Models
         public string DSN { get; set; }
         public string Status { get; set; }
         public string Message { get; set; }
+        public int RequiresPasswordChange { get; set; }
     }
 }

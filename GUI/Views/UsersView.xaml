@@ -193,9 +193,10 @@
 
         <TextBox Name="DeleteUserTextBox"
                  FontFamily="Sitka Text"
-                 FontSize="16"
+                 FontSize="18"
+                 VerticalContentAlignment="Center"
                  Grid.Row="1"                    
-                 Height="30"
+                 Height="26"
                  Margin="0,0,10,15"
                  Grid.Column="1"
                  VerticalAlignment="Center"
@@ -322,7 +323,8 @@
                   FontWeight="ExtraLight"
                   Width="140"
                   Height="26"
-                  FontSize="18"
+                  FontSize="15"
+                  VerticalContentAlignment="Center"
                   Margin="0,0,10,0">
 
             <ComboBoxItem>User</ComboBoxItem>

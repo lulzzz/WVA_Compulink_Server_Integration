@@ -110,7 +110,7 @@ namespace WVA_Connect_CSI.Views
             }
             else
             {
-                bool created = usersViewModel.CreateUser(UserNameTextBox.Text, Crypto.ConvertToHash(PasswordTextBox.Text), EmailTextBox.Text, RoleTextBox.SelectedIndex);
+                bool created = usersViewModel.CreateUser(UserNameTextBox.Text, Crypto.ConvertToHash(PasswordTextBox.Text), EmailTextBox.Text, RoleTextBox.SelectedIndex, 0);
 
                 if (created)
                 {

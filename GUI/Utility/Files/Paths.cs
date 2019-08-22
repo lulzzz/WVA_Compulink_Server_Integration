@@ -35,6 +35,7 @@ namespace WVA_Connect_CSI.Utility.Files
         public static readonly string ConfigDocuments           = $@"{Documents}\WVA Remote Help\Files\wvaConfig.json";
         public static readonly string ConfigInstallDir          = $@"{Desktop}\WVA Compulink Integration\Applications\Server App\wvaConfig.json";
         public static readonly string ServiceExePath            = $@"{AppHighestVer}\Server\{AppName}.exe";
+        public static readonly string ImportCsvUsersLog         = $@"{Desktop}\ImportUsersLog.txt";
 
         /* -------------------------------------------- WEB PATHS --------------------------------------------------------- */
 
