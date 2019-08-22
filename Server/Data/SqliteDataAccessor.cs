@@ -427,7 +427,7 @@ namespace WVA_Connect_CSI.Data
             {
                 using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
                 {
-                    cnn.Execute($"UPDATE users SET Password ='{password}' WHERE UserName = '{userName}'");
+                    cnn.Execute($"UPDATE users SET Password ='{password}', RequiresPasswordChange='0' WHERE UserName = '{userName}'");
                 }
             }
             catch (Exception ex)
