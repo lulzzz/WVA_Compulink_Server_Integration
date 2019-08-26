@@ -42,6 +42,9 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="DeltaCompressionDotNet, Version=1.1.0.0, Culture=neutral, PublicKeyToken=1d14d6e5194e7f4a, processorArchitecture=MSIL">
       <HintPath>..\packages\DeltaCompressionDotNet.1.1.0\lib\net20\DeltaCompressionDotNet.dll</HintPath>
     </Reference>
@@ -242,16 +245,35 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AsyncJobs\TaskManager.cs" />
+    <Compile Include="Data\Database.cs" />
+    <Compile Include="Data\SqliteDataAccessor.cs" />
     <Compile Include="Memory\Storage.cs" />
     <Compile Include="Misc\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemDetail.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Prescription.cs" />
+    <Compile Include="Models\RequestWrapper.cs" />
+    <Compile Include="Models\StatusRequest.cs" />
+    <Compile Include="Models\StatusResponse.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\WvaConfig.cs" />
+    <Compile Include="Models\WvaOrder.cs" />
     <Compile Include="ODBC\DsnConnectionTester.cs" />
     <Compile Include="ODBC\WvaConfig.cs" />
     <Compile Include="Responses\IResponse.cs" />
     <Compile Include="Responses\Response.cs" />
+    <Compile Include="Roles\IRole.cs" />
+    <Compile Include="Roles\ITAdminRole.cs" />
+    <Compile Include="Roles\ManagerRole.cs" />
+    <Compile Include="Roles\Role.cs" />
+    <Compile Include="Roles\SuperAdminRole.cs" />
+    <Compile Include="Roles\UserRole.cs" />
+    <Compile Include="Security\Crypto.cs" />
     <Compile Include="Services\ServiceHost.cs" />
     <Compile Include="Updates\Updater.cs" />
     <Compile Include="Utility\Files\Paths.cs" />

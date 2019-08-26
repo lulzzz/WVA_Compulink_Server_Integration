@@ -193,10 +193,10 @@
 
             </StackPanel>
 
-            <Button Name="BackButton"
+            <Button Name="LogoutButton"
                     Width="120"
                     Height="40"
-                    Content="Back"
+                    Content="Logout"
                     FontFamily="Sitka Text"
                     FontSize="22"
                     HorizontalAlignment="Right"
