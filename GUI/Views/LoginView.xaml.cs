@@ -52,7 +52,7 @@ namespace WVA_Connect_CSI.Views
                 {
                     foreach (Window window in Application.Current.Windows)
                         if (window.GetType() == typeof(MainWindow))
-                            (window as MainWindow).MainContentControl.DataContext = new AdminMainView(roleId);
+                            (window as MainWindow).MainContentControl.DataContext = new AdminMainView(roleId, UsernameTextBox.Text);
                 }
                 else
                 {

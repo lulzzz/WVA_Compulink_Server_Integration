@@ -27,11 +27,16 @@ namespace WVA_Connect_CSI.Views
         UsersViewModel usersViewModel;
         Role userRole;
 
-        public UsersView(int roleId)
+        public UsersView()
+        {
+
+        }
+
+        public UsersView(Role role)
         {
             InitializeComponent();
             usersViewModel = new UsersViewModel();
-            userRole = new Role(roleId).DetermineRole();
+            userRole = role;
         }
 
         private void UserNameTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)

@@ -276,6 +276,8 @@
     <Compile Include="Security\Crypto.cs" />
     <Compile Include="Services\ServiceHost.cs" />
     <Compile Include="Updates\Updater.cs" />
+    <Compile Include="Utility\ActionLogging\ActionData.cs" />
+    <Compile Include="Utility\ActionLogging\ActionLogger.cs" />
     <Compile Include="Utility\Files\Paths.cs" />
     <Compile Include="ViewModels\AdminMainViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

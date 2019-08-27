@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WVA_Connect_CSI.Roles
 {
-    class UserRole : Role
+    public class UserRole : Role
     {
-        public UserRole(int roleId) : base(roleId)
+        public UserRole(int roleId, string userName) : base(roleId, userName)
         {
             RoleId = roleId;
             SetPermissions();

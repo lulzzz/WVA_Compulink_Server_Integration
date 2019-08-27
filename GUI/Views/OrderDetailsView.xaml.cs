@@ -39,10 +39,10 @@ namespace WVA_Connect_CSI.Views
 
         }
 
-        public OrderDetailsView(Order o, int roleId)
+        public OrderDetailsView(Order o, Role role)
         {
             orderDetailsViewModel = new OrderDetailsViewModel();
-            userRole = new Role(roleId).DetermineRole();
+            userRole = role;
             order = o;
             InitializeComponent();
             SetItemDetails();
@@ -232,9 +232,7 @@ namespace WVA_Connect_CSI.Views
                 string selectedItem = menuItem.Header.ToString();
 
                 if (selectedItem.Contains("https"))
-                {
                     Process.Start(selectedItem);
-                }
             }
             catch (Exception ex)
             {
@@ -292,7 +290,7 @@ namespace WVA_Connect_CSI.Views
         {
             foreach (Window window in Application.Current.Windows)
                 if (window.GetType() == typeof(MainWindow))
-                    (window as MainWindow).MainContentControl.DataContext = new AdminMainView(userRole.RoleId);
+                    (window as MainWindow).MainContentControl.DataContext = new AdminMainView(userRole.RoleId, userRole.UserName);
         }
     }
 }

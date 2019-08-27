@@ -27,11 +27,16 @@ namespace WVA_Connect_CSI.Views
         OrdersViewModel ordersViewModel;
         List<Order> Orders;
 
-        public OrdersView(int roleId)
+        public OrdersView()
+        {
+
+        }
+
+        public OrdersView(Role role)
         {
             InitializeComponent();
             ordersViewModel = new OrdersViewModel();
-            userRole = new Role(roleId).DetermineRole();
+            userRole = role;
             Orders = new List<Order>();
             SetUpDataGrid();
         }
@@ -42,7 +47,7 @@ namespace WVA_Connect_CSI.Views
 
             foreach (Window window in Application.Current.Windows)
                 if (window.GetType() == typeof(MainWindow))
-                    (window as MainWindow).MainContentControl.DataContext = new OrderDetailsView((Order)WvaOrdersDataGrid.Items[index], userRole.RoleId);
+                    (window as MainWindow).MainContentControl.DataContext = new OrderDetailsView((Order)WvaOrdersDataGrid.Items[index], userRole);
         }
 
         private int GetSelectedOrderIndex()

@@ -8,7 +8,7 @@ namespace WVA_Connect_CSI.Roles
 {
     class SuperAdminRole : Role
     {
-        public SuperAdminRole(int roleId) : base(roleId)
+        public SuperAdminRole(int roleId, string userName) : base(roleId, userName)
         {
             RoleId = roleId;
             SetPermissions();

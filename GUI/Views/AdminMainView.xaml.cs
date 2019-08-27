@@ -23,11 +23,11 @@ namespace WVA_Connect_CSI.Views
     {
         private Role UserRole;
 
-        public AdminMainView(int roleId)
+        public AdminMainView(int roleId, string userName)
         {
             InitializeComponent();
             ResizeView();
-            SetRole(roleId);
+            SetRole(roleId, userName);
             SetUpView();
         }
 
@@ -42,9 +42,9 @@ namespace WVA_Connect_CSI.Views
                 }
         }
 
-        private void SetRole(int roleId)
+        private void SetRole(int roleId, string userName)
         {
-            UserRole = new Role(roleId).DetermineRole();
+            UserRole = new Role(roleId, userName).DetermineRole();
         }
 
         private void SetUpView()
@@ -52,7 +52,7 @@ namespace WVA_Connect_CSI.Views
             if (UserRole is SuperAdminRole)
             {
                 // Gives user full access to all controls in this view
-                AdminMainViewContentControl.Content = new OrdersView(UserRole.RoleId);
+                AdminMainViewContentControl.Content = new OrdersView(UserRole);
             }
             else if (UserRole is ITAdminRole) // Gives an IT Admin the ability to access the 'Users' view
             {
@@ -60,7 +60,7 @@ namespace WVA_Connect_CSI.Views
                 HeaderButtonStackPanel.Children.Remove(OrdersButton);
 
                 // Set current view to users view 
-                AdminMainViewContentControl.Content = new UsersView(UserRole.RoleId);
+                AdminMainViewContentControl.Content = new UsersView(UserRole);
             }
             else if (UserRole is ManagerRole) // Gives a manager the ability to see the 'Orders' view that contains patient information
             {
@@ -68,7 +68,7 @@ namespace WVA_Connect_CSI.Views
                 HeaderButtonStackPanel.Children.Remove(UsersButton);
 
                 // Set current view to orders view 
-                AdminMainViewContentControl.Content = new OrdersView(UserRole.RoleId);
+                AdminMainViewContentControl.Content = new OrdersView(UserRole);
             }
             else
             {
@@ -84,15 +84,15 @@ namespace WVA_Connect_CSI.Views
             {
                 case "users":
                     if (UserRole.CanViewUsers)
-                        AdminMainViewContentControl.Content = new UsersView(UserRole.RoleId);
+                        AdminMainViewContentControl.Content = new UsersView(UserRole);
                     break;
                 case "orders":
                     if (UserRole.CanViewUsers)
-                        AdminMainViewContentControl.Content = new OrdersView(UserRole.RoleId);
+                        AdminMainViewContentControl.Content = new OrdersView(UserRole);
                     break;
                 case "orderdetails":
                     if (UserRole.CanViewUsers)
-                        AdminMainViewContentControl.Content = new OrdersView(UserRole.RoleId);
+                        AdminMainViewContentControl.Content = new OrdersView(UserRole);
                     break;
             }
         }

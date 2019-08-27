@@ -21,6 +21,7 @@ namespace WVA_Connect_CSI.Utility.Files
         /* ---------------------------------------- APP DATA --------------------------------------------------------- */
 
         // DIRECTORIES 
+        public static readonly string TempDir                   = $@"{AppDataLocal}\{AppName}\Temp\";
         public static readonly string ConfigDir                 = $@"{PublicDocs}\{AppName}\Config\";
         public static readonly string DataDir                   = $@"{PublicDocs}\{AppName}\Data\";
         public static readonly string ErrorLogDir               = $@"{PublicDocs}\{AppName}\ErrorLog\";
