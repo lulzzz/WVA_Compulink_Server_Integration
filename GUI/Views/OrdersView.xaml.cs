@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WVA_Connect_CSI.Models;
+using WVA_Connect_CSI.Roles;
 using WVA_Connect_CSI.ViewModels;
 
 namespace WVA_Connect_CSI.Views
@@ -22,13 +23,15 @@ namespace WVA_Connect_CSI.Views
     /// </summary>
     public partial class OrdersView : UserControl
     {
+        Role userRole;
         OrdersViewModel ordersViewModel;
         List<Order> Orders;
 
-        public OrdersView()
+        public OrdersView(int roleId)
         {
             InitializeComponent();
             ordersViewModel = new OrdersViewModel();
+            userRole = new Role(roleId).DetermineRole();
             Orders = new List<Order>();
             SetUpDataGrid();
         }
@@ -39,7 +42,7 @@ namespace WVA_Connect_CSI.Views
 
             foreach (Window window in Application.Current.Windows)
                 if (window.GetType() == typeof(MainWindow))
-                    (window as MainWindow).MainContentControl.DataContext = new OrderDetailsView((Order)WvaOrdersDataGrid.Items[index]);
+                    (window as MainWindow).MainContentControl.DataContext = new OrderDetailsView((Order)WvaOrdersDataGrid.Items[index], userRole.RoleId);
         }
 
         private int GetSelectedOrderIndex()

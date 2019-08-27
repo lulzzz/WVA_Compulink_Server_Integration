@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WVA_Connect_CSI.Errors;
 using WVA_Connect_CSI.Models;
+using WVA_Connect_CSI.Roles;
 using WVA_Connect_CSI.Utility.Files;
 using WVA_Connect_CSI.ViewModels;
 using WVA_Connect_CSI.WebTools;
@@ -28,6 +29,7 @@ namespace WVA_Connect_CSI.Views
     /// </summary>
     public partial class OrderDetailsView : UserControl
     {
+        Role userRole;
         Order order;
         List<ItemDetail> itemDetails;
         OrderDetailsViewModel orderDetailsViewModel;
@@ -37,9 +39,10 @@ namespace WVA_Connect_CSI.Views
 
         }
 
-        public OrderDetailsView(Order o)
+        public OrderDetailsView(Order o, int roleId)
         {
             orderDetailsViewModel = new OrderDetailsViewModel();
+            userRole = new Role(roleId).DetermineRole();
             order = o;
             InitializeComponent();
             SetItemDetails();
@@ -289,7 +292,7 @@ namespace WVA_Connect_CSI.Views
         {
             foreach (Window window in Application.Current.Windows)
                 if (window.GetType() == typeof(MainWindow))
-                    (window as MainWindow).MainContentControl.DataContext = new AdminMainView(1);
+                    (window as MainWindow).MainContentControl.DataContext = new AdminMainView(userRole.RoleId);
         }
     }
 }

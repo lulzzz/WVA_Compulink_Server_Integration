@@ -52,7 +52,7 @@ namespace WVA_Connect_CSI.Views
             if (UserRole is SuperAdminRole)
             {
                 // Gives user full access to all controls in this view
-                AdminMainViewContentControl.Content = new OrdersView();
+                AdminMainViewContentControl.Content = new OrdersView(UserRole.RoleId);
             }
             else if (UserRole is ITAdminRole) // Gives an IT Admin the ability to access the 'Users' view
             {
@@ -60,7 +60,7 @@ namespace WVA_Connect_CSI.Views
                 HeaderButtonStackPanel.Children.Remove(OrdersButton);
 
                 // Set current view to users view 
-                AdminMainViewContentControl.Content = new UsersView();
+                AdminMainViewContentControl.Content = new UsersView(UserRole.RoleId);
             }
             else if (UserRole is ManagerRole) // Gives a manager the ability to see the 'Orders' view that contains patient information
             {
@@ -68,7 +68,7 @@ namespace WVA_Connect_CSI.Views
                 HeaderButtonStackPanel.Children.Remove(UsersButton);
 
                 // Set current view to orders view 
-                AdminMainViewContentControl.Content = new OrdersView();
+                AdminMainViewContentControl.Content = new OrdersView(UserRole.RoleId);
             }
             else
             {
@@ -84,15 +84,15 @@ namespace WVA_Connect_CSI.Views
             {
                 case "users":
                     if (UserRole.CanViewUsers)
-                        AdminMainViewContentControl.Content = new UsersView();
+                        AdminMainViewContentControl.Content = new UsersView(UserRole.RoleId);
                     break;
                 case "orders":
                     if (UserRole.CanViewUsers)
-                        AdminMainViewContentControl.Content = new OrdersView();
+                        AdminMainViewContentControl.Content = new OrdersView(UserRole.RoleId);
                     break;
                 case "orderdetails":
                     if (UserRole.CanViewUsers)
-                        AdminMainViewContentControl.Content = new OrdersView();
+                        AdminMainViewContentControl.Content = new OrdersView(UserRole.RoleId);
                     break;
             }
         }

@@ -79,9 +79,7 @@ namespace WVA_Connect_CSI
 
                 if (IdleTime > 300000)
                 {
-                    Dispatcher.Invoke(
-                        new UpdateUICallBack(ForceLogOff)
-                    );
+                    Dispatcher.Invoke(new UpdateUICallBack(ForceLogOff));
                 }
             }
         }

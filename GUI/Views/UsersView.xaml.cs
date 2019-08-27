@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WVA_Connect_CSI.Roles;
 using WVA_Connect_CSI.Security;
 using WVA_Connect_CSI.ViewModels;
 
@@ -24,12 +25,13 @@ namespace WVA_Connect_CSI.Views
     public partial class UsersView : UserControl
     {
         UsersViewModel usersViewModel;
+        Role userRole;
 
-
-        public UsersView()
+        public UsersView(int roleId)
         {
             InitializeComponent();
             usersViewModel = new UsersViewModel();
+            userRole = new Role(roleId).DetermineRole();
         }
 
         private void UserNameTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
