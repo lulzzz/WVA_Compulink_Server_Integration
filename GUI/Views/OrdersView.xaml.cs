@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WVA_Connect_CSI.Errors;
 using WVA_Connect_CSI.Models;
 using WVA_Connect_CSI.Roles;
 using WVA_Connect_CSI.ViewModels;
@@ -43,11 +44,18 @@ namespace WVA_Connect_CSI.Views
 
         private void WvaOrdersDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            int index = GetSelectedOrderIndex();
+            try
+            {
+                int index = GetSelectedOrderIndex();
 
-            foreach (Window window in Application.Current.Windows)
-                if (window.GetType() == typeof(MainWindow))
-                    (window as MainWindow).MainContentControl.DataContext = new OrderDetailsView((Order)WvaOrdersDataGrid.Items[index], userRole);
+                foreach (Window window in Application.Current.Windows)
+                    if (window.GetType() == typeof(MainWindow))
+                        (window as MainWindow).MainContentControl.DataContext = new OrderDetailsView((Order)WvaOrdersDataGrid.Items[index], userRole);
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            }
         }
 
         private int GetSelectedOrderIndex()

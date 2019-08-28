@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using WVA_Connect_CSI.Security;
+using WVA_Connect_CSI.Utility.ActionLogging;
 using WVA_Connect_CSI.ViewModels;
 
 namespace WVA_Connect_CSI.Views
@@ -31,8 +32,10 @@ namespace WVA_Connect_CSI.Views
             InitializeComponent();
             loginViewModel = new LoginViewModel();
             PlaceCursorInLoginTextBox();
+
+            
         }
-       
+
         private void PlaceCursorInLoginTextBox()
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Input,
@@ -50,6 +53,8 @@ namespace WVA_Connect_CSI.Views
 
                 if (roleId > 0)
                 {
+                    ActionLogger.Log(GetType().FullName + nameof(Login), UsernameTextBox.Text, roleId, $"<User_Login>");
+
                     foreach (Window window in Application.Current.Windows)
                         if (window.GetType() == typeof(MainWindow))
                             (window as MainWindow).MainContentControl.DataContext = new AdminMainView(roleId, UsernameTextBox.Text);

@@ -13,8 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WVA_Connect_CSI.Errors;
 using WVA_Connect_CSI.Roles;
 using WVA_Connect_CSI.Security;
+using WVA_Connect_CSI.Utility.ActionLogging;
 using WVA_Connect_CSI.ViewModels;
 
 namespace WVA_Connect_CSI.Views
@@ -65,7 +67,8 @@ namespace WVA_Connect_CSI.Views
         {
             try
             {
-                usersViewModel.ImportUsers();
+                ActionLogger.Log(GetType().FullName + nameof(ImportUsersButton_Click), userRole, "<Import_Users_Start>");
+                usersViewModel.ImportUsers(userRole);
             }
             catch (FileNotFoundException ex)
             {
@@ -79,6 +82,10 @@ namespace WVA_Connect_CSI.Views
             {
 
             }
+            finally
+            {
+                ActionLogger.Log(GetType().FullName + nameof(ImportUsersButton_Click), userRole, "<Import_Users_End>");
+            }
         }
 
         //
@@ -87,21 +94,29 @@ namespace WVA_Connect_CSI.Views
 
         private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
         {
-            if (usersViewModel.UserNameExists(DeleteUserTextBox.Text))
+            try
             {
-                bool deleted = usersViewModel.DeleteUser(DeleteUserTextBox.Text);
-
-                if (deleted)
+                if (usersViewModel.UserNameExists(DeleteUserTextBox.Text))
                 {
-                    MessageBox.Show("User Deleted!", "", MessageBoxButton.OK);
-                    DeleteUserTextBox.Text = "";
+                    ActionLogger.Log(GetType().FullName + nameof(DeleteUserButton_Click), userRole, $"<Deleting_User UserName={DeleteUserTextBox.Text}>");
+                    bool deleted = usersViewModel.DeleteUser(DeleteUserTextBox.Text);
+
+                    if (deleted)
+                    {
+                        MessageBox.Show("User Deleted!", "", MessageBoxButton.OK);
+                        DeleteUserTextBox.Text = "";
+                    }
+                    else
+                        MessageBox.Show("Error Deleting User!", "", MessageBoxButton.OK);
                 }
                 else
-                    MessageBox.Show("Error Deleting User!", "", MessageBoxButton.OK);
+                {
+                    MessageBox.Show("User Not Found!", "", MessageBoxButton.OK);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("User Not Found!", "", MessageBoxButton.OK);
+                Error.ReportOrLog(ex);
             }
         }
 
@@ -111,24 +126,33 @@ namespace WVA_Connect_CSI.Views
 
         private void TryCreateUser()
         {
-            if (usersViewModel.UserNameExists(UserNameTextBox.Text))
+            try
             {
-                MessageBox.Show("This username exists already!", "", MessageBoxButton.OK);
-            }
-            else
-            {
-                bool created = usersViewModel.CreateUser(UserNameTextBox.Text, Crypto.ConvertToHash(PasswordTextBox.Text), EmailTextBox.Text, RoleTextBox.SelectedIndex, 0);
+                ActionLogger.Log(GetType().FullName + nameof(TryCreateUser), userRole, $"<Creating_User UserName={UserNameTextBox.Text}, Email={EmailTextBox.Text}, RoleId={RoleTextBox.Text}>");
 
-                if (created)
+                if (usersViewModel.UserNameExists(UserNameTextBox.Text))
                 {
-                    MessageBox.Show("User Created!", "", MessageBoxButton.OK);
-                    UserNameTextBox.Text = "";
-                    PasswordTextBox.Text = "";
-                    EmailTextBox.Text = "";
-                    RoleTextBox.SelectedIndex = 0;
+                    MessageBox.Show("This username exists already!", "", MessageBoxButton.OK);
                 }
                 else
-                    MessageBox.Show("Error Creating User!", "", MessageBoxButton.OK);
+                {
+                    bool created = usersViewModel.CreateUser(UserNameTextBox.Text, Crypto.ConvertToHash(PasswordTextBox.Text), EmailTextBox.Text, RoleTextBox.SelectedIndex, 0);
+
+                    if (created)
+                    {
+                        MessageBox.Show("User Created!", "", MessageBoxButton.OK);
+                        UserNameTextBox.Text = "";
+                        PasswordTextBox.Text = "";
+                        EmailTextBox.Text = "";
+                        RoleTextBox.SelectedIndex = 0;
+                    }
+                    else
+                        MessageBox.Show("Error Creating User!", "", MessageBoxButton.OK);
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 

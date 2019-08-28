@@ -201,7 +201,7 @@
                     FontSize="22"
                     HorizontalAlignment="Right"
                     Margin="0,0,20,0"
-                    Click="BackButton_Click"/>
+                    Click="LogoutButton_Click"/>
         </Grid>
 
         <!-- Content Control Grid-->

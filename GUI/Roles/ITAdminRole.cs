@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace WVA_Connect_CSI.Roles
 {
-    class ITAdminRole : Role
+    public class ITAdminRole : Role
     {
         public ITAdminRole(int roleId, string userName) : base(roleId, userName)
         {
             RoleId = roleId;
+            UserName = userName;
             SetPermissions();
         }
 

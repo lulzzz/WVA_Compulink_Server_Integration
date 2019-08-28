@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WVA_Connect_CSI.Roles;
+using WVA_Connect_CSI.Utility.ActionLogging;
 
 namespace WVA_Connect_CSI.Views
 {
@@ -97,8 +98,10 @@ namespace WVA_Connect_CSI.Views
             }
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
+            ActionLogger.Log(GetType().FullName + nameof(LogoutButton_Click), UserRole, "<User_Logout>");
+
             foreach (Window window in Application.Current.Windows)
                 if (window.GetType() == typeof(MainWindow))
                     (window as MainWindow).MainContentControl.DataContext = new MainView();

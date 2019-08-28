@@ -23,6 +23,25 @@ namespace WVA_Connect_CSI.Utility.ActionLogging
 
         static Role userRole;
 
+        public static void Log(string actionLocation, string userName, int roleId, string actionMessage = null)
+        {
+            try
+            {
+                userRole = new Role(roleId, userName).DetermineRole();
+
+                CreateLogFile();
+                string file = GetLogFileName();
+
+                string contents = actionMessage == null ? GetFileContents(actionLocation) : GetFileContents(actionLocation, actionMessage);
+
+                WriteToLogFile(file, contents);
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            }
+        }
+
         public static void Log(string actionLocation, Role role, string actionMessage = null)
         {
             try
@@ -61,8 +80,9 @@ namespace WVA_Connect_CSI.Utility.ActionLogging
         {
             try
             {
+                string apiKey = GetApiKey();
                 string time = DateTime.Now.ToString("hh:mm:ss");
-                return $"ApiKey={GetApiKey()} => MachName={Environment.MachineName} => EnvUserName={Environment.UserName} => UserRole={userRole.RoleId} => | => {time} => {actionLocation}";
+                return $"ApiKey={apiKey} => MachName={Environment.MachineName} => EnvUserName={Environment.UserName} => UserRole={userRole.RoleId} => UserName={userRole.UserName} => {time} => {actionLocation}";
             }
             catch
             {
@@ -78,6 +98,7 @@ namespace WVA_Connect_CSI.Utility.ActionLogging
             }
             catch (Exception ex)
             {
+                Error.ReportOrLog(ex);
                 return null;
             }
         }
@@ -114,7 +135,7 @@ namespace WVA_Connect_CSI.Utility.ActionLogging
             {
                 List<ActionData> listActionData = new List<ActionData>();
 
-                var files = Directory.EnumerateFiles(Paths.TempDir, "CDI_Action_Log*").Where(x => !x.Contains(DateTime.Today.ToString("MM-dd-yy")));
+                var files = Directory.EnumerateFiles(Paths.TempDir, "CSI_Action_Log*").Where(x => !x.Contains(DateTime.Today.ToString("MM-dd-yy")));
 
                 foreach (string file in files)
                 {
@@ -139,7 +160,7 @@ namespace WVA_Connect_CSI.Utility.ActionLogging
             {
                 List<ActionData> listActionData = new List<ActionData>();
 
-                var files = Directory.EnumerateFiles(Paths.TempDir, "CDI_Action_Log*");
+                var files = Directory.EnumerateFiles(Paths.TempDir, "CSI_Action_Log*");
 
                 foreach (string file in files)
                 {

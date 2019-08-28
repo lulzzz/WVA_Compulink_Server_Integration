@@ -11,6 +11,7 @@ namespace WVA_Connect_CSI.Roles
         public UserRole(int roleId, string userName) : base(roleId, userName)
         {
             RoleId = roleId;
+            UserName = userName;
             SetPermissions();
         }
 

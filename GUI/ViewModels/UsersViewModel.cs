@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using WVA_Connect_CSI.Data;
 using WVA_Connect_CSI.Models;
+using WVA_Connect_CSI.Roles;
 using WVA_Connect_CSI.Security;
+using WVA_Connect_CSI.Utility.ActionLogging;
 using WVA_Connect_CSI.Utility.Files;
 
 namespace WVA_Connect_CSI.ViewModels
@@ -72,7 +74,7 @@ namespace WVA_Connect_CSI.ViewModels
             return choofdlog.FileName;
         }
 
-        public void ImportUsers()
+        public void ImportUsers(Role userRole)
         {
             string csvFile = GetCsvPath();
 
@@ -98,6 +100,7 @@ namespace WVA_Connect_CSI.ViewModels
                         }
                         else
                         {
+                            ActionLogger.Log(GetType().FullName + nameof(ImportUsers), userRole, $"<Importing_User UserName={user.UserName}, Email={user.Email}, RoleId={user.RoleId}>");
                             database.CreateUser(user);
                             AppendToLogFile($"User '{user.UserName}' created!\n");
                         }

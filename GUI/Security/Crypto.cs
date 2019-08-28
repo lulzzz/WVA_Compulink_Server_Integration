@@ -9,14 +9,17 @@ namespace WVA_Connect_CSI.Security
 {
     public class Crypto
     {
+        /// <summary>
+        /// Converts a string with a minimum length of 6 and a maximum length of 63 to a salted hash.
+        /// </summary>
+
         public static string ConvertToHash(string inputString)
         {
-            // Check for null or blank data
-            if (inputString == null || inputString.Trim() == "")
-                return null;
-
-            if (inputString.Length < 6)
+            if (inputString == null ||  inputString.Length < 6)
                 throw new Exception("'inputString' must be at least 6 characters");
+
+            if (inputString.Length > 63)
+                throw new Exception("'inputString' must not exceed 63 characters");
 
             using (SHA256 sha256Hash = SHA256.Create())
             {
