@@ -32,8 +32,6 @@ namespace WVA_Connect_CSI.Views
             InitializeComponent();
             loginViewModel = new LoginViewModel();
             PlaceCursorInLoginTextBox();
-
-            
         }
 
         private void PlaceCursorInLoginTextBox()
