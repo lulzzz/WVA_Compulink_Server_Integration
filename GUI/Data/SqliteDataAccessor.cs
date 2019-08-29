@@ -12,7 +12,7 @@ using WVA_Connect_CSI.Utility.Files;
 
 namespace WVA_Connect_CSI.Data
 {
-    class SqliteDataAccessor
+    public class SqliteDataAccessor
     {
 
         //

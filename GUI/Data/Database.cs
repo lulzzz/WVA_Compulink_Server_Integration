@@ -8,7 +8,7 @@ using WVA_Connect_CSI.Models;
 
 namespace WVA_Connect_CSI.Data
 {
-    class Database
+    public class Database
     {
         SqliteDataAccessor dataAccessor;
 

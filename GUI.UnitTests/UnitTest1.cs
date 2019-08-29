@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WVA_Connect_CSI.Data;
 using WVA_Connect_CSI.Roles;
 using WVA_Connect_CSI.Security;
 
@@ -274,6 +275,13 @@ namespace GUI.UnitTests
         {
             Crypto.ConvertToHash("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         }
+    }
+
+    [TestClass]
+    public class DatabaseTests
+    {
+       
+
 
     }
 
