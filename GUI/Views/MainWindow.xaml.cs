@@ -29,14 +29,6 @@ namespace WVA_Connect_CSI
         private readonly BackgroundWorker CheckDsnConnectionStatusWorker = new BackgroundWorker();
         private readonly BackgroundWorker UpdateDsnConnectionStatusWorker = new BackgroundWorker();
 
-        [DllImport("user32.dll")]
-        public static extern Boolean GetLastInputInfo(ref tagLASTINPUTINFO plii);
-        public struct tagLASTINPUTINFO
-        {
-            public uint cbSize;
-            public Int32 dwTime;
-        }
-
         public MainWindow()
         {
             DeleteNetCoreIcon();
@@ -47,55 +39,7 @@ namespace WVA_Connect_CSI
             SetUpServiceHost();
             SetContentControl();
             StartWorkers();
-            //Task.Run(() => StartInactivityTimer());
             TaskManager.StartAllJobs();
-        }
-
-        //
-        // Check for user inacvitity 
-        //
-
-        private async void StartInactivityTimer()
-        {
-            while (true)
-            {
-                try
-                {
-                    if (MainContentControl.DataContext.GetType().Name == "MainView")
-                        CheckUserInactivity();
-                }
-                finally
-                {
-                    Thread.Sleep(5000);
-                }
-            }
-        }
-
-        private void CheckUserInactivity()
-        {
-            tagLASTINPUTINFO LastInput = new tagLASTINPUTINFO();
-            Int32 IdleTime;
-
-            LastInput.cbSize = (uint)Marshal.SizeOf(LastInput);
-            LastInput.dwTime = 0;
-
-            if (GetLastInputInfo(ref LastInput))
-            {
-                IdleTime = System.Environment.TickCount - LastInput.dwTime;
-                Trace.WriteLine($"*** IdleTime: {IdleTime}ms ***");
-
-                if (IdleTime > 300000)
-                {
-                    Dispatcher.Invoke(new UpdateUICallBack(ForceLogOff));
-                }
-            }
-        }
-
-        private void ForceLogOff()
-        {
-            foreach (Window window in Application.Current.Windows)
-                if (window.GetType() == typeof(MainWindow))
-                    (window as MainWindow).MainContentControl.DataContext = new MainView();
         }
 
         //

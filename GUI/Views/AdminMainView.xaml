@@ -9,7 +9,9 @@
              MinHeight="450"
              MinWidth="800"
              HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch">
+             VerticalAlignment="Stretch"
+             Loaded="UserControl_Loaded"
+             Unloaded="UserControl_Unloaded">
 
     <UserControl.Resources>
         <LinearGradientBrush x:Key="LoginButtonGroup"  EndPoint="0.5,1" StartPoint="0.5,0">

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WVA_Connect_CSI.Roles;
 using WVA_Connect_CSI.Utility.ActionLogging;
+using static WVA_Connect_CSI.Views.MainView;
 
 namespace WVA_Connect_CSI.Views
 {
@@ -22,7 +26,16 @@ namespace WVA_Connect_CSI.Views
     /// </summary>
     public partial class AdminMainView : UserControl
     {
+        Thread inactivityThread;
         private Role UserRole;
+
+        [DllImport("user32.dll")]
+        public static extern Boolean GetLastInputInfo(ref tagLASTINPUTINFO plii);
+        public struct tagLASTINPUTINFO
+        {
+            public uint cbSize;
+            public Int32 dwTime;
+        }
 
         public AdminMainView(int roleId, string userName)
         {
@@ -31,6 +44,57 @@ namespace WVA_Connect_CSI.Views
             SetRole(roleId, userName);
             SetUpView();
         }
+
+        //
+        // Check for user inacvitity 
+        //
+
+        private async void StartInactivityTimer()
+        {
+            while (true)
+            {
+                try
+                {
+                    CheckUserInactivity();
+                }
+                finally
+                {
+                    Thread.Sleep(5000);
+                }
+
+            }
+        }
+
+        private void CheckUserInactivity()
+        {
+            tagLASTINPUTINFO LastInput = new tagLASTINPUTINFO();
+            Int32 IdleTime;
+
+            LastInput.cbSize = (uint)Marshal.SizeOf(LastInput);
+            LastInput.dwTime = 0;
+
+            if (GetLastInputInfo(ref LastInput))
+            {
+                IdleTime = System.Environment.TickCount - LastInput.dwTime;
+                Trace.WriteLine($"*** IdleTime: {IdleTime}ms ***");
+
+                if (IdleTime > 300000)
+                {
+                    Dispatcher.Invoke(new UpdateUICallBack(ForceLogOff));
+                }
+            }
+        }
+
+        private void ForceLogOff()
+        {
+            foreach (Window window in Application.Current.Windows)
+                if (window.GetType() == typeof(MainWindow))
+                    (window as MainWindow).MainContentControl.DataContext = new MainView();
+        }
+
+        //
+        // Window Setup Functions
+        //
 
         private void ResizeView()
         {
@@ -115,6 +179,18 @@ namespace WVA_Connect_CSI.Views
         private void UsersButton_Click(object sender, RoutedEventArgs e)
         {
             SetUpView("users");
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            inactivityThread = new Thread(StartInactivityTimer);
+            inactivityThread.Start();
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (inactivityThread.IsAlive)
+                inactivityThread.Abort();
         }
     }
 }
