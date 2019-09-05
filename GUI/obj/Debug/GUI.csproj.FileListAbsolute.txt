@@ -225,4 +225,3 @@ C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\WVA_C
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\WVA_Connect_CSI.pdb
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Debug\Dapper.dll
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Debug\Dapper.xml
-C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\GUI.csprojAssemblyReference.cache

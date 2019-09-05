@@ -47,7 +47,7 @@ namespace WVA_Connect_CSI
             SetUpServiceHost();
             SetContentControl();
             StartWorkers();
-            Task.Run(() => StartInactivityTimer());
+            //Task.Run(() => StartInactivityTimer());
             TaskManager.StartAllJobs();
         }
 
@@ -59,8 +59,15 @@ namespace WVA_Connect_CSI
         {
             while (true)
             {
-                CheckUserInactivity();
-                Thread.Sleep(5000);
+                try
+                {
+                    if (MainContentControl.DataContext.GetType().Name == "MainView")
+                        CheckUserInactivity();
+                }
+                finally
+                {
+                    Thread.Sleep(5000);
+                }
             }
         }
 
@@ -167,7 +174,7 @@ namespace WVA_Connect_CSI
             }
             catch (Exception x)
             {
-                Error.ReportOrLog(x);
+                Error.WriteError(x.ToString());
             }
         }
 
@@ -179,7 +186,7 @@ namespace WVA_Connect_CSI
             }
             catch (Exception x)
             {
-                Error.ReportOrLog(x);
+                Error.WriteError(x.ToString());
             }
         }
 

@@ -214,7 +214,12 @@ namespace WVA_Connect_CSI.Data
                         Message = "Invalid Username/Password"
                     };
                 }
-                if (responseUser.UserName == "FAIL" || responseUser.Password == "FAIL")
+                if (responseUser.RoleId == 2)
+                {
+                    responseUser.Status = "FAIL";
+                    responseUser.Message = "Access Not Authorized!";
+                }
+                else if (responseUser.UserName == "FAIL" || responseUser.Password == "FAIL")
                 {
                     responseUser.Status = "FAIL";
                     responseUser.Message = "Invalid Username/Password";
