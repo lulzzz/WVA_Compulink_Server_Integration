@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using WVA_Connect_CSI.Errors;
 using WVA_Connect_CSI.Models.Orders;
 using WVA_Connect_CSI.Models.Users;
+using WVA_Connect_CSI.Security;
 using WVA_Connect_CSI.Utilities.Files;
 
 namespace WVA_Connect_CSI.Data
@@ -172,20 +173,20 @@ namespace WVA_Connect_CSI.Data
                                                             $"'{order.OrderName}'," +
                                                             $"'{createdDate}'," +
                                                             $"'{order.WvaStoreID}'," +
-                                                            $"'{order.DoB}'," +
-                                                            $"'{order.Name_1}'," +
-                                                            $"'{order.Name_2}'," +
-                                                            $"'{order.StreetAddr_1}'," +
-                                                            $"'{order.StreetAddr_2}'," +
-                                                            $"'{order.City}'," +
-                                                            $"'{order.State}'," +
-                                                            $"'{order.Zip}'," +
-                                                            $"'{order.OrderedBy}'," +
-                                                            $"'{order.PoNumber}'," +
-                                                            $"'{order.ShippingMethod}'," +
-                                                            $"'{order.ShipToPatient}'," +
-                                                            $"'{order.Phone}'," +
-                                                            $"'{order.Email}'," +
+                                                            $"'{Crypto.Encrypt(order.DoB)}'," +
+                                                            $"'{Crypto.Encrypt(order.Name_1)}'," +
+                                                            $"'{Crypto.Encrypt(order.Name_2)}'," +
+                                                            $"'{Crypto.Encrypt(order.StreetAddr_1)}'," +
+                                                            $"'{Crypto.Encrypt(order.StreetAddr_2)}'," +
+                                                            $"'{Crypto.Encrypt(order.City)}'," +
+                                                            $"'{Crypto.Encrypt(order.State)}'," +
+                                                            $"'{Crypto.Encrypt(order.Zip)}'," +
+                                                            $"'{Crypto.Encrypt(order.OrderedBy)}'," +
+                                                            $"'{Crypto.Encrypt(order.PoNumber)}'," +
+                                                            $"'{Crypto.Encrypt(order.ShippingMethod)}'," +
+                                                            $"'{Crypto.Encrypt(order.ShipToPatient)}'," +
+                                                            $"'{Crypto.Encrypt(order.Phone)}'," +
+                                                            $"'{Crypto.Encrypt(order.Email)}'," +
                                                             $"'{submitStatus}'" +
                                                             $")");
                 }
@@ -225,12 +226,12 @@ namespace WVA_Connect_CSI.Data
                                                     $"VALUES (" +
                                                             $"'{orderId}'," +
                                                             $"'{item.OrderDetail.LensRx}'," +
-                                                            $"'{item.FirstName}'," +
-                                                            $"'{item.LastName}'," +
+                                                            $"'{Crypto.Encrypt(item.FirstName)}'," +
+                                                            $"'{Crypto.Encrypt(item.LastName)}'," +
                                                             $"'{item.Eye}'," +
                                                             $"'{item.Quantity}'," +
                                                             $"'{item.ItemRetailPrice}'," +
-                                                            $"'{item.PatientID}'," +
+                                                            $"'{Crypto.Encrypt(item.PatientID)}'," +
                                                             $"'{item.OrderDetail.Name}'," +
                                                             $"'{(item.OrderDetail.ProductReviewed == true ? 1 : 0)}'," +
                                                             $"'{item.OrderDetail.SKU}'," +
@@ -301,13 +302,12 @@ namespace WVA_Connect_CSI.Data
 
                     foreach (Order order in orders)
                     {
-                            
                        List<ItemOrderDetail> details = cnn.Query<ItemOrderDetail>($"SELECT * FROM OrderDetails WHERE WvaOrderId = '{order.ID}'").ToList();
 
                         order.Items = GetNestedItems(details);
                     }
 
-                    return orders;
+                    return DecryptOrders(orders);
                 }
             }
             catch (Exception ex)
@@ -315,6 +315,41 @@ namespace WVA_Connect_CSI.Data
                 Error.WriteError(ex);
                 return null;
             }
+        }
+
+        private Order DecryptOrder(Order order)
+        {
+            order.DoB = Crypto.Decrypt(order?.DoB);
+            order.Name_1 = Crypto.Decrypt(order?.Name_1);
+            order.Name_2 = Crypto.Decrypt(order?.Name_2);
+            order.StreetAddr_1 = Crypto.Decrypt(order?.StreetAddr_1);
+            order.StreetAddr_2 = Crypto.Decrypt(order?.StreetAddr_2);
+            order.City = Crypto.Decrypt(order?.City);
+            order.State = Crypto.Decrypt(order?.State);
+            order.Zip = Crypto.Decrypt(order?.Zip);
+            order.OrderedBy = Crypto.Decrypt(order?.OrderedBy);
+            order.PoNumber = Crypto.Decrypt(order?.PoNumber);
+            order.ShippingMethod = Crypto.Decrypt(order?.ShippingMethod);
+            order.ShipToPatient = Crypto.Decrypt(order?.ShipToPatient);
+            order.Phone = Crypto.Decrypt(order?.Phone);
+            order.Email = Crypto.Decrypt(order?.Email);
+
+            for (int i = 0; i < order.Items.Count; i++)
+            {
+                order.Items[i].FirstName = Crypto.Decrypt(order?.Items[i]?.FirstName);
+                order.Items[i].LastName = Crypto.Decrypt(order?.Items[i]?.LastName);
+                order.Items[i].PatientID = Crypto.Decrypt(order?.Items[i]?.PatientID);
+            }
+
+            return order;
+        }
+
+        private List<Order> DecryptOrders(List<Order> orders)
+        {
+            for (int i = 0; i < orders.Count; i++)
+                orders[i] = DecryptOrder(orders[i]);
+
+            return orders;
         }
 
         public string GetEmail(string userName)
@@ -359,7 +394,7 @@ namespace WVA_Connect_CSI.Data
 
                     order.Items = GetNestedItems(details);
 
-                    return order;
+                    return DecryptOrder(order);
                 }
             } 
             catch (Exception ex)
@@ -476,7 +511,6 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
-
         public void SaveOrder(Order order, Order checkOrder)
         {
             try
@@ -487,20 +521,20 @@ namespace WVA_Connect_CSI.Data
                                             $"SET " +
                                                 $"WvaStoreId       =   '{checkOrder.WvaStoreID}', " +
                                                 $"CreatedDate      =   '{checkOrder.CreatedDate}', " +
-                                                $"DateOfBirth      =   '{order.DoB}', " +
-                                                $"Name1            =   '{order.Name_1}', " +
-                                                $"Name2            =   '{order.Name_2}', " +
-                                                $"StreetAddr1      =   '{order.StreetAddr_1}', " +
-                                                $"StreetAddr2      =   '{order.StreetAddr_2}', " +
-                                                $"City             =   '{order.City}', " +
-                                                $"State            =   '{order.State}', " +
-                                                $"Zip              =   '{order.Zip}', " +
-                                                $"OrderedBy        =   '{order.OrderedBy}', " +
-                                                $"PoNumber         =   '{order.PoNumber}', " +
-                                                $"ShippingMethod   =   '{order.ShippingMethod}', " +
-                                                $"ShipToPatient    =   '{order.ShipToPatient}', " +
-                                                $"Phone            =   '{order.Phone}', " +
-                                                $"Email            =   '{order.Email}', " +
+                                                $"DateOfBirth      =   '{Crypto.Encrypt(order.DoB)}', " +
+                                                $"Name1            =   '{Crypto.Encrypt(order.Name_1)}', " +
+                                                $"Name2            =   '{Crypto.Encrypt(order.Name_2)}', " +
+                                                $"StreetAddr1      =   '{Crypto.Encrypt(order.StreetAddr_1)}', " +
+                                                $"StreetAddr2      =   '{Crypto.Encrypt(order.StreetAddr_2)}', " +
+                                                $"City             =   '{Crypto.Encrypt(order.City)}', " +
+                                                $"State            =   '{Crypto.Encrypt(order.State)}', " +
+                                                $"Zip              =   '{Crypto.Encrypt(order.Zip)}', " +
+                                                $"OrderedBy        =   '{Crypto.Encrypt(order.OrderedBy)}', " +
+                                                $"PoNumber         =   '{Crypto.Encrypt(order.PoNumber)}', " +
+                                                $"ShippingMethod   =   '{Crypto.Encrypt(order.ShippingMethod)}', " +
+                                                $"ShipToPatient    =   '{Crypto.Encrypt(order.ShipToPatient)}', " +
+                                                $"Phone            =   '{Crypto.Encrypt(order.Phone)}', " +
+                                                $"Email            =   '{Crypto.Encrypt(order.Email)}', " +
                                                 $"Status           =   'open' " +
                                             $"WHERE OrderName      =   '{order.OrderName}';");
                 }
@@ -538,12 +572,12 @@ namespace WVA_Connect_CSI.Data
                                                        "LensRx)" +
                                                        "values (" +
                                                            $"'{checkOrder.ID}', " +
-                                                           $"'{item.FirstName}', " +
-                                                           $"'{item.LastName}', " +
+                                                           $"'{Crypto.Encrypt(item.FirstName)}', " +
+                                                           $"'{Crypto.Encrypt(item.LastName)}', " +
                                                            $"'{item.Eye}', " +
                                                            $"'{item.Quantity}', " +
                                                            $"'{item.ItemRetailPrice}', " +
-                                                           $"'{item.PatientID}', " +
+                                                           $"'{Crypto.Encrypt(item.PatientID)}', " +
                                                            $"'{item.OrderDetail.Name}', " +
                                                            $"'{(item.OrderDetail.ProductReviewed == true ? 1 : 0)}', " +
                                                            $"'{item.OrderDetail.SKU}', " +
