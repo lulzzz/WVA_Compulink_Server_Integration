@@ -75,10 +75,10 @@ namespace WVA_Connect_CSI.Data
             try
             {
                 // If true, mark this order as 'submitted'
-                string submitStatus = submit ? "submitted" : "open";
+                string status = submit ? "submitted" : "open";
                 string createdDate = DateTime.Now.ToString("yyyy-MM-dd-HH:mm:ss");
 
-                DataAccessor.CreateOrder(order, createdDate, submitStatus);
+                DataAccessor.CreateOrder(order, createdDate, status);
 
                 return true;
             }
@@ -166,6 +166,24 @@ namespace WVA_Connect_CSI.Data
             {
                 Error.ReportOrLog(x);
                 return null;
+            }
+        }
+
+        public bool OrderExists(string orderName)
+        {
+            try
+            {
+                var order = DataAccessor.OrderExists(orderName);
+
+                if (order == null)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception x)
+            {
+                Error.ReportOrLog(x);
+                return false;
             }
         }
 
@@ -300,21 +318,26 @@ namespace WVA_Connect_CSI.Data
         {
             try
             {
-                order.Status = "submitted";
-
-                Order checkOrder = CheckIfOrderExists(order.OrderName);
-
-                if (checkOrder == null)
-                {
-                    if (!CreateOrder(order, true))
-                        return false;
-                    else
-                        return true;
-                }
+                if (OrderExists(order.OrderName))
+                    return SaveOrder(order, submit:true) ? true : false;
                 else
-                {
-                    return true;
-                }
+                    return CreateOrder(order, submit: true) ? true : false;
+
+                //order.Status = "submitted";
+
+                //Order checkOrder = CheckIfOrderExists(order.OrderName);
+
+                //if (checkOrder == null)
+                //{
+                //    if (!CreateOrder(order, true))
+                //        return false;
+                //    else
+                //        return true;
+                //}
+                //else
+                //{
+                //    return true;
+                //}
             }
             catch (Exception x)
             {
@@ -339,26 +362,23 @@ namespace WVA_Connect_CSI.Data
         }
 
 
-        public bool SaveOrder(Order order)
+        public bool SaveOrder(Order order, bool submit = false)
         {
             try
             {
+                // Update the order status to follow the 'submit' action
+                order.Status = submit ? "submitted" : "open";
+
                 // Check if order exits. If not, create order, else save order
-                Order checkOrder = CheckIfOrderExists(order.OrderName);
-
-                if (checkOrder == null)
+                if (CheckIfOrderExists(order.OrderName) == null ? true : false)
                 {
-                    bool orderCreated = CreateOrder(order);
-
-                    if (orderCreated)
-                        return true;
-                    else
-                        return false;
+                    return CreateOrder(order, submit);
                 }
-
-                DataAccessor.SaveOrder(order, checkOrder);
-
-                return true;
+                else
+                {
+                    DataAccessor.SaveOrder(order);
+                    return true; // returns true as long as save order doesn't throw an error
+                }
             }
             catch (Exception x)
             {

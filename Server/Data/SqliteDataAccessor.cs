@@ -511,7 +511,7 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
-        public void SaveOrder(Order order, Order checkOrder)
+        public void SaveOrder(Order order)
         {
             try
             {
@@ -519,8 +519,8 @@ namespace WVA_Connect_CSI.Data
                 {
                     cnn.Execute($"UPDATE WvaOrders " +
                                             $"SET " +
-                                                $"WvaStoreId       =   '{checkOrder.WvaStoreID}', " +
-                                                $"CreatedDate      =   '{checkOrder.CreatedDate}', " +
+                                                $"WvaStoreId       =   '{order.WvaStoreID}', " +
+                                                $"CreatedDate      =   '{order.CreatedDate}', " +
                                                 $"DateOfBirth      =   '{Crypto.Encrypt(order.DoB)}', " +
                                                 $"Name1            =   '{Crypto.Encrypt(order.Name_1)}', " +
                                                 $"Name2            =   '{Crypto.Encrypt(order.Name_2)}', " +
@@ -535,13 +535,13 @@ namespace WVA_Connect_CSI.Data
                                                 $"ShipToPatient    =   '{Crypto.Encrypt(order.ShipToPatient)}', " +
                                                 $"Phone            =   '{Crypto.Encrypt(order.Phone)}', " +
                                                 $"Email            =   '{Crypto.Encrypt(order.Email)}', " +
-                                                $"Status           =   'open' " +
+                                                $"Status           =   '{order.Status}' " +
                                             $"WHERE OrderName      =   '{order.OrderName}';");
                 }
 
                 using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
                 {
-                    cnn.Execute($"DELETE FROM OrderDetails WHERE WvaOrderId = '{checkOrder.ID}'");
+                    cnn.Execute($"DELETE FROM OrderDetails WHERE WvaOrderId = '{order.ID}'");
                 }
 
                 foreach (Item item in order.Items)
@@ -571,7 +571,7 @@ namespace WVA_Connect_CSI.Data
                                                        "Multifocal, " +
                                                        "LensRx)" +
                                                        "values (" +
-                                                           $"'{checkOrder.ID}', " +
+                                                           $"'{order.ID}', " +
                                                            $"'{Crypto.Encrypt(item.FirstName)}', " +
                                                            $"'{Crypto.Encrypt(item.LastName)}', " +
                                                            $"'{item.Eye}', " +
