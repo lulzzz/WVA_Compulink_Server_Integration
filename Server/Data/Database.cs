@@ -300,11 +300,12 @@ namespace WVA_Connect_CSI.Data
         {
             try
             {
+                order.Status = "submitted";
+
                 Order checkOrder = CheckIfOrderExists(order.OrderName);
 
                 if (checkOrder == null)
                 {
-                    order.Status = "submitted";
                     if (!CreateOrder(order, true))
                         return false;
                     else
