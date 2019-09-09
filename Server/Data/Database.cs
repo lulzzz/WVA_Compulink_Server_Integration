@@ -134,8 +134,7 @@ namespace WVA_Connect_CSI.Data
                 return null;
             }
         }
-
-
+        
         // Get email from username
         public string GetEmail(string userName)
         {
@@ -148,6 +147,12 @@ namespace WVA_Connect_CSI.Data
                 Error.ReportOrLog(x);
                 return null;
             }
+        }
+
+        // Returns the Id for the given order name
+        public int GetOrderId(string orderName)
+        {
+            return DataAccessor.GetIdOrderId(orderName);
         }
 
         // Check if order exits. If it does, return it
@@ -322,22 +327,6 @@ namespace WVA_Connect_CSI.Data
                     return SaveOrder(order, submit:true) ? true : false;
                 else
                     return CreateOrder(order, submit: true) ? true : false;
-
-                //order.Status = "submitted";
-
-                //Order checkOrder = CheckIfOrderExists(order.OrderName);
-
-                //if (checkOrder == null)
-                //{
-                //    if (!CreateOrder(order, true))
-                //        return false;
-                //    else
-                //        return true;
-                //}
-                //else
-                //{
-                //    return true;
-                //}
             }
             catch (Exception x)
             {
@@ -361,7 +350,6 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
-
         public bool SaveOrder(Order order, bool submit = false)
         {
             try
@@ -376,7 +364,8 @@ namespace WVA_Connect_CSI.Data
                 }
                 else
                 {
-                    DataAccessor.SaveOrder(order);
+                    int id = GetOrderId(order.OrderName);
+                    DataAccessor.SaveOrder(order, id);
                     return true; // returns true as long as save order doesn't throw an error
                 }
             }

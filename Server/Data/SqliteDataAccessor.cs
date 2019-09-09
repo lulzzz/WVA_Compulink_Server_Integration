@@ -378,6 +378,15 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
+        public int GetIdOrderId(string orderName)
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                var id = cnn.Query<int>($"SELECT Id FROM WvaOrders WHERE OrderName = '{orderName}' LIMIT 1").FirstOrDefault();
+                return id;
+            }
+        }
+
         public Order OrderExists(string orderName)
         {
             try
@@ -511,7 +520,7 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
-        public void SaveOrder(Order order)
+        public void SaveOrder(Order order, int id) // id is the primary key to the WvaOrders table so we know which columns to update in 'OrderDetails'
         {
             try
             {
@@ -541,7 +550,7 @@ namespace WVA_Connect_CSI.Data
 
                 using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
                 {
-                    cnn.Execute($"DELETE FROM OrderDetails WHERE WvaOrderId = '{order.ID}'");
+                    cnn.Execute($"DELETE FROM OrderDetails WHERE WvaOrderId = '{id}'");
                 }
 
                 foreach (Item item in order.Items)
@@ -571,7 +580,7 @@ namespace WVA_Connect_CSI.Data
                                                        "Multifocal, " +
                                                        "LensRx)" +
                                                        "values (" +
-                                                           $"'{order.ID}', " +
+                                                           $"'{id}', " +
                                                            $"'{Crypto.Encrypt(item.FirstName)}', " +
                                                            $"'{Crypto.Encrypt(item.LastName)}', " +
                                                            $"'{item.Eye}', " +
