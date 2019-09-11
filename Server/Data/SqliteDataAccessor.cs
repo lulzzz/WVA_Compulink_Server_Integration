@@ -529,7 +529,6 @@ namespace WVA_Connect_CSI.Data
                     cnn.Execute($"UPDATE WvaOrders " +
                                             $"SET " +
                                                 $"WvaStoreId       =   '{order.WvaStoreID}', " +
-                                                $"CreatedDate      =   '{order.CreatedDate}', " +
                                                 $"DateOfBirth      =   '{Crypto.Encrypt(order.DoB)}', " +
                                                 $"Name1            =   '{Crypto.Encrypt(order.Name_1)}', " +
                                                 $"Name2            =   '{Crypto.Encrypt(order.Name_2)}', " +
@@ -720,7 +719,7 @@ namespace WVA_Connect_CSI.Data
 
                 items.Add(item);
             };
-
+            
             return items;
         }
 
