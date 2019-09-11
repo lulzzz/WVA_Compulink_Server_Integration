@@ -121,7 +121,7 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
-        // Get an accounts orders
+        // Get orders by account number 
         public List<Order> GetWVAOrders(string actNum)
         {
             try
@@ -134,7 +134,20 @@ namespace WVA_Connect_CSI.Data
                 return null;
             }
         }
-        
+
+        public List<Order> GetWVAOrders()
+        {
+            try
+            {
+                return DataAccessor.GetWvaOrders();
+            }
+            catch (Exception x)
+            {
+                Error.ReportOrLog(x);
+                return null;
+            }
+        }
+
         // Get email from username
         public string GetEmail(string userName)
         {

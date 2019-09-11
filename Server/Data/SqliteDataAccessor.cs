@@ -317,6 +317,31 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
+        public List<Order> GetWvaOrders()
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+                {
+                    List<Order> orders = cnn.Query<Order>($"SELECT * FROM WvaOrders").ToList();
+
+                    foreach (Order order in orders)
+                    {
+                        List<ItemOrderDetail> details = cnn.Query<ItemOrderDetail>($"SELECT * FROM OrderDetails WHERE WvaOrderId = '{order.ID}'").ToList();
+
+                        order.Items = GetNestedItems(details);
+                    }
+
+                    return DecryptOrders(orders);
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.WriteError(ex);
+                return null;
+            }
+        }
+
         private Order DecryptOrder(Order order)
         {
             order.DoB = Crypto.Decrypt(order?.DoB);

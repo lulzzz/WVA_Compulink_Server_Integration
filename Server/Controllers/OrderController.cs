@@ -43,6 +43,12 @@ namespace WVA_Connect_CSI.Controllers
             return sqliteDatabase.GetWVAOrders(act_num);
         }
 
+        [HttpGet("get-orders/")]
+        public IEnumerable<Order> GetOrders()
+        {
+            return sqliteDatabase.GetWVAOrders();
+        }
+
         [HttpPost("exists")]
         public Order CheckIfOrderExists([FromBody]string orderName)
         {
@@ -56,18 +62,25 @@ namespace WVA_Connect_CSI.Controllers
         [HttpPost("submit")]
         public Response SubmitOrder([FromBody]OutOrderWrapper orderWrapper)
         {
-            Response response;
-
             try
             {
                 // Create the order in the wva system
-                bool submittedToOrdersApi = SubmitToOrdersApi(orderWrapper, out orderWrapper, out OrderResponse ordersApiResponse);
+                bool didSubmitOrdersToApi = SubmitToOrdersApi(orderWrapper, out orderWrapper, out OrderResponse ordersApiResponse);
 
-                // Create or update this order in the SQLite database 
-                bool submittedToLocalDb = SubmitToLocalDb(orderWrapper);
+                if (didSubmitOrdersToApi)
+                {
+                    // Create or update this order in the local SQLite database 
+                    bool didSubmitToLocalDb = SubmitToLocalDb(orderWrapper);
 
-                // Find the LensRx for this order and submit it to Compulink
-                bool submittedInCompulink = SubmitInCompulink(orderWrapper);
+                    // Find the LensRx for this order and mark it as ordered in Compulink
+                    bool didSubmitToCompulink = SubmitToCompulink(orderWrapper);
+                }
+                else
+                {
+                    throw new Exception($"Failed to create order. Status={ordersApiResponse.Status}, " +
+                                                                $"Message={ordersApiResponse.Message}, " +
+                                                                $"Data={ordersApiResponse.Data.ToString()}");
+                }
 
                 return ordersApiResponse;
             }
@@ -75,10 +88,10 @@ namespace WVA_Connect_CSI.Controllers
             {
                 Error.ReportOrLog(x);
 
-                response = new Response()
+                var response = new Response()
                 {
                     Status = "FAIL",
-                    Message = "An issue was encoutered while creating this order. Please contact IT."
+                    Message = "Failed to create order. Contact IT if the problem persists."
                 };
 
                 return response;
@@ -127,7 +140,7 @@ namespace WVA_Connect_CSI.Controllers
             }
         }
 
-        private bool SubmitInCompulink(OutOrderWrapper orderWrapper)
+        private bool SubmitToCompulink(OutOrderWrapper orderWrapper)
         {
             try
             {
