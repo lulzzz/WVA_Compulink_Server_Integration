@@ -381,20 +381,11 @@ namespace WVA_Connect_CSI.Data
         {
             try
             {
-                Stopwatch watch = new Stopwatch();
-                watch.Start();
-
-
                 using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
                 {
-                   var q = cnn.Query<string>($"SELECT Email FROM Users WHERE UserName = '{userName}'").FirstOrDefault();
-
-                    watch.Stop();
-                    Trace.WriteLine($"=============== {watch.ElapsedMilliseconds}");
+                    var q = cnn.Query<string>($"SELECT Email FROM Users WHERE UserName = '{userName}'").FirstOrDefault();
                     return q;
                 }
-
-               
             }
             catch (Exception ex)
             {
