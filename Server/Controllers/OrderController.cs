@@ -64,6 +64,8 @@ namespace WVA_Connect_CSI.Controllers
         {
             try
             {
+                //
+
                 // Create the order in the wva system
                 bool didSubmitOrdersToApi = SubmitToOrdersApi(orderWrapper, out orderWrapper, out OrderResponse ordersApiResponse);
 
@@ -104,6 +106,9 @@ namespace WVA_Connect_CSI.Controllers
 
             try
             {
+                // Make sure shiping type is updated to use filePro shipping codes 
+                orderWrapper.OutOrder.PatientOrder.ShippingMethod = ConvertToShippingCode(orderWrapper.OutOrder.PatientOrder.ShippingMethod);
+
                 // Send post request to orders api
                 string strResponse = API.Post($@"{Paths.WisVisOrders}", orderWrapper);
                 orderResponse = JsonConvert.DeserializeObject<OrderResponse>(strResponse);
@@ -207,6 +212,36 @@ namespace WVA_Connect_CSI.Controllers
 
             return response;
         }
+
+        private string ConvertToShippingCode(string shippingMethod)
+        {
+            switch (shippingMethod)
+            {
+                // standard
+                case "Standard":
+                    return "1";
+                // ground
+                case "Ground":
+                    return "D";
+                case "UPS Ground":
+                    return "D";
+                // 2nd day air
+                case "UPS 2nd Day Air":
+                    return "J";
+                case "2nd Day Air":
+                    return "J";
+                // next day air
+                case "UPS Next Day Air":
+                    return "P";
+                case "Next Day Air":
+                    return "P";
+                // return original string
+                default:
+                    return shippingMethod;
+            }
+        }
+
+
 
     }
 }

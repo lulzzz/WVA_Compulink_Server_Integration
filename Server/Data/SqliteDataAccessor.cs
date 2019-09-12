@@ -174,17 +174,17 @@ namespace WVA_Connect_CSI.Data
                                                             $"'{createdDate}'," +
                                                             $"'{order.WvaStoreID}'," +
                                                             $"'{Crypto.Encrypt(order.DoB)}'," +
-                                                            $"'{Crypto.Encrypt(order.Name_1)}'," +
-                                                            $"'{Crypto.Encrypt(order.Name_2)}'," +
-                                                            $"'{Crypto.Encrypt(order.StreetAddr_1)}'," +
-                                                            $"'{Crypto.Encrypt(order.StreetAddr_2)}'," +
+                                                            $"'{Crypto.Encrypt(order.Name1)}'," +
+                                                            $"'{Crypto.Encrypt(order.Name2)}'," +
+                                                            $"'{Crypto.Encrypt(order.StreetAddr1)}'," +
+                                                            $"'{Crypto.Encrypt(order.StreetAddr2)}'," +
                                                             $"'{Crypto.Encrypt(order.City)}'," +
                                                             $"'{Crypto.Encrypt(order.State)}'," +
                                                             $"'{Crypto.Encrypt(order.Zip)}'," +
                                                             $"'{Crypto.Encrypt(order.OrderedBy)}'," +
                                                             $"'{Crypto.Encrypt(order.PoNumber)}'," +
                                                             $"'{Crypto.Encrypt(order.ShippingMethod)}'," +
-                                                            $"'{Crypto.Encrypt(order.ShipToPatient)}'," +
+                                                            $"'{order.ShipToPatient}'," +
                                                             $"'{Crypto.Encrypt(order.Phone)}'," +
                                                             $"'{Crypto.Encrypt(order.Email)}'," +
                                                             $"'{submitStatus}'" +
@@ -345,17 +345,17 @@ namespace WVA_Connect_CSI.Data
         private Order DecryptOrder(Order order)
         {
             order.DoB = Crypto.Decrypt(order?.DoB);
-            order.Name_1 = Crypto.Decrypt(order?.Name_1);
-            order.Name_2 = Crypto.Decrypt(order?.Name_2);
-            order.StreetAddr_1 = Crypto.Decrypt(order?.StreetAddr_1);
-            order.StreetAddr_2 = Crypto.Decrypt(order?.StreetAddr_2);
+            order.Name1 = Crypto.Decrypt(order?.Name1);
+            order.Name2 = Crypto.Decrypt(order?.Name2);
+            order.StreetAddr1 = Crypto.Decrypt(order?.StreetAddr1);
+            order.StreetAddr2 = Crypto.Decrypt(order?.StreetAddr2);
             order.City = Crypto.Decrypt(order?.City);
             order.State = Crypto.Decrypt(order?.State);
             order.Zip = Crypto.Decrypt(order?.Zip);
             order.OrderedBy = Crypto.Decrypt(order?.OrderedBy);
             order.PoNumber = Crypto.Decrypt(order?.PoNumber);
             order.ShippingMethod = Crypto.Decrypt(order?.ShippingMethod);
-            order.ShipToPatient = Crypto.Decrypt(order?.ShipToPatient);
+            order.ShipToPatient = order?.ShipToPatient;
             order.Phone = Crypto.Decrypt(order?.Phone);
             order.Email = Crypto.Decrypt(order?.Email);
 
@@ -546,17 +546,17 @@ namespace WVA_Connect_CSI.Data
                                             $"SET " +
                                                 $"WvaStoreId       =   '{order.WvaStoreID}', " +
                                                 $"DateOfBirth      =   '{Crypto.Encrypt(order.DoB)}', " +
-                                                $"Name1            =   '{Crypto.Encrypt(order.Name_1)}', " +
-                                                $"Name2            =   '{Crypto.Encrypt(order.Name_2)}', " +
-                                                $"StreetAddr1      =   '{Crypto.Encrypt(order.StreetAddr_1)}', " +
-                                                $"StreetAddr2      =   '{Crypto.Encrypt(order.StreetAddr_2)}', " +
+                                                $"Name1            =   '{Crypto.Encrypt(order.Name1)}', " +
+                                                $"Name2            =   '{Crypto.Encrypt(order.Name2)}', " +
+                                                $"StreetAddr1      =   '{Crypto.Encrypt(order.StreetAddr1)}', " +
+                                                $"StreetAddr2      =   '{Crypto.Encrypt(order.StreetAddr2)}', " +
                                                 $"City             =   '{Crypto.Encrypt(order.City)}', " +
                                                 $"State            =   '{Crypto.Encrypt(order.State)}', " +
                                                 $"Zip              =   '{Crypto.Encrypt(order.Zip)}', " +
                                                 $"OrderedBy        =   '{Crypto.Encrypt(order.OrderedBy)}', " +
                                                 $"PoNumber         =   '{Crypto.Encrypt(order.PoNumber)}', " +
                                                 $"ShippingMethod   =   '{Crypto.Encrypt(order.ShippingMethod)}', " +
-                                                $"ShipToPatient    =   '{Crypto.Encrypt(order.ShipToPatient)}', " +
+                                                $"ShipToPatient    =   '{order.ShipToPatient}', " +
                                                 $"Phone            =   '{Crypto.Encrypt(order.Phone)}', " +
                                                 $"Email            =   '{Crypto.Encrypt(order.Email)}', " +
                                                 $"Status           =   '{order.Status}' " +
