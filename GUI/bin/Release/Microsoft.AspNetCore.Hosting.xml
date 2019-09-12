@@ -13,71 +13,6 @@
             <param name="includeGenericParameterNames"><c>true</c> to include generic parameter names.</param>
             <returns>The pretty printed type name.</returns>
         </member>
-        <member name="T:Microsoft.Extensions.StackTrace.Sources.ExceptionDetails">
-            <summary>
-            Contains details for individual exception messages.
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.StackTrace.Sources.ExceptionDetails.Error">
-            <summary>
-            An individual exception
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.StackTrace.Sources.ExceptionDetails.StackFrames">
-            <summary>
-            The generated stack frames
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.StackTrace.Sources.ExceptionDetails.ErrorMessage">
-            <summary>
-            Gets or sets the summary message.
-            </summary>
-        </member>
-        <member name="T:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo">
-            <summary>
-            Contains the source code where the exception occurred.
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.Function">
-            <summary>
-            Function containing instruction
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.File">
-            <summary>
-            File containing the instruction
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.Line">
-            <summary>
-            The line number of the instruction
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.PreContextLine">
-            <summary>
-            The line preceding the frame line
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.PreContextCode">
-            <summary>
-            Lines of code before the actual error line(s).
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.ContextCode">
-            <summary>
-            Line(s) of code responsible for the error.
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.PostContextCode">
-            <summary>
-            Lines of code after the actual error line(s).
-            </summary>
-        </member>
-        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.ErrorDetails">
-            <summary>
-            Specific error details for this stack frame.
-            </summary>
-        </member>
         <member name="T:Microsoft.Extensions.RazorViews.BaseView">
             <summary>
             Infrastructure
@@ -189,6 +124,71 @@
             Method invoked to produce content from the <see cref="T:Microsoft.Extensions.RazorViews.HelperResult"/>.
             </summary>
             <param name="writer">The <see cref="T:System.IO.TextWriter"/> instance to write to.</param>
+        </member>
+        <member name="T:Microsoft.Extensions.StackTrace.Sources.ExceptionDetails">
+            <summary>
+            Contains details for individual exception messages.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.StackTrace.Sources.ExceptionDetails.Error">
+            <summary>
+            An individual exception
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.StackTrace.Sources.ExceptionDetails.StackFrames">
+            <summary>
+            The generated stack frames
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.StackTrace.Sources.ExceptionDetails.ErrorMessage">
+            <summary>
+            Gets or sets the summary message.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo">
+            <summary>
+            Contains the source code where the exception occurred.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.Function">
+            <summary>
+            Function containing instruction
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.File">
+            <summary>
+            File containing the instruction
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.Line">
+            <summary>
+            The line number of the instruction
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.PreContextLine">
+            <summary>
+            The line preceding the frame line
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.PreContextCode">
+            <summary>
+            Lines of code before the actual error line(s).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.ContextCode">
+            <summary>
+            Line(s) of code responsible for the error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.PostContextCode">
+            <summary>
+            Lines of code after the actual error line(s).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Extensions.StackTrace.Sources.StackFrameSourceCodeInfo.ErrorDetails">
+            <summary>
+            Specific error details for this stack frame.
+            </summary>
         </member>
         <member name="T:Microsoft.AspNetCore.Hosting.Internal.ApplicationLifetime">
             <summary>

@@ -518,7 +518,7 @@
             </param>
         </member>
         <member name="M:System.Data.SQLite.SQLite3.SetExtendedResultCodes(System.Boolean)">
-            Enables or disabled extended result codes returned by SQLite
+            Enables or disables extended result codes returned by SQLite
         </member>
         <member name="M:System.Data.SQLite.SQLite3.ResultCode">
             Gets the last SQLite error code
@@ -1130,7 +1130,7 @@
         </member>
         <member name="M:System.Data.SQLite.SQLiteBase.SetExtendedResultCodes(System.Boolean)">
             <summary>
-            Enables or disabled extened result codes returned by SQLite
+            Enables or disables extened result codes returned by SQLite
             </summary>
             <param name="bOnOff">true to enable extended result codes, false to disable.</param>
             <returns></returns>
@@ -4604,7 +4604,7 @@
         </member>
         <member name="M:System.Data.SQLite.SQLiteConnection.EnableExtensions(System.Boolean)">
             <summary>
-            Enables or disabled extension loading.
+            Enables or disables extension loading.
             </summary>
             <param name="enable">
             True to enable loading of extensions, false to disable.
@@ -5055,13 +5055,13 @@
             </param>
         </member>
         <member name="M:System.Data.SQLite.SQLiteConnection.SetExtendedResultCodes(System.Boolean)">
-            Enables or disabled extended result codes returned by SQLite
+            Enables or disables extended result codes returned by SQLite
         </member>
         <member name="M:System.Data.SQLite.SQLiteConnection.ResultCode">
-            Enables or disabled extended result codes returned by SQLite
+            Enables or disables extended result codes returned by SQLite
         </member>
         <member name="M:System.Data.SQLite.SQLiteConnection.ExtendedResultCode">
-            Enables or disabled extended result codes returned by SQLite
+            Enables or disables extended result codes returned by SQLite
         </member>
         <member name="M:System.Data.SQLite.SQLiteConnection.LogMessage(System.Data.SQLite.SQLiteErrorCode,System.String)">
             Add a log message via the SQLite sqlite3_log interface.
@@ -10025,6 +10025,14 @@
         <member name="F:System.Data.SQLite.SQLiteLog._sql">
             <summary>
             The base SQLite object to interop with.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteLog._initializeCallCount">
+            <summary>
+            The number of times that the <see cref="M:System.Data.SQLite.SQLiteLog.Initialize(System.String)" />
+            has been called when the logging subystem was actually eligible
+            to be initialized (i.e. without the "No_SQLiteLog" environment
+            variable being set).
             </summary>
         </member>
         <member name="F:System.Data.SQLite.SQLiteLog._attemptedInitialize">
