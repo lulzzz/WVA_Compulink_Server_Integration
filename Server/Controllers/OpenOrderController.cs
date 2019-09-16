@@ -32,8 +32,8 @@ namespace WVA_Connect_CSI.Controllers
                         Products = compulinkOdbcReader.GetOpenOrders(new string[] {
                             $"{Startup.config?.LabSentColumn} is null",
                             $"{Startup.config?.WvaInvoiceColumn} is null",
-                            $"{Startup.config?.LabColumn} = '{Startup.config?.Location?[location] ?? location}'",
-                            $"{Startup.config?.DateColumn} > {{d '{Startup.config?.OrdersAfterDate ?? DateTime.Today.AddMonths(-1).ToString("d")}'}}"
+                            $"{(location == "99999" ? "lab" : Startup.config?.LabColumn)} = '{Startup.config?.Location?[location] ?? location}'", // if test account, use default way of pulling an order
+                            $"{Startup.config?.FilterColumn} > {Startup.config?.FilterValue}"
                         })
                     }
                 };

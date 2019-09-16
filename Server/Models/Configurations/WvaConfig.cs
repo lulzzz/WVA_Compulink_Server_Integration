@@ -13,8 +13,8 @@ namespace WVA_Connect_CSI.Models.Configurations
         public string WvaInvoiceColumn { get; set; }
         public string LabSentColumn { get; set; }
         public string LabColumn { get; set; }
-        public string DateColumn { get; set; }
-        public string OrdersAfterDate { get; set; }
+        public string FilterColumn { get; set; }
+        public string FilterValue { get; set; }
         public bool OverRideDefaultQueries { get; set; } = false;
     }
 }

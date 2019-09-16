@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2/win-x86",
-    "signature": "cfb50d29e5aff1773cc8ce918237af15574c98c3"
+    "signature": "8fa5c6e39e79cf11e4b65dde575fb52baba03270"
   },
   "compilationOptions": {
     "defines": [
@@ -25,13 +25,20 @@
     ".NETCoreApp,Version=v2.2": {
       "WVA_Connect_CSI/1.0.0": {
         "dependencies": {
-          "Dapper": "1.60.6",
+          "Dapper": "2.0.4",
+          "MSTest.TestFramework": "2.0.0",
           "Microsoft.AspNetCore.App": "2.2.6",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.Hosting.WindowsServices": "2.2.0",
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.Extensions.Configuration.Binder": "2.2.4",
           "Microsoft.Extensions.Logging.EventLog": "2.2.0",
           "Microsoft.NETCore.App": "2.2.6",
+          "System.Buffers": "4.5.0",
           "System.Data.Odbc": "4.5.0",
-          "System.Data.SQLite": "1.0.110",
+          "System.Data.SQLite": "1.0.111",
+          "System.Memory": "4.5.3",
+          "System.Numerics.Vectors": "4.5.0",
           "squirrel.windows": "1.9.1",
           "PresentationFramework": "4.0.0.0"
         },
@@ -39,11 +46,9 @@
           "WVA_Connect_CSI.dll": {}
         }
       },
-      "Dapper/1.60.6": {
+      "Dapper/2.0.4": {
         "dependencies": {
-          "System.Data.SqlClient": "4.6.1",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0"
+          "System.Reflection.Emit.Lightweight": "4.3.0"
         },
         "compile": {
           "lib/netstandard2.0/Dapper.dll": {}
@@ -69,7 +74,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics": "2.2.0",
           "Microsoft.AspNetCore.HostFiltering": "2.2.0",
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.Routing": "2.2.2",
           "Microsoft.AspNetCore.Server.IIS": "2.2.6",
           "Microsoft.AspNetCore.Server.IISIntegration": "2.2.1",
@@ -134,7 +139,7 @@
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "2.2.1",
           "Microsoft.AspNetCore.Diagnostics.HealthChecks": "2.2.0",
           "Microsoft.AspNetCore.HostFiltering": "2.2.0",
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Hosting.Server.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Html.Abstractions": "2.2.0",
@@ -468,7 +473,7 @@
           "Microsoft.Extensions.FileProviders.Physical": "2.2.0",
           "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
           "Microsoft.Extensions.Options": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Reflection.Metadata": "1.6.0"
         },
         "compile": {
@@ -511,7 +516,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.HostFiltering.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Hosting/2.2.0": {
+      "Microsoft.AspNetCore.Hosting/2.2.7": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
@@ -524,7 +529,7 @@
           "Microsoft.Extensions.Hosting.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging": "2.2.0",
           "Microsoft.Extensions.Options": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Reflection.Metadata": "1.6.0"
         },
         "compile": {
@@ -552,7 +557,7 @@
       },
       "Microsoft.AspNetCore.Hosting.WindowsServices/2.2.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "System.ServiceProcess.ServiceController": "4.5.0"
         },
         "compile": {
@@ -722,7 +727,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0"
+          "System.Diagnostics.DiagnosticSource": "4.5.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.MiddlewareAnalysis.dll": {}
@@ -781,7 +786,7 @@
           "Microsoft.Extensions.DependencyModel": "2.1.0",
           "Microsoft.Extensions.FileProviders.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Threading.Tasks.Extensions": "4.5.1"
         },
         "compile": {
@@ -860,7 +865,7 @@
       },
       "Microsoft.AspNetCore.Mvc.Razor.ViewCompilation/2.2.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.Mvc.RazorPages": "2.2.5"
         }
       },
@@ -1007,7 +1012,7 @@
       "Microsoft.AspNetCore.Server.HttpSys/2.2.6": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Core": "2.2.0",
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.Net.Http.Headers": "2.2.0",
           "Microsoft.Win32.Registry": "4.5.0",
           "System.Security.Principal.Windows": "4.5.0"
@@ -1039,7 +1044,7 @@
           "Microsoft.Extensions.Options": "2.2.0",
           "System.Buffers": "4.5.0",
           "System.IO.Pipelines": "4.5.3",
-          "System.Memory": "4.5.1",
+          "System.Memory": "4.5.3",
           "System.Numerics.Vectors": "4.5.0",
           "System.Runtime.CompilerServices.Unsafe": "4.5.1",
           "System.Security.Principal.Windows": "4.5.0"
@@ -1050,7 +1055,7 @@
       },
       "Microsoft.AspNetCore.Server.Kestrel/2.2.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.Server.Kestrel.Core": "2.2.0",
           "Microsoft.AspNetCore.Server.Kestrel.Https": "2.2.0",
           "Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets": "2.2.1"
@@ -1069,7 +1074,7 @@
           "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
           "Microsoft.Extensions.Options": "2.2.0",
           "Microsoft.Net.Http.Headers": "2.2.0",
-          "System.Memory": "4.5.1",
+          "System.Memory": "4.5.3",
           "System.Numerics.Vectors": "4.5.0",
           "System.Runtime.CompilerServices.Unsafe": "4.5.1",
           "System.Security.Cryptography.Cng": "4.5.0",
@@ -1286,7 +1291,7 @@
           "System.Collections": "4.3.0",
           "System.IO": "4.3.0",
           "System.IO.FileSystem": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
           "System.Runtime.InteropServices.RuntimeInformation": "4.3.0"
@@ -1305,7 +1310,7 @@
           "Remotion.Linq": "2.2.0",
           "System.Collections.Immutable": "1.5.0",
           "System.ComponentModel.Annotations": "4.5.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Interactive.Async": "3.2.0"
         },
         "compile": {
@@ -1507,7 +1512,7 @@
       },
       "Microsoft.Extensions.DiagnosticAdapter/2.2.0": {
         "dependencies": {
-          "System.Diagnostics.DiagnosticSource": "4.5.0"
+          "System.Diagnostics.DiagnosticSource": "4.5.1"
         },
         "compile": {
           "lib/netcoreapp2.0/Microsoft.Extensions.DiagnosticAdapter.dll": {}
@@ -1743,7 +1748,7 @@
       },
       "Microsoft.Extensions.Primitives/2.2.0": {
         "dependencies": {
-          "System.Memory": "4.5.1",
+          "System.Memory": "4.5.3",
           "System.Runtime.CompilerServices.Unsafe": "4.5.1"
         },
         "compile": {
@@ -1894,7 +1899,6 @@
           "ref/netcoreapp2.2/System.Data.dll": {},
           "ref/netcoreapp2.2/System.Diagnostics.Contracts.dll": {},
           "ref/netcoreapp2.2/System.Diagnostics.Debug.dll": {},
-          "ref/netcoreapp2.2/System.Diagnostics.DiagnosticSource.dll": {},
           "ref/netcoreapp2.2/System.Diagnostics.FileVersionInfo.dll": {},
           "ref/netcoreapp2.2/System.Diagnostics.Process.dll": {},
           "ref/netcoreapp2.2/System.Diagnostics.StackTrace.dll": {},
@@ -2050,6 +2054,12 @@
           "lib/net45/Mono.Cecil.Pdb.dll": {},
           "lib/net45/Mono.Cecil.Rocks.dll": {},
           "lib/net45/Mono.Cecil.dll": {}
+        }
+      },
+      "MSTest.TestFramework/2.0.0": {
+        "compile": {
+          "lib/netstandard1.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll": {},
+          "lib/netstandard1.0/Microsoft.VisualStudio.TestPlatform.TestFramework.dll": {}
         }
       },
       "NETStandard.Library/2.0.3": {
@@ -2255,12 +2265,12 @@
           "ref/netcoreapp2.1/System.Data.SqlClient.dll": {}
         }
       },
-      "System.Data.SQLite/1.0.110": {
+      "System.Data.SQLite/1.0.111": {
         "dependencies": {
-          "System.Data.SQLite.Core": "1.0.110"
+          "System.Data.SQLite.Core": "1.0.111"
         }
       },
-      "System.Data.SQLite.Core/1.0.110": {
+      "System.Data.SQLite.Core/1.0.111": {
         "compile": {
           "lib/netstandard2.0/System.Data.SQLite.dll": {}
         }
@@ -2277,7 +2287,11 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Diagnostics.DiagnosticSource/4.5.0": {},
+      "System.Diagnostics.DiagnosticSource/4.5.1": {
+        "compile": {
+          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
+        }
+      },
       "System.Diagnostics.EventLog/4.5.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.2",
@@ -2336,7 +2350,7 @@
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -2456,7 +2470,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -2475,13 +2489,13 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Memory/4.5.1": {},
+      "System.Memory/4.5.3": {},
       "System.Net.Http/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.2",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.Globalization.Extensions": "4.3.0",
@@ -2542,7 +2556,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -2607,7 +2621,12 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Reflection.TypeExtensions/4.4.0": {},
+      "System.Reflection.TypeExtensions/4.3.0": {
+        "dependencies": {
+          "System.Reflection": "4.3.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
       "System.Resources.ResourceManager/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.2",
@@ -3003,7 +3022,7 @@
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -3048,13 +3067,20 @@
     ".NETCoreApp,Version=v2.2/win-x86": {
       "WVA_Connect_CSI/1.0.0": {
         "dependencies": {
-          "Dapper": "1.60.6",
+          "Dapper": "2.0.4",
+          "MSTest.TestFramework": "2.0.0",
           "Microsoft.AspNetCore.App": "2.2.6",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.Hosting.WindowsServices": "2.2.0",
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.Extensions.Configuration.Binder": "2.2.4",
           "Microsoft.Extensions.Logging.EventLog": "2.2.0",
           "Microsoft.NETCore.App": "2.2.6",
+          "System.Buffers": "4.5.0",
           "System.Data.Odbc": "4.5.0",
-          "System.Data.SQLite": "1.0.110",
+          "System.Data.SQLite": "1.0.111",
+          "System.Memory": "4.5.3",
+          "System.Numerics.Vectors": "4.5.0",
           "squirrel.windows": "1.9.1",
           "PresentationFramework": "4.0.0.0"
         },
@@ -3062,16 +3088,14 @@
           "WVA_Connect_CSI.dll": {}
         }
       },
-      "Dapper/1.60.6": {
+      "Dapper/2.0.4": {
         "dependencies": {
-          "System.Data.SqlClient": "4.6.1",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0"
+          "System.Reflection.Emit.Lightweight": "4.3.0"
         },
         "runtime": {
           "lib/netstandard2.0/Dapper.dll": {
-            "assemblyVersion": "1.60.0.0",
-            "fileVersion": "1.60.6.27094"
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.4.31833"
           }
         }
       },
@@ -3107,7 +3131,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics": "2.2.0",
           "Microsoft.AspNetCore.HostFiltering": "2.2.0",
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.Routing": "2.2.2",
           "Microsoft.AspNetCore.Server.IIS": "2.2.6",
           "Microsoft.AspNetCore.Server.IISIntegration": "2.2.1",
@@ -3178,7 +3202,7 @@
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "2.2.1",
           "Microsoft.AspNetCore.Diagnostics.HealthChecks": "2.2.0",
           "Microsoft.AspNetCore.HostFiltering": "2.2.0",
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Hosting.Server.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Html.Abstractions": "2.2.0",
@@ -3578,7 +3602,7 @@
           "Microsoft.Extensions.FileProviders.Physical": "2.2.0",
           "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
           "Microsoft.Extensions.Options": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Reflection.Metadata": "1.6.0"
         },
         "runtime": {
@@ -3636,7 +3660,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Hosting/2.2.0": {
+      "Microsoft.AspNetCore.Hosting/2.2.7": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
@@ -3649,13 +3673,13 @@
           "Microsoft.Extensions.Hosting.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging": "2.2.0",
           "Microsoft.Extensions.Options": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Reflection.Metadata": "1.6.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Hosting.dll": {
-            "assemblyVersion": "2.2.0.0",
-            "fileVersion": "2.2.0.18316"
+            "assemblyVersion": "2.2.7.0",
+            "fileVersion": "2.2.7.19225"
           }
         }
       },
@@ -3686,7 +3710,7 @@
       },
       "Microsoft.AspNetCore.Hosting.WindowsServices/2.2.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "System.ServiceProcess.ServiceController": "4.5.0"
         },
         "runtime": {
@@ -3910,7 +3934,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0"
+          "System.Diagnostics.DiagnosticSource": "4.5.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.MiddlewareAnalysis.dll": {
@@ -3981,7 +4005,7 @@
           "Microsoft.Extensions.DependencyModel": "2.1.0",
           "Microsoft.Extensions.FileProviders.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Threading.Tasks.Extensions": "4.5.1"
         },
         "runtime": {
@@ -4084,7 +4108,7 @@
       },
       "Microsoft.AspNetCore.Mvc.Razor.ViewCompilation/2.2.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.Mvc.RazorPages": "2.2.5"
         }
       },
@@ -4273,7 +4297,7 @@
       "Microsoft.AspNetCore.Server.HttpSys/2.2.6": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Core": "2.2.0",
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.Net.Http.Headers": "2.2.0",
           "Microsoft.Win32.Registry": "4.5.0",
           "System.Security.Principal.Windows": "4.5.0"
@@ -4316,7 +4340,7 @@
           "Microsoft.Extensions.Options": "2.2.0",
           "System.Buffers": "4.5.0",
           "System.IO.Pipelines": "4.5.3",
-          "System.Memory": "4.5.1",
+          "System.Memory": "4.5.3",
           "System.Numerics.Vectors": "4.5.0",
           "System.Runtime.CompilerServices.Unsafe": "4.5.1",
           "System.Security.Principal.Windows": "4.5.0"
@@ -4330,7 +4354,7 @@
       },
       "Microsoft.AspNetCore.Server.Kestrel/2.2.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Hosting": "2.2.0",
+          "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.Server.Kestrel.Core": "2.2.0",
           "Microsoft.AspNetCore.Server.Kestrel.Https": "2.2.0",
           "Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets": "2.2.1"
@@ -4352,7 +4376,7 @@
           "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
           "Microsoft.Extensions.Options": "2.2.0",
           "Microsoft.Net.Http.Headers": "2.2.0",
-          "System.Memory": "4.5.1",
+          "System.Memory": "4.5.3",
           "System.Numerics.Vectors": "4.5.0",
           "System.Runtime.CompilerServices.Unsafe": "4.5.1",
           "System.Security.Cryptography.Cng": "4.5.0",
@@ -4620,7 +4644,7 @@
           "System.Collections": "4.3.0",
           "System.IO": "4.3.0",
           "System.IO.FileSystem": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
           "System.Runtime.InteropServices.RuntimeInformation": "4.3.0"
@@ -4642,7 +4666,7 @@
           "Remotion.Linq": "2.2.0",
           "System.Collections.Immutable": "1.5.0",
           "System.ComponentModel.Annotations": "4.5.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Interactive.Async": "3.2.0"
         },
         "runtime": {
@@ -4913,7 +4937,7 @@
       },
       "Microsoft.Extensions.DiagnosticAdapter/2.2.0": {
         "dependencies": {
-          "System.Diagnostics.DiagnosticSource": "4.5.0"
+          "System.Diagnostics.DiagnosticSource": "4.5.1"
         },
         "runtime": {
           "lib/netcoreapp2.0/Microsoft.Extensions.DiagnosticAdapter.dll": {
@@ -5230,7 +5254,7 @@
       },
       "Microsoft.Extensions.Primitives/2.2.0": {
         "dependencies": {
-          "System.Memory": "4.5.1",
+          "System.Memory": "4.5.3",
           "System.Runtime.CompilerServices.Unsafe": "4.5.1"
         },
         "runtime": {
@@ -5433,6 +5457,18 @@
           "lib/net45/Mono.Cecil.dll": {
             "assemblyVersion": "0.9.6.0",
             "fileVersion": "0.9.6.0"
+          }
+        }
+      },
+      "MSTest.TestFramework/2.0.0": {
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll": {
+            "assemblyVersion": "14.0.0.0",
+            "fileVersion": "14.0.3930.6"
+          },
+          "lib/netstandard1.0/Microsoft.VisualStudio.TestPlatform.TestFramework.dll": {
+            "assemblyVersion": "14.0.0.0",
+            "fileVersion": "14.0.3930.6"
           }
         }
       },
@@ -6476,21 +6512,21 @@
           }
         }
       },
-      "System.Data.SQLite/1.0.110": {
+      "System.Data.SQLite/1.0.111": {
         "dependencies": {
-          "System.Data.SQLite.Core": "1.0.110"
+          "System.Data.SQLite.Core": "1.0.111"
         }
       },
-      "System.Data.SQLite.Core/1.0.110": {
+      "System.Data.SQLite.Core/1.0.111": {
         "runtime": {
           "lib/netstandard2.0/System.Data.SQLite.dll": {
-            "assemblyVersion": "1.0.110.0",
-            "fileVersion": "1.0.110.0"
+            "assemblyVersion": "1.0.111.0",
+            "fileVersion": "1.0.111.0"
           }
         },
         "native": {
           "runtimes/win-x86/native/netstandard2.0/SQLite.Interop.dll": {
-            "fileVersion": "1.0.110.0"
+            "fileVersion": "1.0.111.0"
           }
         }
       },
@@ -6506,7 +6542,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Diagnostics.DiagnosticSource/4.5.0": {},
+      "System.Diagnostics.DiagnosticSource/4.5.1": {},
       "System.Diagnostics.EventLog/4.5.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.2",
@@ -6568,7 +6604,7 @@
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -6697,7 +6733,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -6716,13 +6752,13 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Memory/4.5.1": {},
+      "System.Memory/4.5.3": {},
       "System.Net.Http/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.2",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1",
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.Globalization.Extensions": "4.3.0",
@@ -6786,7 +6822,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -6851,7 +6887,12 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Reflection.TypeExtensions/4.4.0": {},
+      "System.Reflection.TypeExtensions/4.3.0": {
+        "dependencies": {
+          "System.Reflection": "4.3.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
       "System.Resources.ResourceManager/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.2.2",
@@ -7273,7 +7314,7 @@
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -7413,12 +7454,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Dapper/1.60.6": {
+    "Dapper/2.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mmnJNhKMeF2KhvVXDoVQlFxre8aJAo71YBJrKqFlvuqzYC2QiXUq94/GCDBJzU7paq4GqpkV2glw3308TcGibw==",
-      "path": "dapper/1.60.6",
-      "hashPath": "dapper.1.60.6.nupkg.sha512"
+      "sha512": "sha512-DrNPDqK3nR4RpwAPX2R0R34YhlT+k5Fbw7UnqxQ2aH+wSWvEIj+fCDXB8RJWgw6fGFZLavq7nuJ6J/eAqSrIpw==",
+      "path": "dapper/2.0.4",
+      "hashPath": "dapper.2.0.4.nupkg.sha512"
     },
     "DeltaCompressionDotNet/1.1.0": {
       "type": "package",
@@ -7644,12 +7685,12 @@
       "path": "microsoft.aspnetcore.hostfiltering/2.2.0",
       "hashPath": "microsoft.aspnetcore.hostfiltering.2.2.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Hosting/2.2.0": {
+    "Microsoft.AspNetCore.Hosting/2.2.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7t4RbUGugpHtQmzAkc9fpDdYJg6t/jcB2VVnjensVYbZFnLDU8pNrG0hrekk1DQG7P2UzpSqKLzDsFF0/lkkbw==",
-      "path": "microsoft.aspnetcore.hosting/2.2.0",
-      "hashPath": "microsoft.aspnetcore.hosting.2.2.0.nupkg.sha512"
+      "sha512": "sha512-O0ZBE53Fa9bVGXykDzvgMFW0Pe1QyPPFg1pazN8l3RUFSWBsDJ9/iD1LHXgADA8+ZD3R/1zkvraPa9SZdievxQ==",
+      "path": "microsoft.aspnetcore.hosting/2.2.7",
+      "hashPath": "microsoft.aspnetcore.hosting.2.2.7.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Hosting.Abstractions/2.2.0": {
       "type": "package",
@@ -8645,6 +8686,13 @@
       "path": "mono.cecil/0.9.6.1",
       "hashPath": "mono.cecil.0.9.6.1.nupkg.sha512"
     },
+    "MSTest.TestFramework/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gDlwhzIqdhUB+tirA80c6jUnlAsWBl2RXsKwmCbeZ1XkTjufrZIrBs7cvBdxbzddAEFOZuqfeCHJK/rp0vloZg==",
+      "path": "mstest.testframework/2.0.0",
+      "hashPath": "mstest.testframework.2.0.0.nupkg.sha512"
+    },
     "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
@@ -8939,19 +8987,19 @@
       "path": "system.data.sqlclient/4.6.1",
       "hashPath": "system.data.sqlclient.4.6.1.nupkg.sha512"
     },
-    "System.Data.SQLite/1.0.110": {
+    "System.Data.SQLite/1.0.111": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-D6+Bub5qmPCwALYnL/3lMPhF+yG55v5Ry0tA0fOMP5mq4aMSDcnqAF2bfwsLBBjgAaFNxIS3NXgm7IvqJQ7hqw==",
-      "path": "system.data.sqlite/1.0.110",
-      "hashPath": "system.data.sqlite.1.0.110.nupkg.sha512"
+      "sha512": "sha512-G6oK5KkT3gHfelwJ9MvBZc9mrO1x1gkpjNfPs1YBWGIQB5reJSmu5lraYC24VRRQpNBH7RIZqPQjqeBGr7CrNw==",
+      "path": "system.data.sqlite/1.0.111",
+      "hashPath": "system.data.sqlite.1.0.111.nupkg.sha512"
     },
-    "System.Data.SQLite.Core/1.0.110": {
+    "System.Data.SQLite.Core/1.0.111": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bFx7Jnn/AlfVobpTnKreroh8jItM4eyLz/ZQRhzxYHZ71gqlGgU8y2nSNFnqVaSNu2bAWBf6m3yNyvp9uIhOoA==",
-      "path": "system.data.sqlite.core/1.0.110",
-      "hashPath": "system.data.sqlite.core.1.0.110.nupkg.sha512"
+      "sha512": "sha512-D7Qo3JWUB6epymTVRNaAXt+Y+eh0juGjXb5q8SEp/LBdKJr6a224Mk0HCOemRsXfPIF8ULblPyCbVixUvfbpiw==",
+      "path": "system.data.sqlite.core/1.0.111",
+      "hashPath": "system.data.sqlite.core.1.0.111.nupkg.sha512"
     },
     "System.Diagnostics.Contracts/4.3.0": {
       "type": "package",
@@ -8967,12 +9015,12 @@
       "path": "system.diagnostics.debug/4.3.0",
       "hashPath": "system.diagnostics.debug.4.3.0.nupkg.sha512"
     },
-    "System.Diagnostics.DiagnosticSource/4.5.0": {
+    "System.Diagnostics.DiagnosticSource/4.5.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-eIHRELiYDQvsMToML81QFkXEEYXUSUT2F28t1SGrevWqP+epFdw80SyAXIKTXOHrIEXReFOEnEr7XlGiC2GgOg==",
-      "path": "system.diagnostics.diagnosticsource/4.5.0",
-      "hashPath": "system.diagnostics.diagnosticsource.4.5.0.nupkg.sha512"
+      "sha512": "sha512-zCno/m44ymWhgLFh7tELDG9587q0l/EynPM0m4KgLaWQbz/TEKvNRX2YT5ip2qXW/uayifQ2ZqbnErsKJ4lYrQ==",
+      "path": "system.diagnostics.diagnosticsource/4.5.1",
+      "hashPath": "system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512"
     },
     "System.Diagnostics.EventLog/4.5.0": {
       "type": "package",
@@ -9107,12 +9155,12 @@
       "path": "system.linq.queryable/4.0.1",
       "hashPath": "system.linq.queryable.4.0.1.nupkg.sha512"
     },
-    "System.Memory/4.5.1": {
+    "System.Memory/4.5.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sDJYJpGtTgx+23Ayu5euxG5mAXWdkDb4+b0rD0Cab0M1oQS9H0HXGPriKcqpXuiJDTV7fTp/d+fMDJmnr6sNvA==",
-      "path": "system.memory/4.5.1",
-      "hashPath": "system.memory.4.5.1.nupkg.sha512"
+      "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
+      "path": "system.memory/4.5.3",
+      "hashPath": "system.memory.4.5.3.nupkg.sha512"
     },
     "System.Net.Http/4.3.0": {
       "type": "package",
@@ -9205,12 +9253,12 @@
       "path": "system.reflection.primitives/4.3.0",
       "hashPath": "system.reflection.primitives.4.3.0.nupkg.sha512"
     },
-    "System.Reflection.TypeExtensions/4.4.0": {
+    "System.Reflection.TypeExtensions/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dkmh/ySlwnXJp/1qYP9uyKkCK1CXR/REFzl7abHcArxBcV91mY2CgrrzSRA5Z/X4MevJWwXsklGRdR3A7K9zbg==",
-      "path": "system.reflection.typeextensions/4.4.0",
-      "hashPath": "system.reflection.typeextensions.4.4.0.nupkg.sha512"
+      "sha512": "sha512-7u6ulLcZbyxB5Gq0nMkQttcdBTx57ibzw+4IOXEfR+sXYQoHvjW5LTLyNr8O22UIMrqYbchJQJnos4eooYzYJA==",
+      "path": "system.reflection.typeextensions/4.3.0",
+      "hashPath": "system.reflection.typeextensions.4.3.0.nupkg.sha512"
     },
     "System.Resources.ResourceManager/4.3.0": {
       "type": "package",
