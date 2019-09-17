@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WVA_Connect_CSI.Errors;
 using WVA_Connect_CSI.Models;
+using WVA_Connect_CSI.Security;
 using WVA_Connect_CSI.Utility.Files;
 
 namespace WVA_Connect_CSI.Data
@@ -151,7 +152,7 @@ namespace WVA_Connect_CSI.Data
         {
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
-                return cnn.Query<Order>($"SELECT * FROM WvaOrders").AsEnumerable().ToList();
+                return DecryptOrders(cnn.Query<Order>($"SELECT * FROM WvaOrders").AsEnumerable().ToList());
             }
         }
 
@@ -159,7 +160,7 @@ namespace WVA_Connect_CSI.Data
         {
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
-                return cnn.Query<Order>($"SELECT * FROM WvaOrders WHERE Status='submitted'").AsEnumerable().ToList();
+                return DecryptOrders(cnn.Query<Order>($"SELECT * FROM WvaOrders WHERE Status='submitted'").AsEnumerable().ToList());
             }
         }
 
@@ -167,7 +168,7 @@ namespace WVA_Connect_CSI.Data
         {
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
-                return cnn.Query<Order>($"SELECT * FROM WvaOrders WHERE Status='open'").AsEnumerable().ToList();
+                return DecryptOrders(cnn.Query<Order>($"SELECT * FROM WvaOrders WHERE Status='open'").AsEnumerable().ToList());
             }
         }
 
@@ -179,7 +180,7 @@ namespace WVA_Connect_CSI.Data
         {
             using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
             {
-                return cnn.Query<ItemDetail>($"SELECT * FROM OrderDetails WHERE WvaOrderId='{orderId}'").AsEnumerable().ToList();
+                return DecryptItemDetails(cnn.Query<ItemDetail>($"SELECT * FROM OrderDetails WHERE WvaOrderId='{orderId}'").AsEnumerable().ToList());
             }
         }
 
@@ -190,6 +191,51 @@ namespace WVA_Connect_CSI.Data
         private string GetDbConnectionString()
         {
             return $"Data Source={Paths.DatabaseFile};Version=3;";
+        }
+
+        // Order decryption
+
+        private List<Order> DecryptOrders(List<Order> orders)
+        {
+            for (int i = 0; i < orders.Count; i++)
+                orders[i] = DecryptOrder(orders[i]);
+
+            return orders;
+        }
+
+        private Order DecryptOrder(Order order)
+        {
+            order.Name1 = Crypto.Decrypt(order?.Name1);
+            order.Name2 = Crypto.Decrypt(order?.Name2);
+            order.StreetAddr1 = Crypto.Decrypt(order?.StreetAddr1);
+            order.StreetAddr2 = Crypto.Decrypt(order?.StreetAddr2);
+            order.City = Crypto.Decrypt(order?.City);
+            order.State = Crypto.Decrypt(order?.State);
+            order.Zip = Crypto.Decrypt(order?.Zip);
+            order.OrderedBy = Crypto.Decrypt(order?.OrderedBy);
+            order.PoNumber = Crypto.Decrypt(order?.PoNumber);
+            order.ShippingMethod = Crypto.Decrypt(order?.ShippingMethod);
+            order.Phone = Crypto.Decrypt(order?.Phone);
+            order.Email = Crypto.Decrypt(order?.Email);
+
+            return order;
+        }
+
+        private List<ItemDetail> DecryptItemDetails(List<ItemDetail> itemDetails)
+        {
+            for (int i = 0; i < itemDetails.Count; i++)
+                itemDetails[i] = DecryptItemDetail(itemDetails[i]);
+
+            return itemDetails;
+        }
+
+        private ItemDetail DecryptItemDetail(ItemDetail itemDetail)
+        {
+            itemDetail.FirstName = Crypto.Decrypt(itemDetail.FirstName);
+            itemDetail.LastName = Crypto.Decrypt(itemDetail.LastName);
+            itemDetail.PatientID = Crypto.Decrypt(itemDetail.PatientID);
+
+            return itemDetail;
         }
 
     }
