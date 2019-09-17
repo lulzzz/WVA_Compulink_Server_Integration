@@ -11,6 +11,34 @@ namespace WVA_Connect_CSI.Models.Prescriptions
 {
     public class CompulinkOdbcReader
     {
+        public string GetLastFilterValue()
+        {
+            using (OdbcConnection conn = new OdbcConnection())
+            {
+                conn.ConnectionString = $"dsn={Startup.config.Dsn}";
+                conn.Open();
+                string LastOrderIdQuery = $"SELECT TOP 1 {Startup.config.FilterColumn} FROM lens_rx ORDER BY {Startup.config.FilterColumn} DESC";
+                var comm = new OdbcCommand(LastOrderIdQuery, conn);
+                OdbcDataReader dr = comm.ExecuteReader();
+                string LastFilterValue = "";
+                try {
+                    while(dr.Read())
+                    {
+                        LastFilterValue = dr.GetValue(0).ToString();
+                    }
+                }
+                catch (Exception x)
+                {
+                    Error.ReportOrLog(x);
+                    return null;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return LastFilterValue;
+            }
+        }
         public List<Prescription> GetOpenOrders(string[] WhereObjects)
         {
             List<Prescription> listPrescriptions = new List<Prescription>();
