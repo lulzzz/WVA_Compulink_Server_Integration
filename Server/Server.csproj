@@ -10,6 +10,7 @@
     <RootNamespace>WVA_Connect_CSI</RootNamespace>
     <StartupObject>WVA_Connect_CSI.Program</StartupObject>
     <ApplicationIcon>Resources\logo_plain_vector_72_white_TMD_icon.ico</ApplicationIcon>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
