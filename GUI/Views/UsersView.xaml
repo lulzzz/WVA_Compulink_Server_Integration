@@ -152,10 +152,10 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="*" MinHeight="150"/>
             <RowDefinition Height="120"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         
         <!-- Search/Edit/Delete Users -->
@@ -172,44 +172,32 @@
                  LostFocus="SearchUsersTextBox_LostFocus"
                  PreviewMouseLeftButtonDown="SearchUsersTextBox_PreviewMouseLeftButtonDown"/>
 
+        <DataGrid Name="UsersDataGrid"
+                  FontWeight="DemiBold"
+                  Background="Transparent"
+                  BorderThickness="1"
+                  ItemsSource="{Binding User}"
+                  IsReadOnly="True"
+                  Margin="0,30,0,10"
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="3"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch"
+                  CanUserResizeRows="False"
+                  CanUserAddRows="False"
+                  CanUserReorderColumns="False"
+                  CanUserSortColumns="False" 
+                  HeadersVisibility="Column" 
+                  MouseDoubleClick="UsersDataGrid_MouseDoubleClick">
 
-
-
-        <!-- Delete Existing User -->
-
-        <Label Name="DeleteUserLabel"
-               Content="Delete User:"
-               FontFamily="Sitka Text"
-               FontSize="18"
-               Height="30"
-               Grid.Row="1"
-               Grid.Column="4"
-               VerticalAlignment="Top"
-               Margin="0,0,0,0"/>
-
-        <TextBox Name="DeleteUserTextBox"
-                 FontFamily="Sitka Text"
-                 FontSize="18"
-                 VerticalContentAlignment="Center"
-                 Grid.Row="1"                    
-                 Height="26"
-                 Margin="0,0,10,15"
-                 Grid.Column="4"
-                 VerticalAlignment="Center"
-                 HorizontalAlignment="Stretch"/>
-
-        <Button Name="DeleteUserButton"
-                Width="100"
-                Height="30"
-                Content="Delete"
-                FontFamily="Sitka Text"
-                FontSize="18"
-                Grid.Row="1"
-                Grid.Column="4"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Left"
-                Margin="0,10,0,10"
-                Click="DeleteUserButton_Click"/>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=UserName}"               Width="*" MinWidth="90" Header="Username" />
+                <DataGridTextColumn Binding="{Binding Path=Email}"                  Width="*"  MinWidth="130" Header="Email" />
+                <DataGridTextColumn Binding="{Binding Path=RoleId}"                 Width="*" MinWidth="90" Header="Role" />
+                <DataGridTextColumn Binding="{Binding Path=RequirePassChange}"      Width="*" MinWidth="110" Header="Req. Pass. Change" />
+            </DataGrid.Columns>
+        </DataGrid>
 
         <!-- Add New User -->
 
@@ -351,7 +339,7 @@
                    Grid.ColumnSpan="4"/>
 
         <Label Name="ImportUsersLabel"
-               Content="CSV Format: Username, email, role ID(optional)"
+               Content="CSV Format: Username, email, role ID (optional)"
                FontFamily="Sitka Text"
                FontSize="15"
                Height="30"

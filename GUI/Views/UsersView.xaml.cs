@@ -83,38 +83,6 @@ namespace WVA_Connect_CSI.Views
         }
 
         //
-        // Remove a single user from the database
-        //
-
-        private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (usersViewModel.UserNameExists(DeleteUserTextBox.Text))
-                {
-                    ActionLogger.Log(GetType().FullName + nameof(DeleteUserButton_Click), userRole, $"<Deleting_User UserName={DeleteUserTextBox.Text}>");
-                    bool deleted = usersViewModel.DeleteUser(DeleteUserTextBox.Text);
-
-                    if (deleted)
-                    {
-                        MessageBox.Show("User Deleted!", "", MessageBoxButton.OK);
-                        DeleteUserTextBox.Text = "";
-                    }
-                    else
-                        MessageBox.Show("Error Deleting User!", "", MessageBoxButton.OK);
-                }
-                else
-                {
-                    MessageBox.Show("User Not Found!", "", MessageBoxButton.OK);
-                }
-            }
-            catch (Exception ex)
-            {
-                Error.ReportOrLog(ex);
-            }
-        }
-
-        //
         // Create a new user in the database
         //
 
@@ -188,6 +156,11 @@ namespace WVA_Connect_CSI.Views
         {
             if (SearchUsersTextBox.Text == "")
                 SearchUsersTextBox.Text = "Search Users... ";
+        }
+
+        private void UsersDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
