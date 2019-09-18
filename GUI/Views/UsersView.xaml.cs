@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WVA_Connect_CSI.Data;
 using WVA_Connect_CSI.Errors;
+using WVA_Connect_CSI.Models;
 using WVA_Connect_CSI.Roles;
 using WVA_Connect_CSI.Security;
 using WVA_Connect_CSI.Utility.ActionLogging;
@@ -20,12 +22,13 @@ namespace WVA_Connect_CSI.Views
     /// </summary>
     public partial class UsersView : UserControl
     {
+        Database database;
         UsersViewModel usersViewModel;
         Role userRole;
 
         public UsersView()
         {
-
+            database = new Database();
         }
 
         public UsersView(Role role)
@@ -33,24 +36,20 @@ namespace WVA_Connect_CSI.Views
             InitializeComponent();
             usersViewModel = new UsersViewModel();
             userRole = role;
+            database = new Database();
+            SetUpDataGrid();
         }
 
-        private void UserNameTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            UserNameTextBox.Focus();
-            UserNameTextBox.SelectAll();
-        }
+        //
+        // Set up
+        //
 
-        private void PasswordTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void SetUpDataGrid()
         {
-            PasswordTextBox.Focus();
-            PasswordTextBox.SelectAll();
-        }
+            var users = database.GetUsers();
 
-        private void EmailTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            EmailTextBox.Focus();
-            EmailTextBox.SelectAll();
+            foreach (User user in users)
+                UsersDataGrid.Items.Add(user);
         }
 
         //
@@ -145,6 +144,26 @@ namespace WVA_Connect_CSI.Views
                 TryCreateUser();
             else
                 return;
+
+
+        }
+
+        private void UserNameTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            UserNameTextBox.Focus();
+            UserNameTextBox.SelectAll();
+        }
+
+        private void PasswordTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            PasswordTextBox.Focus();
+            PasswordTextBox.SelectAll();
+        }
+
+        private void EmailTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            EmailTextBox.Focus();
+            EmailTextBox.SelectAll();
         }
 
         private void SearchUsersTextBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -158,9 +177,5 @@ namespace WVA_Connect_CSI.Views
                 SearchUsersTextBox.Text = "Search Users... ";
         }
 
-        private void UsersDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-        }
     }
 }

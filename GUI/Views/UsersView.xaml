@@ -154,7 +154,7 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="*" MinHeight="150"/>
             <RowDefinition Height="120"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         
@@ -168,9 +168,23 @@
                  Height="20"
                  FontFamily="Sitka Text"
                  FontSize="15"
+                 Margin="0,0,80,0"
                  VerticalAlignment="Top"
                  LostFocus="SearchUsersTextBox_LostFocus"
                  PreviewMouseLeftButtonDown="SearchUsersTextBox_PreviewMouseLeftButtonDown"/>
+
+        <Button Name="SaveUsersButton"
+                Width="70"
+                Height="22"
+                Content="Save"
+                FontFamily="Sitka Text"
+                FontSize="15"
+                Grid.Row="1"
+                Grid.Column="2"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="0,0,0,0"
+/>
 
         <DataGrid Name="UsersDataGrid"
                   FontWeight="DemiBold"
@@ -188,28 +202,24 @@
                   CanUserAddRows="False"
                   CanUserReorderColumns="False"
                   CanUserSortColumns="False" 
-                  HeadersVisibility="Column" 
-                  MouseDoubleClick="UsersDataGrid_MouseDoubleClick">
+                  HeadersVisibility="Column">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=UserName}"               Width="*" MinWidth="90" Header="Username" />
-                <DataGridTextColumn Binding="{Binding Path=Email}"                  Width="*"  MinWidth="130" Header="Email" />
-                <DataGridTextColumn Binding="{Binding Path=RoleId}"                 Width="*" MinWidth="90" Header="Role" />
-                <DataGridTextColumn Binding="{Binding Path=RequirePassChange}"      Width="*" MinWidth="110" Header="Req. Pass. Change" />
+                <DataGridTextColumn Binding="{Binding Path=UserName}"                   Width="*" MinWidth="90"  Header="Username" />
+                <DataGridTextColumn Binding="{Binding Path=Email}"                      Width="*" MinWidth="130" Header="Email" />
+                <DataGridTextColumn Binding="{Binding Path=RoleName}"                   Width="*" MinWidth="90"  Header="Role" />
+                <DataGridTextColumn Binding="{Binding Path=Str_RequiresPasswordChange}" Width="*" MinWidth="110" Header="Req. Pass. Change" />
             </DataGrid.Columns>
 
             <DataGrid.ContextMenu>
                 <ContextMenu Name="UsersDataGridContextMenu"
                              MaxHeight="300">
-                    <MenuItem Header="Delete Selected Item"/>
+                    <MenuItem Header="Delete User"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
-        
-        
 
         <!-- Add New User -->
-
         <Rectangle HorizontalAlignment="Stretch"
                    Margin="0,0,0,0"
                    Fill="Black"
@@ -347,27 +357,29 @@
                    VerticalAlignment="Bottom"
                    Grid.ColumnSpan="4"/>
 
-        <Label Name="ImportUsersLabel"
-               Content="CSV Format: Username, email, role ID (optional)"
-               FontFamily="Sitka Text"
-               FontSize="15"
-               Height="30"
-               VerticalAlignment="Top"
-               Grid.Row="3"
-               Grid.ColumnSpan="3"
-               Grid.Column="1"
-               Margin="170,5,0,0"/>
+        <StackPanel Grid.ColumnSpan="3"
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    Margin="160,5,0,0">
+            
+            <Label Name="ImportUsersLabel"
+                   Content="CSV Format: Username, email, role ID (optional)"
+                   FontFamily="Sitka Text"
+                   FontSize="15"
+                   Height="26"
+                   VerticalAlignment="Top"
+                   Grid.Column="1"
+                   Margin="0,0,0,0"/>
 
-        <Label Name="RoleIdLabel"
-               Content="Role IDs: User = 0, Manager = 1, IT Admin = 2"
-               FontFamily="Sitka Text"
-               FontSize="15"
-               Height="30"
-               VerticalAlignment="Top"
-               Grid.Row="3"
-               Grid.ColumnSpan="3"
-               Grid.Column="1"
-               Margin="170,25,0,0"/>
+            <Label Name="RoleIdLabel"
+                   Content="Role IDs: User = 0, Manager = 1, IT Admin = 2"
+                   FontFamily="Sitka Text"
+                   FontSize="15"
+                   Height="26"
+                   VerticalAlignment="Top"
+                   Margin="0,0,0,0"/>
+        </StackPanel>
+        
 
         <Button Name="ImportUsersButton"
                 Width="150"

@@ -144,6 +144,14 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
+        public List<User> GetUsers()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                return cnn.Query<User>($"SELECT UserName, Email, RoleId, RequiresPasswordChange FROM Users").AsEnumerable().ToList();
+            }
+        }
+
         //
         // Orders
         //

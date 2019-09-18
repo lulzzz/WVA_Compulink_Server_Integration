@@ -20,5 +20,46 @@ namespace WVA_Connect_CSI.Models
         public string Status { get; set; }
         public string Message { get; set; }
         public int RequiresPasswordChange { get; set; }
+
+
+        public string RoleName
+        {
+            get { return GetRoleName(RoleId); }
+            set { RoleName = value; }
+        }
+
+        private string GetRoleName(int roleId)
+        {
+            switch (roleId)
+            {
+                case 0:
+                    return "User";
+                case 1:
+                    return "Manager";
+                case 2:
+                    return "IT Admin";
+                case 3:
+                    return "Super Admin";
+                default:
+                    return "User";
+            }
+        }
+
+
+        public string Str_RequiresPasswordChange
+        {
+            get { return GetRequiresPasswordChangeString(RequiresPasswordChange); }
+            set { Str_RequiresPasswordChange = value; }
+        }
+
+
+        private string GetRequiresPasswordChangeString(int requiresPassChange)
+        {
+            if (requiresPassChange == 1)
+                return "Yes";
+            else
+                return "No";
+        }
+
     }
 }

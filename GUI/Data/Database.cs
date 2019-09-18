@@ -103,6 +103,24 @@ namespace WVA_Connect_CSI.Data
             }
         }
 
+        public List<User> GetUsers()
+        {
+            try
+            {
+                var users = dataAccessor.GetUsers();
+
+                // Filter out all the superadmins 
+                users.RemoveAll(x => x.RoleId == 3);
+
+                return users;
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+                return null;
+            }
+        }
+
         //
         // Orders
         //
