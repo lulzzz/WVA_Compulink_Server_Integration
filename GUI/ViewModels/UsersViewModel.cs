@@ -90,7 +90,11 @@ namespace WVA_Connect_CSI.ViewModels
                 {
                     try
                     {
-                        if (UserNameExists(user.UserName))
+                        if (!RoleIsValid(user.RoleId))
+                        {
+                            throw new NotSupportedException("Invalid role ID!");
+                        }
+                        else if (UserNameExists(user.UserName))
                         {
                             AppendToLogFile($"Failed to create user. Username '{user.UserName}' is already in use!\n");
                         }
@@ -128,6 +132,14 @@ namespace WVA_Connect_CSI.ViewModels
                 return true;
             else
                 return false;
+        }
+
+        private bool RoleIsValid(int roleId)
+        {
+            if (roleId > 2)
+                return false;
+            else
+                return true;
         }
 
         public bool CreateUser(string username, string password, string email, int roleId, int requiresPasswordChange)
