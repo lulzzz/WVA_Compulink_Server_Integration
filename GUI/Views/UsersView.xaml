@@ -197,7 +197,16 @@
                 <DataGridTextColumn Binding="{Binding Path=RoleId}"                 Width="*" MinWidth="90" Header="Role" />
                 <DataGridTextColumn Binding="{Binding Path=RequirePassChange}"      Width="*" MinWidth="110" Header="Req. Pass. Change" />
             </DataGrid.Columns>
+
+            <DataGrid.ContextMenu>
+                <ContextMenu Name="UsersDataGridContextMenu"
+                             MaxHeight="300">
+                    <MenuItem Header="Delete Selected Item"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
+        
+        
 
         <!-- Add New User -->
 
