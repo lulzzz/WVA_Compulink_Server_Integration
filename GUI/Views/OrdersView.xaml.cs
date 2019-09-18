@@ -50,7 +50,7 @@ namespace WVA_Connect_CSI.Views
 
                 foreach (Window window in Application.Current.Windows)
                     if (window.GetType() == typeof(MainWindow))
-                        (window as MainWindow).MainContentControl.DataContext = new OrderDetailsView((Order)WvaOrdersDataGrid.Items[index], userRole);
+                        (window as MainWindow).MainContentControl.DataContext = new AdminMainView(userRole.RoleId, userRole.UserName, "orderdetails", (Order)WvaOrdersDataGrid.Items[index]);
             }
             catch (Exception ex)
             {

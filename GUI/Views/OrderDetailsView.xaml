@@ -236,7 +236,7 @@
                   TabIndex="2"
                   Grid.Column="1"
                   Grid.ColumnSpan="1"
-                  Margin="0,50,0,20"
+                  Margin="0,20,0,20"
                   AutoGenerateColumns="False"
                   CanUserResizeRows="False"
                   FontWeight="DemiBold"

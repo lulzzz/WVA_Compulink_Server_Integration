@@ -12,7 +12,8 @@
         HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch"
         ResizeMode="CanMinimize" 
-        Icon="/Resources/logo_plain_vector_72_P0X_icon.ico">
+        Icon="/Resources/logo_plain_vector_72_P0X_icon.ico"
+        Closing="Window_Closing">
 
     <Window.Resources>
         

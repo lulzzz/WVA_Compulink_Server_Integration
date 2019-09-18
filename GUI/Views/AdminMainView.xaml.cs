@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WVA_Connect_CSI.Models;
 using WVA_Connect_CSI.Roles;
 using WVA_Connect_CSI.Utility.ActionLogging;
 using static WVA_Connect_CSI.Views.MainView;
@@ -26,16 +27,7 @@ namespace WVA_Connect_CSI.Views
     /// </summary>
     public partial class AdminMainView : UserControl
     {
-        Thread inactivityThread;
         private Role UserRole;
-
-        [DllImport("user32.dll")]
-        public static extern Boolean GetLastInputInfo(ref tagLASTINPUTINFO plii);
-        public struct tagLASTINPUTINFO
-        {
-            public uint cbSize;
-            public Int32 dwTime;
-        }
 
         public AdminMainView(int roleId, string userName)
         {
@@ -45,51 +37,12 @@ namespace WVA_Connect_CSI.Views
             SetUpView();
         }
 
-        //
-        // Check for user inacvitity 
-        //
-
-        private async void StartInactivityTimer()
+        public AdminMainView(int roleId, string userName, string view, Order order)
         {
-            while (true)
-            {
-                try
-                {
-                    CheckUserInactivity();
-                }
-                finally
-                {
-                    Thread.Sleep(5000);
-                }
-
-            }
-        }
-
-        private void CheckUserInactivity()
-        {
-            tagLASTINPUTINFO LastInput = new tagLASTINPUTINFO();
-            Int32 IdleTime;
-
-            LastInput.cbSize = (uint)Marshal.SizeOf(LastInput);
-            LastInput.dwTime = 0;
-
-            if (GetLastInputInfo(ref LastInput))
-            {
-                IdleTime = System.Environment.TickCount - LastInput.dwTime;
-                Trace.WriteLine($"*** IdleTime: {IdleTime}ms ***");
-
-                if (IdleTime > 300000)
-                {
-                    Dispatcher.Invoke(new UpdateUICallBack(ForceLogOff));
-                }
-            }
-        }
-
-        private void ForceLogOff()
-        {
-            foreach (Window window in Application.Current.Windows)
-                if (window.GetType() == typeof(MainWindow))
-                    (window as MainWindow).MainContentControl.DataContext = new MainView();
+            InitializeComponent();
+            ResizeView();
+            SetRole(roleId, userName);
+            SetUpView(view, order);
         }
 
         //
@@ -143,7 +96,7 @@ namespace WVA_Connect_CSI.Views
             }
         }
 
-        private void SetUpView(string view)
+        private void SetUpView(string view, Order order = null)
         {
             switch (view)
             {
@@ -152,12 +105,12 @@ namespace WVA_Connect_CSI.Views
                         AdminMainViewContentControl.Content = new UsersView(UserRole);
                     break;
                 case "orders":
-                    if (UserRole.CanViewUsers)
+                    if (UserRole.CanViewOrders)
                         AdminMainViewContentControl.Content = new OrdersView(UserRole);
                     break;
                 case "orderdetails":
-                    if (UserRole.CanViewUsers)
-                        AdminMainViewContentControl.Content = new OrdersView(UserRole);
+                    if (UserRole.CanViewOrders)
+                        AdminMainViewContentControl.Content = new OrderDetailsView(order, UserRole);
                     break;
             }
         }
@@ -183,14 +136,12 @@ namespace WVA_Connect_CSI.Views
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            inactivityThread = new Thread(StartInactivityTimer);
-            inactivityThread.Start();
+            MainWindow.ShouldCheckForInactivity = true;
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            if (inactivityThread.IsAlive)
-                inactivityThread.Abort();
+            MainWindow.ShouldCheckForInactivity = false;
         }
     }
 }

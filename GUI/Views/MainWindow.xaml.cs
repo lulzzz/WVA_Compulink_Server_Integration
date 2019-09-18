@@ -24,8 +24,11 @@ namespace WVA_Connect_CSI
 {
     public partial class MainWindow : Window
     {
-        private bool DsnConnectionIsGood { get; set; }
+        public static bool ShouldCheckForInactivity = true;
 
+        
+        private readonly Task inactivityTask;
+        private bool DsnConnectionIsGood { get; set; }
         private readonly BackgroundWorker CheckDsnConnectionStatusWorker = new BackgroundWorker();
         private readonly BackgroundWorker UpdateDsnConnectionStatusWorker = new BackgroundWorker();
 
@@ -40,6 +43,60 @@ namespace WVA_Connect_CSI
             SetContentControl();
             StartWorkers();
             TaskManager.StartAllJobs();
+
+            inactivityTask = new Task(StartInactivityTimer);
+            inactivityTask.Start();
+        }
+
+        //
+        // Check for user inacvitity 
+        //
+
+        [DllImport("user32.dll")]
+        public static extern Boolean GetLastInputInfo(ref tagLASTINPUTINFO plii);
+        public struct tagLASTINPUTINFO
+        {
+            public uint cbSize; 
+            public Int32 dwTime;
+        }
+
+        private async void StartInactivityTimer()
+        {
+            // Keeps this thread alive
+            while (true)
+                // Only do work on this thread when we want to
+                if (ShouldCheckForInactivity)
+                    try     { CheckUserInactivity(); }
+                    finally { Thread.Sleep(5000); }
+                else
+                    Thread.Sleep(2500);
+        }
+
+        private void CheckUserInactivity()
+        {
+            tagLASTINPUTINFO LastInput = new tagLASTINPUTINFO();
+            Int32 IdleTime;
+
+            LastInput.cbSize = (uint)Marshal.SizeOf(LastInput);
+            LastInput.dwTime = 0;
+
+            if (GetLastInputInfo(ref LastInput))
+            {
+                IdleTime = System.Environment.TickCount - LastInput.dwTime;
+                Trace.WriteLine($"*** IdleTime: {IdleTime}ms ***");
+
+                if (IdleTime > 300000)
+                {
+                    Dispatcher.Invoke(new UpdateUICallBack(ForceLogOff));
+                }
+            }
+        }
+
+        private void ForceLogOff()
+        {
+            foreach (Window window in Application.Current.Windows)
+                if (window.GetType() == typeof(MainWindow))
+                    (window as MainWindow).MainContentControl.DataContext = new MainView();
         }
 
         //
@@ -154,5 +211,9 @@ namespace WVA_Connect_CSI
             }
         }
 
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            
+        }
     }
 }
