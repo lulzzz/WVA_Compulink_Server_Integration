@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using WVA_Connect_CSI.Errors;
 using WVA_Connect_CSI.Models;
+using WVA_Connect_CSI.Security;
 
 namespace WVA_Connect_CSI.Data
 {
@@ -110,7 +111,7 @@ namespace WVA_Connect_CSI.Data
         {
             try
             {
-                return dataAccessor.GetAllOrders();
+                return DecryptOrders(dataAccessor.GetAllOrders());
             }
             catch (Exception ex)
             {
@@ -123,7 +124,7 @@ namespace WVA_Connect_CSI.Data
         {
             try
             { 
-                return dataAccessor.GetSubmittedOrders();
+                return DecryptOrders(dataAccessor.GetSubmittedOrders());
             }
             catch (Exception ex)
             {
@@ -136,7 +137,7 @@ namespace WVA_Connect_CSI.Data
         {
             try
             {
-                return dataAccessor.GetUnsubmittedOrders();
+                return DecryptOrders(dataAccessor.GetUnsubmittedOrders());
             }
             catch (Exception ex)
             {
@@ -153,13 +154,60 @@ namespace WVA_Connect_CSI.Data
         {
             try
             {
-                return dataAccessor.GetItemDetail(orderId);
+                return DecryptItemDetails(dataAccessor.GetItemDetail(orderId));
             }
             catch (Exception ex)
             {
                 Error.ReportOrLog(ex);
                 return null;
             }
+        }
+
+        //
+        // Order decryption
+        //
+
+        private List<Order> DecryptOrders(List<Order> orders)
+        {
+            for (int i = 0; i < orders.Count; i++)
+                orders[i] = DecryptOrder(orders[i]);
+
+            return orders;
+        }
+
+        private Order DecryptOrder(Order order)
+        {
+            order.Name1 = Crypto.Decrypt(order?.Name1);
+            order.Name2 = Crypto.Decrypt(order?.Name2);
+            order.StreetAddr1 = Crypto.Decrypt(order?.StreetAddr1);
+            order.StreetAddr2 = Crypto.Decrypt(order?.StreetAddr2);
+            order.City = Crypto.Decrypt(order?.City);
+            order.State = Crypto.Decrypt(order?.State);
+            order.Zip = Crypto.Decrypt(order?.Zip);
+            order.OrderedBy = Crypto.Decrypt(order?.OrderedBy);
+            order.PoNumber = Crypto.Decrypt(order?.PoNumber);
+            order.ShippingMethod = Crypto.Decrypt(order?.ShippingMethod);
+            order.Phone = Crypto.Decrypt(order?.Phone);
+            order.Email = Crypto.Decrypt(order?.Email);
+
+            return order;
+        }
+
+        private List<ItemDetail> DecryptItemDetails(List<ItemDetail> itemDetails)
+        {
+            for (int i = 0; i < itemDetails.Count; i++)
+                itemDetails[i] = DecryptItemDetail(itemDetails[i]);
+
+            return itemDetails;
+        }
+
+        private ItemDetail DecryptItemDetail(ItemDetail itemDetail)
+        {
+            itemDetail.FirstName = Crypto.Decrypt(itemDetail.FirstName);
+            itemDetail.LastName = Crypto.Decrypt(itemDetail.LastName);
+            itemDetail.PatientID = Crypto.Decrypt(itemDetail.PatientID);
+
+            return itemDetail;
         }
 
     }
