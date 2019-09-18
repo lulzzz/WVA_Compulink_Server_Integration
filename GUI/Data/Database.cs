@@ -109,7 +109,7 @@ namespace WVA_Connect_CSI.Data
             {
                 var users = dataAccessor.GetUsers();
 
-                // Filter out all the superadmins 
+                // Filter out all the SuperAdmins 
                 users.RemoveAll(x => x.RoleId == 3);
 
                 return users;

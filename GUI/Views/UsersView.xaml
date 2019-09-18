@@ -214,7 +214,6 @@
             <DataGrid.ContextMenu>
                 <ContextMenu Name="UsersDataGridContextMenu"
                              MaxHeight="300">
-                    <MenuItem Header="Delete User"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>

@@ -45,13 +45,11 @@ namespace WVA_Connect_CSI.Models
             }
         }
 
-
         public string Str_RequiresPasswordChange
         {
             get { return GetRequiresPasswordChangeString(RequiresPasswordChange); }
             set { Str_RequiresPasswordChange = value; }
         }
-
 
         private string GetRequiresPasswordChangeString(int requiresPassChange)
         {

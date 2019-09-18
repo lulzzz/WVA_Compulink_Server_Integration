@@ -38,6 +38,7 @@ namespace WVA_Connect_CSI.Views
             userRole = role;
             database = new Database();
             SetUpDataGrid();
+            SetUpContextMenu();
         }
 
         //
@@ -50,6 +51,13 @@ namespace WVA_Connect_CSI.Views
 
             foreach (User user in users)
                 UsersDataGrid.Items.Add(user);
+        }
+
+        private void SetUpContextMenu()
+        {
+            MenuItem menuItem = new MenuItem() { Header =  "Delete Users"};
+            menuItem.Click += new RoutedEventHandler(UsersDataGridContextMenu_Click);
+            UsersDataGridContextMenu.Items.Add(menuItem);
         }
 
         //
@@ -175,6 +183,30 @@ namespace WVA_Connect_CSI.Views
         {
             if (SearchUsersTextBox.Text == "")
                 SearchUsersTextBox.Text = "Search Users... ";
+        }
+
+        private void UsersDataGridContextMenu_Click(object sender, RoutedEventArgs e)
+        {
+            List<User> usersToDelete = new List<User>();
+            var users = UsersDataGrid.SelectedItems;
+
+            foreach (User user in users)
+            {
+                usersToDelete.Add(user);
+            }
+
+            var result = MessageBox.Show("Are you sure you want to delete the selected users? They will not be able to be recovered.", "Attention!", MessageBoxButton.YesNo , MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                foreach (User user in usersToDelete)
+                {
+                    database.DeleteUser(user.UserName);
+                    UsersDataGrid.Items.Remove(user);
+                }
+                
+                UsersDataGrid.Items.Refresh();
+            }
         }
 
     }
