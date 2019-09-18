@@ -179,6 +179,15 @@ namespace WVA_Connect_CSI.Views
                 return;
         }
 
+        private void SearchUsersTextBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SearchUsersTextBox.Text = "";
+        }
 
+        private void SearchUsersTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (SearchUsersTextBox.Text == "")
+                SearchUsersTextBox.Text = "Search Users... ";
+        }
     }
 }
