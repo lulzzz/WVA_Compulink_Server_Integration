@@ -26,7 +26,7 @@ namespace WVA_Connect_CSI
     {
         public static bool ShouldCheckForInactivity = true;
 
-        
+        private CancellationTokenSource tokenSource = new CancellationTokenSource();
         private readonly Task inactivityTask;
         private bool DsnConnectionIsGood { get; set; }
         private readonly BackgroundWorker CheckDsnConnectionStatusWorker = new BackgroundWorker();
@@ -44,7 +44,7 @@ namespace WVA_Connect_CSI
             StartWorkers();
             TaskManager.StartAllJobs();
 
-            inactivityTask = new Task(StartInactivityTimer);
+            inactivityTask = new Task(StartInactivityTimer, tokenSource.Token);
             inactivityTask.Start();
         }
 
@@ -213,7 +213,7 @@ namespace WVA_Connect_CSI
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            
+            tokenSource.Cancel();
         }
     }
 }
