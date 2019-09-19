@@ -124,9 +124,9 @@ namespace WVA_Connect_CSI.Views
                         MessageBox.Show("Error Creating User!", "", MessageBoxButton.OK);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Error.ReportOrLog(ex);
             }
         }
 
@@ -165,6 +165,24 @@ namespace WVA_Connect_CSI.Views
             }
             else
                 return true;
+        }
+
+        private void DeleteUsers(List<User> usersToDelete)
+        {
+            try
+            {
+                // delete user from data base and remove it from the grid
+                foreach (User user in usersToDelete)
+                {
+                    ActionLogger.Log(GetType().FullName + nameof(UsersDataGridContextMenu_Click), userRole, $"<Delete_User> UserName={user.UserName}, Email={user.Email}, Role={user.RoleId}");
+                    database.DeleteUser(user.UserName);
+                    UsersDataGrid.Items.Remove(user);
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            }
         }
 
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
@@ -222,20 +240,8 @@ namespace WVA_Connect_CSI.Views
 
                 if (result == MessageBoxResult.Yes)
                 {
-                    try
-                    {
-                        // delete user from data base and remove it from the grid
-                        foreach (User user in usersToDelete)
-                        {
-                            ActionLogger.Log(GetType().FullName + nameof(UsersDataGridContextMenu_Click), userRole, $"<Deleting_User> UserName={user.UserName}, Email={user.Email}, Role={user.RoleId}");
-                            database.DeleteUser(user.UserName);
-                            UsersDataGrid.Items.Remove(user);
-                        }
-                    }
-                    finally
-                    {
-                        UsersDataGrid.Items.Refresh();
-                    }
+                    DeleteUsers(usersToDelete);
+                    UsersDataGrid.Items.Refresh();
                 }
             }
             catch (Exception ex)
