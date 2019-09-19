@@ -169,9 +169,10 @@
                  FontFamily="Sitka Text"
                  FontSize="15"
                  Margin="0,0,80,0"
+                 TextChanged="SearchUsersTextBox_TextChanged"
                  VerticalAlignment="Top"
-                 LostFocus="SearchUsersTextBox_LostFocus"
-                 PreviewMouseLeftButtonDown="SearchUsersTextBox_PreviewMouseLeftButtonDown"/>
+                 PreviewMouseLeftButtonUp="SearchUsersTextBox_PreviewMouseLeftButtonUp"
+                 LostFocus="SearchUsersTextBox_LostFocus"/>
 
         <Button Name="SaveUsersButton"
                 Width="70"
