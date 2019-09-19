@@ -172,23 +172,10 @@ namespace WVA_Connect_CSI.Views
         }
 
         //
-        // Main elements for service control
+        // Main actions
         //
 
-        private void StartServerButton_Click(object sender, RoutedEventArgs e)
-        {
-            bool configLocated = SetupConfig();
-
-            if (configLocated)
-                StartServiceHost();
-        }
-
-        private void StopServerButton_Click(object sender, RoutedEventArgs e)
-        {
-            KillServiceHost();
-        }
-
-        private async void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
+        private async void CheckForUpdates()
         {
             try
             {
@@ -226,7 +213,7 @@ namespace WVA_Connect_CSI.Views
             }
         }
 
-        private void UninstallServiceButton_Click(object sender, RoutedEventArgs e)
+        private void UninstallService()
         {
             try
             {
@@ -247,11 +234,66 @@ namespace WVA_Connect_CSI.Views
             }
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private void AdminLogin()
         {
             foreach (Window window in Application.Current.Windows)
                 if (window.GetType() == typeof(MainWindow))
                     (window as MainWindow).MainContentControl.DataContext = new LoginView();
         }
+
+        //
+        // Main elements for service control
+        //
+
+        private void StartServerButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool configLocated = SetupConfig();
+
+            if (configLocated)
+                StartServiceHost();
+        }
+
+        private void StopServerButton_Click(object sender, RoutedEventArgs e)
+        {
+            KillServiceHost();
+        }
+
+        private async void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
+        {
+            CheckForUpdates();
+        }
+
+        private void UninstallServiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            UninstallService();
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdminLogin();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            var window = Window.GetWindow(this);
+            window.KeyDown += HandleKeyPress;
+        }
+
+        private void HandleKeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.Key.ToString() == "NumPad1")
+            {
+                CheckForUpdates();
+            }
+            else if (e.Key.ToString() == "NumPad2")
+            {
+                UninstallService();
+            }
+            else if (e.Key.ToString() == "NumPad3")
+            {
+                AdminLogin();
+            }
+        }
+
     }
 }
