@@ -55,7 +55,7 @@ namespace WVA_Connect_CSI.Views
 
         private void SetUpContextMenu()
         {
-            MenuItem menuItem = new MenuItem() { Header =  "Delete Users"};
+            MenuItem menuItem = new MenuItem() { Header =  "Delete"};
             menuItem.Click += new RoutedEventHandler(UsersDataGridContextMenu_Click);
             UsersDataGridContextMenu.Items.Add(menuItem);
         }
@@ -70,6 +70,7 @@ namespace WVA_Connect_CSI.Views
             {
                 ActionLogger.Log(GetType().FullName + nameof(ImportUsersButton_Click), userRole, "<Import_Users_Start>");
                 usersViewModel.ImportUsers(userRole);
+                RefreshGrid();
             }
             catch (FileNotFoundException ex)
             {
@@ -103,6 +104,10 @@ namespace WVA_Connect_CSI.Views
                 {
                     MessageBox.Show("This username exists already!", "", MessageBoxButton.OK);
                 }
+                else if (usersViewModel.EmailExists(EmailTextBox.Text))
+                {
+                    MessageBox.Show("This email exists already!", "", MessageBoxButton.OK);
+                }
                 else
                 {
                     bool created = usersViewModel.CreateUser(UserNameTextBox.Text, Crypto.ConvertToHash(PasswordTextBox.Text), EmailTextBox.Text, RoleTextBox.SelectedIndex, 0);
@@ -123,6 +128,22 @@ namespace WVA_Connect_CSI.Views
             {
 
             }
+        }
+
+        private void RefreshGrid()
+        {
+            // Remove all items in grid
+            UsersDataGrid.Items.Clear();
+
+            // Get update list of users
+            var users = database.GetUsers();
+
+            // Add users to grid
+            foreach (User user in users)
+                UsersDataGrid.Items.Add(user);
+
+            // Refresh grid
+            UsersDataGrid.Items.Refresh();
         }
 
         private bool FormsCompleted()
@@ -149,11 +170,12 @@ namespace WVA_Connect_CSI.Views
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         {
             if (FormsCompleted())
+            {
                 TryCreateUser();
+                RefreshGrid();
+            }
             else
                 return;
-
-
         }
 
         private void UserNameTextBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -187,25 +209,38 @@ namespace WVA_Connect_CSI.Views
 
         private void UsersDataGridContextMenu_Click(object sender, RoutedEventArgs e)
         {
-            List<User> usersToDelete = new List<User>();
-            var users = UsersDataGrid.SelectedItems;
-
-            foreach (User user in users)
+            try
             {
-                usersToDelete.Add(user);
-            }
+                // Keep a copy of the selected items collection so we can safely remove the items from the grid
+                List<User> usersToDelete = new List<User>();
 
-            var result = MessageBox.Show("Are you sure you want to delete the selected users? They will not be able to be recovered.", "Attention!", MessageBoxButton.YesNo , MessageBoxImage.Question);
+                foreach (User user in UsersDataGrid.SelectedItems)
+                    usersToDelete.Add(user);
 
-            if (result == MessageBoxResult.Yes)
-            {
-                foreach (User user in usersToDelete)
+                // confirm with user that they want to delete the selected users 
+                var result = MessageBox.Show("Are you sure you want to delete the selected users? They will not be able to be recovered.", "Attention!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
                 {
-                    database.DeleteUser(user.UserName);
-                    UsersDataGrid.Items.Remove(user);
+                    try
+                    {
+                        // delete user from data base and remove it from the grid
+                        foreach (User user in usersToDelete)
+                        {
+                            ActionLogger.Log(GetType().FullName + nameof(UsersDataGridContextMenu_Click), userRole, $"<Deleting_User> UserName={user.UserName}, Email={user.Email}, Role={user.RoleId}");
+                            database.DeleteUser(user.UserName);
+                            UsersDataGrid.Items.Remove(user);
+                        }
+                    }
+                    finally
+                    {
+                        UsersDataGrid.Items.Refresh();
+                    }
                 }
-                
-                UsersDataGrid.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
             }
         }
 
