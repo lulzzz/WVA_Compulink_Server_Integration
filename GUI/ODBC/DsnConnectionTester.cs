@@ -11,7 +11,7 @@ using WVA_Connect_CSI.Errors;
 
 namespace WVA_Connect_CSI.ODBC
 {
-    class DsnConnectionTester
+    public class DsnConnectionTester
     {
         public static bool IsGoodConnection()
         {

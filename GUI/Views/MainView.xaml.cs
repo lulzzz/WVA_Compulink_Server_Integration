@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,6 @@ namespace WVA_Connect_CSI.Views
 
         private readonly BackgroundWorker CheckServerWorker = new BackgroundWorker();
         private readonly BackgroundWorker UpdateStatusWorker = new BackgroundWorker();
-
 
         public MainView()
         {
@@ -96,85 +96,6 @@ namespace WVA_Connect_CSI.Views
             }
         }
 
-        private void ShowServerStatus()
-        {
-            try
-            {
-                ServerStatusImage.Source = ServerIsRunning ? new BitmapImage(new Uri(@"/Resources/GreenBubble.png", UriKind.Relative)) : new BitmapImage(new Uri(@"/Resources/RedBubble.jpg", UriKind.Relative));
-            }
-            catch (Exception x)
-            {
-                Error.ReportOrLog(x);
-            }
-        }
-
-        private void CheckServerStatus()
-        {
-            try
-            {
-                ServerIsRunning = ServiceHost.IsRunning();
-            }
-            catch (Exception x)
-            {
-                Error.ReportOrLog(x);
-            }
-        }
-
-        private void StartServiceHost()
-        {
-            try
-            {
-                if (!ServiceHost.IsInstalled())
-                    ServiceHost.Install();
-
-                if (!ServiceHost.IsRunning())
-                    ServiceHost.Start();
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show("An error has occurred while starting service host!", "Error", MessageBoxButton.OK);
-                Error.ReportOrLog(x);
-            }
-        }
-
-        private void KillServiceHost()
-        {
-            try
-            {
-                if (ServiceHost.IsRunning())
-                    ServiceHost.Stop();
-            }
-            catch (Exception x)
-            {
-                Error.ReportOrLog(x);
-            }
-        }
-
-        private void CheckServerWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            while (true)
-            {
-                CheckServerStatus();
-                Thread.Sleep(1000);
-            }
-        }
-
-        public delegate void UpdateUICallBack();
-        private void UpdateStatusWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            while (true)
-            {
-                Dispatcher.Invoke(
-                    new UpdateUICallBack(ShowServerStatus)
-                    );
-                Thread.Sleep(1000);
-            }
-        }
-
-        //
-        // Main actions
-        //
-
         private async void CheckForUpdates()
         {
             try
@@ -221,7 +142,7 @@ namespace WVA_Connect_CSI.Views
                     ServiceHost.Stop();
 
                 ServiceHost.Uninstall();
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
 
                 if (ServiceHost.IsInstalled())
                     MessageBox.Show("Service was not removed successfully.", "", MessageBoxButton.OK);
@@ -241,8 +162,91 @@ namespace WVA_Connect_CSI.Views
                     (window as MainWindow).MainContentControl.DataContext = new LoginView();
         }
 
+        private void StartServiceHost()
+        {
+            try
+            {
+                if (!ServiceHost.IsInstalled())
+                    ServiceHost.Install();
+
+                if (!ServiceHost.IsRunning())
+                    ServiceHost.Start();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("An error has occurred while starting service host!", "Error", MessageBoxButton.OK);
+                Error.ReportOrLog(x);
+            }
+        }
+
+        private void KillServiceHost()
+        {
+            try
+            {
+                if (ServiceHost.IsRunning())
+                    ServiceHost.Stop();
+            }
+            catch (Exception x)
+            {
+                Error.ReportOrLog(x);
+            }
+        }
+
         //
-        // Main elements for service control
+        // Background workers
+        //
+
+        private void CheckServerWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (true)
+            {
+                CheckServerStatus();
+                Thread.Sleep(1000);
+            }
+        }
+
+        public delegate void UpdateUICallBack();
+        private void UpdateStatusWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (true)
+            {
+                Dispatcher.Invoke(
+                    new UpdateUICallBack(ShowServerStatus)
+                    );
+                Thread.Sleep(1000);
+            }
+        }
+
+        //
+        // Looping Methods
+        //
+
+        private void ShowServerStatus()
+        {
+            try
+            {
+                ServerStatusImage.Source = ServerIsRunning ? new BitmapImage(new Uri(@"/Resources/GreenBubble.png", UriKind.Relative)) : new BitmapImage(new Uri(@"/Resources/RedBubble.jpg", UriKind.Relative));
+            }
+            catch (Exception x)
+            {
+                Error.ReportOrLog(x);
+            }
+        }
+
+        private void CheckServerStatus()
+        {
+            try
+            {
+                ServerIsRunning = ServiceHost.IsRunning();
+            }
+            catch (Exception x)
+            {
+                Error.ReportOrLog(x);
+            }
+        }
+
+        //
+        // UI Events
         //
 
         private void StartServerButton_Click(object sender, RoutedEventArgs e)
@@ -275,24 +279,7 @@ namespace WVA_Connect_CSI.Views
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            var window = Window.GetWindow(this);
-            window.KeyDown += HandleKeyPress;
-        }
-
-        private void HandleKeyPress(object sender, KeyEventArgs e)
-        {
-            if (e.Key.ToString() == "NumPad1")
-            {
-                CheckForUpdates();
-            }
-            else if (e.Key.ToString() == "NumPad2")
-            {
-                UninstallService();
-            }
-            else if (e.Key.ToString() == "NumPad3")
-            {
-                AdminLogin();
-            }
+            
         }
 
     }

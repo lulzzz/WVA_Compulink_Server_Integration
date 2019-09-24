@@ -87,8 +87,10 @@ namespace WVA_Connect_CSI.Views
 
         private void PasswordTextBox_KeyUp(object sender, KeyEventArgs e)
         {
+          
             if (e.Key == Key.Enter)
                 Login();
+
         }
 
         private void PasswordTextBox_PasswordChanged(object sender, RoutedEventArgs e)

@@ -168,8 +168,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="ODBC\DsnConnectionTesterTests.cs" />
+    <Compile Include="Roles\ITAdminRoleTests.cs" />
+    <Compile Include="Roles\ManagerRoleTests.cs" />
+    <Compile Include="Roles\RoleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles\SuperAdminRoleTests.cs" />
+    <Compile Include="Roles\UserRoleTests.cs" />
+    <Compile Include="Security\CryptoTests.cs" />
+    <Compile Include="ViewModels\LoginViewModelTests.cs" />
+    <Compile Include="ViewModels\OrdersViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -10,6 +10,7 @@
              HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
              Background="White">
+    
     <UserControl.Resources>
         <LinearGradientBrush x:Key="LoginButtonGroup"  EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="0"/>
@@ -139,7 +140,7 @@
                 <GradientStop Color="#FF98BEE1" Offset="0.81"/>
             </LinearGradientBrush>
         </Grid.Background>
-
+       
         <StackPanel VerticalAlignment="Top" 
                     HorizontalAlignment="Center"
                     Margin="0,70,0,0">
@@ -153,7 +154,7 @@
                     Height="34" 
                     TabIndex="0"/>
 
-            <TextBox x:Name="UsernameTextBox"
+            <TextBox Name="UsernameTextBox"
                      MaxLength="20"
                      HorizontalAlignment="Left"
                      Height="30"
@@ -175,7 +176,7 @@
                    Height="34" 
                    TabIndex="0"/>
 
-            <PasswordBox x:Name="PasswordTextBox"
+            <PasswordBox Name="PasswordTextBox"
                          MaxLength="20"
                          HorizontalAlignment="Left" 
                          Margin="0,0,0,0" 

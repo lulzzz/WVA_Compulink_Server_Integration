@@ -196,7 +196,7 @@ namespace WVA_Connect_CSI
             while (true)
             {
                 CheckDsnStatus();
-                Thread.Sleep(1500);
+                Thread.Sleep(2000);
             }
         }
 
@@ -207,7 +207,7 @@ namespace WVA_Connect_CSI
                 Dispatcher.Invoke(
                   new UpdateUICallBack(UpdateAppIcon)
                   );
-                Thread.Sleep(1500);
+                Thread.Sleep(2000);
             }
         }
 
