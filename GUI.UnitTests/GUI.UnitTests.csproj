@@ -179,6 +179,7 @@
     <Compile Include="ViewModels\LoginViewModelTests.cs" />
     <Compile Include="ViewModels\OrderDetailsViewModelTests.cs" />
     <Compile Include="ViewModels\OrdersViewModelTests.cs" />
+    <Compile Include="ViewModels\UsersViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
