@@ -177,6 +177,7 @@
     <Compile Include="Roles\UserRoleTests.cs" />
     <Compile Include="Security\CryptoTests.cs" />
     <Compile Include="ViewModels\LoginViewModelTests.cs" />
+    <Compile Include="ViewModels\OrderDetailsViewModelTests.cs" />
     <Compile Include="ViewModels\OrdersViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>

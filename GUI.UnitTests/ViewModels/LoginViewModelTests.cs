@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WVA_Connect_CSI.Data;
 
-namespace WVA_Connect_CSI.ViewModels
+namespace GUI.UnitTests.ViewModels
 {
     [TestClass()]
     public class LoginViewModelTests

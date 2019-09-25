@@ -15,7 +15,7 @@ using WVA_Connect_CSI.Utility.Files;
 
 namespace WVA_Connect_CSI.ViewModels
 {
-    class UsersViewModel
+    public class UsersViewModel
     {
         Database database;
 

@@ -8,7 +8,7 @@ using WVA_Connect_CSI.Models;
 
 namespace WVA_Connect_CSI.ViewModels
 {
-    class OrderDetailsViewModel
+    public class OrderDetailsViewModel
     {
         Database database;
 

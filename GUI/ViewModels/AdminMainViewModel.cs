@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WVA_Connect_CSI.ViewModels
 {
-    class AdminMainViewModel
+    public class AdminMainViewModel
     {
     }
 }

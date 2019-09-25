@@ -18,7 +18,6 @@ using System.Windows.Shapes;
 using WVA_Connect_CSI.Models;
 using WVA_Connect_CSI.Roles;
 using WVA_Connect_CSI.Utility.ActionLogging;
-using static WVA_Connect_CSI.Views.MainView;
 
 namespace WVA_Connect_CSI.Views
 {
