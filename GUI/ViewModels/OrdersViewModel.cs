@@ -8,7 +8,7 @@ using WVA_Connect_CSI.Models;
 
 namespace WVA_Connect_CSI.ViewModels
 {
-    class OrdersViewModel
+    public class OrdersViewModel
     {
         Database database;
 
@@ -17,36 +17,19 @@ namespace WVA_Connect_CSI.ViewModels
             database = new Database();
         }
 
-        private List<Order> GetAllOrders()
+        public List<Order> GetAllOrders()
         {
             return database.GetAllOrders();
         }
 
-        private List<Order> GetSubmittedOrders()
+        public List<Order> GetSubmittedOrders()
         {
             return database.GetSubmittedOrders();
         }
 
-        private List<Order> GetUnsubmittedOrders()
+        public List<Order> GetUnsubmittedOrders()
         {
             return database.GetUnsubmittedOrders();
         }
-
-        public List<Order> GetOrders(string selection)
-        {
-
-            switch (selection)
-            {
-                case "all":
-                    return GetAllOrders();
-                case "submitted":
-                    return GetSubmittedOrders();
-                case "open":
-                    return GetUnsubmittedOrders();
-                default:
-                    return GetAllOrders();
-            }
-        }
-
     }
 }

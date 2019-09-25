@@ -63,18 +63,18 @@ namespace WVA_Connect_CSI.Views
             return WvaOrdersDataGrid.SelectedIndex;
         }
 
-        private string GetOrderActionFromIndex(int index)
+        private List<Order> GetOrderActionFromIndex(int index)
         {
             switch (index)
             {
                 case 0:
-                    return "all";
+                    return ordersViewModel.GetAllOrders();
                 case 1:
-                    return "submitted";
+                    return ordersViewModel.GetSubmittedOrders(); 
                 case 2:
-                    return "open";
+                    return ordersViewModel.GetUnsubmittedOrders();
                 default:
-                    return "all";
+                    return ordersViewModel.GetAllOrders();
             }
         }
 
@@ -83,7 +83,7 @@ namespace WVA_Connect_CSI.Views
             WvaOrdersDataGrid.Items.Clear();
             Orders.Clear();
 
-            foreach (Order order in ordersViewModel.GetOrders(GetOrderActionFromIndex(OrderTypeComboBox.SelectedIndex)))
+            foreach (Order order in GetOrderActionFromIndex(OrderTypeComboBox.SelectedIndex))
                 WvaOrdersDataGrid.Items.Add(order);
 
             Orders.AddRange(WvaOrdersDataGrid.Items.Cast<Order>().ToList());
