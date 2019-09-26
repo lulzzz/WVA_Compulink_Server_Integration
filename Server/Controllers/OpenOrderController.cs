@@ -12,6 +12,7 @@ using WVA_Connect_CSI.Models.QueryFormats;
 using WVA_Connect_CSI.Utilities.Files;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
+using WVA_Connect_CSI.Memory;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,24 +28,30 @@ namespace WVA_Connect_CSI.Controllers
             {
                 var compulinkOdbcReader = new CompulinkOdbcReader();
                 
+                // Set filter value if it hasn't been set already 
                 if (string.IsNullOrEmpty(Startup.config.FilterValue))
                 {
-                    string JsonConfig = System.IO.File.ReadAllText(Paths.WvaConfigFile);
-                    dynamic JsonConfigObj = JsonConvert.DeserializeObject(JsonConfig);
-                    JsonConfigObj.FilterValue = compulinkOdbcReader.GetLastFilterValue();
-                    Startup.config.FilterValue = JsonConfigObj.FilterValue;
-                    string ConfigOutput = JsonConvert.SerializeObject(JsonConfigObj, Formatting.Indented);
-                    System.IO.File.WriteAllText(Paths.WvaConfigFile, ConfigOutput);
+                    // Read in the jsonConfig from the file location as a string
+                    string strJsonConfig = System.IO.File.ReadAllText(Paths.WvaConfigFile);
+                    var jsonConfig = (WvaConfig)JsonConvert.DeserializeObject(strJsonConfig);
+
+                    // Update the FilterValue in memory and in the file system
+                    jsonConfig.FilterValue = Startup.config.FilterValue = compulinkOdbcReader.GetLastFilterValue();
+                    string configOutput = JsonConvert.SerializeObject(jsonConfig, Formatting.Indented);
+                    System.IO.File.WriteAllText(Paths.WvaConfigFile, configOutput);
                 }
+
                 return new PrescriptionWrapper()
                 {
                     Request = new PrescriptionRequest()
                     {
-                        ApiKey = Memory.Storage.Config.ApiKey,
+                        ApiKey = Storage.Config.ApiKey,
+                        // Use config settings to get prescriptions (Compulink orders) for this location
                         Products = compulinkOdbcReader.GetOpenOrders(new string[] {
                             $"{Startup.config?.LabSentColumn} is null",
                             $"{Startup.config?.WvaInvoiceColumn} is null",
-                            $"{(location == "99999" ? "lab" : Startup.config?.LabColumn)} = '{Startup.config?.Location?[location] ?? location}'", // if test account, use default way of pulling an order
+                            // if using test api key, use default way of pulling orders
+                            $"{(Storage.Config.ApiKey == "da1c9295-56af-48bd-aed5-3421dd4d4aaf" ? "lab" : Startup.config?.LabColumn)} = '{Startup.config?.Location?[location] ?? location}'", 
                             $"{Startup.config?.FilterColumn} > {Startup.config?.FilterValue}"
                         })
                     }

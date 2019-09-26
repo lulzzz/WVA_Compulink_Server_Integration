@@ -27,6 +27,9 @@ namespace WVA_Connect_CSI
                 if (!DatabaseExists())
                     SetupDatabase();
 
+                // Update config file properties
+                UpdateConfig();
+
                 // Setup Config in Memory
                 new Memory.Storage();
 
@@ -95,6 +98,11 @@ namespace WVA_Connect_CSI
         {
             new Database().CreateDatabaseFile();
             new Database().CreateTables();
+        }
+
+        private static void UpdateConfig()
+        {
+
         }
 
     }

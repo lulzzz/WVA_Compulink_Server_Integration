@@ -12,16 +12,19 @@ namespace WVA_Connect_CSI.Models.Configurations
          * DEFAULT VALUE: "WVA-CSI"
          */
         public string Dsn { get; set; }
+
         /* ApiKey is the assigned preshared key (a UUID) used to authenticate
          * for the WVA Order API.
          * DEFAULT VALUE: test api key
          */
         public string ApiKey { get; set; }
+
         /* The Location Dictionary is a key value pair that links a location 
          * (WVA Account Number) to a an identifier in Compulink's lens_rx 
          * table through the LabColumn 
          */
         public Dictionary<string, string> Location { get; set; }
+
         /* WvaInvoiceColumn defines the column in Compulink's lens_rx table
          * that is used to indicate the WVA Invoice number or order number.
          * If this column's value is not null, the server assumes the order
@@ -30,6 +33,7 @@ namespace WVA_Connect_CSI.Models.Configurations
          * successful submission to the order API.
          */
         public string WvaInvoiceColumn { get; set; }
+
         /* LabSentColumn defines the column that indicates the date a lens_rx
          * order was submitted for processing.
          * The date in this column is updated on successful submission to the
@@ -38,6 +42,8 @@ namespace WVA_Connect_CSI.Models.Configurations
          * Note: some installations have this as "ZZORDNO"
          */
         public string LabSentColumn { get; set; }
+
+
         /* LabColumn defines the column used to identify the open orders for
          * the current user's location, as defined in the Location dictionary.
          * Example: the entry in Location could be "44": "WVA-001" and a query
@@ -47,12 +53,16 @@ namespace WVA_Connect_CSI.Models.Configurations
          * DEFAULT VALUE: "lab"
          */
         public string LabColumn { get; set; }
+
+
         /* FilterColumn and FilterValue are a pair that define the scope to 
          * examine for open orders.
          * DEFAULT VALUE: date
          * Note: using `lensunique` allows for more granular control of the scope
          */
         public string FilterColumn { get; set; }
+
+
         /* FilterValue is the maximum value to exclude from the open order scope
          * DEFAULT VALUE: today's date
          * Note: a null or empty value in this config variable should prompt 
@@ -60,6 +70,7 @@ namespace WVA_Connect_CSI.Models.Configurations
          * write it to the config file for persistence.
          */
         public string FilterValue { get; set; }
+
         public bool OverRideDefaultQueries { get; set; } = false;
     }
 }

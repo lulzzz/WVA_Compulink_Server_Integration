@@ -17,15 +17,19 @@ namespace WVA_Connect_CSI.Models.Prescriptions
             {
                 conn.ConnectionString = $"dsn={Startup.config.Dsn}";
                 conn.Open();
-                string LastOrderIdQuery = $"SELECT TOP 1 {Startup.config.FilterColumn} FROM lens_rx ORDER BY {Startup.config.FilterColumn} DESC";
-                var comm = new OdbcCommand(LastOrderIdQuery, conn);
-                OdbcDataReader dr = comm.ExecuteReader();
-                string LastFilterValue = "";
-                try {
+
+                string lastOrderIdQuery = $"SELECT TOP 1 {Startup.config.FilterColumn} FROM lens_rx ORDER BY {Startup.config.FilterColumn} DESC";
+
+                var command = new OdbcCommand(lastOrderIdQuery, conn);
+
+                OdbcDataReader dr = command.ExecuteReader();
+
+                string lastFilterValue = "";
+
+                try
+                {
                     while(dr.Read())
-                    {
-                        LastFilterValue = dr.GetValue(0).ToString();
-                    }
+                        lastFilterValue = dr.GetValue(0).ToString();
                 }
                 catch (Exception x)
                 {
@@ -36,7 +40,8 @@ namespace WVA_Connect_CSI.Models.Prescriptions
                 {
                     conn.Close();
                 }
-                return LastFilterValue;
+
+                return lastFilterValue;
             }
         }
         public List<Prescription> GetOpenOrders(string[] WhereObjects)
