@@ -211,7 +211,7 @@
                 <DataGridTextColumn Binding="{Binding Path=UserName}"                   Width="*" MinWidth="90"  Header="Username" />
                 <DataGridTextColumn Binding="{Binding Path=Email}"                      Width="*" MinWidth="130" Header="Email" />
                 <DataGridTextColumn Binding="{Binding Path=RoleName}"                   Width="*" MinWidth="90"  Header="Role" />
-                <DataGridTextColumn Binding="{Binding Path=Str_RequiresPasswordChange}" Width="*" MinWidth="110" Header="Req. Pass. Change" />
+                <DataGridTextColumn Binding="{Binding Path=StrRequiresPasswordChange}" Width="*" MinWidth="110" Header="Req. Pass. Change" />
             </DataGrid.Columns>
 
             <DataGrid.ContextMenu>
