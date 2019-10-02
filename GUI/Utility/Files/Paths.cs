@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WVA_Connect_CSI.Utility.Files
 {
-    class Paths
+    public class Paths
     {
         /* ---------------------------------------- ROOT PATHS --------------------------------------------------------- */
 

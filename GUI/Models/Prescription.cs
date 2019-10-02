@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WVA_Connect_CSI.Models
 {
-    class Prescription
+    public class Prescription
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

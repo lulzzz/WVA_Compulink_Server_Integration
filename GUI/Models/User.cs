@@ -21,7 +21,6 @@ namespace WVA_Connect_CSI.Models
         public string Message { get; set; }
         public int RequiresPasswordChange { get; set; }
 
-
         public string RoleName
         {
             get { return GetRoleName(RoleId); }

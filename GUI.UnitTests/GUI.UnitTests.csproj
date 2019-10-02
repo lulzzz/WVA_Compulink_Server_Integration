@@ -168,6 +168,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\PrescriptionTests.cs" />
     <Compile Include="Models\UserTests.cs" />
     <Compile Include="ODBC\DsnConnectionTesterTests.cs" />
     <Compile Include="Roles\ITAdminRoleTests.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Roles\SuperAdminRoleTests.cs" />
     <Compile Include="Roles\UserRoleTests.cs" />
     <Compile Include="Security\CryptoTests.cs" />
+    <Compile Include="Services\ServiceHostTests.cs" />
     <Compile Include="ViewModels\LoginViewModelTests.cs" />
     <Compile Include="ViewModels\OrderDetailsViewModelTests.cs" />
     <Compile Include="ViewModels\OrdersViewModelTests.cs" />
