@@ -16,7 +16,7 @@ namespace WVA_Connect_CSI.Memory
 
         public Storage()
         {
-            Config = JsonConvert.DeserializeObject<WvaConfig>(File.ReadAllText($@"{Paths.WvaConfigFile}"));
+            Config = JsonConvert.DeserializeObject<WvaConfig>(File.ReadAllText($@"{Paths.WvaConfigFile}")) ?? null;
         }
     }
 }

@@ -180,8 +180,6 @@ namespace WVA_Connect_CSI.Utility.ActionLogging
             }
         }
 
-
-
         // -----------------------------------------------------------------------------------------------------
         // --------------------------------- SENDING ACTION DATA -----------------------------------------------
         // -----------------------------------------------------------------------------------------------------
@@ -215,9 +213,7 @@ namespace WVA_Connect_CSI.Utility.ActionLogging
             string data = "";
 
             foreach (ActionData d in listActionData)
-            {
                 data += d.Content;
-            }
 
             // Don't report if there is not data (user clicks button multiple times)
             if (data.Trim() != "")
