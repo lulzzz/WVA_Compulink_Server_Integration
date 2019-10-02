@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WVA_Connect_CSI.Responses
 {
-    class Response : IResponse
+    public class Response : IResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }

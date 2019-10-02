@@ -87,7 +87,6 @@ namespace WVA_Connect_CSI.Updates
             Environment.Exit(0);
         }
 
-
         // This may be usefull in the future
         //private static string GetServerDirectoryName()
         //{

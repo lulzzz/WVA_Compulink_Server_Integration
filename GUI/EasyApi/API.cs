@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace WVA_Connect_CSI.WebTools
 {
-    class API
+    public class API
     {
         static public string Post(string endpoint, object jsonObject)
         {

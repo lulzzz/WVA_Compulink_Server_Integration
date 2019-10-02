@@ -69,7 +69,7 @@ namespace WVA_Connect_CSI.Utility.ActionLogging
                 Directory.CreateDirectory(Paths.TempDir);
 
             if (!File.Exists(file))
-                File.Create(file).Close(); ;
+                File.Create(file).Close();
         }
 
         private static string GetLogFileName()
@@ -117,8 +117,8 @@ namespace WVA_Connect_CSI.Utility.ActionLogging
                     File.Create(file);
 
                 var stream = File.AppendText(file);
-                stream.WriteLine(contents);
-                stream.Close();
+                    stream.WriteLine(contents);
+                    stream.Close();
             }
             catch (Exception ex)
             {

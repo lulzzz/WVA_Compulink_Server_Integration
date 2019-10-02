@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WVA_Connect_CSI.Errors
 {
-    class JsonError
+    public class JsonError
     {
         public string ActNum { get; set; }
         public string Error { get; set; }
