@@ -12,5 +12,7 @@ namespace WVA_Connect_CSI.Errors
         public string Error { get; set; }
         public string Application { get; set; }
         public string AppVersion { get; set; }
+        public string UserName { get; set; }
+        public string MachineName { get; set; }
     }
 }

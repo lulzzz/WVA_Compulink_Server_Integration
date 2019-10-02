@@ -44,16 +44,22 @@ namespace WVA_Connect_CSI.Models.Prescriptions
                 return lastFilterValue;
             }
         }
+
         public List<Prescription> GetOpenOrders(string[] WhereObjects)
         {
-            List<Prescription> listPrescriptions = new List<Prescription>();
+            var listPrescriptions = new List<Prescription>();
 
             using (OdbcConnection conn = new OdbcConnection())
             {
+                // Establish connection to database 
                 conn.ConnectionString = $"dsn={Startup.config.Dsn}";
                 conn.Open();
 
-                var comm = new OdbcCommand(PrintQuery(WhereObjects), conn);
+                // Build SQL query
+                string query = PrintQuery(WhereObjects);
+
+                // Execute query 
+                var comm = new OdbcCommand(query, conn);
                 OdbcDataReader dr = comm.ExecuteReader();
 
                 try
@@ -63,47 +69,47 @@ namespace WVA_Connect_CSI.Models.Prescriptions
                         listPrescriptions.Add(new Prescription()
                         {
                             _CustomerID = new CustomerID() { Value = dr.GetValue(0).ToString() },
-                            FirstName = dr.GetValue(25).ToString(),
-                            LastName = dr.GetValue(26).ToString(),
-                            Eye = "Right",
-                            LensRx = dr.GetValue(30).ToString(),
-                            IsShipToPat = dr.GetValue(31).ToString() == "True" ? true : false,
-                            IsTrial = dr.GetValue(32).ToString() == "True" ? true : false,
-                            Quantity = dr.GetValue(1).ToString(),
-                            Product = dr.GetValue(2).ToString() + $" {dr.GetValue(33).ToString()}",
-                            Vendor = dr.GetValue(3).ToString(),
-                            BaseCurve = dr.GetValue(4).ToString(),
-                            Diameter = dr.GetValue(5).ToString(),
-                            Sphere = dr.GetValue(6).ToString(),
-                            Cylinder = dr.GetValue(7).ToString(),
-                            Axis = dr.GetValue(8).ToString(),
-                            Add = dr.GetValue(9).ToString(),
-                            Color = dr.GetValue(10).ToString(),
-                            Multifocal = dr.GetValue(11).ToString(),
-                            Date = $"{dr.GetValue(27).ToString()}-{dr.GetValue(28).ToString()}-{dr.GetValue(29).ToString()}"
+                            FirstName   = dr.GetValue(25).ToString(),
+                            LastName    = dr.GetValue(26).ToString(),
+                            Eye         = "Right",
+                            LensRx      = dr.GetValue(30).ToString(),
+                            IsShipToPat = dr.GetValue(31).ToString() == "True" ? true : false, // convert Advantage SQL bool to C# bool 
+                            IsTrial     = dr.GetValue(32).ToString() == "True" ? true : false,
+                            Quantity    = dr.GetValue(1).ToString(),
+                            Product     = dr.GetValue(2).ToString() + $" {dr.GetValue(33).ToString()}",
+                            Vendor      = dr.GetValue(3).ToString(),
+                            BaseCurve   = dr.GetValue(4).ToString(),
+                            Diameter    = dr.GetValue(5).ToString(),
+                            Sphere      = dr.GetValue(6).ToString(),
+                            Cylinder    = dr.GetValue(7).ToString(),
+                            Axis        = dr.GetValue(8).ToString(),
+                            Add         = dr.GetValue(9).ToString(),
+                            Color       = dr.GetValue(10).ToString(),
+                            Multifocal  = dr.GetValue(11).ToString(),
+                            Date        = $"{dr.GetValue(27).ToString()}-{dr.GetValue(28).ToString()}-{dr.GetValue(29).ToString()}"
                         });
 
                         listPrescriptions.Add(new Prescription()
                         {
                             _CustomerID = new CustomerID() { Value = dr.GetValue(0).ToString() },
-                            FirstName = dr.GetValue(25).ToString(),
-                            LastName = dr.GetValue(26).ToString(),
-                            Eye = "Left",
-                            LensRx = dr.GetValue(30).ToString(),
+                            FirstName   = dr.GetValue(25).ToString(),
+                            LastName    = dr.GetValue(26).ToString(),
+                            Eye         = "Left",
+                            LensRx      = dr.GetValue(30).ToString(),
                             IsShipToPat = dr.GetValue(31).ToString() == "True" ? true : false,
-                            IsTrial = dr.GetValue(32).ToString() == "True" ? true : false,
-                            Quantity = dr.GetValue(12).ToString(),
-                            Product = dr.GetValue(13).ToString() + $" {dr.GetValue(34).ToString()}",
-                            Vendor = dr.GetValue(14).ToString(),
-                            BaseCurve = dr.GetValue(15).ToString(),
-                            Diameter = dr.GetValue(16).ToString(),
-                            Sphere = dr.GetValue(17).ToString(),
-                            Cylinder = dr.GetValue(18).ToString(),
-                            Axis = dr.GetValue(19).ToString(),
-                            Add = dr.GetValue(20).ToString(),
-                            Color = dr.GetValue(21).ToString(),
-                            Multifocal = dr.GetValue(22).ToString(),
-                            Date = $"{dr.GetValue(27).ToString()}-{dr.GetValue(28).ToString()}-{dr.GetValue(29).ToString()}"
+                            IsTrial     = dr.GetValue(32).ToString() == "True" ? true : false,
+                            Quantity    = dr.GetValue(12).ToString(),
+                            Product     = dr.GetValue(13).ToString() + $" {dr.GetValue(34).ToString()}",
+                            Vendor      = dr.GetValue(14).ToString(),
+                            BaseCurve   = dr.GetValue(15).ToString(),
+                            Diameter    = dr.GetValue(16).ToString(),
+                            Sphere      = dr.GetValue(17).ToString(),
+                            Cylinder    = dr.GetValue(18).ToString(),
+                            Axis        = dr.GetValue(19).ToString(),
+                            Add         = dr.GetValue(20).ToString(),
+                            Color       = dr.GetValue(21).ToString(),
+                            Multifocal  = dr.GetValue(22).ToString(),
+                            Date        = $"{dr.GetValue(27).ToString()}-{dr.GetValue(28).ToString()}-{dr.GetValue(29).ToString()}"
                         });
                     }
                 }
@@ -163,7 +169,7 @@ namespace WVA_Connect_CSI.Models.Prescriptions
             string table = "lens_rx lrx";
             string[] joins = { "patient p on p.patunique = lrx.patunique" };
             string[] where_objects = WhereObjects;
-            Query Product_query = new Query(select_objects, table, joins, where_objects);
+            var Product_query = new Query(select_objects, table, joins, where_objects);
 
             return Product_query.Assembled;
         }

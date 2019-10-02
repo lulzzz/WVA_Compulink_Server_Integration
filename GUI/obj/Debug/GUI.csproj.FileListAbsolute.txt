@@ -229,3 +229,4 @@ C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Debug\Micro
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\GUI\obj\Debug\GUI.csprojAssemblyReference.cache

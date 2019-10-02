@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Odbc;
-using System.Linq;
-using System.IO;
-using System.Threading.Tasks;
 using WVA_Connect_CSI.Errors;
 using WVA_Connect_CSI.Models.Configurations;
-using WVA_Connect_CSI.Models.Parameters.Derived;
 using WVA_Connect_CSI.Models.Prescriptions;
-using WVA_Connect_CSI.Models.QueryFormats;
 using WVA_Connect_CSI.Utilities.Files;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
@@ -31,14 +24,21 @@ namespace WVA_Connect_CSI.Controllers
                 // Set filter value if it hasn't been set already 
                 if (string.IsNullOrEmpty(Startup.config.FilterValue))
                 {
-                    // Read in the jsonConfig from the file location as a string
-                    string strJsonConfig = System.IO.File.ReadAllText(Paths.WvaConfigFile);
-                    var jsonConfig = (WvaConfig)JsonConvert.DeserializeObject(strJsonConfig);
+                    try
+                    {
+                        // Read in the jsonConfig from the file location as a string
+                        string strJsonConfig = System.IO.File.ReadAllText(Paths.WvaConfigFile);
+                        var jsonConfig = (WvaConfig)JsonConvert.DeserializeObject(strJsonConfig);
 
-                    // Update the FilterValue in memory and in the file system
-                    jsonConfig.FilterValue = Startup.config.FilterValue = compulinkOdbcReader.GetLastFilterValue();
-                    string configOutput = JsonConvert.SerializeObject(jsonConfig, Formatting.Indented);
-                    System.IO.File.WriteAllText(Paths.WvaConfigFile, configOutput);
+                        // Update the FilterValue in memory and in the file system
+                        jsonConfig.FilterValue = Startup.config.FilterValue = compulinkOdbcReader.GetLastFilterValue();
+                        string configOutput = JsonConvert.SerializeObject(jsonConfig, Formatting.Indented);
+                        System.IO.File.WriteAllText(Paths.WvaConfigFile, configOutput);
+                    }
+                    catch (Exception ex)
+                    {
+                        Error.ReportOrLog(ex);
+                    }
                 }
 
                 return new PrescriptionWrapper()
@@ -47,7 +47,8 @@ namespace WVA_Connect_CSI.Controllers
                     {
                         ApiKey = Storage.Config.ApiKey,
                         // Use config settings to get prescriptions (Compulink orders) for this location
-                        Products = compulinkOdbcReader.GetOpenOrders(new string[] {
+                        Products = compulinkOdbcReader.GetOpenOrders(new string[]
+                        {
                             $"{Startup.config?.LabSentColumn} is null",
                             $"{Startup.config?.WvaInvoiceColumn} is null",
                             // if using test api key, use default way of pulling orders

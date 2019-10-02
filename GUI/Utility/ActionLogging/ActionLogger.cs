@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using WVA_Connect_CSI.Errors;
+using WVA_Connect_CSI.Memory;
 using WVA_Connect_CSI.Models;
 using WVA_Connect_CSI.Responses;
 using WVA_Connect_CSI.Roles;
@@ -73,7 +74,7 @@ namespace WVA_Connect_CSI.Utility.ActionLogging
 
         private static string GetLogFileName()
         {
-            return $"{Paths.TempDir}CDI_Action_Log_{DateTime.Today.ToString("MM-dd-yy")}.txt";
+            return $"{Paths.TempDir}CSI_Action_Log_{DateTime.Today.ToString("MM-dd-yy")}.txt";
         }
 
         private static string GetFileContents(string actionLocation)
@@ -191,6 +192,7 @@ namespace WVA_Connect_CSI.Utility.ActionLogging
             {
                 var dataMessage = new JsonError()
                 {
+                    ActNum = GetApiKey(),
                     Error = data.ToString(),
                     Application = Assembly.GetCallingAssembly().GetName().Name,
                     AppVersion = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString()

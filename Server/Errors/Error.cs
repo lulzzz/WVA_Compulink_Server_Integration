@@ -33,6 +33,30 @@ namespace WVA_Connect_CSI.Errors
             }
         }
 
+        public static void ReportOrLog(Exception e, string appendText)
+        {
+            string reportString = e.ToString() + "\n\n Appended Message: " + appendText;
+
+            try
+            {
+                JsonError error = new JsonError()
+                {
+                    ActNum = $"Machine Name=({Environment.MachineName}) User Name =({Environment.UserName}) API Key =({Memory.Storage.Config?.ApiKey ?? "NOT SET"})",
+                    Error = reportString,
+                    Application = Assembly.GetCallingAssembly().GetName().Name,
+                    AppVersion = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString()
+                };
+
+                if (!ErrorReported(error))
+                    WriteError(error.Error);
+            }
+            catch (Exception error)
+            {
+                WriteError(error.ToString());
+            }
+
+        }
+
         private static bool ErrorReported(JsonError error)
         {
             try

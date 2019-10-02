@@ -51,8 +51,13 @@ namespace WVA_Connect_CSI.Views
 
                 if (roleId > 0)
                 {
+                    // Report all action data 
+                    ActionLogger.ReportAllDataNow();
+
+                    // Add login action to action logger
                     ActionLogger.Log(GetType().FullName + nameof(Login), UsernameTextBox.Text, roleId, $"<User_Login>");
 
+                    // Open admin main view
                     foreach (Window window in Application.Current.Windows)
                         if (window.GetType() == typeof(MainWindow))
                             (window as MainWindow).MainContentControl.DataContext = new AdminMainView(roleId, UsernameTextBox.Text);
@@ -90,7 +95,6 @@ namespace WVA_Connect_CSI.Views
           
             if (e.Key == Key.Enter)
                 Login();
-
         }
 
         private void PasswordTextBox_PasswordChanged(object sender, RoutedEventArgs e)
