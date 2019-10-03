@@ -20,10 +20,10 @@ namespace GUI.UnitTests.Models
                 LastName = "Banner"
             };
 
-            string actualValue = prescription.Patient;
-            string expectedValue = "Banner, Bruce";
+            string actual = prescription.Patient;
+            string expected = "Banner, Bruce";
 
-            Assert.AreEqual(actualValue, expectedValue);
+            Assert.AreEqual(expected, actual);
         }
 
     }

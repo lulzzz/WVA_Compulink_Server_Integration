@@ -63,7 +63,6 @@ namespace WVA_Connect_CSI.ViewModels
             File.AppendAllText(Paths.ImportCsvUsersLog ,text);
         }
 
-
         private string GetCsvPath()
         {
             OpenFileDialog choofdlog = new OpenFileDialog();
@@ -152,6 +151,5 @@ namespace WVA_Connect_CSI.ViewModels
             return database.DeleteUser(username);  
         }
 
-   
     }
 }

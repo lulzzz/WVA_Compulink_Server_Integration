@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace WVA_Connect_CSI.Errors
 {
-    class Error
+    public class Error
     {
         public static void ReportOrLog(Exception e)
         {

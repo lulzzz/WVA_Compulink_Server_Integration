@@ -10,7 +10,7 @@ using WVA_Connect_CSI.ViewModels;
 namespace GUI.UnitTests.ViewModels
 {
     [TestClass]
-    class OrdersViewModelTests
+    public class OrdersViewModelTests
     {
         [TestMethod]
         public void GetAllOrders_ReturnsSubAndUnSubbedOrders()
@@ -28,10 +28,15 @@ namespace GUI.UnitTests.ViewModels
             var ordersViewModel = new OrdersViewModel();
 
             List<Order> orders = ordersViewModel.GetSubmittedOrders();
-            string actualStatus = orders[0].Status;
-            string expectedStatus = "submitted";
 
-            Assert.Equals(actualStatus, expectedStatus);
+            // Leave test if no results returned
+            if (orders.Count < 1)
+                return;
+
+            string actual = orders[0].Status;
+            string expected = "submitted";
+
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -40,10 +45,15 @@ namespace GUI.UnitTests.ViewModels
             var ordersViewModel = new OrdersViewModel();
 
             List<Order> orders = ordersViewModel.GetUnsubmittedOrders();
-            string actualStatus = orders[0].Status;
-            string expectedStatus = "open";
 
-            Assert.Equals(actualStatus, expectedStatus);
+            // Leave test if no results returned
+            if (orders.Count < 1)
+                return;
+
+            string actual = orders[0].Status;
+            string expected = "open";
+
+            Assert.AreEqual(expected, actual);
         }
 
     }

@@ -18,10 +18,10 @@ namespace GUI.UnitTests.Models
                 RoleId = 0
             };
 
-            string actualValue = user.RoleName;
-            string expectedValue = "User";
+            string actual = user.RoleName;
+            string expected = "User";
 
-            Assert.AreEqual(actualValue, expectedValue);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -32,10 +32,10 @@ namespace GUI.UnitTests.Models
                 RoleId = 1
             };
 
-            string actualValue = user.RoleName;
-            string expectedValue = "Manager";
+            string actual = user.RoleName;
+            string expected = "Manager";
 
-            Assert.AreEqual(actualValue, expectedValue);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -46,10 +46,10 @@ namespace GUI.UnitTests.Models
                 RoleId = 2
             };
 
-            string actualValue= user.RoleName;
-            string expectedValue = "IT Admin";
+            string actual  = user.RoleName;
+            string expected = "IT Admin";
 
-            Assert.AreEqual(actualValue, expectedValue);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -60,10 +60,10 @@ namespace GUI.UnitTests.Models
                 RoleId = 3
             };
 
-            string actualValue = user.RoleName;
-            string expectedValue = "Super Admin";
+            string actual = user.RoleName;
+            string expected = "Super Admin";
 
-            Assert.AreEqual(actualValue, expectedValue);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -74,10 +74,10 @@ namespace GUI.UnitTests.Models
                 RoleId = 4
             };
 
-            string actualValue = user.RoleName;
-            string expectedValue = "User";
+            string actual = user.RoleName;
+            string expected = "User";
 
-            Assert.AreEqual(actualValue, expectedValue);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -88,10 +88,10 @@ namespace GUI.UnitTests.Models
                 RequiresPasswordChange = 1
             };
 
-            string actualValue = user.StrRequiresPasswordChange;
-            string expectedValue = "Yes";
+            string actual = user.StrRequiresPasswordChange;
+            string expected = "Yes";
 
-            Assert.AreEqual(actualValue, expectedValue);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -102,10 +102,10 @@ namespace GUI.UnitTests.Models
                 RequiresPasswordChange = 0
             };
 
-            string actualValue = user.StrRequiresPasswordChange;
-            string expectedValue = "No";
+            string actual = user.StrRequiresPasswordChange;
+            string expected = "No";
 
-            Assert.AreEqual(actualValue, expectedValue);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

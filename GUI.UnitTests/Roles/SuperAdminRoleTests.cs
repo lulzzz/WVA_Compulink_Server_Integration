@@ -30,17 +30,19 @@ namespace GUI.UnitTests.Roles
         [TestMethod]
         public void SuperAdmin_RoleIdSet_EqualsThree()
         {
-            var superAdmin = new SuperAdminRole(3, "stark");
+            int actual = new SuperAdminRole(3, "stark").RoleId;
+            int expected = 3;
 
-            Assert.AreEqual(superAdmin.RoleId, 3);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void SuperAdmin_UserNameSet_EqualsStark()
         {
-            var superAdmin = new SuperAdminRole(3, "stark");
+            string actual = new SuperAdminRole(3, "stark").UserName;
+            string expected = "stark";
 
-            Assert.AreEqual(superAdmin.UserName, "stark");
+            Assert.AreEqual(expected, actual);
         }
     }
 }

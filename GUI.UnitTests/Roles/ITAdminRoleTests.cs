@@ -30,17 +30,19 @@ namespace GUI.UnitTests.Roles
         [TestMethod]
         public void ITAdmin_RoleIdSet_EqualsTwo()
         {
-            var itAdmin = new ITAdminRole(2, "stark");
+            int actual = new ITAdminRole(2, "stark").RoleId;
+            int expected = 2;
 
-            Assert.AreEqual(itAdmin.RoleId, 2);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void ITAdmin_UserNameSet_EqualsStark()
         {
-            var itAdmin = new ITAdminRole(2, "stark");
+            string actual = new ITAdminRole(2, "stark").UserName;
+            string expected = "stark";
 
-            Assert.AreEqual(itAdmin.UserName, "stark");
+            Assert.AreEqual(expected, actual);
         }
     }
 }

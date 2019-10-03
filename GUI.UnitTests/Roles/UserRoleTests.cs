@@ -30,17 +30,19 @@ namespace GUI.UnitTests.Roles
         [TestMethod]
         public void UserRole_RoleIdSet_EqualsZero()
         {
-            var user = new UserRole(0, "stark");
+            int actual = new UserRole(0, "stark").RoleId;
+            int expected = 0;
 
-            Assert.AreEqual(user.RoleId, 0);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void UserRole_UserNameSet_EqualsStark()
         {
-            var user = new UserRole(0, "stark");
+            string actual = new UserRole(0, "stark").UserName;
+            string expected = "stark";
 
-            Assert.AreEqual(user.UserName, "stark");
+            Assert.AreEqual(expected, actual);
         }
     }
 }

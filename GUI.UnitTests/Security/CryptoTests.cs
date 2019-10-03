@@ -14,19 +14,19 @@ namespace GUI.UnitTests.Security
         [TestMethod]
         public void ConvertToHash_GivesNormalString_ReturnsValue()
         {
-            string result = Crypto.ConvertToHash("password123");
+            string actual = Crypto.ConvertToHash("password123");
             string expected = "2ba33ac8f9f9aad8336b71b4e7f851fe1628709672802ce56c107157a569a5b9";
 
-            Assert.AreEqual(result, expected);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void ConvertToHash_GivesTextBoxMaxLength_ReturnsValue()
         {
-            string result = Crypto.ConvertToHash("aaaaaaaaaaaaaaaaaaaa");
+            string actual = Crypto.ConvertToHash("aaaaaaaaaaaaaaaaaaaa");
             string expected = "0594ad161e0e5658d3ec5ea839c59e6e9dd0d3fe0621dc65be72ccac304bf1b1";
 
-            Assert.AreEqual(result, expected);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]

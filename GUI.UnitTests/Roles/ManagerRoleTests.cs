@@ -31,17 +31,19 @@ namespace GUI.UnitTests.Roles
         [TestMethod]
         public void ManagerRole_RoleIdSet_EqualsOne()
         {
-            var manager = new ManagerRole(1, "stark");
+            int actual = new ManagerRole(1, "stark").RoleId;
+            int expected = 1;
 
-            Assert.AreEqual(manager.RoleId, 1);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void ManagerRole_UserNameSet_EqualsStark()
         {
-            var manager = new ManagerRole(1, "stark");
+            string actual = new ManagerRole(1, "stark").UserName;
+            string expected = "stark";
 
-            Assert.AreEqual(manager.UserName, "stark");
+            Assert.AreEqual(expected, actual);
         }
     }
 }

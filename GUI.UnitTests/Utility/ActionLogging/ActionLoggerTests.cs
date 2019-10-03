@@ -23,10 +23,10 @@ namespace GUI.UnitTests.Utility.ActionLogging
         {
             ActionLogger.Log("Test Location", "Test Username", 0, "Test Action Message");
 
-            bool actualResult = File.Exists($"{Paths.TempDir}CSI_Action_Log_{DateTime.Today.ToString("MM-dd-yy")}.txt");
-            bool expectedResult = true;
+            bool actual = File.Exists($"{Paths.TempDir}CSI_Action_Log_{DateTime.Today.ToString("MM-dd-yy")}.txt");
+            bool expected = true;
 
-            Assert.AreEqual(actualResult, expectedResult);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -64,10 +64,10 @@ namespace GUI.UnitTests.Utility.ActionLogging
             string strResponse = API.Post(Paths.WisVisErrors, jsonError);
             var response = JsonConvert.DeserializeObject<Response>(strResponse);
 
-            string actualResult = response.Status;
-            string expectedResult = "SUCCESS";
+            string actual = response.Status;
+            string expected = "SUCCESS";
 
-            Assert.AreEqual(actualResult, expectedResult);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -78,12 +78,10 @@ namespace GUI.UnitTests.Utility.ActionLogging
             string strResponse = API.Post(Paths.WisVisErrors, jsonError);
             var response = JsonConvert.DeserializeObject<Response>(strResponse);
 
-            string actualResult = response.Status;
-            string expectedResult = "FAIL";
+            string actual = response.Status;
+            string expected = "FAIL";
 
-            Assert.AreEqual(actualResult, expectedResult);
+            Assert.AreEqual(expected, actual);
         }
-
-
     }
 }
