@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.ServiceProcess;
 using System.Threading.Tasks;
+using WVA_Connect_CSI.Errors;
 using WVA_Connect_CSI.Utility.Files;
 
 namespace WVA_Connect_CSI.Services
@@ -61,16 +62,23 @@ namespace WVA_Connect_CSI.Services
 
         private static void IssueCommand(string command)
         {
-            var process = new Process();
-            var startInfo = new ProcessStartInfo
+            try
             {
-                WindowStyle = ProcessWindowStyle.Hidden,
-                FileName = "cmd.exe",
-                Arguments = $"/c {command}",
-                Verb = "runas"
-            };
-            process.StartInfo = startInfo;
-            process.Start();
+                var process = new Process();
+                var startInfo = new ProcessStartInfo
+                {
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    FileName = "cmd.exe",
+                    Arguments = $"/c {command}",
+                    Verb = "runas"
+                };
+                process.StartInfo = startInfo;
+                process.Start();
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            }
         }
     }
 }

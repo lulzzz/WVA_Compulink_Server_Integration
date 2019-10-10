@@ -262,7 +262,7 @@ namespace WVA_Connect_CSI.Views
             KillServiceHost();
         }
 
-        private async void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
+        private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
         {
             CheckForUpdates();
         }

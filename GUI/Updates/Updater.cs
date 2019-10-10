@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace WVA_Connect_CSI.Updates
 {
-    class Updater
+    public class Updater
     {
         public static async Task NotifyUpdatesAvailable()
         {
@@ -60,31 +60,53 @@ namespace WVA_Connect_CSI.Updates
 
         public static bool UpdatesAvailable()
         {
-            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Compulink_Server_Integration").Result)
+            try
             {
-                var updateInfo = mgr.CheckForUpdate().Result;
+                using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/WVATeam/WVA_Compulink_Server_Integration").Result)
+                {
+                    var updateInfo = mgr.CheckForUpdate().Result;
 
-                if (updateInfo.ReleasesToApply.Any())
-                    return true;
-                else
-                    return false;
+                    if (updateInfo.ReleasesToApply.Any())
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+                return false;
             }
         }
 
         public static async Task ForceUpdate()
         {
-            ServiceHost.Stop();
-            ServiceHost.Uninstall();
-            await Task.Run(() => Update());
-            ServiceHost.Install();
-            ServiceHost.Start();
-            RestartApplication();
+            try
+            {
+                ServiceHost.Stop();
+                ServiceHost.Uninstall();
+                await Task.Run(() => Update());
+                ServiceHost.Install();
+                ServiceHost.Start();
+                RestartApplication();
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            }
         }
 
         private static void RestartApplication()
         {
-            Process.Start(Paths.AppExecFile);
-            Environment.Exit(0);
+            try
+            {
+                Process.Start(Paths.AppExecFile);
+                Environment.Exit(0);
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            }
         }
 
         // This may be usefull in the future

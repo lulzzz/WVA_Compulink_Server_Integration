@@ -34,18 +34,25 @@ namespace WVA_Connect_CSI
 
         public MainWindow()
         {
-            DeleteNetCoreIcon();
-            InitializeComponent();
-            SetTitle();
-            SetUpFiles();
-            SetUpDatabase();
-            SetUpServiceHost();
-            SetContentControl();
-            StartWorkers();
-            TaskManager.StartAllJobs();
+            try
+            {
+                DeleteNetCoreIcon();
+                InitializeComponent();
+                SetTitle();
+                SetUpFiles();
+                SetUpDatabase();
+                SetUpServiceHost();
+                SetContentControl();
+                StartWorkers();
+                TaskManager.StartAllJobs();
 
-            inactivityTask = new Task(StartInactivityTimer, tokenSource.Token);
-            inactivityTask.Start();
+                inactivityTask = new Task(StartInactivityTimer, tokenSource.Token);
+                inactivityTask.Start();
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            }
         }
 
         //
@@ -74,21 +81,28 @@ namespace WVA_Connect_CSI
 
         private void CheckUserInactivity()
         {
-            tagLASTINPUTINFO LastInput = new tagLASTINPUTINFO();
-            Int32 IdleTime;
-
-            LastInput.cbSize = (uint)Marshal.SizeOf(LastInput);
-            LastInput.dwTime = 0;
-
-            if (GetLastInputInfo(ref LastInput))
+            try
             {
-                IdleTime = System.Environment.TickCount - LastInput.dwTime;
-                Trace.WriteLine($"*** IdleTime: {IdleTime}ms ***");
+                tagLASTINPUTINFO LastInput = new tagLASTINPUTINFO();
+                Int32 IdleTime;
 
-                if (IdleTime > 300000)
+                LastInput.cbSize = (uint)Marshal.SizeOf(LastInput);
+                LastInput.dwTime = 0;
+
+                if (GetLastInputInfo(ref LastInput))
                 {
-                    Dispatcher.Invoke(new UpdateUICallBack(ForceLogOff));
+                    IdleTime = System.Environment.TickCount - LastInput.dwTime;
+                    Trace.WriteLine($"*** IdleTime: {IdleTime}ms ***");
+
+                    if (IdleTime > 300000)
+                    {
+                        Dispatcher.Invoke(new UpdateUICallBack(ForceLogOff));
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
             }
         }
 

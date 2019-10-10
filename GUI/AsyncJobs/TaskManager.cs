@@ -25,25 +25,34 @@ namespace WVA_Connect_CSI.AsyncJobs
         {
             while (true)
             {
-                DateTime now = DateTime.Now;
-
-                if (now.TimeOfDay < startWorkingHour || now.TimeOfDay > endWorkingHour)
+                try
                 {
-                    // Clean out error logs 
-                    if (LastTimeCleaned < DateTime.Now.AddDays(-1))
+                    DateTime now = DateTime.Now;
+
+                    if (now.TimeOfDay < startWorkingHour || now.TimeOfDay > endWorkingHour)
                     {
-                        Task cleanErrLogTask = new Task(() => { CleanErrorDirectory(); });
-                        cleanErrLogTask.Start();
-                        LastTimeCleaned = now;
+                        // Clean out error logs 
+                        if (LastTimeCleaned < DateTime.Now.AddDays(-1))
+                        {
+                            Task cleanErrLogTask = new Task(() => { CleanErrorDirectory(); });
+                            cleanErrLogTask.Start();
+                            LastTimeCleaned = now;
+                        }
+
+                        // Update the server app
+                        Task checkUpdatesTask = new Task(() => { CheckForServerUpdates(); });
+                        checkUpdatesTask.Start();
+                        checkUpdatesTask.Wait();
                     }
-
-                    // Update the server app
-                    Task checkUpdatesTask = new Task(() => { CheckForServerUpdates(); });
-                    checkUpdatesTask.Start();
-                    checkUpdatesTask.Wait();
                 }
-
-                Thread.Sleep(60000);
+                catch (Exception ex)
+                {
+                    Error.ReportOrLog(ex);
+                }
+                finally
+                {
+                    Thread.Sleep(60000);
+                }
             }
         }
 
