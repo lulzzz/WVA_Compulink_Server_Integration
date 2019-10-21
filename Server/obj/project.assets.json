@@ -12778,11 +12778,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\evan\\Desktop\\Languages\\C#\\Compulink Apps\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
       "projectName": "WVA_Connect_CSI",
-      "projectPath": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
+      "projectPath": "C:\\Users\\evan\\Desktop\\Languages\\C#\\Compulink Apps\\WVA_Compulink_Server_Integration\\Server\\Server.csproj",
       "packagesPath": "C:\\Users\\evan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\evan\\Desktop\\Repos\\WVA_Compulink_Server_Integration\\Server\\obj\\",
+      "outputPath": "C:\\Users\\evan\\Desktop\\Languages\\C#\\Compulink Apps\\WVA_Compulink_Server_Integration\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\ProgramData\\Xamarin\\NuGet\\",

@@ -36,3 +36,16 @@ C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\Release\
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\Release\netcoreapp2.2\Server.csproj.CopyComplete
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\Release\netcoreapp2.2\WVA_Connect_CSI.dll
 C:\Users\evan\Desktop\Repos\WVA_Compulink_Server_Integration\Server\obj\Release\netcoreapp2.2\WVA_Connect_CSI.pdb
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\bin\Release\netcoreapp2.2\WVA_Connect_CSI.deps.json
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\bin\Release\netcoreapp2.2\WVA_Connect_CSI.runtimeconfig.json
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\bin\Release\netcoreapp2.2\WVA_Connect_CSI.runtimeconfig.dev.json
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\bin\Release\netcoreapp2.2\WVA_Connect_CSI.dll
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\bin\Release\netcoreapp2.2\WVA_Connect_CSI.pdb
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\obj\Release\netcoreapp2.2\Server.csproj.CoreCompileInputs.cache
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\obj\Release\netcoreapp2.2\Server.RazorAssemblyInfo.cache
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\obj\Release\netcoreapp2.2\Server.RazorAssemblyInfo.cs
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\obj\Release\netcoreapp2.2\Server.AssemblyInfoInputs.cache
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\obj\Release\netcoreapp2.2\Server.AssemblyInfo.cs
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\obj\Release\netcoreapp2.2\Server.RazorTargetAssemblyInfo.cache
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\obj\Release\netcoreapp2.2\WVA_Connect_CSI.dll
+C:\Users\evan\Desktop\Languages\C#\Compulink Apps\WVA_Compulink_Server_Integration\Server\obj\Release\netcoreapp2.2\WVA_Connect_CSI.pdb
