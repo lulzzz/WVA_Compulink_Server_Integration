@@ -28,7 +28,7 @@ namespace WVA_Connect_CSI.Controllers
                     {
                         // Read in the jsonConfig from the file location as a string
                         string strJsonConfig = System.IO.File.ReadAllText(Paths.WvaConfigFile);
-                        var jsonConfig = (WvaConfig)JsonConvert.DeserializeObject(strJsonConfig);
+                        var jsonConfig = JsonConvert.DeserializeObject<WvaConfig>(strJsonConfig);
 
                         // Update the FilterValue in memory and in the file system
                         jsonConfig.FilterValue = Startup.config.FilterValue = compulinkOdbcReader.GetLastFilterValue();
