@@ -13,6 +13,7 @@ namespace WVA_Connect_CSI.Memory
     class Storage
     {
         public static WvaConfig Config { get; set; }
+        public static bool DebugOn { get; set; }
 
         public Storage()
         {

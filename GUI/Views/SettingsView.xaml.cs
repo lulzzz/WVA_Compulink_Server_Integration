@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WVA_Connect_CSI.Memory;
 
 namespace WVA_Connect_CSI.Views
 {
@@ -23,6 +24,13 @@ namespace WVA_Connect_CSI.Views
         public SettingsView()
         {
             InitializeComponent();
+            SetDebuggerStatus();
+        }
+
+        private void SetDebuggerStatus()
+        {
+            if (Storage.DebugOn)
+                DebuggerStatusCheckBox.IsChecked = true;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -30,6 +38,16 @@ namespace WVA_Connect_CSI.Views
             foreach (Window window in Application.Current.Windows)
                 if (window.GetType() == typeof(MainWindow))
                     (window as MainWindow).MainContentControl.DataContext = new MainView();
+        }
+
+        private void DebuggerStatusCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Storage.DebugOn = true;
+        }
+
+        private void DebuggerStatusCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Storage.DebugOn = false;
         }
     }
 }
