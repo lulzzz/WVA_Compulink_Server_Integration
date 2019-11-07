@@ -22,6 +22,21 @@ namespace WVA_Connect_CSI.Data
         // User Roles
         //
 
+        public void CreateTables()
+        {
+            try
+            {
+                dataAccessor.CreateUsersTable();
+                dataAccessor.CreateRolesTable();
+                dataAccessor.CreateWvaOrdersTable();
+                dataAccessor.CreateOrderDetailsTable();
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            }
+        }
+
         public void SetUpRoles()
         {
             try

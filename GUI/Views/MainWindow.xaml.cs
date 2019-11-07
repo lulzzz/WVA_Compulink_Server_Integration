@@ -174,9 +174,12 @@ namespace WVA_Connect_CSI
 
         public void SetUpDatabase()
         {
-            var db = new Database();
-
-            db.SetUpRoles();
+            if (!File.Exists(Paths.DatabaseFile))
+            {
+                var db = new Database();
+                db.CreateTables();
+                db.SetUpRoles();
+            }
         }
 
         // 

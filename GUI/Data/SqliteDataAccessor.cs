@@ -19,6 +19,80 @@ namespace WVA_Connect_CSI.Data
         //
         // Database setup
         //
+        public void CreateUsersTable()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                cnn.Execute("CREATE TABLE IF NOT EXISTS Users (" +
+                                    "Id                     INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                    "UserName               TEXT, " +
+                                    "Password               TEXT, " +
+                                    "Email                  TEXT); ");
+            }
+        }
+
+        public void CreateWvaOrdersTable()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                cnn.Execute("CREATE TABLE IF NOT EXISTS WvaOrders (" +
+                                    "Id                     INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                    "CustomerId             TEXT, " +
+                                    "OrderName              TEXT, " +
+                                    "CreatedDate            TEXT, " +
+                                    "WvaStoreId             TEXT, " +
+                                    "DateOfBirth            TEXT, " +
+                                    "Name1                  TEXT, " +
+                                    "Name2                  TEXT, " +
+                                    "StreetAddr1            TEXT, " +
+                                    "StreetAddr2            TEXT, " +
+                                    "City                   TEXT, " +
+                                    "State                  TEXT, " +
+                                    "Zip                    TEXT, " +
+                                    "ShipToAccount          TEXT, " +
+                                    "OrderedBy              TEXT, " +
+                                    "PoNumber               TEXT, " +
+                                    "ShippingMethod         TEXT, " +
+                                    "ShipToPatient          TEXT, " +
+                                    "Freight                TEXT, " +
+                                    "Tax                    TEXT, " +
+                                    "Discount               TEXT, " +
+                                    "InvoiceTotal           TEXT, " +
+                                    "Email                  TEXT, " +
+                                    "Phone                  TEXT, " +
+                                    "Status                 TEXT); ");
+            }
+        }
+
+        public void CreateOrderDetailsTable()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(GetDbConnectionString()))
+            {
+                cnn.Execute("CREATE TABLE IF NOT EXISTS OrderDetails (" +
+                                    "ID                      INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                    "WvaOrderId              INT, " +
+                                    "LensRx                  INT, " +
+                                    "FirstName               TEXT, " +
+                                    "LastName                TEXT, " +
+                                    "Eye                     TEXT, " +
+                                    "Quantity                TEXT, " +
+                                    "Price                   TEXT, " +
+                                    "PatientId               TEXT, " +
+                                    "Name                    TEXT, " +
+                                    "ProductReviewed         INT, " +
+                                    "Sku                     TEXT, " +
+                                    "ProductKey              TEXT, " +
+                                    "Upc                     TEXT, " +
+                                    "Basecurve               TEXT, " +
+                                    "Diameter                TEXT, " +
+                                    "Sphere                  TEXT, " +
+                                    "Cylinder                TEXT, " +
+                                    "Axis                    TEXT, " +
+                                    "Ad                      TEXT, " +
+                                    "Color                   TEXT, " +
+                                    "Multifocal              TEXT); ");
+            }
+        }
 
         public void CreateRolesTable()
         {
