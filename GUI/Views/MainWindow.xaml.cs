@@ -174,7 +174,9 @@ namespace WVA_Connect_CSI
 
         public void SetUpDatabase()
         {
-            new Database().SetUpRoles();
+            var db = new Database();
+
+            db.SetUpRoles();
         }
 
         // 

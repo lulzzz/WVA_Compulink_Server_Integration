@@ -77,7 +77,7 @@ namespace WVA_Connect_CSI.ViewModels
         {
             string csvFile = GetCsvPath();
 
-            if (csvFile == "")
+            if (csvFile == null || csvFile.Trim() == "")
                 throw new FileFormatException();
             if (!File.Exists(csvFile))
                 throw new FileNotFoundException($"{csvFile}");

@@ -155,11 +155,18 @@ namespace WVA_Connect_CSI.Views
             }
         }
 
-        private void AdminLogin()
+        private void NavigateToView(object view)
         {
-            foreach (Window window in Application.Current.Windows)
-                if (window.GetType() == typeof(MainWindow))
-                    (window as MainWindow).MainContentControl.DataContext = new LoginView();
+            try
+            {
+                foreach (Window window in Application.Current.Windows)
+                    if (window.GetType() == typeof(MainWindow))
+                        (window as MainWindow).MainContentControl.DataContext = view;
+            }
+            catch
+            {
+                throw new NotImplementedException();
+            }
         }
 
         private void StartServiceHost()
@@ -274,12 +281,27 @@ namespace WVA_Connect_CSI.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            AdminLogin();
+       
+            try
+            {
+                NavigateToView(new LoginView());
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            } 
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+                NavigateToView(new SettingsView());
+            }
+            catch (Exception ex)
+            {
+                Error.ReportOrLog(ex);
+            }
         }
 
     }
